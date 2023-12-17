@@ -25,8 +25,10 @@ menu-open
         <thead>
             <tr>
               <th>Id</th>
-              <th>Заголовок</th>
-              <th>Позаголовок</th>
+              <th>Заголовок, ru</th>
+              <th>Заголовок, kz</th>
+              <th>Позаголовок, ru</th>
+              <th>Позаголовок, kz</th>
 			<th>Фон</th>
               <th></th>
               <th></th>
@@ -39,15 +41,17 @@ menu-open
 
                 <tr>
                     <td>{{$header->id}}</td>
-                    <td>{{$header->title}}</td>
-                    <td>{{$header->subtitle}}</td>
+                    <td>{{$header->title_ru}}</td>
+                    <td>{{$header->title_kz}}</td>
+                    <td>{{$header->subtitle_ru}}</td>
+                    <td>{{$header->subtitle_kz}}</td>
                     <td>{{$header->src}}</td>
 
-                    
+
                     <td><a href="{{route('admin.main.header.edit',$header->id)}}"><i class="fas fa-pen"></i></a></td>
                     <td><a href="{{route('admin.main.header.show',$header->id)}}"><i class="fas fa-arrow-right"></i></a></td>
                 </tr>
-        
+
             @endforeach
 
         </tbody>

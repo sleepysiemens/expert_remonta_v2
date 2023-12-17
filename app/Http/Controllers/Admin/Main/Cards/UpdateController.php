@@ -10,21 +10,20 @@ use App\Models\WelcomeCard;
 
 class UpdateController extends Controller
 {
-    public function __invoke(WelcomeCard $WelcomeCards)
+    public function index(WelcomeCard $WelcomeCards)
     {
-        $data=request()->validate(['title'=>'required|string', 'src']);
 
         if(request()->hasFile('src'))
         {
         $file = request()->file('src');
-        $file->move(public_path() . '/img/cards/',request()->title.'-image.img');
-        $sql_data=['title'=>request()->title, 'src'=>(request()->title).'-image.img'];
+        $file->move(public_path() . '/img/cards/',request()->title_ru.'-image.img');
+        $sql_data=['title_ru'=>request()->title_ru, 'title_kz'=>request()->title_kz, 'src'=>(request()->title_ru).'-image.img'];
         }
         else
-            $sql_data=['title'=>request()->title];
+            $sql_data=['title_ru'=>request()->title_ru, 'title_kz'=>request()->title_kz];
 
         $WelcomeCards->update($sql_data);
 
-        return redirect()->route('admin.main.welcome_cards.show', $WelcomeCards->id); 
+        return redirect()->route('admin.main.welcome_cards.show', $WelcomeCards->id);
     }
 }

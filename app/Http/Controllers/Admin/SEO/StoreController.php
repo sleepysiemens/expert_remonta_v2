@@ -9,12 +9,12 @@ use App\Models\Seo;
 
 class StoreController extends Controller
 {
-    public function __invoke()
+    public function index()
     {
         $data=request()->validate(['page'=>'required|string', 'seo'=>'required|string', 'meta'=>'required|string']);
-        
+
         Seo::create($data);
 
-        return redirect()->route('admin.seo.index'); 
+        return redirect()->route('admin.seo.index');
     }
 }

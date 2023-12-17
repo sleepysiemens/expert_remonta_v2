@@ -15,7 +15,7 @@ use App\Models\Seo;
 
 class ShowController extends Controller
 {
-    public function __invoke(Seo $seo)
+    public function index(Seo $seo)
     {
         $reviews=Review::all();
         $questions=Question::all();

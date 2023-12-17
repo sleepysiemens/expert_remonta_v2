@@ -31,17 +31,25 @@
         @method('patch')
         <div class="card-body">
           <div class="form-group">
-            <label for="exampleInputEmail1">Название</label>
-            <input type="text" class="form-control" placeholder="Название" name="title" required value="{{$blog->title}}">
+            <label for="exampleInputEmail1">Название, ru</label>
+            <input type="text" class="form-control" placeholder="Название" name="title_ru" required value="{{$blog->title_ru}}">
           </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Название, kz</label>
+                <input type="text" class="form-control" placeholder="Название" name="title_kz" value="{{$blog->title_kz}}">
+            </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Ссылка</label>
             <input type="text" class="form-control" placeholder="Название" name="url" required value="{{$blog->url}}">
           </div>
           <div class="form-group">
-              <label for="exampleInputEmail1">Текст</label>
-				<textarea id="summernote" name="description" placeholder="Текст описания..." required>{{$blog->description}}</textarea>
+              <label for="exampleInputEmail1">Текст, ru</label>
+				<textarea id="summernote" name="description_ru" placeholder="Текст описания..." required>{{$blog->description_ru}}</textarea>
           </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Текст, kz</label>
+                <textarea id="summernote" name="description_kz" placeholder="Текст описания...">{{$blog->description_kz}}</textarea>
+            </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Обложка</label>
             <input type="file" class="form-control" placeholder="Название" name="src">

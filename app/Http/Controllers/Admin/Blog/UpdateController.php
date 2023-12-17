@@ -12,17 +12,15 @@ class UpdateController extends Controller
 {
     public function index(Blog $blog)
     {
-        $data=request()->validate(['title'=>'required|string', 'url'=>'required|string', 'description'=>'required|max:1000', 'src']);
-
         if(request()->hasFile('src'))
         {
             $name=rand().'.img';
             $file = request()->file('src');
             $file->move(public_path() . '/img/blog/',$name);
-            $sql_data=['title'=>request()->title, 'url'=>request()->url, 'description'=>request()->description, 'src'=>$name];
+            $sql_data=['title_ru'=>request()->title_ru, 'url'=>request()->url, 'description_ru'=>request()->description_ru, 'src'=>$name, 'title_kz'=>request()->title_kz, 'description_kz'=>request()->description_kz];
         }
         else
-            $sql_data=['title'=>request()->title, 'url'=>request()->url, 'description'=>request()->description];
+            $sql_data=['title_ru'=>request()->title_ru, 'url'=>request()->url, 'description_ru'=>request()->description_ru, 'title_kz'=>request()->title_kz, 'description_kz'=>request()->description_kz];
 
 
         $blog->update($sql_data);

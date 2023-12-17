@@ -15,7 +15,7 @@ use App\Models\Header;
 
 class EditController extends Controller
 {
-    public function __invoke(Header $header)
+    public function index(Header $header)
     {
         $questions=Question::all();
         $reviews=Review::all();

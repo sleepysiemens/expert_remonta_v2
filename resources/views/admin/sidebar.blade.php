@@ -34,6 +34,12 @@
                               <p>О нас</p>
                             </a>
                           </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.main.main_text.index') }}" class="nav-link @yield('main_text')">
+                                <i class="fas fa-book nav-icon"></i>
+                                <p>Текст на главной</p>
+                            </a>
+                        </li>
                           <li class="nav-item" style="border-bottom: 1px solid rgba(255,255,255, .2">
                             <a href="{{ route('admin.main.why_cards.index') }}" class="nav-link @yield('why')">
                               <i class="far fa-question-circle nav-icon"></i>
@@ -65,7 +71,7 @@
                         Контакты
                     </p>
                 </a>
-                
+
             </li>
         </ul>
         <ul class="nav nav-treeview" style="border-bottom: 1px solid rgba(255,255,255, .2)">
@@ -99,7 +105,7 @@
                       <span class="badge badge-info right">{{$questions->count()}}</span>
                   </p>
               </a>
-              
+
               <a href="{{ route('admin.service.index') }}" class="nav-link @yield('services')">
                   <i class="nav-icon fas fa-bars"></i>
                   <p>
@@ -137,7 +143,7 @@
                       <span class="badge badge-info right">{{$sales->count()}}</span>
                   </p>
               </a>
-              
+
           </li>
       </ul>
         <ul class="nav nav-treeview" style="border-bottom: 1px solid rgba(255,255,255, .2)">

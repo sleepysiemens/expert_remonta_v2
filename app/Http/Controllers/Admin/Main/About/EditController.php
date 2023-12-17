@@ -15,7 +15,7 @@ use App\Models\About;
 
 class EditController extends Controller
 {
-    public function __invoke(About $about)
+    public function index(About $about)
     {
         $questions=Question::all();
         $reviews=Review::all();

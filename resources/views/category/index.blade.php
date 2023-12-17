@@ -11,7 +11,7 @@ nav-link-selected
         @endsection
 
         @section('content')
-            @include('blocks.welcome')
+            @include('blocks.welcome-category')
             @include('blocks.path-category')
             @include('blocks.about_category')
             @include('blocks.photo-slider')

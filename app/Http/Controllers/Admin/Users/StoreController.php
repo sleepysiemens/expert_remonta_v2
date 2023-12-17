@@ -9,12 +9,12 @@ use App\Models\User;
 
 class StoreController extends Controller
 {
-    public function __invoke()
+    public function index()
     {
         $data=request()->validate(['name'=>'required|string', 'email'=>'required|string', 'role'=>'required|string']);
 
         User::create($data);
 
-        return redirect()->route('admin.user.index'); 
+        return redirect()->route('admin.user.index');
     }
 }

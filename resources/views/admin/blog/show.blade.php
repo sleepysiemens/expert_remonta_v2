@@ -40,22 +40,26 @@
       <table class="table table-striped">
         <thead>
             <tr>
-              <th>Id</th>
-              <th>Название</th>
-              <th>Url</th>
-              <th>Описание</th>
-              <th>Обложка</th>
+                <th>Id</th>
+                <th>Название, ru</th>
+                <th>Название, kz</th>
+                <th>Url</th>
+                <th>Описание, ru</th>
+                <th>Описание, kz</th>
+                <th>Обложка</th>
             </tr>
         </thead>
         <tbody>
 
 
                 <tr>
-                  <td>{{$blog->id}}</td>
-                  <td>{{$blog->title}}</td>
-                  <td>{{$blog->url}}</td>
-                  <td>{{$blog->description}}</td>
-                  <td>{{$blog->src}}</td>
+                    <td>{{$blog->id}}</td>
+                    <td>{{$blog->title_ru}}</td>
+                    <td>{{$blog->title_kz}}</td>
+                    <td>{{$blog->url}}</td>
+                    <td>{{$blog->description_ru}}</td>
+                    <td>{{$blog->description_kz}}</td>
+                    <td>{{$blog->src}}</td>
                 </tr>
 
 

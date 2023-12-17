@@ -1,9 +1,5 @@
 @extends('Layouts.wrapper')
 
-@section('page_title')
-Ремонт квартир под ключ в Астане - Компания "Эксперт Ремонта"
-@endsection
-
 @section('content')
 
 @include('blocks.welcome')

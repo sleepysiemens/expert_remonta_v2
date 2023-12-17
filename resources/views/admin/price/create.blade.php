@@ -19,13 +19,21 @@
         @csrf
       <div class="card-body">
         <div class="form-group">
-          <label for="exampleInputEmail1">Название услуги</label>
-          <input type="text" class="form-control" placeholder="Название" name="title" required>
+          <label for="exampleInputEmail1">Название услуги, ru</label>
+          <input type="text" class="form-control" placeholder="Название" name="title_ru" required>
         </div>
+          <div class="form-group">
+              <label for="exampleInputEmail1">Название услуги, kz</label>
+              <input type="text" class="form-control" placeholder="Название" name="title_kz">
+          </div>
         <div class="form-group">
-          <label for="exampleInputEmail1">Единица измерения</label>
-          <input type="text" class="form-control" placeholder="Ед. Изм." name="unit" required>
+          <label for="exampleInputEmail1">Единица измерения, ru</label>
+          <input type="text" class="form-control" placeholder="Ед. Изм." name="unit_ru" required>
         </div>
+          <div class="form-group">
+              <label for="exampleInputEmail1">Единица измерения, kz</label>
+              <input type="text" class="form-control" placeholder="Ед. Изм." name="unit_kz">
+          </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Стоимость</label>
             <input type="number" class="form-control" name="price" placeholder="Цена" required>

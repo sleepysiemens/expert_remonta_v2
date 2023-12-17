@@ -10,12 +10,12 @@ use App\Models\price;
 
 class StoreController extends Controller
 {
-    public function __invoke()
+    public function index()
     {
-        $data=request()->validate(['title'=>'required|string', 'unit'=>'required|string', 'price'=>'required', 'category'=>'required|string']);
+        $data=request();
         Price::create($data);
         $prices=Price::all();
 
-        return redirect()->route('admin.price.index'); 
+        return redirect()->route('admin.price.index');
     }
 }

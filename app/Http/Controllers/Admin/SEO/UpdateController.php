@@ -10,13 +10,13 @@ use App\Models\Seo;
 
 class UpdateController extends Controller
 {
-    public function __invoke(Seo $seo)
+    public function index(Seo $seo)
     {
 
         $data=request()->validate(['page'=>'required|string', 'seo'=>'required|string', 'meta'=>'required|string']);
-        
+
         $seo->update($data);
 
-        return redirect()->route('admin.seo.show', $seo->id); 
+        return redirect()->route('admin.seo.show', $seo->id);
     }
 }

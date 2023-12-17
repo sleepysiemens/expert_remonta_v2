@@ -2,17 +2,17 @@
 
 
     @foreach ($services as $service)
-    
+
         @section('page_title')
         {{$service->title}} – Эксперт Ремонта
         @endsection
         @section('content')
-            @include('blocks.welcome')
+            @include('blocks.welcome-service')
             @include('blocks.path-service')
             @include('blocks.about_service')
             @include('blocks.categories')
-            @include('blocks.reviews')    
-            @include('blocks.form')    
+            @include('blocks.reviews')
+            @include('blocks.form')
         @endsection
     @endforeach
 

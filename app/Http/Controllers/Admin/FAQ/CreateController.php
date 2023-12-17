@@ -5,11 +5,11 @@ namespace App\Http\Controllers\Admin\FAQ;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Models\review;
+use App\Models\Review;
 use App\Models\question;
 use App\Models\service;
 use App\Models\category;
-use App\Models\sale;
+use App\Models\Sale;
 
 
 class CreateController extends Controller
@@ -22,6 +22,6 @@ class CreateController extends Controller
         $categories=Category::all();
         $sales=sale::all();
 
-        return view('admin.faq.create', compact('reviews', 'questions', 'services', 'categories', 'sales'));
+        return view('admin.FAQ.create', compact('reviews', 'questions', 'services', 'categories', 'sales'));
     }
 }

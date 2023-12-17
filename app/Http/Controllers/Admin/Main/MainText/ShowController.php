@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\FAQ;
+namespace App\Http\Controllers\Admin\Main\MainText;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -9,13 +9,13 @@ use App\Models\Review;
 use App\Models\question;
 use App\Models\service;
 use App\Models\category;
-use App\Models\Contact;
 use App\Models\Sale;
+use App\Models\MainText;
 
 
-class IndexController extends Controller
+class ShowController extends Controller
 {
-    public function index()
+    public function index(MainText $text)
     {
         $reviews=Review::all();
         $questions=Question::all();
@@ -24,6 +24,6 @@ class IndexController extends Controller
         $sales=sale::all();
 
 
-        return view('admin.FAQ.index', compact(['reviews', 'questions', 'services', 'categories', 'sales']));
+        return view('admin.main.main_text.show', compact(['text', 'reviews', 'questions', 'services', 'categories', 'sales']));
     }
 }

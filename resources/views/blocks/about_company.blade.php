@@ -1,11 +1,9 @@
 <section class="about">
     @foreach ($Abouts as $About)
         <div class="about-text">
-                <h1 class="hidden">О нас</h1>
+                <h1 class="hidden">{{app()->translate('О нас')}}</h1>
                 <p class="hidden">
-                  @php
-                  echo $About->title;
-                  @endphp
+                    {{app()->db_translate($About->title_ru,$About->title_kz)}}
                 </p>
         </div>
             <div class="about-img hidden">

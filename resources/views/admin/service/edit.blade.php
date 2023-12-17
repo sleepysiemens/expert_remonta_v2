@@ -31,17 +31,25 @@
         @method('patch')
         <div class="card-body">
           <div class="form-group">
-            <label for="exampleInputEmail1">Название</label>
-            <input type="text" class="form-control" placeholder="Название" name="title" required value="{{$service->title}}">
+            <label for="exampleInputEmail1">Название, ru</label>
+            <input type="text" class="form-control" placeholder="Название" name="title_ru" required value="{{$service->title_ru}}">
           </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Название, kz</label>
+                <input type="text" class="form-control" placeholder="Название" name="title_kz" value="{{$service->title_kz}}">
+            </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Ссылка</label>
             <input type="text" class="form-control" placeholder="Название" name="url" required value="{{$service->url}}">
           </div>
           <div class="form-group">
-              <label for="exampleInputEmail1">Текст</label>
-              <textarea class="form-control" name="description" placeholder="Текст описания..." required>{{$service->description}}</textarea>
+              <label for="exampleInputEmail1">Текст, ru</label>
+              <textarea class="form-control" name="description_ru" placeholder="Текст описания..." required>{{$service->description_ru}}</textarea>
           </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Текст, kz</label>
+                <textarea class="form-control" name="description_kz" placeholder="Текст описания..." required>{{$service->description_kz}}</textarea>
+            </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Обложка</label>
             <input type="file" class="form-control" placeholder="Название" name="src">
@@ -54,4 +62,40 @@
       </div>
     </form>
   </div>
+    <br>
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">SEO</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        @if(isset($seos[0]->id) and $seos[0]->id!=NULL)
+            <form action="{{route('admin.seo.update', $seos[0]->id)}}" method="post" enctype="multipart/form-data">
+            @else
+            <form action="{{route('admin.seo.create')}}" method="post" enctype="multipart/form-data">
+        @endif
+            @csrf
+            @method('patch')
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Страница</label>
+                    <input type="text" class="form-control" placeholder="Страница" name="page" required disabled value="/uslugi/{{$service->url}}">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">SEO-заголовок</label>
+                    <input type="text" class="form-control" placeholder="SEO" name="seo" required value=" @if(isset($seos[0]->id) and $seos[0]->id!=NULL){{$seos[0]->seo}}@endif">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">META-описание</label>
+                    <input type="text" class="form-control" placeholder="Meta" name="meta" required value="@if(isset($seos[0]->id) and $seos[0]->id!=NULL){{$seos[0]->meta}}@endif">
+                </div>
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Изменить</button>
+            </div>
+        </form>
+    </div>
+
 @endsection

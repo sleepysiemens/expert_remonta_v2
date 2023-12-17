@@ -11,9 +11,9 @@ class StoreController extends Controller
 {
     public function index()
     {
-        $data=request()->validate(['question'=>'required|string', 'answer'=>'required|max:1000']);
+        $data=request();
         Question::create($data);
 
-        return redirect()->route('admin.faq.index');
+        return redirect()->route('admin.FAQ.index');
     }
 }

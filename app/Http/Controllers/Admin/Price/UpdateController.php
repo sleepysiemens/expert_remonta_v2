@@ -11,11 +11,11 @@ use App\Models\price;
 
 class UpdateController extends Controller
 {
-    public function __invoke(Price $price)
+    public function index(Price $price)
     {
-        $data=request()->validate(['title'=>'required|string', 'unit'=>'required|string', 'price'=>'required', 'category'=>'required|string']);
+        $data=request();
         $price->update($data);
 
-        return redirect()->route('admin.price.show', $price->id); 
+        return redirect()->route('admin.price.show', $price->id);
     }
 }

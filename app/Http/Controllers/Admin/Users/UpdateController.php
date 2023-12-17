@@ -10,12 +10,12 @@ use App\Models\User;
 
 class UpdateController extends Controller
 {
-    public function __invoke(User $user)
+    public function index(User $user)
     {
         $data=request()->validate(['name'=>'required|string', 'email'=>'required|string', 'role'=>'required|string']);
 
         $user->update($data);
 
-        return redirect()->route('admin.user.show', $user->id); 
+        return redirect()->route('admin.user.show', $user->id);
     }
 }

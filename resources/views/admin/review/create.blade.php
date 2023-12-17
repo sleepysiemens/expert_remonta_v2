@@ -19,17 +19,25 @@
         @csrf
       <div class="card-body">
         <div class="form-group">
-          <label for="exampleInputEmail1">Имя пользователя</label>
-          <input type="text" class="form-control" placeholder="Имя" name="username" required>
+          <label for="exampleInputEmail1">Имя пользователя, ru</label>
+          <input type="text" class="form-control" placeholder="Имя" name="username_ru" required>
         </div>
+          <div class="form-group">
+              <label for="exampleInputEmail1">Имя пользователя, kz</label>
+              <input type="text" class="form-control" placeholder="Имя" name="username_kz">
+          </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Оценка</label>
             <input type="number" class="form-control" placeholder="5" name="rating" value="5" required>
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Текст</label>
-            <textarea class="form-control" name="text" placeholder="Текст отзыва..." required></textarea>
+            <label for="exampleInputEmail1">Текст, ru</label>
+            <textarea class="form-control" name="text_ru" placeholder="Текст отзыва..." required></textarea>
         </div>
+          <div class="form-group">
+              <label for="exampleInputEmail1">Текст, kz</label>
+              <textarea class="form-control" name="text_kz" placeholder="Текст отзыва..."></textarea>
+          </div>
       </div>
       <!-- /.card-body -->
 

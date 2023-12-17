@@ -48,20 +48,24 @@ menu-open
       <table class="table table-striped">
         <thead>
             <tr>
-              <th>Id</th>
-              <th>Заголовок</th>
-              <th>Подзаголовок</th>
-              <th>Изображение</th>
+                <th>Id</th>
+                <th>Заголовок, ru</th>
+                <th>Позаголовок, ru</th>
+                <th>Заголовок, kz</th>
+                <th>Позаголовок, kz</th>
+                <th>Изображение</th>
             </tr>
         </thead>
         <tbody>
 
 
                 <tr>
-                  <td>{{$WhyCards->id}}</td>
-                  <td>{{$WhyCards->title}}</td>
-                  <td>{{$WhyCards->subtitle}}</td>
-                  <td>{{$WhyCards->src}}</td>
+                    <td>{{$WhyCards->id}}</td>
+                    <td>{{$WhyCards->title_ru}}</td>
+                    <td>{{$WhyCards->subtitle_ru}}</td>
+                    <td>{{$WhyCards->title_kz}}</td>
+                    <td>{{$WhyCards->subtitle_kz}}</td>
+                    <td>{{$WhyCards->src}}</td>
                 </tr>
 
 

@@ -1,10 +1,6 @@
 @extends('Layouts.wrapper')
 @section('content')
 
-@section('page_title')
-Прайс расценки на ремонт и строительство в Астане
-@endsection
-
 @include('blocks.prices')
 @include('blocks.form')
 
@@ -15,13 +11,9 @@ nav-link-selected
 @endsection
 
 @section('meta-description')
-    @foreach ($seos as $seo)
-        {{$seo->meta}}
-    @endforeach
+    Ремонт квартир и строительство в Астане цена работ за квадратный метр, стоимость услуг компании &quot;Эксперт Ремонта&quot;. Низкие цены и постоянные акции
 @endsection
 
 @section('seo-title')
-    @foreach ($seos as $seo)
-        {{$seo->seo}}
-    @endforeach
+    Прайс расценки на ремонт и строительство в Астане
 @endsection

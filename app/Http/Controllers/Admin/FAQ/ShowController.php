@@ -24,6 +24,6 @@ class ShowController extends Controller
         $sales=sale::all();
 
 
-        return view('admin.faq.show', compact(['question', 'reviews', 'questions', 'services', 'categories', 'sales']));
+        return view('admin.FAQ.show', compact(['question', 'reviews', 'questions', 'services', 'categories', 'sales']));
     }
 }

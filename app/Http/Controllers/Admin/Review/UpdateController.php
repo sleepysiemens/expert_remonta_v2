@@ -12,7 +12,7 @@ class UpdateController extends Controller
 {
     public function index(Review $review)
     {
-        $data=request()->validate(['username'=>'required|string', 'rating'=>'required|integer', 'text'=>'required|max:1000']);
+        $data=request();
         $review->update($data);
 
         return redirect()->route('admin.review.show', $review->id);

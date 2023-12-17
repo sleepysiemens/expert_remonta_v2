@@ -15,7 +15,7 @@ use App\Models\WhyCard;
 
 class ShowController extends Controller
 {
-    public function __invoke(WhyCard $WhyCards)
+    public function index(WhyCard $WhyCards)
     {
         $reviews=Review::all();
         $questions=Question::all();

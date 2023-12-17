@@ -15,7 +15,7 @@ use App\Models\About;
 
 class ShowController extends Controller
 {
-    public function __invoke(About $about)
+    public function index(About $about)
     {
         $reviews=Review::all();
         $questions=Question::all();

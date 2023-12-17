@@ -15,7 +15,7 @@ use App\Models\Header;
 
 class ShowController extends Controller
 {
-    public function __invoke(Header $header)
+    public function index(Header $header)
     {
         $reviews=Review::all();
         $questions=Question::all();

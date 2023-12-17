@@ -15,14 +15,14 @@ use App\Models\Seo;
 
 class EditController extends Controller
 {
-    public function __invoke(Seo $seo)
+    public function index(Seo $seo)
     {
         $questions=Question::all();
         $reviews=Review::all();
         $services=Service::all();
         $categories=Category::all();
         $sales=sale::all();
-        
+
 
         return view('admin.seo.edit', compact(['seo', 'reviews', 'questions', 'services', 'categories', 'sales']));
     }

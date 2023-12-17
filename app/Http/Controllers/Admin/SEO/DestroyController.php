@@ -10,9 +10,9 @@ use App\Models\Seo;
 
 class DestroyController extends Controller
 {
-    public function __invoke(Seo $seo)
+    public function index(Seo $seo)
     {
         $seo->delete();
-        return redirect()->route('admin.seo.index'); 
+        return redirect()->route('admin.seo.index');
     }
 }

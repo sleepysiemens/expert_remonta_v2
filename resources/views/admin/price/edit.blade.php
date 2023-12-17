@@ -31,18 +31,26 @@
         @method('patch')
         <div class="card-body">
           <div class="form-group">
-            <label for="exampleInputEmail1">Название услуги</label>
-            <input type="text" class="form-control" placeholder="Название" name="title" required value="{{$price->title}}">
+            <label for="exampleInputEmail1">Название услуги, ru</label>
+            <input type="text" class="form-control" placeholder="Название" name="title_ru" required value="{{$price->title_ru}}">
           </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Название услуги, kz</label>
+                <input type="text" class="form-control" placeholder="Название" name="title_kz"  value="{{$price->title_kz}}">
+            </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Единица измерения</label>
-            <input type="text" class="form-control" placeholder="Ед. Изм." name="unit" required value="{{$price->unit}}">
+            <label for="exampleInputEmail1">Единица измерения, ru</label>
+            <input type="text" class="form-control" placeholder="Ед. Изм." name="unit_ru" required value="{{$price->unit_ru}}">
           </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Единица измерения, kz</label>
+                <input type="text" class="form-control" placeholder="Ед. Изм." name="unit_kz" value="{{$price->unit_kz}}">
+            </div>
           <div class="form-group">
               <label for="exampleInputEmail1">Стоимость</label>
               <input type="number" class="form-control" name="price" placeholder="Цена" required value="{{$price->price}}">
           </div>
-  
+
           <div class="form-group">
             <label for="exampleInputEmail1">Категория</label>
             <select class="form-control" name="category" required>

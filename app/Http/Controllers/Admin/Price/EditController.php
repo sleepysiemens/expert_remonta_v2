@@ -17,7 +17,7 @@ use App\Models\price;
 
 class EditController extends Controller
 {
-    public function __invoke(Price $price)
+    public function index(Price $price)
     {
         $reviews=Review::all();
         $questions=Question::all();

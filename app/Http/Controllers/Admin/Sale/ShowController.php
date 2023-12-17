@@ -14,7 +14,7 @@ use App\Models\Sale;
 
 class ShowController extends Controller
 {
-    public function __invoke(Sale $sale)
+    public function index(Sale $sale)
     {
         $reviews=Review::all();
         $questions=Question::all();

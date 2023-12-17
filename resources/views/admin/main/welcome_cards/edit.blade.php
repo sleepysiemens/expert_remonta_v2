@@ -38,10 +38,16 @@ menu-open
         @csrf
         @method('patch')
         <div class="card-body">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Название</label>
-            <input type="text" class="form-control" placeholder="Название" name="title" required value="{{$WelcomeCards->title}}">
-          </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Заголовок, ru</label>
+                <textarea id="summernote" name="title_ru" placeholder="Текст описания..." required>{{$WelcomeCards->title_ru}}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Заголовок, kz</label>
+                <textarea id="summernote1" name="title_kz" placeholder="Текст описания...">{{$WelcomeCards->title_kz}}</textarea>
+            </div>
+
           <div class="form-group">
             <label for="exampleInputEmail1">Изображение</label>
             <input type="file" class="form-control" placeholder="Название" name="src">

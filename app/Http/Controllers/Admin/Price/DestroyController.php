@@ -10,9 +10,9 @@ use App\Models\price;
 
 class DestroyController extends Controller
 {
-    public function __invoke(Price $price)
+    public function index(Price $price)
     {
         $price->delete();
-        return redirect()->route('admin.price.index'); 
+        return redirect()->route('admin.price.index');
     }
 }

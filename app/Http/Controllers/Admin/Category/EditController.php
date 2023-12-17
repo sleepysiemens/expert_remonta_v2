@@ -11,6 +11,7 @@ use App\Models\service;
 use App\Models\category;
 use App\Models\Sale;
 use App\Models\Application;
+use App\Models\Seo;
 
 
 
@@ -23,7 +24,9 @@ class EditController extends Controller
         $services=Service::all();
         $categories=Category::all();
         $sales=sale::all();
+        $service=service::query()->where('id','=',$category->service_id)->get();
+        $seos=Seo::query()->where('page','=','uslugi/'.$service[0]->url.'/'.$category->url)->get();
 
-        return view('admin.category.edit', compact(['category', 'reviews', 'questions', 'services', 'categories', 'sales']));
+        return view('admin.category.edit', compact(['category', 'reviews', 'questions', 'services', 'categories', 'sales', 'seos']));
     }
 }

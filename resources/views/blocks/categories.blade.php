@@ -1,5 +1,5 @@
 <section class="services-page">
-    <h1 class="section-header">Категории</h1>
+    <h1 class="section-header">{{app()->translate('Категории')}}</h1>
     <br>
     <div class="services-div">
 
@@ -10,11 +10,11 @@
                 <img src=" /img/categories/{{$category->src}}">
             </a>
             <a href="{{ route('category.index', [$category->service_url, $category->url]) }}" class="category-content">
-                <h4>{{ $category->title }}</h4>
+                <h4>{{app()->db_translate($category->title_ru, $category->title_kz)}}</h4>
             </a>
-            <a class="service-banner-button" href="{{ route('category.index', [$category->service_url, $category->url]) }}"><p>Подробнее</p></a>
+            <a class="service-banner-button" href="{{ route('category.index', [$category->service_url, $category->url]) }}"><p>{{app()->translate('Подробнее')}}</p></a>
         </span>
-            
+
         @endforeach
 
     </div>

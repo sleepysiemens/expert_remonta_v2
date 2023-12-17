@@ -15,7 +15,7 @@ use App\Models\WelcomeCard;
 
 class ShowController extends Controller
 {
-    public function __invoke(WelcomeCard $WelcomeCards)
+    public function index(WelcomeCard $WelcomeCards)
     {
         $reviews=Review::all();
         $questions=Question::all();

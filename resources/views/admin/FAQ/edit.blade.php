@@ -31,13 +31,21 @@
         @method('patch')
       <div class="card-body">
         <div class="form-group">
-          <label for="exampleInputEmail1">Вопрос</label>
-          <input type="text" class="form-control" placeholder="Вопрос" name="question" required value="{{$question->question}}">
+          <label for="exampleInputEmail1">Вопрос, ru</label>
+          <input type="text" class="form-control" placeholder="Вопрос" name="question_ru" required value="{{$question->question_ru}}">
         </div>
+          <div class="form-group">
+              <label for="exampleInputEmail1">Вопрос, kz</label>
+              <input type="text" class="form-control" placeholder="Вопрос" name="question_kz" required value="{{$question->question_kz}}">
+          </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Ответ</label>
-            <textarea class="form-control" name="answer" placeholder="Текст ответа..." required>{{$question->answer}}</textarea>
+            <label for="exampleInputEmail1">Ответ, ru</label>
+            <textarea class="form-control" name="answer_ru" placeholder="Текст ответа..." required>{{$question->answer_ru}}</textarea>
         </div>
+          <div class="form-group">
+              <label for="exampleInputEmail1">Ответ, kz</label>
+              <textarea class="form-control" name="answer_kz" placeholder="Текст ответа..." required>{{$question->answer_kz}}</textarea>
+          </div>
       </div>
       <!-- /.card-body -->
 

@@ -41,9 +41,11 @@
         <thead>
             <tr>
               <th>Id</th>
-              <th>Название</th>
+              <th>Название, ru</th>
+              <th>Название, kz</th>
               <th>Url</th>
-              <th>Описание</th>
+              <th>Описание, ru</th>
+              <th>Описание, kz</th>
               <th>Обложка</th>
             </tr>
         </thead>
@@ -52,9 +54,11 @@
 
                 <tr>
                   <td>{{$service->id}}</td>
-                  <td>{{$service->title}}</td>
+                  <td>{{$service->title_ru}}</td>
+                  <td>{{$service->title_kz}}</td>
                   <td>{{$service->url}}</td>
-                  <td>{{$service->description}}</td>
+                  <td>{{$service->description_ru}}</td>
+                  <td>{{$service->description_kz}}</td>
                   <td>{{$service->src}}</td>
                 </tr>
 

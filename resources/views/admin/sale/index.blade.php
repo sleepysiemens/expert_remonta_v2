@@ -25,7 +25,10 @@
         <thead>
             <tr>
               <th>Id</th>
-              <th>Заголовок</th>
+              <th>Заголовок, ru</th>
+              <th>Заголовок, kz</th>
+              <th>Срок действия, д</th>
+              <th>%</th>
               <th>Фон</th>
               <th></th>
               <th></th>
@@ -38,7 +41,10 @@
 
                 <tr>
                     <td>{{$sale->id}}</td>
-                    <td>{{$sale->title}}</td>
+                    <td>{{$sale->title_ru}}</td>
+                    <td>{{$sale->title_kz}}</td>
+                    <td>{{$sale->period}}</td>
+                    <td>{{$sale->percent}}</td>
                     <td>{{$sale->src}}</td>
                     <td>
                       <form method="post" action="{{route('admin.sale.destroy',$sale->id)}}">
@@ -50,7 +56,7 @@
                     <td><a href="{{route('admin.sale.edit',$sale->id)}}"><i class="fas fa-pen"></i></a></td>
                     <td><a href="{{route('admin.sale.show',$sale->id)}}"><i class="fas fa-arrow-right"></i></a></td>
                 </tr>
-        
+
             @endforeach
 
         </tbody>

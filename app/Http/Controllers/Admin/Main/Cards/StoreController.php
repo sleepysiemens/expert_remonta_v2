@@ -9,16 +9,15 @@ use App\Models\WelcomeCard;
 
 class StoreController extends Controller
 {
-    public function __invoke()
+    public function index()
     {
-        $data=request()->validate(['title'=>'required|string', 'src'=>'required']);
-        $sql_data=['title'=>request()->title, 'src'=>(request()->title).'-image.img'];
+        $sql_data=['title_ru'=>request()->title_ru, 'title_kz'=>request()->title_kz, 'src'=>(request()->title_ru).'-image.img'];
 
         $file = request()->file('src');
-        $file->move(public_path() . '/img/cards/',request()->title.'-image.img');
-        
+        $file->move(public_path() . '/img/cards/',request()->title_ru.'-image.img');
+
         WelcomeCard::create($sql_data);
 
-        return redirect()->route('admin.main.welcome_cards.index'); 
+        return redirect()->route('admin.main.welcome_cards.index');
     }
 }

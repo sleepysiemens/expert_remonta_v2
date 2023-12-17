@@ -15,7 +15,7 @@ use App\Models\User;
 
 class EditController extends Controller
 {
-    public function __invoke(User $user)
+    public function index(User $user)
     {
         $questions=Question::all();
         $reviews=Review::all();

@@ -25,9 +25,11 @@
         <thead>
             <tr>
               <th>Id</th>
-              <th>Название</th>
+              <th>Название, ru</th>
+              <th>Название, kz</th>
               <th>Url</th>
-              <th>Описание</th>
+              <th>Описание, ru</th>
+              <th>Описание, kz</th>
               <th>Обложка</th>
               <th></th>
               <th></th>
@@ -40,9 +42,11 @@
 
                 <tr>
                     <td>{{$blog->id}}</td>
-                    <td>{{$blog->title}}</td>
+                    <td>{{$blog->title_ru}}</td>
+                    <td>{{$blog->title_kz}}</td>
                     <td>{{$blog->url}}</td>
-                    <td>{{$blog->description}}</td>
+                    <td>{{$blog->description_ru}}</td>
+                    <td>{{$blog->description_kz}}</td>
                     <td>{{$blog->src}}</td>
                     <td>
                       <form method="post" action="{{route('admin.blog.destroy',$blog->id)}}">
@@ -54,7 +58,7 @@
                     <td><a href="{{route('admin.blog.edit',$blog->id)}}"><i class="fas fa-pen"></i></a></td>
                     <td><a href="{{route('admin.blog.show',$blog->id)}}"><i class="fas fa-arrow-right"></i></a></td>
                 </tr>
-        
+
             @endforeach
 
         </tbody>

@@ -10,9 +10,9 @@ use App\Models\service;
 
 class DestroyController extends Controller
 {
-    public function __invoke(Service $service)
+    public function index(Service $service)
     {
         $service->delete();
-        return redirect()->route('admin.service.index'); 
+        return redirect()->route('admin.service.index');
     }
 }

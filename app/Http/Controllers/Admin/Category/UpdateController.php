@@ -12,13 +12,11 @@ class UpdateController extends Controller
 {
     public function index(Category $category)
     {
-        $data=request()->validate(['title'=>'required|string', 'url'=>'required|string', 'description'=>'required', 'service_id'=>'required|integer']);
-
         if(request()->hasFile('src'))
         {
             $file = request()->file('src');
             $file->move(public_path() . '/img/categories/',request()->title.'-image.img');
-            $sql_data=['title'=>request()->title, 'url'=>request()->url, 'description'=>htmlspecialchars(request()->description, ENT_QUOTES), 'src'=>(request()->title).'-image.img', 'service_id'=>request()->service_id];
+            $sql_data=['title_ru'=>request()->title_ru, 'title_kz'=>request()->title_kz, 'url'=>request()->url, 'description_ru'=>htmlspecialchars(request()->description_ru, ENT_QUOTES), 'description_kz'=>htmlspecialchars(request()->description_kz, ENT_QUOTES), 'src'=>(request()->title).'-image.img', 'service_id'=>request()->service_id];
         }
         else
             $sql_data=['title'=>request()->title, 'url'=>request()->url, 'description'=>request()->description, 'service_id'=>request()->service_id];

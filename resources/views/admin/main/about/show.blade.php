@@ -1,7 +1,7 @@
 @extends('Layouts.admin')
 
 @section('title')
-    "О нас"
+    Редактировать "О нас"
 @endsection
 
 @section('about')
@@ -9,11 +9,11 @@
 @endsection
 
 @section('dropdown')
-display:block;
+    display:block;
 @endsection
 
 @section('menu-dropdown')
-menu-open
+    menu-open
 @endsection
 
 
@@ -35,7 +35,8 @@ menu-open
       <table class="table table-striped">
         <thead>
             <tr>
-              <th>текст</th>
+              <th>текст, ru</th>
+              <th>текст, kz</th>
               <th>изображение</th>
             </tr>
         </thead>
@@ -43,7 +44,8 @@ menu-open
 
 
                 <tr>
-                    <td>{{$about->title}}</td>
+                    <td>{{$about->title_ru}}</td>
+                    <td>{{$about->title_kz}}</td>
                     <td>{{$about->src}}</td>
                 </tr>
 

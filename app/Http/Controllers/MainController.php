@@ -13,10 +13,12 @@ use App\Models\Header;
 use App\Models\WelcomeCard;
 use App\Models\About;
 use App\Models\WhyCard;
+use App\Models\MainText;
 
 use Stevebauman\Location\Facades\Location;
 use App\Models\Application;
 use App\Models\Seo;
+
 
 class MainController extends Controller
 {
@@ -34,10 +36,11 @@ class MainController extends Controller
         $instagram=Contact::query()->select('link')->where('name','=','instagram')->get();
         $phone=Contact::query()->select('link')->where('name','=','phone')->get();
         $seos=Seo::query()->where('page','=','main')->get();
+        $texts=MainText::all();
 
         $page='main';
-        
-        return view('main.index', compact(['services', 'questions', 'whatsapp', 'telegram', 'instagram', 'phone', 'sales', 'Headers', 'WelcomeCards', 'Abouts', 'WhyCards', 'page', 'seos']));
+
+        return view('main.index', compact(['texts','services', 'questions', 'whatsapp', 'telegram', 'instagram', 'phone', 'sales', 'Headers', 'WelcomeCards', 'Abouts', 'WhyCards', 'page', 'seos']));
     }
 
     public function form()
@@ -46,7 +49,7 @@ class MainController extends Controller
         $location=Location::get($userIP);
 
         if($location==false)
-            
+
             $city='not set';
         else
             $city=$location->cityName;
@@ -55,7 +58,25 @@ class MainController extends Controller
         $sql_data=['username'=>request()->username, 'phone'=>request()->phone, 'sourse'=>request()->sourse, 'city'=>$city, 'created_at'=>date('Y-m-d H:i:s')];
         Application::create($sql_data);
 
+        return redirect('/'.request()->sourse);
+    }
 
-        return redirect('/'.request()->sourse); 
+    public function locale()
+    {
+        if(!isset($_COOKIE['locale']))
+        {
+            setcookie('locale','kz', time()+3600 ,'/');
+        }
+        else
+        {
+            if($_COOKIE['locale']=='ru')
+                setcookie('locale','kz', time()+3600 ,'/');
+
+            if($_COOKIE['locale']=='kz')
+                setcookie('locale','ru', time()+3600 ,'/');
+        }
+
+        //dd($_COOKIE['locale']);
+        return redirect('/'.request()->sourse);
     }
 }

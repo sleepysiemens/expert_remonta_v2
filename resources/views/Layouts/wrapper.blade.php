@@ -28,17 +28,25 @@
 
             <div class="header-subdiv">
                 <div class="nav-links">
-                    <a href="{{ route('main.index') }}/" class="nav-link @yield('main')"><p>Главная</p></a>
-                    <a href="{{ route('uslugi.index') }}/" class="nav-link @yield('service')"><p>Услуги</p></a>
-                    <a href="{{ route('price.index') }}/" class="nav-link @yield('price')"><p>Расценки</p></a>
-                    <a href="{{ route('gallery.index') }}/" class="nav-link @yield('gallery')"><p>Галерея</p></a>
-                    <a href="{{ route('contacts.index') }}/" class="nav-link @yield('contact')"><p>Контакты</p></a>
+                    <a href="{{ route('main.index') }}/" class="nav-link @yield('main')"><p>{{app()->translate('Главная')}}</p></a>
+                    <a href="{{ route('uslugi.index') }}/" class="nav-link @yield('service')"><p>{{app()->translate('Услуги')}}</p></a>
+                    <a href="{{ route('price.index') }}/" class="nav-link @yield('price')"><p>{{app()->translate('Расценки')}}</p></a>
+                    <a href="{{ route('gallery.index') }}/" class="nav-link @yield('gallery')"><p>{{app()->translate('Галерея')}}</p></a>
+                    <a href="{{ route('reviews.index') }}/" class="nav-link @yield('reviews')"><p>{{app()->translate('Отзывы')}}</p></a>
+                    <a href="{{ route('contacts.index') }}/" class="nav-link @yield('contact')"><p>{{app()->translate('Контакты')}}</p></a>
                 </div>
 
                 <div class="header-contact-info">
-                    <h1><i class="fas fa-map-marker-alt"></i> Астана</h1>
+                    <h1><i class="fas fa-map-marker-alt"></i> {{app()->translate('Астана')}}</h1>
                     <p>+7 (775) 138-50-80</p>
                 </div>
+                <form method="post" action="{{asset(route('locale.change'))}}" class="locale-pc" style="display: flex; margin-left: 20px">
+                    @csrf
+                    <button class="locale-from">
+                        <img class="locale-btn @if(!isset($_COOKIE['locale']) OR $_COOKIE['locale']=='ru') {{'locale-btn-active'}} @php $locale='ru' @endphp @endif" src="{{asset('img/locale/russia_3013955.png')}}" style="left: 0;">
+                        <img class="locale-btn @if(isset($_COOKIE['locale']) AND $_COOKIE['locale']=='kz') {{'locale-btn-active'}} @php $locale='kz' @endphp @endif" src="{{asset('img/locale/kazakhstan_206778.png')}}" style="right: 0;">
+                    </button>
+                </form>
 
                 <a class="mobile-menu-btn">
                     <i class="fas fa-bars"></i>
@@ -47,14 +55,23 @@
                 <div class="mobile-menu">
                     <div class="menu-header">
                         <a class="mobile-close-btn">
-                            <i class="fas fa-times"></i>                    
+                            <i class="fas fa-times"></i>
                         </a>
                     </div>
-                    <a href="{{ route('main.index') }}/" class="nav-link"><p>Главная</p></a>
-                    <a href="{{ route('uslugi.index') }}/" class="nav-link"><p>Услуги</p></a>
-                    <a href="{{ route('price.index') }}/" class="nav-link"><p>Расценки</p></a>
-                    <a href="{{ route('gallery.index') }}/" class="nav-link"><p>Галерея</p></a>
-                    <a href="{{ route('contacts.index') }}/" class="nav-link"><p>Контакты</p></a>
+                    <a href="{{ route('main.index') }}/" class="nav-link"><p>{{app()->translate('Главная')}}</p></a>
+                    <a href="{{ route('uslugi.index') }}/" class="nav-link"><p>{{app()->translate('Услуги')}}</p></a>
+                    <a href="{{ route('price.index') }}/" class="nav-link"><p>{{app()->translate('Расценки')}}</p></a>
+                    <a href="{{ route('gallery.index') }}/" class="nav-link"><p>{{app()->translate('Галерея')}}</p></a>
+                    <a href="{{ route('reviews.index') }}/" class="nav-link"><p>{{app()->translate('Отзывы')}}</p></a>
+                    <a href="{{ route('contacts.index') }}/" class="nav-link"><p>{{app()->translate('Контакты')}}</p></a>
+                    <br>
+                    <form method="post" action="{{asset(route('locale.change'))}}"  style="display: flex; margin-left: 20px">
+                        @csrf
+                        <button class="locale-from">
+                            <img class="locale-btn @if(!isset($_COOKIE['locale']) OR $_COOKIE['locale']=='ru') {{'locale-btn-active'}} @php $locale='ru' @endphp @endif" src="{{asset('img/locale/russia_3013955.png')}}" style="left: 0;">
+                            <img class="locale-btn @if(isset($_COOKIE['locale']) AND $_COOKIE['locale']=='kz') {{'locale-btn-active'}} @php $locale='kz' @endphp @endif" src="{{asset('img/locale/kazakhstan_206778.png')}}" style="right: 0;">
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -67,18 +84,19 @@
             <a href="@foreach ($whatsapp as $wp){{$wp->link}}@endforeach" target="_blank" class="whatsapp">
                 <i class="fab fa-whatsapp"></i>
             </a>
-    
+
             <a href="@foreach ($telegram as $tg){{$tg->link}}@endforeach" target="_blank" class="telegram">
                 <i class="fab fa-telegram-plane"></i>
             </a>
-            
+
             <a href="@foreach ($instagram as $insta){{$insta->link}}@endforeach" target="_blank" class="instagram">
                 <i class="fab fa-instagram"></i>
             </a>
-            
+
             <a href="@foreach ($phone as $ph){{$ph->link}}@endforeach" target="_blank" class="phone">
                 <i class="fas fa-phone"></i>
             </a>
+
         </div>
 
         <a id="contact-close" class="disabled">
@@ -86,7 +104,7 @@
         </a>
 
         <a id="contact-open">
-            <i class="far fa-comment"></i> 
+            <i class="far fa-comment"></i>
         </a>
     </div>
 
@@ -106,11 +124,11 @@
                         <img src="/img/footerLogo.png">
                     </div>
                     <div class="footer-links-subdiv">
-                        <a href="{{ route('main.index') }}/" class="footer-link"><p>Главная</p></a>
-                        <a href="{{ route('uslugi.index') }}/" class="footer-link"><p>Услуги</p></a>
-                        <a href="{{ route('price.index') }}/" class="footer-link"><p>Расценки</p></a>
-                        <a href="{{ route('gallery.index') }}/" class="footer-link"><p>Галерея</p></a>
-                        <a href="{{ route('contacts.index') }}/" class="footer-link"><p>Контакты</p></a>
+                        <a href="{{ route('main.index') }}/" class="footer-link"><p>{{app()->translate('Главная')}}</p></a>
+                        <a href="{{ route('uslugi.index') }}/" class="footer-link"><p>{{app()->translate('Услуги')}}</p></a>
+                        <a href="{{ route('price.index') }}/" class="footer-link"><p>{{app()->translate('Расценки')}}</p></a>
+                        <a href="{{ route('gallery.index') }}/" class="footer-link"><p>{{app()->translate('Галерея')}}</p></a>
+                        <a href="{{ route('contacts.index') }}/" class="footer-link"><p>{{app()->translate('Контакты')}}</p></a>
                     </div>
                 </div>
                 <div class="footer-contact-info">

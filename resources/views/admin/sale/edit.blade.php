@@ -29,14 +29,34 @@
     <form action="{{route('admin.sale.update', $sale->id)}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('patch')
-      <div class="card-body">
-        <div class="form-group">
-          <label for="exampleInputEmail1">Заголовок</label>
-          <input type="text" class="form-control" placeholder="Заголовок" name="title" required value="{{$sale->title}}">
+        <div class="card-body">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Заголовок, ru</label>
+                <input type="text" class="form-control" placeholder="Заголовок" name="title_ru" required value="{{$sale->title_ru}}">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Заголовок, kz</label>
+                <input type="text" class="form-control" placeholder="Заголовок" name="title_kz" value="{{$sale->title_kz}}">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Текст, ru</label>
+                <textarea id="summernote" name="description_ru" placeholder="Текст описания..." required>{{$sale->description_ru}}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Текст, kz</label>
+                <textarea id="summernote1" name="description_kz" placeholder="Текст описания..." required>{{$sale->description_kz    }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Процент скидки</label>
+                <input type="number" class="form-control" placeholder="%" name="percent" required value="{{$sale->percent}}">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Срок действия, д</label>
+                <input type="text" class="form-control" placeholder="Срок действия, д" name="period" required value="{{$sale->period}}">
+            </div>
+            <label for="exampleInputEmail1">Фон</label>
+            <input type="file" class="form-control" name="src">
         </div>
-        <label for="exampleInputEmail1">Фон</label>
-        <input type="file" class="form-control" name="src">
-      </div>
       <!-- /.card-body -->
 
       <div class="card-footer">

@@ -21,6 +21,7 @@ Route::get('/contacts/', 'ContactsController@index')->name('contacts.index');
 Route::get('/uslugi/{service}/','UslugiController@service')->name('service.index');
 Route::get('/uslugi/{service}/{category}/','UslugiController@category')->name('category.index');
 Route::get('/blog/{blog}', 'BlogController@index')->name('blog.index');
+Route::get('/reviews/', 'ReviewController@index')->name('reviews.index');
 
 
 //ADMIN
@@ -178,6 +179,14 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin/', 'middleware'=>'admin
             Route::delete('/{WhyCards}', 'DestroyController@index')->name('admin.main.why_cards.destroy');
         });
 
+        Route::group(['namespace' => 'MainText', 'prefix' => 'main_text'], function()
+        {
+            Route::get('/', 'IndexController@index')->name('admin.main.main_text.index');
+            Route::get('/{text}', 'ShowController@index')->name('admin.main.main_text.show');
+            Route::get('/{text}/edit', 'EditController@index')->name('admin.main.main_text.edit');
+            Route::patch('/{text}', 'UpdateController@index')->name('admin.main.main_text.update');
+        });
+
     });// /MAIN
 
     Route::group(['namespace' => 'Application', 'prefix' => 'application'], function()
@@ -216,9 +225,11 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin/', 'middleware'=>'admin
 
 
 //FORM
-Route::post('/', 'MainController@form')->name('form.store');
+Route::post('/locale/change/', 'MainController@locale')->name('locale.change');
 
+Route::post('/form/store/', 'MainController@form')->name('form.store');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

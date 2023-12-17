@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Header;
 use Illuminate\Http\Request;
 use App\Models\Review;
 use App\Models\Contact;
@@ -20,6 +21,7 @@ class ContactsController extends Controller
         $WhyCards=WhyCard::all();
         $reviews=Review::all();
         $contacts=Contact::all();
+        $Headers=Header::all();
         $whatsapp=Contact::query()->select('link')->where('name','=','whatsapp')->get();
         $telegram=Contact::query()->select('link')->where('name','=','telegram')->get();
         $instagram=Contact::query()->select('link')->where('name','=','instagram')->get();
@@ -29,6 +31,6 @@ class ContactsController extends Controller
         $page='contacts';
 
 
-        return view('contacts.index', compact(['reviews', 'whatsapp', 'telegram', 'instagram', 'phone', 'Abouts', 'WhyCards', 'page', 'seos']));
+        return view('contacts.index', compact(['reviews', 'whatsapp', 'telegram', 'instagram', 'phone', 'Abouts', 'WhyCards', 'page', 'seos', 'Headers']));
     }
 }

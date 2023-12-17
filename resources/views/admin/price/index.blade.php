@@ -32,7 +32,7 @@
                     $last_category=$price->category;
                 @endphp
                 <br>
-                <br>  
+                <br>
                 </tbody>
                 </table>
 
@@ -43,8 +43,10 @@
                       </tr>
                       <tr>
                         <th>Id</th>
-                        <th>Название</th>
-                        <th>Ед. Изм.</th>
+                        <th>Название, ru</th>
+                        <th>Название, kz</th>
+                        <th>Ед. Изм., ru</th>
+                        <th>Ед. Изм., kz</th>
                         <th>Цена ₸</th>
                         <th></th>
                         <th></th>
@@ -55,8 +57,10 @@
 
                 <tr>
                     <td>{{$price->id}}</td>
-                    <td>{{$price->title}}</td>
-                    <td>{{$price->unit}}</td>
+                    <td>{{$price->title_ru}}</td>
+                    <td>{{$price->title_kz}}</td>
+                    <td>{{$price->unit_ru}}</td>
+                    <td>{{$price->unit_kz}}</td>
                     <td>{{$price->price}}</td>
                     <td>
                       <form method="post" action="{{route('admin.price.destroy',$price->id)}}">
@@ -87,7 +91,7 @@
             </tr>
 
               @endif
-        
+
             @endforeach
     </div>
     <!-- /.col -->

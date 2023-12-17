@@ -10,23 +10,21 @@ use App\Models\Header;
 
 class UpdateController extends Controller
 {
-    public function __invoke(Header $header)
+    public function index(Header $header)
     {
-        $data=request()->validate(['title'=>'required|string', 'subtitle'=>'required|string', 'src']);
-		
       	if(request()->hasFile('src'))
         {
           	$file = request()->file('src');
             $file->move(public_path() . '/img/main_bg/','bg-image.img');
-			$sql_data=['title'=>request()->title, 'subtitle'=>request()->subtitle, 'src'=>'/img/main_bg/bg-image.img'];
+			$sql_data=['title_ru'=>request()->title_ru, 'title_kz'=>request()->title_kz, 'subtitle_ru'=>request()->subtitle_ru, 'subtitle_kz'=>request()->subtitle_kz, 'src'=>'/img/main_bg/bg-image.img'];
         }
       	else
         {
-			$sql_data=['title'=>request()->title, 'subtitle'=>request()->subtitle];
+			$sql_data=['title_ru'=>request()->title_ru, 'title_kz'=>request()->title_kz, 'subtitle_ru'=>request()->subtitle_ru, 'subtitle_kz'=>request()->subtitle_kz];
         }
-      
+
         $header->update($sql_data);
 
-        return redirect()->route('admin.main.header.show', $header->id); 
+        return redirect()->route('admin.main.header.show', $header->id);
     }
 }

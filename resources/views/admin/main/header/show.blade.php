@@ -35,8 +35,10 @@ menu-open
       <table class="table table-striped">
         <thead>
             <tr>
-              <th>Заголовок</th>
-              <th>Подзаголовок</th>
+              <th>Заголовок, ru</th>
+              <th>Заголовок, kz</th>
+              <th>Подзаголовок, ru</th>
+              <th>Подзаголовок, kz</th>
               <th>Фон</th>
             </tr>
         </thead>
@@ -44,8 +46,10 @@ menu-open
 
 
                 <tr>
-                    <td>{{$header->title}}</td>
-                    <td>{{$header->subtitle}}</td>
+                    <td>{{$header->title_ru}}</td>
+                    <td>{{$header->title_kz}}</td>
+                    <td>{{$header->subtitle_ru}}</td>
+                    <td>{{$header->subtitle_kz}}</td>
                     <td>{{$header->src}}</td>
                 </tr>
 

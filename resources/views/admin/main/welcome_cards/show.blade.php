@@ -49,7 +49,8 @@ menu-open
         <thead>
             <tr>
               <th>Id</th>
-              <th>Название</th>
+              <th>Название, ru</th>
+              <th>Название, kz</th>
               <th>Изображение</th>
             </tr>
         </thead>
@@ -58,7 +59,8 @@ menu-open
 
                 <tr>
                   <td>{{$WelcomeCards->id}}</td>
-                  <td>{{$WelcomeCards->title}}</td>
+                  <td>{{$WelcomeCards->title_ru}}</td>
+                  <td>{{$WelcomeCards->title_kz}}</td>
                   <td>{{$WelcomeCards->src}}</td>
                 </tr>
 

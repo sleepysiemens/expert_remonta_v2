@@ -26,10 +26,15 @@ menu-open
     <form action="{{route('admin.main.welcome_cards.store')}}" method="post"  enctype="multipart/form-data">
         @csrf
       <div class="card-body">
-        <div class="form-group">
-          <label for="exampleInputEmail1">Заголовок</label>
-          <input type="text" class="form-control" placeholder="Заголовок" name="title" required>
-        </div>
+          <div class="form-group">
+              <label for="exampleInputEmail1">Заголовок, ru</label>
+              <textarea id="summernote" name="title_ru" placeholder="Текст описания..." required></textarea>
+          </div>
+          <div class="form-group">
+              <label for="exampleInputEmail1">Заголовок, kz</label>
+              <textarea id="summernote1" name="title_kz" placeholder="Текст описания..."></textarea>
+          </div>
+
         <div class="form-group">
           <label for="exampleInputEmail1">Изображение</label>
           <input type="file" class="form-control" placeholder="Название" name="src" required>

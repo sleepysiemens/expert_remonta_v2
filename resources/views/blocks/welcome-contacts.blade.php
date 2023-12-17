@@ -5,12 +5,12 @@
             <div class="welcome-content">
                 <div class="welcome-header">
                     @foreach ($Headers as $Header)
-                    <h1>{{$Header->title}}</h1>
-                    <h3>{{$Header->subtitle}}</h3>
+                        <h1>{{app()->db_translate($Header->title_ru,$Header->title_kz)}}</h1>
+                        <h3>{{app()->db_translate($Header->subtitle_ru,$Header->subtitle_kz)}}</h3>
                     @endforeach
                 </div>
                <div class="contact-div">
-                
+
                     <a href="@foreach ($whatsapp as $wp){{$wp->link}}@endforeach" target="_blank" class="contact-banner whatsapp">
                         <div>
                             <i class="fab fa-whatsapp" aria-hidden="true"></i>

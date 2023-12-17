@@ -15,7 +15,7 @@ use App\Models\WhyCard;
 
 class EditController extends Controller
 {
-    public function __invoke(WhyCard $WhyCards)
+    public function index(WhyCard $WhyCards)
     {
         $questions=Question::all();
         $reviews=Review::all();

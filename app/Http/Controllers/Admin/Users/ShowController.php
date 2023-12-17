@@ -15,7 +15,7 @@ use App\Models\User;
 
 class ShowController extends Controller
 {
-    public function __invoke(User $user)
+    public function index(User $user)
     {
         $reviews=Review::all();
         $questions=Question::all();

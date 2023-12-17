@@ -19,13 +19,21 @@
         @csrf
       <div class="card-body">
         <div class="form-group">
-          <label for="exampleInputEmail1">Вопрос</label>
-          <input type="text" class="form-control" placeholder="Вопрос" name="question" required>
+          <label for="exampleInputEmail1">Вопрос, ru</label>
+          <input type="text" class="form-control" placeholder="Вопрос" name="question_ru" required>
         </div>
+          <div class="form-group">
+              <label for="exampleInputEmail1">Вопрос, kz</label>
+              <input type="text" class="form-control" placeholder="Вопрос" name="question_kz">
+          </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Ответ</label>
-            <textarea class="form-control" name="answer" placeholder="Текст ответа..." required></textarea>
+            <label for="exampleInputEmail1">Ответ, ru</label>
+            <textarea class="form-control" name="answer_ru" placeholder="Текст ответа..." required></textarea>
         </div>
+          <div class="form-group">
+              <label for="exampleInputEmail1">Ответ, kz</label>
+              <textarea class="form-control" name="answer_kz" placeholder="Текст ответа..."></textarea>
+          </div>
       </div>
       <!-- /.card-body -->
 

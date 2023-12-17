@@ -31,17 +31,25 @@
         @method('patch')
       <div class="card-body">
         <div class="form-group">
-          <label for="exampleInputEmail1">Имя пользователя</label>
-          <input type="text" class="form-control" placeholder="Имя" name="username" required value="{{$review->username}}">
+          <label for="exampleInputEmail1">Имя пользователя, ru</label>
+          <input type="text" class="form-control" placeholder="Имя" name="username_ru" required value="{{$review->username_ru}}">
         </div>
+          <div class="form-group">
+              <label for="exampleInputEmail1">Имя пользователя, kz</label>
+              <input type="text" class="form-control" placeholder="Имя" name="username_kz" value="{{$review->username_kz}}">
+          </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Оценка</label>
             <input type="number" class="form-control" placeholder="5" name="rating" required value="{{$review->rating}}">
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Текст</label>
-            <textarea class="form-control" name="text" placeholder="Текст отзыва..." required>{{$review->text}}</textarea>
+            <label for="exampleInputEmail1">Текст, ru</label>
+            <textarea class="form-control" name="text_ru" placeholder="Текст отзыва..." required>{{$review->text_ru}}</textarea>
         </div>
+          <div class="form-group">
+              <label for="exampleInputEmail1">Текст, kz</label>
+              <textarea class="form-control" name="text_kz" placeholder="Текст отзыва..." required>{{$review->text_kz}}</textarea>
+          </div>
       </div>
       <!-- /.card-body -->
 

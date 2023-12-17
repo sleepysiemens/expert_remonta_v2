@@ -1,8 +1,8 @@
 <section class="path">
     <p>
-        <a href="{{ route('main.index') }}/">Главная</a> / 
-        <a href="{{ route('uslugi.index') }}/">Услуги</a> / 
-        <a href="{{ route('service.index', $category->service_url) }}">{{$category->service_title}}</a> / 
-        <a href="{{ route('category.index', [$category->service_url, $category->url]) }}">{{$category->title}}</a>
+        <a href="{{ route('main.index') }}/">{{app()->translate('Главная')}}</a> /
+        <a href="{{ route('uslugi.index') }}/">{{app()->translate('Услуги')}}</a> /
+        <a href="{{ route('service.index', $category->service_url) }}">{{app()->db_translate($category->service_title_ru, $category->service_title_ru)}}</a> /
+        <a href="{{ route('category.index', [$category->service_url, $category->url]) }}">{{app()->db_translate($category->title_ru, $category->title_kz)}}</a>
     </p>
 </section>

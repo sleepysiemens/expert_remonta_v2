@@ -5,8 +5,8 @@
             <div class="welcome-content">
                 <div class="welcome-header hidden">
                     @foreach ($Headers as $Header)
-                    <h1>{{$Header->title}}</h1>
-                    <h3>{{$Header->subtitle}}</h3>
+                    <h1>{{app()->db_translate($Header->title_ru,$Header->title_kz)}}</h1>
+                    <h3>{{app()->db_translate($Header->subtitle_ru,$Header->subtitle_kz)}}</h3>
                     @endforeach
                 </div>
                 <div class="welcome-cards">
@@ -15,7 +15,7 @@
                     @endphp
                     @foreach ($WelcomeCards as $card)
                         <span class="welcome-card welcome-card-{{$i++}} scroll-hidden">
-                            <p>{{$card->title}}</p>
+                            <p>{{app()->db_translate($card->title_ru,$card->title_kz)}}</p>
                             <img src=" /img/cards/{{$card->src}}">
                         </span>
                     @endforeach

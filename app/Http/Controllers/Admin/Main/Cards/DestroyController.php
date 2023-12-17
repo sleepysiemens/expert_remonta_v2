@@ -10,9 +10,9 @@ use App\Models\WelcomeCard;
 
 class DestroyController extends Controller
 {
-    public function __invoke(WelcomeCard $WelcomeCards)
+    public function index(WelcomeCard $WelcomeCards)
     {
         $WelcomeCards->delete();
-        return redirect()->route('admin.main.welcome_cards.index'); 
+        return redirect()->route('admin.main.welcome_cards.index');
     }
 }

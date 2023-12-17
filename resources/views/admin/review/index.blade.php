@@ -25,9 +25,11 @@
         <thead>
             <tr>
               <th>Id</th>
-              <th>Имя</th>
+              <th>Имя, ru</th>
+              <th>Имя, kz</th>
               <th>Оценка</th>
-              <th>Текст</th>
+              <th>Текст, ru</th>
+              <th>Текст, kz</th>
               <th></th>
               <th></th>
             </tr>
@@ -38,9 +40,11 @@
 
                 <tr>
                     <td>{{$review->id}}</td>
-                    <td>{{$review->username}}</td>
+                    <td>{{$review->username_ru}}</td>
+                    <td>{{$review->username_kz}}</td>
                     <td>{{$review->rating}}/5</td>
-                    <td>{{$review->text}}</td>
+                    <td>{{$review->text_ru}}</td>
+                    <td>{{$review->text_kz}}</td>
                     <td>
                       <form method="post" action="{{route('admin.review.destroy',$review->id)}}">
                         @csrf
@@ -51,7 +55,7 @@
                     <td><a href="{{route('admin.review.edit',$review->id)}}"><i class="fas fa-pen"></i></a></td>
                     <td><a href="{{route('admin.review.show',$review->id)}}"><i class="fas fa-arrow-right"></i></a></td>
                 </tr>
-        
+
             @endforeach
 
         </tbody>

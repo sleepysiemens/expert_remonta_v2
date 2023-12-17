@@ -41,9 +41,11 @@
         <thead>
             <tr>
               <th>Id</th>
-              <th>Имя</th>
+              <th>Имя, ru</th>
+              <th>Имя, kz</th>
               <th>Оценка</th>
-              <th>Текст</th>
+              <th>Текст, ru</th>
+              <th>Текст, kz</th>
             </tr>
         </thead>
         <tbody>
@@ -51,9 +53,11 @@
 
                 <tr>
                     <td>{{$review->id}}</td>
-                    <td>{{$review->username}}</td>
+                    <td>{{$review->username_ru}}</td>
+                    <td>{{$review->username_kz}}</td>
                     <td>{{$review->rating}}/5</td>
-                    <td>{{$review->text}}</td>
+                    <td>{{$review->text_ru}}</td>
+                    <td>{{$review->text_kz}}</td>
                 </tr>
 
 

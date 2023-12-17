@@ -1,21 +1,23 @@
 <section class="services">
-    <h1 class="section-header hidden">Популярные услуги</h1>
+    <h1 class="section-header hidden">{{app()->translate('Популярные услуги')}}</h1>
 
-    <div class="popular-div">
+    <div class="review-wrapper">
+        <div class="reviews-div" style="height: 155px">
 
-        @foreach ($popular_services as $popular_service)
+            @foreach ($popular_services as $popular_service)
 
-        <a href="{{ route('uslugi.index').'/'.$popular_service->url }}" class="popular-element">
-            <div class="popular-element-container">
-                <img class="popular-element-cover" src="/img/blog/{{$popular_service->src}}">
-                <div class="popular-element-text">
-                    <h4>{{$popular_service->title}}</h4>
-                    <p>{{$popular_service->description}}</p>
+            <a href="{{ route('uslugi.index').'/'.$popular_service->url }}" class="popular-element">
+                <div class="popular-element-container">
+                    <img class="popular-element-cover" src="/img/blog/{{$popular_service->src}}">
+                    <div class="popular-element-text">
+                        <h4>{{app()->db_translate($popular_service->title_ru,$popular_service->title_kz)}}</h4>
+                        <p>{{app()->db_translate($popular_service->description_ru,$popular_service->description_kz)}}</p>
+                    </div>
                 </div>
-            </div>
-        </a>
+            </a>
 
-        @endforeach
+            @endforeach
 
+        </div>
     </div>
 </section>

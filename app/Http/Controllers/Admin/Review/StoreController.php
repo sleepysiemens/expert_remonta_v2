@@ -12,7 +12,7 @@ class StoreController extends Controller
 {
     public function index()
     {
-        $data=request()->validate(['username'=>'required|string', 'rating'=>'required|integer', 'text'=>'required|max:1000']);
+        $data=request();
         Review::create($data);
 
         return redirect()->route('admin.review.index');

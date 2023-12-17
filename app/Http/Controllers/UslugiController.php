@@ -39,7 +39,7 @@ class UslugiController extends Controller
     }
 
     public function service($service)
-    {   
+    {
         $Headers=Header::all();
         $WelcomeCards=WelcomeCard::all();
         $services= Service::query()->where(['url'=>$service])->get();
@@ -62,7 +62,7 @@ class UslugiController extends Controller
         $Headers=Header::all();
         $WhyCards=WhyCard::all();
         $WelcomeCards=WelcomeCard::all();
-        $categories= Category::query()->join('services', 'services.id', '=', 'categories.service_id')->where(['categories.url'=>$category])->select('categories.*','services.url AS service_url','services.title AS service_title')->limit(1)->get();
+        $categories= Category::query()->join('services', 'services.id', '=', 'categories.service_id')->where(['categories.url'=>$category])->select('categories.*','services.url AS service_url','services.title_ru AS service_title_ru','services.title_kz AS service_title_kz')->limit(1)->get();
         $reviews=Review::all();
         $whatsapp=Contact::query()->select('link')->where('name','=','whatsapp')->get();
         $telegram=Contact::query()->select('link')->where('name','=','telegram')->get();

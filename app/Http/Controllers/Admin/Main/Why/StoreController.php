@@ -9,16 +9,15 @@ use App\Models\WhyCard;
 
 class StoreController extends Controller
 {
-    public function __invoke()
+    public function index()
     {
-        $data=request()->validate(['title'=>'required|string', 'subtitle'=>'required|string', 'src'=>'required']);
-        $sql_data=['title'=>request()->title, 'subtitle'=>request()->subtitle, 'src'=>(request()->title).'-image.img'];
+        $sql_data=['title_ru'=>request()->title_ru, 'subtitle_ru'=>request()->subtitle_ru, 'title_kz'=>request()->title_kz, 'subtitle_kz'=>request()->subtitle_kz, 'src'=>(request()->title).'-image.img'];
 
         $file = request()->file('src');
         $file->move(public_path() . '/img/icons/',request()->title.'-image.img');
-        
+
         WhyCard::create($sql_data);
 
-        return redirect()->route('admin.main.why_cards.index'); 
+        return redirect()->route('admin.main.why_cards.index');
     }
 }

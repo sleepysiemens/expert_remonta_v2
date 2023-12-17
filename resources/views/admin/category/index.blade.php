@@ -29,9 +29,11 @@
             </tr>
             <tr>
               <th>Id</th>
-              <th>Название</th>
+              <th>Название, ru</th>
+              <th>Название, kz</th>
               <th>Url</th>
-              <th>Описание</th>
+              <th>Описание, ru</th>
+              <th>Описание, kz</th>
               <th>Обложка</th>
               <th></th>
               <th></th>
@@ -44,9 +46,11 @@
             @if ($category->service_id==$service->id)
               <tr>
                 <td>{{$category->id}}</td>
-                <td>{{$category->title}}</td>
+                <td>{{$category->title_ru}}</td>
+                <td>{{$category->title_kz}}</td>
                 <td>{{$category->url}}</td>
-                <td>{{$category->description}}</td>
+                <td>{{$category->description_ru}}</td>
+                <td>{{$category->description_kz}}</td>
                 <td>{{$category->src}}</td>
                 <td>
                   <form method="post" action="{{route('admin.category.destroy',$category->id)}}">
@@ -59,7 +63,7 @@
                 <td><a href="{{route('admin.category.show',$category->id)}}"><i class="fas fa-arrow-right"></i></a></td>
             </tr>
             @endif
-          
+
               @endforeach
 
             </tbody>

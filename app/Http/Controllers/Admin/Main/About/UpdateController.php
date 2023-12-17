@@ -10,24 +10,22 @@ use App\Models\About;
 
 class UpdateController extends Controller
 {
-    public function __invoke(About $about)
+    public function index(About $about)
     {
-        //$data=request()->validate(['title'=>'required', 'src'=>'required']);
-      
 		if(request()->hasFile('src'))
         {
         	$file = request()->file('src');
         	$file->move(public_path() . '/img/about/','about-image.img');
-            $sql_data=['title'=>request()->title, 'src'=>'about-image.img'];
+            $sql_data=['title_ru'=>request()->title_ru, 'title_kz'=>request()->title_kz, 'src'=>'about-image.img'];
 
         }
       	else
         {
-			$sql_data=['title'=>request()->title];
+			$sql_data=['title_ru'=>request()->title_ru, 'title_kz'=>request()->title_kz,];
         }
        	$about->update($sql_data);
 
 
-        return redirect()->route('admin.main.about.show', $about->id); 
+        return redirect()->route('admin.main.about.show', $about->id);
     }
 }

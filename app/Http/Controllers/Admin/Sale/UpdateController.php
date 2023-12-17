@@ -10,22 +10,20 @@ use App\Models\Sale;
 
 class UpdateController extends Controller
 {
-    public function __invoke(Sale $sale)
+    public function index(Sale $sale)
     {
-        $data=request()->validate(['title'=>'required|string', 'src']);
-
         if(request()->hasFile('src'))
         {
             $file = request()->file('src');
             $file->move(public_path() . '/img/sales/',request()->title.'-image.img');
-            $sql_data=['title'=>request()->title, 'src'=>(request()->title).'-image.img'];
+            $sql_data=request();
         }
         else
-            $sql_data=['title'=>request()->title];
+            $sql_data=['title_ru'=>request()->title_ru, 'title_kz'=>request()->title_kz, 'period'=>request()->period, 'percent'=>request()->percent, 'description_ru'=>request()->description_ru, 'description_kz'=>request()->description_kz];
 
 
         $sale->update($sql_data);
 
-        return redirect()->route('admin.sale.show', $sale->id); 
+        return redirect()->route('admin.sale.show', $sale->id);
     }
 }

@@ -12,9 +12,9 @@ class UpdateController extends Controller
 {
     public function index(Question $question)
     {
-        $data=request()->validate(['question'=>'required|string', 'answer'=>'required|max:1000']);
+        $data=request();
         $question->update($data);
 
-        return redirect()->route('admin.faq.show', $question->id);
+        return redirect()->route('admin.FAQ.show', $question->id);
     }
 }

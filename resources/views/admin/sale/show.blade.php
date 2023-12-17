@@ -41,8 +41,11 @@
         <thead>
             <tr>
               <th>Id</th>
-              <th>Заголовок</th>
-              <th>Фон</th>
+              <th>Заголовок, ru</th>
+              <th>Заголовок, kz</th>
+                <th>Срок действия, д</th>
+                <th>%</th>
+                <th>Фон</th>
             </tr>
         </thead>
         <tbody>
@@ -50,7 +53,10 @@
 
                 <tr>
                     <td>{{$sale->id}}</td>
-                    <td>{{$sale->title}}</td>
+                    <td>{{$sale->title_ru}}</td>
+                    <td>{{$sale->title_kz}}</td>
+                    <td>{{$sale->period}}</td>
+                    <td>{{$sale->percent}}</td>
                     <td>{{$sale->src}}</td>
                 </tr>
 

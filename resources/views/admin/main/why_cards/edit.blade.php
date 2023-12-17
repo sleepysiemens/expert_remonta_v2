@@ -39,13 +39,21 @@ menu-open
         @method('patch')
         <div class="card-body">
           <div class="form-group">
-            <label for="exampleInputEmail1">Заголовок</label>
-            <input type="text" class="form-control" placeholder="Заголовок" name="title" required value="{{$WhyCards->title}}">
+            <label for="exampleInputEmail1">Заголовок, ru</label>
+            <input type="text" class="form-control" placeholder="Заголовок" name="title_ru" required value="{{$WhyCards->title_ru}}">
           </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Заголовок, kz</label>
+                <input type="text" class="form-control" placeholder="Заголовок" name="title_kz"  value="{{$WhyCards->title_kz}}">
+            </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Позаголовок</label>
-            <input type="text" class="form-control" placeholder="Позаголовок" name="subtitle" required value="{{$WhyCards->subtitle}}">
+            <label for="exampleInputEmail1">Позаголовок, ru</label>
+            <input type="text" class="form-control" placeholder="Позаголовок" name="subtitle_ru" required value="{{$WhyCards->subtitle_ru}}">
           </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Позаголовок, kz</label>
+                <input type="text" class="form-control" placeholder="Позаголовок" name="subtitle_kz"  value="{{$WhyCards->subtitle_kz}}">
+            </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Изображение</label>
             <input type="file" class="form-control" placeholder="Название" name="src">

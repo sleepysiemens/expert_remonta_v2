@@ -1,5 +1,5 @@
 <section class="reviews">
-    <h1 class="section-header">Отзывы</h1>
+    <h1 class="section-header">{{app()->translate('Отзывы')}}</h1>
     <button class="right-arrow" id="scroll-right">
         <i class="fas fa-arrow-right"></i>
     </button>
@@ -12,14 +12,14 @@
 
             @foreach ($reviews as $review)
 
-            <span class="review">
+            <a class="review">
                 <div class="review-div">
                     <div class="review-user-info">
                         <span class="user-pic">
                             <i class="far fa-user"></i>
                         </span>
                         <div class="review-user-info-subdiv">
-                            <h3>{{$review->username}}</h3>
+                            <h3>{{app()->db_translate($review->username_ru,$review->username_kz)}}</h3>
                             <div class="review-stars">
                                 @for ($i = 1; $i <= 5; $i++)
                                     @if ($i<=$review->rating)
@@ -32,11 +32,11 @@
                         </div>
                     </div>
                     <p>
-                        {{$review->text}}
+                        {{app()->db_translate($review->text_ru,$review->text_kz)}}
                     </p>
                 </div>
-            </span>
-                
+            </a>
+
             @endforeach
 
         </div>

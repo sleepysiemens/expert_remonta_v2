@@ -14,7 +14,7 @@ use App\Models\Sale;
 
 class ShowController extends Controller
 {
-    public function __invoke(Service $service)
+    public function index(Service $service)
     {
         $reviews=Review::all();
         $questions=Question::all();

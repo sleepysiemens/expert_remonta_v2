@@ -9,16 +9,15 @@ use App\Models\Sale;
 
 class StoreController extends Controller
 {
-    public function __invoke()
+    public function index()
     {
-        $data=request()->validate(['title'=>'required|string', 'src'=>'required']);
-        $sql_data=['title'=>request()->title, 'src'=>(request()->title).'-image.img'];
+        $sql_data=request();
 
         $file = request()->file('src');
         $file->move(public_path() . '/img/sales/',request()->title.'-image.img');
-        
+
         Sale::create($sql_data);
 
-        return redirect()->route('admin.sale.index'); 
+        return redirect()->route('admin.sale.index');
     }
 }

@@ -26,19 +26,18 @@ menu-open
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form action="{{route('admin.main.about.update', $about->id)}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('admin.main.main_text.update', $text->id)}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('patch')
       <div class="card-body">
         <div class="form-group">
-          <label for="exampleInputEmail1">Заголовок</label>
-			<textarea id="summernote" name="title" placeholder="Текст описания..." required>{{$about->title}}</textarea>
-
+          <label for="exampleInputEmail1">Заголовок, ru</label>
+			<textarea id="summernote" name="text_ru" placeholder="Текст описания..." required>{{$text->text_ru}}</textarea>
         </div>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Изображение</label>
-          <input type="file" class="form-control" placeholder="Название" name="src">
-        </div>
+          <div class="form-group">
+              <label for="exampleInputEmail1">Заголовок, kz</label>
+              <textarea id="summernote" name="text_kz" placeholder="Текст описания...">{{$text->text_kz}}</textarea>
+          </div>
       </div>
       <!-- /.card-body -->
 

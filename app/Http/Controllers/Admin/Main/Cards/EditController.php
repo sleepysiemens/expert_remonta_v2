@@ -15,7 +15,7 @@ use App\Models\WelcomeCard;
 
 class EditController extends Controller
 {
-    public function __invoke(WelcomeCard $WelcomeCards)
+    public function index(WelcomeCard $WelcomeCards)
     {
         $questions=Question::all();
         $reviews=Review::all();

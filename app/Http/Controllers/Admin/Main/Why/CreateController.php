@@ -15,7 +15,7 @@ use App\Models\WhyCard;
 
 class CreateController extends Controller
 {
-    public function __invoke()
+    public function index()
     {
         $reviews=Review::all();
         $questions=Question::all();

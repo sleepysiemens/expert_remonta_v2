@@ -33,8 +33,10 @@ menu-open
         <thead>
             <tr>
               <th>Id</th>
-              <th>Заголовок</th>
-              <th>Позаголовок</th>
+              <th>Заголовок, ru</th>
+              <th>Позаголовок, ru</th>
+              <th>Заголовок, kz</th>
+              <th>Позаголовок, kz</th>
               <th>Изображение</th>
               <th></th>
               <th></th>
@@ -47,8 +49,10 @@ menu-open
 
                 <tr>
                     <td>{{$card->id}}</td>
-                    <td>{{$card->title}}</td>
-                    <td>{{$card->subtitle}}</td>
+                    <td>{{$card->title_ru}}</td>
+                    <td>{{$card->subtitle_ru}}</td>
+                    <td>{{$card->title_kz}}</td>
+                    <td>{{$card->subtitle_kz}}</td>
                     <td>{{$card->src}}</td>
                     <td>
                       <form method="post" action="{{route('admin.main.why_cards.destroy',$card->id)}}">
@@ -60,7 +64,7 @@ menu-open
                     <td><a href="{{route('admin.main.why_cards.edit',$card->id)}}"><i class="fas fa-pen"></i></a></td>
                     <td><a href="{{route('admin.main.why_cards.show',$card->id)}}"><i class="fas fa-arrow-right"></i></a></td>
                 </tr>
-        
+
             @endforeach
 
         </tbody>

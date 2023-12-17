@@ -3,7 +3,7 @@
     $i=1;
 @endphp
     <section>
-        <h1 class="section-header">Расценки</h1>
+        <h1 class="section-header">{{app()->translate('Расценки')}}</h1>
     </section>
 
         @foreach ($prices as $price)
@@ -25,10 +25,11 @@
                         <div class="table-tr">
                     @endif
                         <p class="c1">
-                            {{$price->title}}
+                            {{app()->db_translate($price->title_ru, $price->title_kz)}}
                         </p>
                         <p class="c2">
-                            {{$price->unit}}
+                            {{app()->db_translate($price->unit_ru, $price->unit_kz)}}
+
                         </p>
                         <p class="c3">
                             {{$price->price}}
@@ -41,15 +42,15 @@
                     <div class="table-tr">
                 @endif
                     <p class="c1">
-                        {{$price->title}}
+                        {{app()->db_translate($price->title_ru, $price->title_kz)}}
                     </p>
                     <p class="c2">
-                        {{$price->unit}}
+                        {{app()->db_translate($price->unit_ru, $price->unit_kz)}}
                     </p>
                     <p class="c3">
                         {{$price->price}}
                     </p>
-                </div>                
+                </div>
             @endif
             @php
                 $i++;

@@ -10,22 +10,20 @@ use App\Models\service;
 
 class UpdateController extends Controller
 {
-    public function __invoke(Service $service)
+    public function index(Service $service)
     {
-        $data=request()->validate(['title'=>'required|string', 'url'=>'required|string', 'description'=>'required|max:1000', 'src']);
-
         if(request()->hasFile('src'))
         {
             $file = request()->file('src');
             $file->move(public_path() . '/img/services/',request()->title.'-image.img');
-            $sql_data=['title'=>request()->title, 'url'=>request()->url, 'description'=>request()->description, 'src'=>(request()->title).'-image.img'];
+            $sql_data=request();
         }
         else
-            $sql_data=['title'=>request()->title, 'url'=>request()->url, 'description'=>request()->description];
+            $sql_data=['title_ru'=>request()->title_ru, 'title_kz'=>request()->title_kz, 'url'=>request()->url, 'description_ru'=>request()->description_ru, 'description_kz'=>request()->description_kz];
 
 
         $service->update($sql_data);
 
-        return redirect()->route('admin.service.show', $service->id); 
+        return redirect()->route('admin.service.show', $service->id);
     }
 }

@@ -16,7 +16,7 @@ use App\Models\Seo;
 
 class IndexController extends Controller
 {
-    public function __invoke()
+    public function index()
     {
         $reviews=Review::all();
         $questions=Question::all();
