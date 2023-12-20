@@ -16,6 +16,11 @@
                 if(!isset($_COOKIE['sale_'.$i]))
                     {
                         setcookie('sale_'.$i, date("Y-m-d", strtotime('+ '.$sale->period.' days')));
+                        $sale[$i]=date("Y-m-d", strtotime('+ '.$sale->period.' days'));
+                    }
+                else
+                    {
+                        $sale[$i]=$_COOKIE['sale_'.$i];
                     }
                 @endphp
 
@@ -61,7 +66,7 @@
     var actions2 = [
             @php $j=1; @endphp
             @foreach ($sales as $sale)
-        { id: "action{{$sale->id}}", endDate: "{{$_COOKIE['sale_'.$j]}}" },
+        { id: "action{{$sale->id}}", endDate: "{{$sale[$j]}}" },
         @php $j++; @endphp
         @endforeach
     ];
