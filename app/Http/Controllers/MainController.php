@@ -54,8 +54,8 @@ class MainController extends Controller
         else
             $city=$location->cityName;
 
-        $data=request()->validate(['username'=>'required|string', 'phone'=>'required|string', 'sourse'=>'required']);
-        $sql_data=['username'=>request()->username, 'phone'=>request()->phone, 'sourse'=>request()->sourse, 'city'=>$city, 'created_at'=>date('Y-m-d H:i:s')];
+        $data=request()->validate(['name'=>'required|string', 'phone'=>'required|string', 'sourse'=>'required']);
+        $sql_data=['username'=>request()->name, 'phone'=>request()->phone, 'sourse'=>request()->sourse, 'city'=>$city, 'created_at'=>date('Y-m-d H:i:s')];
         Application::create($sql_data);
 
         return redirect('/'.request()->sourse);
@@ -65,18 +65,24 @@ class MainController extends Controller
     {
         if(!isset($_COOKIE['locale']))
         {
-            setcookie('locale','kz', time()+3600 ,'/');
+            setcookie('locale','kz', time()+360000 ,'/');
         }
         else
         {
             if($_COOKIE['locale']=='ru')
-                setcookie('locale','kz', time()+3600 ,'/');
+                setcookie('locale','kz', time()+360000 ,'/');
 
             if($_COOKIE['locale']=='kz')
-                setcookie('locale','ru', time()+3600 ,'/');
+                setcookie('locale','ru', time()+360000 ,'/');
         }
 
         //dd($_COOKIE['locale']);
+        return redirect('/'.request()->sourse);
+    }
+
+    public function city()
+    {
+        setcookie('city', request()->city, time()+360000 ,'/');
         return redirect('/'.request()->sourse);
     }
 }

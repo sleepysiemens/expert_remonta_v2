@@ -1,9 +1,7 @@
 <section class="services">
     <h1 class="section-header hidden">{{app()->translate('Наши услуги')}}</h1>
 
-    <div class="review-wrapper">
-        <div class="reviews-div" style="height: auto">
-
+    <div class="services-div">
             @php
                 $i=0;
             @endphp
@@ -12,7 +10,7 @@
             @php
                 $i++;
             @endphp
-            <span class="service-banner scroll-hidden" style="margin: 0 5px">
+            <span class="service-banner scroll-hidden">
                 <a class="service-banner-link" href="{{ route('uslugi.index') }}/{{$service->url}}/">
                     <img src=" /img/services/{{$service->src}}">
                 </a>
@@ -26,7 +24,6 @@
             @endif
             @endforeach
 
-        </div>
     </div>
     <div class="services-link-div">
         <a class="services-link hidden" href="{{ route('uslugi.index') }}/">{{app()->translate('Смотреть все')}}</a>

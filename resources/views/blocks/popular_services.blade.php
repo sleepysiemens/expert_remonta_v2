@@ -1,8 +1,7 @@
 <section class="services">
     <h1 class="section-header hidden">{{app()->translate('Популярные услуги')}}</h1>
 
-    <div class="review-wrapper">
-        <div class="reviews-div" style="height: 155px">
+    <div class="services-div">
 
             @foreach ($popular_services as $popular_service)
 
@@ -18,6 +17,5 @@
 
             @endforeach
 
-        </div>
     </div>
 </section>

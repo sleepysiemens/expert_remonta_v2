@@ -228,6 +228,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin/', 'middleware'=>'admin
 Route::post('/locale/change/', 'MainController@locale')->name('locale.change');
 
 Route::post('/form/store/', 'MainController@form')->name('form.store');
+Route::post('/city/store/', 'MainController@city')->name('city.store');
 
 Auth::routes();
 

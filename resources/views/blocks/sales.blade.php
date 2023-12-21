@@ -1,7 +1,7 @@
 <section class="sales">
     <h1 class="section-header hidden">{{app()->translate('Специальные предложения')}}</h1>
     <div class="review-wrapper">
-        <div class="reviews-div" style="height: 285px">
+        <div class="reviews-div" style="height: 300px">
 
             @php
                 $i=0;

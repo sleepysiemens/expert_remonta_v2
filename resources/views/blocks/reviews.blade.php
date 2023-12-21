@@ -15,9 +15,7 @@
             <a class="review">
                 <div class="review-div">
                     <div class="review-user-info">
-                        <span class="user-pic">
-                            <i class="far fa-user"></i>
-                        </span>
+
                         <div class="review-user-info-subdiv">
                             <h3>{{app()->db_translate($review->username_ru,$review->username_kz)}}</h3>
                             <div class="review-stars">

@@ -37,14 +37,16 @@
                 </div>
 
                 <div class="header-contact-info">
-                    <h1><i class="fas fa-map-marker-alt"></i> {{app()->translate('Астана')}}</h1>
+                    <h1><i class="fas fa-map-marker-alt"></i> @if(isset($_COOKIE['city'])) {{$_COOKIE['city']}} @else Астана@endif</h1>
                     <p>+7 (775) 138-50-80</p>
                 </div>
                 <form method="post" action="{{asset(route('locale.change'))}}" class="locale-pc" style="display: flex; margin-left: 20px">
                     @csrf
-                    <button class="locale-from">
-                        <img class="locale-btn @if(!isset($_COOKIE['locale']) OR $_COOKIE['locale']=='ru') {{'locale-btn-active'}} @php $locale='ru' @endphp @endif" src="{{asset('img/locale/russia_3013955.png')}}" style="left: 0;">
-                        <img class="locale-btn @if(isset($_COOKIE['locale']) AND $_COOKIE['locale']=='kz') {{'locale-btn-active'}} @php $locale='kz' @endphp @endif" src="{{asset('img/locale/kazakhstan_206778.png')}}" style="right: 0;">
+                    <button class="lang_change">
+                        <p>
+                        @if(!isset($_COOKIE['locale']) OR $_COOKIE['locale']=='ru') {{'ҚАЗ'}} @php $locale='ru' @endphp @endif
+                        @if(isset($_COOKIE['locale']) AND $_COOKIE['locale']=='kz') {{'РУС'}} @php $locale='kz' @endphp @endif
+                        </p>
                     </button>
                 </form>
 
@@ -67,9 +69,11 @@
                     <br>
                     <form method="post" action="{{asset(route('locale.change'))}}"  style="display: flex; margin-left: 20px">
                         @csrf
-                        <button class="locale-from">
-                            <img class="locale-btn @if(!isset($_COOKIE['locale']) OR $_COOKIE['locale']=='ru') {{'locale-btn-active'}} @php $locale='ru' @endphp @endif" src="{{asset('img/locale/russia_3013955.png')}}" style="left: 0;">
-                            <img class="locale-btn @if(isset($_COOKIE['locale']) AND $_COOKIE['locale']=='kz') {{'locale-btn-active'}} @php $locale='kz' @endphp @endif" src="{{asset('img/locale/kazakhstan_206778.png')}}" style="right: 0;">
+                        <button class="lang_change">
+                            <p>
+                                @if(!isset($_COOKIE['locale']) OR $_COOKIE['locale']=='ru') {{'ҚАЗ'}} @php $locale='ru' @endphp @endif
+                                @if(isset($_COOKIE['locale']) AND $_COOKIE['locale']=='kz') {{'РУС'}} @php $locale='kz' @endphp @endif
+                            </p>
                         </button>
                     </form>
                 </div>
@@ -110,11 +114,54 @@
 
     @yield('sale-form')
 
+    <div id="city-yes-no" class="page-wrapper @if(!isset($_COOKIE['city']) OR $_COOKIE['city']==NULL){{'page-wrapper-active'}}@endif">
+        <div class="sale-form-div">
+            <h3>Ваш город Астана?</h3>
+            <br>
+            <div style="display: flex; width: 90%; margin: auto; height: 35px; justify-content: space-evenly">
+                <form style="height: 35px" method="post" action="{{route('city.store')}}">
+                    @csrf
+                    <input type="hidden" name="city" value="Астана">
+                    <button class="hidden gradient_button" style="height: 100%"><p style="margin-top: auto">Да</p></button>
+                </form>
+                <button id="city-no" class="hidden gradient_button"><p style="margin-top: auto">Нет</p></button>
+            </div>
+            <br>
+        </div>
+    </div>
+    <div id="cities" class="page-wrapper">
+        <div class="sale-form-div">
+            <h3>Выберите город</h3>
+            <br>
+            <div style="display: flex; width: 90%; margin: auto; height: 35px; justify-content: space-evenly">
+                    <form style="height: 35px; margin: auto" method="post" action="{{route('city.store')}}">
+                        @csrf
+                        <input type="hidden" name="city" value="Астана">
+                        <button class="hidden gradient_button" style="height: 100%"><p style="margin-top: auto">Астана</p></button>
+                    </form>
+                    <form style="height: 35px ; margin: auto" method="post" action="{{route('city.store')}}">
+                        @csrf
+                        <input type="hidden" name="city" value="Алматы">
+                        <button class="hidden gradient_button" style="height: 100%"><p style="margin-top: auto">Алматы</p></button>
+                    </form>
+                </div>
+            <br>
+        </div>
+    </div>
+
+    <script>
+        $('#city-no').on('click', function(){
+            $('#city-yes-no').removeClass('page-wrapper-active');
+            $('#cities').addClass('page-wrapper-active');
+        });
+    </script>
+
 <div class="parallax">
 
     <div class="container parallax-layer parallax__layer--base">
-
+<div class="main-content-container">
     @yield('content')
+</div>
 
 
     <footer>
@@ -132,7 +179,7 @@
                     </div>
                 </div>
                 <div class="footer-contact-info">
-                    <h1><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Астана</h1>
+                    <h1><i class="fas fa-map-marker-alt" aria-hidden="true"></i>"@if(isset($_COOKIE['city'])) {{$_COOKIE['city']}} @else Астана@endif</h1>
                     <p>+7 (775) 138-50-80</p>
                 </div>
             </div>
