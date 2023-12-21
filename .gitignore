@@ -51,6 +51,8 @@
 /vendor/laravel/tinker
 /vendor/laravel/ui
 
+/vendor/laravel/framework/composer.json
+
 .env
 .env.backup
 .env.production
