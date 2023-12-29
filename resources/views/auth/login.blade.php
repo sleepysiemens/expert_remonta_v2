@@ -1,7 +1,6 @@
 @extends('Layouts.app')
 
 @section('content')
-    <script src="https://www.google.com/recaptcha/api.js"></script>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -39,9 +38,14 @@
                                 @enderror
                             </div>
                         </div>
-
-                        <div class="g-recaptcha mt-4" data-sitekey={{config('services.recaptcha.key')}}></div>
-
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                            {!! captcha_img() !!}
+                            </div>
+                            <div class="col-md-6">
+                            <input id="captcha" type="text" name="captcha" required>
+                            </div>
+                        </div>
 
                         <div class="row mb-3">
                             <div class="col-md-6 offset-md-4">

@@ -29,6 +29,8 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 
+use function Illuminate\Filesystem\join_paths;
+
 class Application extends Container implements ApplicationContract, CachesConfiguration, CachesRoutes, HttpKernelInterface
 {
     use Macroable;
@@ -38,7 +40,7 @@ class Application extends Container implements ApplicationContract, CachesConfig
      *
      * @var string
      */
-    const VERSION = '10.35.0';
+    const VERSION = '10.39.0';
 
     /**
      * The base path for the Laravel installation.
@@ -586,7 +588,7 @@ class Application extends Container implements ApplicationContract, CachesConfig
      */
     public function joinPaths($basePath, $path = '')
     {
-        return $basePath.($path != '' ? DIRECTORY_SEPARATOR.ltrim($path, DIRECTORY_SEPARATOR) : '');
+        return join_paths($basePath, $path);
     }
 
     /**
@@ -1518,12 +1520,11 @@ class Application extends Container implements ApplicationContract, CachesConfig
                 if (realpath($this->path()) === realpath($this->basePath($pathChoice))) {
                     return $this->namespace = $namespace;
                 }
-                }
+            }
         }
 
         throw new RuntimeException('Unable to detect application namespace.');
     }
-
     public function db_translate($var_ru, $var_kz)
     {
         if(isset($_COOKIE['locale']) AND $_COOKIE['locale']=='kz')
@@ -1536,7 +1537,6 @@ class Application extends Container implements ApplicationContract, CachesConfig
         else
             echo $var_ru;
     }
-
     public function translate($var)
     {
         if(isset($_COOKIE['locale']) AND $_COOKIE['locale']=='kz')
@@ -1590,9 +1590,6 @@ class Application extends Container implements ApplicationContract, CachesConfig
                     break;
                 case 'Наши услуги':
                     echo 'Біздің қызметтеріміз';
-                    break;
-                case 'Подробнее':
-                    echo 'Толығырақ';
                     break;
                 case 'Смотреть все':
                     echo 'Барлығын көру';
