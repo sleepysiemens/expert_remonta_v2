@@ -1,6 +1,6 @@
 <section class="welcome">
   @foreach ($Headers as $Header)
-            <img class="welcome-bg" src="{{$Header->src}}">
+            <img class="welcome-bg" src="/img/{{$Header->src}}">
   @endforeach
             <div class="welcome-content">
                 <div class="welcome-header hidden">
