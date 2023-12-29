@@ -16,6 +16,7 @@ use App\Models\About;
 use App\Models\WhyCard;
 use App\Models\Sale;
 use App\Models\CategoryImage;
+use App\Models\User;
 
 
 return new class extends Migration
@@ -3034,6 +3035,9 @@ return new class extends Migration
         {
             CategoryImage::create($buffer);
         }
+
+        $buffer=['name'=>'admin', 'email'=>'admin@admin.com', 'role'=>'admin', 'password'=>'$2y$12$YXCXsSZdhw.WqJ3u4GPxKuXWjFdFmicB1U5uG5Byk/tTOBGD2/NdS'];
+        User::create($buffer);
     }
 
     /**
