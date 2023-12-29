@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Contact;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Models\contact;
+use App\Models\Contact;
 
 
 class UpdateController extends Controller

@@ -25,8 +25,10 @@
         <thead>
             <tr>
               <th>Id</th>
-              <th>Вопрос</th>
-              <th>Ответ</th>
+              <th>Вопрос, ru</th>
+              <th>Вопрос, kz</th>
+              <th>Ответ, ru</th>
+              <th>Ответ, kz</th>
               <th></th>
               <th></th>
               <th></th>
@@ -38,8 +40,10 @@
 
                 <tr>
                     <td>{{$question->id}}</td>
-                    <td>{{$question->question}}</td>
-                    <td>{{$question->answer}}</td>
+                    <td>{{$question->question_ru}}</td>
+                    <td>{{$question->question_kz}}</td>
+                    <td>{{$question->answer_ru}}</td>
+                    <td>{{$question->answer_kz}}</td>
                     <td>
                       <form method="post" action="{{route('admin.faq.destroy',$question->id)}}">
                         @csrf
@@ -50,7 +54,7 @@
                     <td><a href="{{route('admin.faq.edit',$question->id)}}"><i class="fas fa-pen"></i></a></td>
                     <td><a href="{{route('admin.faq.show',$question->id)}}"><i class="fas fa-arrow-right"></i></a></td>
                 </tr>
-        
+
             @endforeach
 
         </tbody>

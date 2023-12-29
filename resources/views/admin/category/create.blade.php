@@ -46,7 +46,7 @@
           <label for="exampleInputEmail1">Относится к</label>
           <select class="form-control" name="service_id" required>
             @foreach ($services as $service)
-            <option value="{{$service->id}}">{{$service->title}}</option>
+            <option value="{{$service->id}}">{{$service->title_ru}}</option>
             @endforeach
           </select>
         </div>

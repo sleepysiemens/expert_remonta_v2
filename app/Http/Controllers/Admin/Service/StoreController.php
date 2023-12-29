@@ -12,7 +12,7 @@ class StoreController extends Controller
 {
     public function index()
     {
-        $sql_data=request();
+        $sql_data=request()->all();
 
         $file = request()->file('src');
         $file->move(public_path() . '/img/services/',request()->title.'-image.img');

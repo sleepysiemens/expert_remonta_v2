@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::table('reviews', function (Blueprint $table) {
             $table->dropColumn('username');
             $table->dropColumn('text');
-            $table->string('username_ru');
-            $table->string('tusername_kz')->nullable();
+            $table->text('username_ru');
+            $table->text('username_kz')->nullable();
             $table->text('text_ru');
             $table->text('text_kz')->nullable();
         });

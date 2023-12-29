@@ -12,7 +12,7 @@ class StoreController extends Controller
 {
     public function index()
     {
-        $data=request();
+        $data=request()->all();
         Review::create($data);
 
         return redirect()->route('admin.review.index');

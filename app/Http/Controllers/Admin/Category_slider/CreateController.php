@@ -25,7 +25,6 @@ class CreateController extends Controller
         $sales=sale::all();
         $CategoryImages=CategoryImage::all();
 
-
         return view('admin.category_slider.create', compact(['reviews', 'questions', 'services', 'categories', 'sales', 'CategoryImages']));
     }
 }

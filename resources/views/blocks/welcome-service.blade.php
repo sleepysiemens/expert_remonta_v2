@@ -1,11 +1,12 @@
 <section class="welcome">
-    @if($service->src!=NULL)
-            <img class="welcome-bg" src="/img/services/{{$service->src}}">
-    @else
-        @foreach ($Headers as $Header)
-            <img class="welcome-bg" src="/img/{{$Header->src}}">
-        @endforeach
-    @endif
+    {{--
+    @php $cnt=0; @endphp
+    @foreach ($ServiceImages as $serviceImage)
+        @php $cnt++; @endphp
+        <img class="welcome-bg @if($cnt==1) slide-active @endif" id="slide_{{$cnt}}" src="/img/services/{{$serviceImage->src}}">
+    @endforeach
+    --}}
+    <img class="welcome-bg"  src="/img/services/{{$service->src}}">
 
             <div class="welcome-content">
                 <div class="welcome-header hidden">
@@ -27,3 +28,25 @@
                 </div>
             </div>
         </section>
+{{--
+<script>
+    let i=1;
+
+    function incr()
+    {
+        if(i=={{$cnt}})
+            i=1;
+        else
+            i++;
+    }
+
+    function next_slide()
+    {
+        $('#slide_'+i).removeClass('slide-active');
+        incr();
+        $('#slide_'+i).addClass('slide-active');
+        setTimeout(next_slide, 3500);
+    }
+
+    setTimeout(next_slide, 3500);
+</script>--}}

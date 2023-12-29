@@ -13,7 +13,8 @@ class UpdateController extends Controller
 {
     public function index(Price $price)
     {
-        $data=request();
+        $data=request()->all();
+        //dd($data);
         $price->update($data);
 
         return redirect()->route('admin.price.show', $price->id);

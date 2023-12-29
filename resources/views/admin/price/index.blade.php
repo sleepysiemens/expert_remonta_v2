@@ -39,7 +39,7 @@
                 <table class="table table-striped">
                   <thead>
                       <tr>
-                        <th colspan="7">{{$last_category}}</th>
+                        <th colspan="9">{{$last_category}}</th>
                       </tr>
                       <tr>
                         <th>Id</th>
@@ -75,10 +75,12 @@
 
               @else
               <tr>
-                <td>{{$price->id}}</td>
-                <td>{{$price->title}}</td>
-                <td>{{$price->unit}}</td>
-                <td>{{$price->price}}</td>
+                  <td>{{$price->id}}</td>
+                  <td>{{$price->title_ru}}</td>
+                  <td>{{$price->title_kz}}</td>
+                  <td>{{$price->unit_ru}}</td>
+                  <td>{{$price->unit_kz}}</td>
+                  <td>{{$price->price}}</td>
                 <td>
                   <form method="post" action="{{route('admin.price.destroy',$price->id)}}">
                     @csrf

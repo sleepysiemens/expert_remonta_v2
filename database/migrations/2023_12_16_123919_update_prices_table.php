@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::table('prices', function (Blueprint $table) {
             $table->dropColumn('title');
             $table->dropColumn('unit');
-            $table->string('title_ru');
-            $table->string('title_kz')->nullable();
-            $table->string('unit_ru');
-            $table->string('unit_kz')->nullable();
+            $table->text('title_ru');
+            $table->text('title_kz')->nullable();
+            $table->text('unit_ru');
+            $table->text('unit_kz')->nullable();
         });
     }
 

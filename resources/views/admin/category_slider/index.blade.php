@@ -25,13 +25,12 @@
       <table class="table table-striped">
         <thead>
             <tr>
-              <th colspan="8">{{$category->title}}</th>
+              <th colspan="8">{{$category->title_ru}}</th>
             </tr>
             <tr>
               <th>Id</th>
               <th>Название</th>
               <th>Изображение</th>
-              <th></th>
               <th></th>
               <th></th>
             </tr>
@@ -52,12 +51,11 @@
                   </form>
                 </td>
                 <td><a href="{{route('admin.category_slider.edit',$CategoryImage->id)}}"><i class="fas fa-pen"></i></a></td>
-                <td><a href="{{route('admin.category_slider.show',$CategoryImage->id)}}"><i class="fas fa-arrow-right"></i></a></td>
             </tr>
             @endif
-          
+
               @endforeach
-  
+
             </tbody>
           </table>
         </div>

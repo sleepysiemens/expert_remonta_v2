@@ -19,7 +19,7 @@ class ShowController extends Controller
         $reviews=Review::all();
         $questions=Question::all();
         $services=Service::all();
-        $category=Category::all();
+        $categories=Category::all();
         $sales=sale::all();
 
 

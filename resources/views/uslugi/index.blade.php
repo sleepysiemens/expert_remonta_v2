@@ -9,9 +9,7 @@
 @include('blocks.welcome')
 @include('blocks.path')
 @include('blocks.services')
-@include('blocks.reviews')    
-@include('blocks.form')
-
+@include('blocks.reviews')
 
 @endsection
 

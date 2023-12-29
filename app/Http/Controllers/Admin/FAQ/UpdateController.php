@@ -12,7 +12,7 @@ class UpdateController extends Controller
 {
     public function index(Question $question)
     {
-        $data=request();
+        $data=request()->all();
         $question->update($data);
 
         return redirect()->route('admin.FAQ.show', $question->id);

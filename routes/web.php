@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Spatie\ResponseCache\Middlewares\CacheResponse;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,15 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'MainController@index')->name('main.index');
-Route::get('/uslugi/', 'UslugiController@index')->name('uslugi.index');
-Route::get('/price/', 'PriceController@index')->name('price.index');
-Route::get('/gallery/', 'GalleryController@index')->name('gallery.index');
-Route::get('/contacts/', 'ContactsController@index')->name('contacts.index');
-Route::get('/uslugi/{service}/','UslugiController@service')->name('service.index');
-Route::get('/uslugi/{service}/{category}/','UslugiController@category')->name('category.index');
-Route::get('/blog/{blog}', 'BlogController@index')->name('blog.index');
-Route::get('/reviews/', 'ReviewController@index')->name('reviews.index');
+/*Route::group(['middleware'=>'CacheResponse:60'], function ()
+{*/
+    Route::get('/', 'MainController@index')->name('main.index');
+    Route::get('/uslugi/', 'UslugiController@index')->name('uslugi.index');
+    Route::get('/price/', 'PriceController@index')->name('price.index');
+    Route::get('/gallery/', 'GalleryController@index')->name('gallery.index');
+    Route::get('/contacts/', 'ContactsController@index')->name('contacts.index');
+    Route::get('/uslugi/{service}/', 'UslugiController@service')->name('service.index');
+    Route::get('/uslugi/{service}/{category}/', 'UslugiController@category')->name('category.index');
+    Route::get('/blog/{blog}', 'BlogController@index')->name('blog.index');
+    Route::get('/reviews/', 'ReviewController@index')->name('reviews.index');
+//});
 
 
 //ADMIN
@@ -77,10 +81,19 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin/', 'middleware'=>'admin
         Route::get('/', 'IndexController@index')->name('admin.category_slider.index');
         Route::get('/create', 'CreateController@index')->name('admin.category_slider.create');
         Route::post('', 'StoreController@index')->name('admin.category_slider.store');
-        Route::get('/{category_slider}', 'ShowController@index')->name('admin.category_slider.show');
         Route::get('/{category_slider}/edit', 'EditController@index')->name('admin.category_slider.edit');
         Route::patch('/{category_slider}', 'UpdateController@index')->name('admin.category_slider.update');
         Route::delete('/{category_slider}', 'DestroyController@index')->name('admin.category_slider.destroy');
+    });
+
+    Route::group(['namespace' => 'Service_slider', 'prefix' => 'service_slider'], function()
+    {
+        Route::get('/', 'IndexController@index')->name('admin.service_slider.index');
+        Route::get('/create', 'CreateController@index')->name('admin.service_slider.create');
+        Route::post('', 'StoreController@index')->name('admin.service_slider.store');
+        Route::get('/{service_slider}/edit', 'EditController@index')->name('admin.service_slider.edit');
+        Route::patch('/{service_slider}', 'UpdateController@index')->name('admin.service_slider.update');
+        Route::delete('/{service_slider}', 'DestroyController@index')->name('admin.service_slider.destroy');
     });
 
     Route::group(['namespace' => 'Price', 'prefix' => 'price'], function()
@@ -196,8 +209,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin/', 'middleware'=>'admin
         Route::delete('/{application}', 'DestroyController@index')->name('admin.application.destroy');
     });
 
-
-
         Route::group(['namespace' => 'SEO', 'prefix' => 'seo'], function()
         {
             Route::get('/', 'IndexController@index')->name('admin.seo.index');
@@ -219,7 +230,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin/', 'middleware'=>'admin
             Route::patch('/{blog}', 'UpdateController@index')->name('admin.blog.update');
             Route::delete('/{blog}', 'DestroyController@index')->name('admin.blog.destroy');
         });
-
 
 });// /ADMIN
 

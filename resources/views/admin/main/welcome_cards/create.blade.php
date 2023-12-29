@@ -4,7 +4,7 @@
     Добавить катрочку
 @endsection
 
-@section('why')
+@section('cards')
     active
 @endsection
 

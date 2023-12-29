@@ -12,7 +12,7 @@ class StoreController extends Controller
 {
     public function index()
     {
-        $data=request();
+        $data=request()->all();
         Price::create($data);
         $prices=Price::all();
 

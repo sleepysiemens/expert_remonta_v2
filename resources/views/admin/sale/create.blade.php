@@ -32,7 +32,7 @@
           </div>
           <div class="form-group">
               <label for="exampleInputEmail1">Текст, kz</label>
-              <textarea id="summernote1" name="description_kz" placeholder="Текст описания..." required></textarea>
+              <textarea id="summernote1" name="description_kz" placeholder="Текст описания..."></textarea>
           </div>
           <div class="form-group">
               <label for="exampleInputEmail1">Процент скидки</label>
@@ -40,7 +40,7 @@
           </div>
           <div class="form-group">
               <label for="exampleInputEmail1">Срок действия, д</label>
-              <input type="text" class="form-control" placeholder="Срок действия, д" name="period" required>
+              <input type="number" class="form-control" placeholder="Срок действия, д" name="period" required>
           </div>
         <label for="exampleInputEmail1">Фон</label>
         <input type="file" class="form-control" name="src">

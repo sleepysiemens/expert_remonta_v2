@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::table('welcome_cards', function (Blueprint $table) {
             $table->dropColumn('title');
-            $table->string('title_ru');
-            $table->string('title_kz')->nullable();
+            $table->text('title_ru');
+            $table->text('title_kz')->nullable();
         });
     }
 

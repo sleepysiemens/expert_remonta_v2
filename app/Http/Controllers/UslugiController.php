@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\ServiceImage;
 use Illuminate\Http\Request;
 
 use App\Models\service;
@@ -50,11 +51,12 @@ class UslugiController extends Controller
         $instagram=Contact::query()->select('link')->where('name','=','instagram')->get();
         $phone=Contact::query()->select('link')->where('name','=','phone')->get();
         $seos=Seo::query()->where('page','=','uslugi/'.$service)->get();
+        $ServiceImages=ServiceImage::query()->join('services', 'services.id', '=', 'service_images.service_id')->where(['services.url'=>$service])->select('service_images.src')->get();
 
 
         $page='uslugi/'.$service;
 
-        return view('service.index', compact(['services','categories', 'reviews', 'whatsapp', 'telegram', 'instagram', 'phone', 'Headers', 'WelcomeCards', 'page', 'seos']));
+        return view('service.index', compact(['ServiceImages','services','categories', 'reviews', 'whatsapp', 'telegram', 'instagram', 'phone', 'Headers', 'WelcomeCards', 'page', 'seos']));
     }
 
     public function category($service, $category)
@@ -69,7 +71,7 @@ class UslugiController extends Controller
         $instagram=Contact::query()->select('link')->where('name','=','instagram')->get();
         $phone=Contact::query()->select('link')->where('name','=','phone')->get();
         $popular_services=Blog::query()->offset(0)->limit(6)->get();
-        $CategoryImages=CategoryImage::query()->join('categories', 'categories.id', '=', 'category_images.category_id')->where(['categories.url'=>$category])->select('category_images.src')->get();
+        $CategoryImages=CategoryImage::query()->where(['category_id'=>$categories[0]->id])->select('category_images.src', 'category_images.category_id')->get();
         $seos=Seo::query()->where('page','=','uslugi/'.$service.'/'.$category)->get();
 
         $page='uslugi/'.$service.'/'.$category;

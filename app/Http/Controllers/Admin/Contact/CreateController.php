@@ -5,12 +5,12 @@ namespace App\Http\Controllers\Admin\Contact;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Models\review;
+use App\Models\Review;
 use App\Models\question;
 use App\Models\service;
 use App\Models\category;
-use App\Models\contact;
-use App\Models\sale;
+use App\Models\Contact;
+use App\Models\Sale;
 
 
 class CreateController extends Controller

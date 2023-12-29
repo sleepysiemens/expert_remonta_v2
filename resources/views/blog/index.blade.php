@@ -17,7 +17,6 @@ nav-link-selected
             @include('blocks.why')
             @include('blocks.popular_services')
             @include('blocks.reviews')
-            @include('blocks.form')
 
     @endforeach
 

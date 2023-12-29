@@ -11,9 +11,9 @@ class StoreController extends Controller
 {
     public function index()
     {
-        $data=request();
+        $data=request()->all();
         Question::create($data);
 
-        return redirect()->route('admin.FAQ.index');
+        return redirect()->route('admin.faq.index');
     }
 }

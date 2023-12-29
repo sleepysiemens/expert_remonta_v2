@@ -11,7 +11,7 @@
 <div class="page-wrapper " id="sale-form-{{$i}}">
     <div class="sale-form-div">
         <button class="form-sale-close" id="sale-form-close-{{$i}}"><i class="fas fa-times"></i></button>
-        <img src="/img/_d40b8276-e5e6-423c-bc70-36e0d3892ecc.jpg">
+        <img src="/img/sales/{{$sale->src}}">
         <div style="display: flex; justify-content: start; width: 95%; margin: 10px auto">
             <div class="percent"><p>-{{$sale->percent}}%</p></div>
             <div class="timer"><p id="action{{$sale->id}}"></p></div>

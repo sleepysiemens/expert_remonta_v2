@@ -14,6 +14,7 @@ use App\Models\WelcomeCard;
 use App\Models\About;
 use App\Models\WhyCard;
 use App\Models\MainText;
+use App\Models\City;
 
 use Stevebauman\Location\Facades\Location;
 use App\Models\Application;
@@ -37,10 +38,11 @@ class MainController extends Controller
         $phone=Contact::query()->select('link')->where('name','=','phone')->get();
         $seos=Seo::query()->where('page','=','main')->get();
         $texts=MainText::all();
+        $cities=City::all();
 
         $page='main';
 
-        return view('main.index', compact(['texts','services', 'questions', 'whatsapp', 'telegram', 'instagram', 'phone', 'sales', 'Headers', 'WelcomeCards', 'Abouts', 'WhyCards', 'page', 'seos']));
+        return view('main.index', compact(['cities','texts','services', 'questions', 'whatsapp', 'telegram', 'instagram', 'phone', 'sales', 'Headers', 'WelcomeCards', 'Abouts', 'WhyCards', 'page', 'seos']));
     }
 
     public function form()

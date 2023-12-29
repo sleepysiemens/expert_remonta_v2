@@ -9,7 +9,6 @@
 @include('blocks.why')
 @include('blocks.faq')
 @include('blocks.sales')
-@include('blocks.form')
 
 
 @endsection
@@ -32,4 +31,23 @@ nav-link-selected
     @foreach ($seos as $seo)
         {{$seo->seo}}
     @endforeach
+@endsection
+
+@section('cities')
+    <div id="city-yes-no" class="page-wrapper @if(!isset($_COOKIE['city']) OR $_COOKIE['city']==NULL){{'page-wrapper-active'}}@endif">
+        <div class="sale-form-div">
+            <h3>Выберите город</h3>
+            <br>
+            <div style="width: 90%; margin: auto; justify-content: space-evenly">
+                @foreach($cities as $city)
+                    <form style="height: 35px; margin: auto; display: inline-flex; margin: 10px 0; width: 49%; justify-content: center" method="post" action="{{route('city.store')}}">
+                        @csrf
+                        <input type="hidden" name="city" value="{{$city->city}}">
+                        <button class="hidden gradient_button" style="height: 100%" ><p style="margin-top: auto">{{$city->city}}</p></button>
+                    </form>
+                @endforeach
+            </div>
+            <br>
+        </div>
+    </div>
 @endsection

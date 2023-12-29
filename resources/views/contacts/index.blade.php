@@ -8,7 +8,6 @@
     @include('blocks.welcome-contacts')
     @include('blocks.about_company')
     @include('blocks.reviews')
-    @include('blocks.form')
 @endsection
 
 @section('contact')

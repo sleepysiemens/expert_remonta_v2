@@ -24,6 +24,6 @@ class EditController extends Controller
         $sales=sale::all();
         $CategoryImages=CategoryImage::all();
 
-        return view('admin.category_slider.edit', compact(['category', 'reviews', 'questions', 'services', 'categories', 'sales', 'CategoryImages']));
+        return view('admin.category_slider.edit', compact(['reviews', 'questions', 'services', 'categories', 'sales', 'category_slider']));
     }
 }

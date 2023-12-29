@@ -26,12 +26,12 @@
           <label for="exampleInputEmail1">Относится к</label>
           <select class="form-control" name="category_id" required>
             @foreach ($categories as $category)
-            <option value="{{$category->id}}">{{$category->title}}</option>
+            <option value="{{$category->id}}">{{$category->title_ru}}</option>
             @endforeach
           </select>
         </div>
       </div>
-      
+
       <!-- /.card-body -->
 
       <div class="card-footer">

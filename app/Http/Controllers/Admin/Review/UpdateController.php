@@ -12,7 +12,7 @@ class UpdateController extends Controller
 {
     public function index(Review $review)
     {
-        $data=request();
+        $data=request()->all();
         $review->update($data);
 
         return redirect()->route('admin.review.show', $review->id);

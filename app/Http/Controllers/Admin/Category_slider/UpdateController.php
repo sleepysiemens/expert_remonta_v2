@@ -23,8 +23,8 @@ class UpdateController extends Controller
         else
             $sql_data=['title'=>request()->title, 'url'=>request()->url, 'description'=>request()->description, 'service_id'=>request()->service_id];
 
-        $category->update($sql_data);
+        $category_slider->update($sql_data);
 
-        return redirect()->route('admin.category_slider.show', $category_slider->id);
+        return redirect()->route('admin.category_slider.index');
     }
 }

@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::table('categories', function (Blueprint $table) {
             $table->dropColumn('title');
             $table->dropColumn('description');
-            $table->string('title_ru');
-            $table->string('title_kz')->nullable();
+            $table->text('title_ru');
+            $table->text('title_kz')->nullable();
             $table->text('description_ru');
             $table->text('description_kz')->nullable();
         });

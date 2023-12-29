@@ -129,6 +129,13 @@
                 </p>
               </a>
 
+              {{--<a href="{{ route('admin.service_slider.index') }}" class="nav-link @yield('service_slider')">
+                  <i class="nav-icon far fa-images"></i>
+                  <p>
+                      Услуги • Слайдер
+                  </p>
+              </a>--}}
+
               <a href="{{ route('admin.blog.index') }}" class="nav-link @yield('blog')">
                 <i class="nav-icon fas fa-clipboard-check"></i>
                 <p>

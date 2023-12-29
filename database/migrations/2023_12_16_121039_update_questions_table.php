@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::table('questions', function (Blueprint $table) {
             $table->dropColumn('question');
             $table->dropColumn('answer');
-            $table->string('question_ru');
-            $table->text('answer_ru');
-            $table->string('question_kz')->nullable();
+            $table->text('question_ru');
+            $table->text('question_kz')->nullable();
             $table->text('answer_kz')->nullable();
+            $table->text('answer_ru')->nullable();
         });
     }
 

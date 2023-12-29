@@ -36,7 +36,7 @@
         </div>
           <div class="form-group">
               <label for="exampleInputEmail1">Вопрос, kz</label>
-              <input type="text" class="form-control" placeholder="Вопрос" name="question_kz" required value="{{$question->question_kz}}">
+              <input type="text" class="form-control" placeholder="Вопрос" name="question_kz" value="{{$question->question_kz}}">
           </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Ответ, ru</label>
@@ -44,7 +44,7 @@
         </div>
           <div class="form-group">
               <label for="exampleInputEmail1">Ответ, kz</label>
-              <textarea class="form-control" name="answer_kz" placeholder="Текст ответа..." required>{{$question->answer_kz}}</textarea>
+              <textarea class="form-control" name="answer_kz" placeholder="Текст ответа...">{{$question->answer_kz}}</textarea>
           </div>
       </div>
       <!-- /.card-body -->

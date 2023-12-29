@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::table('headers', function (Blueprint $table) {
             $table->dropColumn('title');
             $table->dropColumn('subtitle');
-            $table->string('title_ru');
-            $table->string('title_kz')->nullable();
-            $table->string('subtitle_ru');
-            $table->string('subtitle_kz')->nullable();
+            $table->text('title_ru');
+            $table->text('title_kz')->nullable();
+            $table->text('subtitle_ru');
+            $table->text('subtitle_kz')->nullable();
         });
     }
 

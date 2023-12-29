@@ -3,7 +3,6 @@
 
 
 @include('blocks.reviews-page')
-@include('blocks.form')
 
 @endsection
 

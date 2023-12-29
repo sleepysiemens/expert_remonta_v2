@@ -41,8 +41,10 @@
         <thead>
             <tr>
               <th>Id</th>
-              <th>Вопрос</th>
-              <th>Ответ</th>
+              <th>Вопрос, ru</th>
+              <th>Вопрос, kz</th>
+              <th>Ответ, ru</th>
+              <th>Ответ, kz</th>
             </tr>
         </thead>
         <tbody>
@@ -50,8 +52,10 @@
 
                 <tr>
                     <td>{{$question->id}}</td>
-                    <td>{{$question->question}}</td>
-                    <td>{{$question->answer}}</td>
+                    <td>{{$question->question_ru}}</td>
+                    <td>{{$question->question_kz}}</td>
+                    <td>{{$question->answer_ru}}</td>
+                    <td>{{$question->answer_kz}}</td>
                 </tr>
 
 

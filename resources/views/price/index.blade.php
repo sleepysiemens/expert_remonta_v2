@@ -2,7 +2,6 @@
 @section('content')
 
 @include('blocks.prices')
-@include('blocks.form')
 
 @endsection
 

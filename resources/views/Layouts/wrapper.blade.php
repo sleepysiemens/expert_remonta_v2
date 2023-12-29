@@ -113,7 +113,9 @@
     </div>
 
     @yield('sale-form')
+    @yield('form-div')
 
+    {{--
     <div id="city-yes-no" class="page-wrapper @if(!isset($_COOKIE['city']) OR $_COOKIE['city']==NULL){{'page-wrapper-active'}}@endif">
         <div class="sale-form-div">
             <h3>Ваш город Астана?</h3>
@@ -129,26 +131,8 @@
             <br>
         </div>
     </div>
-    <div id="cities" class="page-wrapper">
-        <div class="sale-form-div">
-            <h3>Выберите город</h3>
-            <br>
-            <div style="display: flex; width: 90%; margin: auto; height: 35px; justify-content: space-evenly">
-                    <form style="height: 35px; margin: auto" method="post" action="{{route('city.store')}}">
-                        @csrf
-                        <input type="hidden" name="city" value="Астана">
-                        <button class="hidden gradient_button" style="height: 100%"><p style="margin-top: auto">Астана</p></button>
-                    </form>
-                    <form style="height: 35px ; margin: auto" method="post" action="{{route('city.store')}}">
-                        @csrf
-                        <input type="hidden" name="city" value="Алматы">
-                        <button class="hidden gradient_button" style="height: 100%"><p style="margin-top: auto">Алматы</p></button>
-                    </form>
-                </div>
-            <br>
-        </div>
-    </div>
-
+    --}}
+    @yield('cities')
     <script>
         $('#city-no').on('click', function(){
             $('#city-yes-no').removeClass('page-wrapper-active');
@@ -179,7 +163,7 @@
                     </div>
                 </div>
                 <div class="footer-contact-info">
-                    <h1><i class="fas fa-map-marker-alt" aria-hidden="true"></i>"@if(isset($_COOKIE['city'])) {{$_COOKIE['city']}} @else Астана@endif</h1>
+                    <h1><i class="fas fa-map-marker-alt" aria-hidden="true"></i>@if(isset($_COOKIE['city'])) {{$_COOKIE['city']}} @else Астана@endif</h1>
                     <p>+7 (775) 138-50-80</p>
                 </div>
             </div>

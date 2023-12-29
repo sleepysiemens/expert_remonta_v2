@@ -12,7 +12,7 @@
 
 <div class="row">
   <div class="col-12">
-    <a href="{{route('admin.category.index')}}" class="btn btn-default">
+    <a href="{{route('admin.category_slider.index')}}" class="btn btn-default">
       <i class="fas fa-arrow-left"></i> Назад
   </a>
   </div>
@@ -26,34 +26,22 @@
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form action="{{route('admin.category.update', $category->id)}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('admin.category_slider.update', $category_slider->id)}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('patch')
         <div class="card-body">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Название</label>
-            <input type="text" class="form-control" placeholder="Название" name="title" required value="{{$category->title}}">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Ссылка</label>
-            <input type="text" class="form-control" placeholder="Ссылка" name="url" required value="{{$category->url}}">
-          </div>
-          <div class="form-group">
-              <label for="exampleInputEmail1">Текст</label>
-              <textarea class="form-control" name="description" placeholder="Текст описания..." required>{{$category->description}}</textarea>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Обложка</label>
-            <input type="file" class="form-control" placeholder="Название" name="src">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Относится к</label>
-            <select class="form-control" name="service_id" required>
-              @foreach ($services as $service)
-              <option value="{{$service->id}}">{{$service->title}}</option>
-              @endforeach
-            </select>
-          </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Изображение</label>
+                <input type="file" class="form-control" name="src" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Относится к</label>
+                <select class="form-control" name="category_id" required>
+                    @foreach ($categories as $category)
+                        <option value="{{$category->id}}">{{$category->title_ru}}</option>
+                    @endforeach
+                </select>
+            </div>
         </div>
       <!-- /.card-body -->
 

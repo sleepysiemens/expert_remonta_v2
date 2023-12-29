@@ -12,7 +12,6 @@
             @include('blocks.about_service')
             @include('blocks.categories')
             @include('blocks.reviews')
-            @include('blocks.form')
         @endsection
     @endforeach
 
