@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('headers', function (Blueprint $table) {
-            $table->boolean('blur');
+            $table->boolean('blur')->nullable();
         });
     }
 
