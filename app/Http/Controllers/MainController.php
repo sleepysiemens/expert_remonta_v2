@@ -20,8 +20,6 @@ use Stevebauman\Location\Facades\Location;
 use App\Models\Application;
 use App\Models\Seo;
 
-use App\Http\Controllers\Translate;
-
 class MainController extends Controller
 {
     public function index()

@@ -12,16 +12,18 @@ class UpdateController extends Controller
 {
     public function index(Category $category)
     {
+         $data=request()->all();
+         //dd($data);
         if(request()->hasFile('src'))
         {
             $file = request()->file('src');
             $file->move(public_path() . '/img/categories/',request()->title.'-image.img');
-            $sql_data=['title_ru'=>request()->title_ru, 'title_kz'=>request()->title_kz, 'url'=>request()->url, 'description_ru'=>htmlspecialchars(request()->description_ru, ENT_QUOTES), 'description_kz'=>htmlspecialchars(request()->description_kz, ENT_QUOTES), 'src'=>(request()->title).'-image.img', 'service_id'=>request()->service_id];
+            unset($data['src']);
+            $data['src']=request()->title.'-image.img';
         }
-        else
-            $sql_data=['title_ru'=>request()->title_ru, 'title_kz'=>request()->title_kz, 'url'=>request()->url, 'description_ru'=>htmlspecialchars(request()->description_ru, ENT_QUOTES), 'description_kz'=>htmlspecialchars(request()->description_kz, ENT_QUOTES), 'service_id'=>request()->service_id];
 
-        $category->update($sql_data);
+
+        $category->update($data);
 
         return redirect()->route('admin.category.show', $category->id);
     }

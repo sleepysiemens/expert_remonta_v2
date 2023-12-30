@@ -51,7 +51,7 @@
                 <tr>
                   <td>{{$gallery->id}}</td>
                   <td>{{$gallery->title}}</td>
-                  <td>{{$gallery->src}}</td>                  
+                    <td><img src="{{asset('img/gallery/'.$gallery->src)}}" style="height: 150px; width: 150px; object-fit: contain"></td>
                 </tr>
 
 

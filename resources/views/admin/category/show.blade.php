@@ -58,9 +58,9 @@
                   <td>{{$category->title_ru}}</td>
                   <td>{{$category->title_kz}}</td>
                   <td>{{$category->url}}</td>
-                  <td>{{$category->description_ru}}</td>
-                  <td>{{$category->description_kz}}</td>
-                  <td>{{$category->src}}</td>
+                  <td>{!! $category->description_ru !!}</td>
+                  <td>{!! $category->description_kz !!}</td>
+                    <td><img src="{{asset('img/categories/'.$category->src)}}" style="height: 150px; width: 150px; object-fit: contain"></td>
                   @foreach ($service as $service1)
                   <td><a href="{{route('admin.service.show',$service1->id)}}">{{$service1->title}}</a></td>
                   @endforeach

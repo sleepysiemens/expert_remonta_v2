@@ -18,6 +18,10 @@
     <form action="{{route('admin.review.store')}}" method="post">
         @csrf
       <div class="card-body">
+          <div class="form-group">
+              <label for="exampleInputEmail1">Дата</label>
+              <input type="date" class="form-control" placeholder="00.00.0000" name="review_date">
+          </div>
         <div class="form-group">
           <label for="exampleInputEmail1">Имя пользователя, ru</label>
           <input type="text" class="form-control" placeholder="Имя" name="username_ru" required>

@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('services', function (Blueprint $table) {
-            $table->dropColumn('title');
-            $table->dropColumn('description');
-            $table->text('title_ru');
-            $table->text('title_kz')->nullable();
-            $table->text('description_ru')->nullable();
-            $table->text('description_kz')->nullable();
+        Schema::table('seos', function (Blueprint $table) {
+            $table->dropColumn('seo');
+            $table->dropColumn('meta');
+            $table->text('seo_ru');
+            $table->text('seo_kz')->nullable();
+            $table->text('meta_ru');
+            $table->text('meta_kz')->nullable();
         });
     }
 

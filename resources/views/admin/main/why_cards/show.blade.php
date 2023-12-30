@@ -53,7 +53,6 @@ menu-open
                 <th>Позаголовок, ru</th>
                 <th>Заголовок, kz</th>
                 <th>Позаголовок, kz</th>
-                <th>Изображение</th>
             </tr>
         </thead>
         <tbody>
@@ -65,7 +64,6 @@ menu-open
                     <td>{{$WhyCards->subtitle_ru}}</td>
                     <td>{{$WhyCards->title_kz}}</td>
                     <td>{{$WhyCards->subtitle_kz}}</td>
-                    <td>{{$WhyCards->src}}</td>
                 </tr>
 
 

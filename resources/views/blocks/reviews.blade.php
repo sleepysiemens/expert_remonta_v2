@@ -12,12 +12,15 @@
 
             @foreach ($reviews as $review)
 
-            <a class="review">
+            <a class="review" href="{{asset(route('reviews.index'))}}">
                 <div class="review-div">
                     <div class="review-user-info">
 
                         <div class="review-user-info-subdiv">
-                            <h3>{{app()->db_translate($review->username_ru,$review->username_kz)}}</h3>
+                            <div style="display: flex">
+                                <h3>{{app()->db_translate($review->username_ru,$review->username_kz)}}</h3>
+                                <p style="margin: 0; margin-left: 10px"> @if($review->review_date!=null) {{date("d.m.Y",strtotime($review->review_date))}} @endif</p>
+                            </div>
                             <div class="review-stars">
                                 @for ($i = 1; $i <= 5; $i++)
                                     @if ($i<=$review->rating)

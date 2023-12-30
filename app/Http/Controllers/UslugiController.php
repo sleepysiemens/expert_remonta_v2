@@ -16,6 +16,7 @@ use App\Models\WelcomeCard;
 use App\Models\WhyCard;
 use App\Models\Seo;
 use App\Models\Blog;
+use App\Models\City;
 
 
 
@@ -32,11 +33,12 @@ class UslugiController extends Controller
         $instagram=Contact::query()->select('link')->where('name','=','instagram')->get();
         $phone=Contact::query()->select('link')->where('name','=','phone')->get();
         $seos=Seo::query()->where('page','=','uslugi')->get();
+        $cities=City::all();
 
 
         $page='uslugi';
 
-        return view('uslugi.index', compact(['services', 'reviews', 'whatsapp', 'telegram', 'instagram', 'phone', 'Headers', 'WelcomeCards', 'page', 'seos']));
+        return view('uslugi.index', compact(['cities','services', 'reviews', 'whatsapp', 'telegram', 'instagram', 'phone', 'Headers', 'WelcomeCards', 'page', 'seos']));
     }
 
     public function service($service)
@@ -52,11 +54,12 @@ class UslugiController extends Controller
         $phone=Contact::query()->select('link')->where('name','=','phone')->get();
         $seos=Seo::query()->where('page','=','uslugi/'.$service)->get();
         $ServiceImages=ServiceImage::query()->join('services', 'services.id', '=', 'service_images.service_id')->where(['services.url'=>$service])->select('service_images.src')->get();
+        $cities=City::all();
 
 
         $page='uslugi/'.$service;
 
-        return view('service.index', compact(['ServiceImages','services','categories', 'reviews', 'whatsapp', 'telegram', 'instagram', 'phone', 'Headers', 'WelcomeCards', 'page', 'seos']));
+        return view('service.index', compact(['cities','ServiceImages','services','categories', 'reviews', 'whatsapp', 'telegram', 'instagram', 'phone', 'Headers', 'WelcomeCards', 'page', 'seos']));
     }
 
     public function category($service, $category)
@@ -73,9 +76,10 @@ class UslugiController extends Controller
         $popular_services=Blog::query()->offset(0)->limit(6)->get();
         $CategoryImages=CategoryImage::query()->where(['category_id'=>$categories[0]->id])->select('category_images.src', 'category_images.category_id')->get();
         $seos=Seo::query()->where('page','=','uslugi/'.$service.'/'.$category)->get();
+        $cities=City::all();
 
         $page='uslugi/'.$service.'/'.$category;
 
-        return view('category.index', compact(['categories', 'reviews', 'popular_services', 'whatsapp', 'telegram', 'instagram', 'phone', 'Headers', 'WelcomeCards', 'WhyCards', 'page', 'CategoryImages', 'seos']));
+        return view('category.index', compact(['cities','categories', 'reviews', 'popular_services', 'whatsapp', 'telegram', 'instagram', 'phone', 'Headers', 'WelcomeCards', 'WhyCards', 'page', 'CategoryImages', 'seos']));
     }
 }

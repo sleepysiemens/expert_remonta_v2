@@ -140,7 +140,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin/', 'middleware'=>'admin
         Route::delete('/{gallery}', 'DestroyController@index')->name('admin.gallery.destroy');
     });
 
-  	Route::group(['namespace' => 'Users', 'prefix' => 'user'], function()
+  	Route::group(['namespace' => 'Users', 'prefix' => 'user', 'middleware' => 'redactor'], function()
     {
         Route::get('/', 'IndexController@index')->name('admin.user.index');
         Route::get('/{user}', 'ShowController@index')->name('admin.user.show');
@@ -202,7 +202,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin/', 'middleware'=>'admin
 
     });// /MAIN
 
-    Route::group(['namespace' => 'Application', 'prefix' => 'application'], function()
+    Route::group(['namespace' => 'Application', 'prefix' => 'application', 'middleware' => 'redactor'], function()
     {
         Route::get('/', 'IndexController@index')->name('admin.application.index');
         Route::get('/{application}', 'ShowController@index')->name('admin.application.show');

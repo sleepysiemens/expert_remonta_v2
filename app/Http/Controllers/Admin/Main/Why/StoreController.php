@@ -11,10 +11,7 @@ class StoreController extends Controller
 {
     public function index()
     {
-        $sql_data=['title_ru'=>request()->title_ru, 'subtitle_ru'=>request()->subtitle_ru, 'title_kz'=>request()->title_kz, 'subtitle_kz'=>request()->subtitle_kz, 'src'=>(request()->title).'-image.img'];
-
-        $file = request()->file('src');
-        $file->move(public_path() . '/img/icons/',request()->title.'-image.img');
+        $sql_data=['title_ru'=>request()->title_ru, 'subtitle_ru'=>request()->subtitle_ru, 'title_kz'=>request()->title_kz, 'subtitle_kz'=>request()->subtitle_kz];
 
         WhyCard::create($sql_data);
 

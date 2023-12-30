@@ -61,7 +61,7 @@ menu-open
                   <td>{{$WelcomeCards->id}}</td>
                   <td>{{$WelcomeCards->title_ru}}</td>
                   <td>{{$WelcomeCards->title_kz}}</td>
-                  <td>{{$WelcomeCards->src}}</td>
+                    <td><img src="{{asset('img/cards/'.$WelcomeCards->src)}}" style="height: 150px; width: 150px; object-fit: contain"></td>
                 </tr>
 
 

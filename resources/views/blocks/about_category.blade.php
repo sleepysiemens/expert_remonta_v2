@@ -5,13 +5,9 @@
     </div>
     <p>
         {{app()->db_translate($category->description_ru, $category->description_kz)}}
-  </p>
-
+    </p>
 </section>
 
-<script>
-nestedElement.scrollTo(0, nestedElement.scrollHeight);
-</script>
 <script>
     $('#main-form-btn').on('click', function()
     {

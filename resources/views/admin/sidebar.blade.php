@@ -153,6 +153,7 @@
 
           </li>
       </ul>
+          @if(auth()->user()->role == 'admin')
         <ul class="nav nav-treeview" style="border-bottom: 1px solid rgba(255,255,255, .2)">
           <li class="nav-header">ЗАЯВКИ</li>
             <li class="nav-item">
@@ -174,6 +175,7 @@
           </li>
 
         </ul>
+       @endif
     </li>
 
   </nav>

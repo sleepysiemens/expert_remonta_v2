@@ -39,7 +39,7 @@
                 <tr>
                     <td>{{$gallery->id}}</td>
                     <td>{{$gallery->title}}</td>
-                    <td>{{$gallery->src}}</td>
+                    <td><img src="{{asset('img/gallery/'.$gallery->src)}}" style="height: 150px; width: 150px; object-fit: contain"></td>
                     <td>
                       <form method="post" action="{{route('admin.gallery.destroy',$gallery->id)}}">
                         @csrf
@@ -50,7 +50,7 @@
                     <td><a href="{{route('admin.gallery.edit',$gallery->id)}}"><i class="fas fa-pen"></i></a></td>
                     <td><a href="{{route('admin.gallery.show',$gallery->id)}}"><i class="fas fa-arrow-right"></i></a></td>
                 </tr>
-        
+
             @endforeach
 
         </tbody>

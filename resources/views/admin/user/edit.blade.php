@@ -43,6 +43,7 @@
             <select class="form-control" name="role" required>
               <option value="user">user</option>
               <option value="admin">admin</option>
+              <option value="redactor">redactor</option>
             </select>
           </div>
         </div>

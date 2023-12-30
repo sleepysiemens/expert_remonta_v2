@@ -43,7 +43,8 @@
                 <td>{{$CategoryImage->id}}</td>
                 <td>{{$CategoryImage->title}}</td>
                 <td>{{$CategoryImage->src}}</td>
-                <td>
+                  <td><img src="{{asset('img/category_slider/'.$category->id.'/'.$CategoryImage->src)}}" style="height: 150px; width: 150px; object-fit: contain"></td>
+                  <td>
                   <form method="post" action="{{route('admin.category_slider.destroy',$CategoryImage->id)}}">
                     @csrf
                     @method('delete')

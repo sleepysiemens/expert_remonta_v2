@@ -42,8 +42,10 @@
             <tr>
               <th>Id</th>
               <th>Страница</th>
-              <th>SEO-заголовок</th>
-              <th>META-описание</th>
+              <th>SEO-заголовок, ru</th>
+              <th>SEO-заголовок, kz</th>
+              <th>META-описание, ru</th>
+              <th>META-описание, kz</th>
             </tr>
         </thead>
         <tbody>
@@ -52,8 +54,10 @@
                 <tr>
                   <td>{{$seo->id}}</td>
                   <td>{{$seo->page}}</td>
-                  <td>{{$seo->seo}}</td>
-                  <td>{{$seo->meta}}</td>
+                  <td>{{$seo->seo_ru}}</td>
+                  <td>{{$seo->seo_kz}}</td>
+                  <td>{{$seo->meta_ru}}</td>
+                  <td>{{$seo->meta_kz}}</td>
                 </tr>
 
 

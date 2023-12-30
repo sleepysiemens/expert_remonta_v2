@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('services', function (Blueprint $table) {
-            $table->dropColumn('title');
-            $table->dropColumn('description');
-            $table->text('title_ru');
-            $table->text('title_kz')->nullable();
-            $table->text('description_ru')->nullable();
-            $table->text('description_kz')->nullable();
+        Schema::table('reviews', function (Blueprint $table) {
+            $table->timestamp('review_date')->nullable();
         });
     }
 

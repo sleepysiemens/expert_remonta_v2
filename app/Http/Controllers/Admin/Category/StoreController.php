@@ -12,12 +12,14 @@ class StoreController extends Controller
 {
     public function index()
     {
-        $sql_data=['title_ru'=>request()->title_ru, 'title_kz'=>request()->title_kz, 'url'=>request()->url, 'description_ru'=>request()->description_ru, 'description_kz'=>request()->description_kz, 'src'=>(request()->title).'-image.img', 'service_id'=>request()->service_id];
+        $data=request()->all();
 
         $file = request()->file('src');
         $file->move(public_path() . '/img/categories/',request()->title.'-image.img');
+        unset($data['src']);
+        $data['src']=request()->title.'-image.img';
 
-        Category::create($sql_data);
+        Category::create($data);
         //$categories=Category::all();
 
         return redirect()->route('admin.category.index');

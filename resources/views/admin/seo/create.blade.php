@@ -23,13 +23,21 @@
           <input type="text" class="form-control" placeholder="Страница" name="page" required>
         </div>
         <div class="form-group">
-          <label for="exampleInputEmail1">SEO-заголовок</label>
-          <input type="text" class="form-control" placeholder="SEO" name="seo" required>
+          <label for="exampleInputEmail1">SEO-заголовок, ru</label>
+          <input type="text" class="form-control" placeholder="SEO" name="seo_ru" required>
         </div>
+          <div class="form-group">
+              <label for="exampleInputEmail1">SEO-заголовок, kz</label>
+              <input type="text" class="form-control" placeholder="SEO" name="seo_kz">
+          </div>
         <div class="form-group">
-          <label for="exampleInputEmail1">META-описание</label>
-          <input type="text" class="form-control" placeholder="Meta" name="meta" required>
+          <label for="exampleInputEmail1">META-описание, ru</label>
+          <input type="text" class="form-control" placeholder="Meta" name="meta_ru" required>
         </div>
+          <div class="form-group">
+              <label for="exampleInputEmail1">META-описание, kz</label>
+              <input type="text" class="form-control" placeholder="Meta" name="meta_kz" >
+          </div>
       </div>
       <!-- /.card-body -->
 

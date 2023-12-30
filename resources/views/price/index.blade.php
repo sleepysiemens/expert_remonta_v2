@@ -10,9 +10,13 @@ nav-link-selected
 @endsection
 
 @section('meta-description')
-    Ремонт квартир и строительство в Астане цена работ за квадратный метр, стоимость услуг компании &quot;Эксперт Ремонта&quot;. Низкие цены и постоянные акции
+    @foreach ($seos as $seo)
+        {{app()->db_translate($seo->meta_ru, $seo->meta_kz)}}
+    @endforeach
 @endsection
 
 @section('seo-title')
-    Прайс расценки на ремонт и строительство в Астане
+    @foreach ($seos as $seo)
+        {{app()->db_translate($seo->seo_ru, $seo->seo_kz)}}
+    @endforeach
 @endsection

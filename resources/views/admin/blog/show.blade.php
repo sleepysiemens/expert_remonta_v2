@@ -59,7 +59,7 @@
                     <td>{{$blog->url}}</td>
                     <td>{{$blog->description_ru}}</td>
                     <td>{{$blog->description_kz}}</td>
-                    <td>{{$blog->src}}</td>
+                    <td><img src="{{asset('img/blog/'.$blog->src)}}" style="height: 150px; width: 150px; object-fit: contain"></td>
                 </tr>
 
 

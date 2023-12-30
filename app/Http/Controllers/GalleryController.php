@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Gallery;
 use App\Models\Contact;
 use App\Models\Seo;
+use App\Models\City;
 
 
 
@@ -21,10 +22,11 @@ class GalleryController extends Controller
         $instagram=Contact::query()->select('link')->where('name','=','instagram')->get();
         $phone=Contact::query()->select('link')->where('name','=','phone')->get();
         $seos=Seo::query()->where('page','=','gallery')->get();
+        $cities=City::all();
 
 
         $page='gallery';
 
-        return view('gallery.index', compact(['galleries','whatsapp', 'telegram', 'instagram', 'phone', 'page', 'seos']));
+        return view('gallery.index', compact(['cities','galleries','whatsapp', 'telegram', 'instagram', 'phone', 'page', 'seos']));
     }
 }

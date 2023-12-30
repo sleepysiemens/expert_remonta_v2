@@ -11,9 +11,13 @@ nav-link-selected
 @endsection
 
 @section('meta-description')
-    Отзывы ремонт квартир и строительство домов в городе Астана. Строительная компания выполняющая качественные услуги . Хочешь без проблем граблей кликай тут!
+    @foreach ($seos as $seo)
+        {{app()->db_translate($seo->meta_ru, $seo->meta_kz)}}
+    @endforeach
 @endsection
 
 @section('seo-title')
-    Отзывы ремонт квартир – Эксперт Ремонта
+    @foreach ($seos as $seo)
+        {{app()->db_translate($seo->seo_ru, $seo->seo_kz)}}
+    @endforeach
 @endsection

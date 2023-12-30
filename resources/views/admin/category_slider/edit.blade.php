@@ -32,7 +32,10 @@
         <div class="card-body">
             <div class="form-group">
                 <label for="exampleInputEmail1">Изображение</label>
-                <input type="file" class="form-control" name="src" required>
+                <div style="display: flex; justify-content: start">
+                    <input style="width: 50%" type="file" class="form-control" id="imageFile" placeholder="Название" name="src" required>
+                    <img id="prevImage" style="height: 100px; width: 100px; object-fit: contain" src="{{asset('img/category_slider/'.$category_slider->category_id.'/'.$category_slider->src)}}">
+                </div>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Относится к</label>

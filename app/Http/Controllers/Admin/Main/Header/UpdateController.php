@@ -23,6 +23,12 @@ class UpdateController extends Controller
 			$sql_data=['title_ru'=>request()->title_ru, 'title_kz'=>request()->title_kz, 'subtitle_ru'=>request()->subtitle_ru, 'subtitle_kz'=>request()->subtitle_kz];
         }
 
+          if(!isset(request()->all()['blur']))
+              $sql_data['blur']=0;
+          else
+              $sql_data['blur']=1;
+
+
         $header->update($sql_data);
 
         return redirect()->route('admin.main.header.show', $header->id);

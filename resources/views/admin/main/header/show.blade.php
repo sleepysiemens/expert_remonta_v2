@@ -50,7 +50,7 @@ menu-open
                     <td>{{$header->title_kz}}</td>
                     <td>{{$header->subtitle_ru}}</td>
                     <td>{{$header->subtitle_kz}}</td>
-                    <td>{{$header->src}}</td>
+                    <td><img src="{{asset('img/main_bg/'.$header->src)}}" style="height: 150px; width: 150px; object-fit: contain"></td>
                 </tr>
 
 

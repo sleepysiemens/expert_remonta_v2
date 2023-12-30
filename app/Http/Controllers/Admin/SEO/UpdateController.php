@@ -13,7 +13,7 @@ class UpdateController extends Controller
     public function index(Seo $seo)
     {
 
-        $data=request()->validate(['page'=>'required|string', 'seo'=>'required|string', 'meta'=>'required|string']);
+        $data=request()->all();
 
         $seo->update($data);
 

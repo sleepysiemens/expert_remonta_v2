@@ -1,6 +1,6 @@
 <section class="welcome">
   @foreach ($Headers as $Header)
-            <img class="welcome-bg" src="/img/main_bg/{{$Header->src}}">
+            <img class="welcome-bg" src="/img/main_bg/{{$Header->src}}" @if($Header->blur==1) style="filter: blur(4px);" @endif>
   @endforeach
             <div class="welcome-content">
                 <div class="welcome-header hidden">

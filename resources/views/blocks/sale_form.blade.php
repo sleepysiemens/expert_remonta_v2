@@ -19,9 +19,6 @@
 
         <h3>{{app()->db_translate($sale->title_ru,$sale->title_kz)}}</h3>
         <p>
-            Акции и скидки не суммируются.Все подробности и сроки проводимых акций Вы можете узнать, позвонив нам. О праве на акцию или скидку необходимо сообщить при подачей заявки в форме ниже.
-        </p>
-        <p>
             {{app()->db_translate($sale->description_ru,$sale->description_kz)}}
         </p>
         <form class="form-sale" method="post" action="{{route('form.store')}}">

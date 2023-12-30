@@ -1530,12 +1530,12 @@ class Application extends Container implements ApplicationContract, CachesConfig
         if(isset($_COOKIE['locale']) AND $_COOKIE['locale']=='kz')
         {
             if($var_kz!=NULL)
-                echo $var_kz;
+                echo($var_kz);
             else
-                echo $var_ru;
+                echo($var_ru);
         }
         else
-            echo $var_ru;
+            echo($var_ru);
     }
     public function translate($var)
     {

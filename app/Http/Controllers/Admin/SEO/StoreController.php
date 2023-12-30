@@ -11,7 +11,7 @@ class StoreController extends Controller
 {
     public function index()
     {
-        $data=request()->validate(['page'=>'required|string', 'seo'=>'required|string', 'meta'=>'required|string']);
+        $data=request()->all();
 
         Seo::create($data);
 

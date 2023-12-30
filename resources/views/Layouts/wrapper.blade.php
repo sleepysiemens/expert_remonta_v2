@@ -115,24 +115,22 @@
     @yield('sale-form')
     @yield('form-div')
 
-    {{--
     <div id="city-yes-no" class="page-wrapper @if(!isset($_COOKIE['city']) OR $_COOKIE['city']==NULL){{'page-wrapper-active'}}@endif">
         <div class="sale-form-div">
-            <h3>Ваш город Астана?</h3>
+            <h3>Выберите город</h3>
             <br>
-            <div style="display: flex; width: 90%; margin: auto; height: 35px; justify-content: space-evenly">
-                <form style="height: 35px" method="post" action="{{route('city.store')}}">
-                    @csrf
-                    <input type="hidden" name="city" value="Астана">
-                    <button class="hidden gradient_button" style="height: 100%"><p style="margin-top: auto">Да</p></button>
-                </form>
-                <button id="city-no" class="hidden gradient_button"><p style="margin-top: auto">Нет</p></button>
+            <div style="width: 90%; margin: auto; justify-content: space-evenly">
+                @foreach($cities as $city)
+                    <form style="height: 35px; margin: auto; display: inline-flex; margin: 10px 0; width: 49%; justify-content: center" method="post" action="{{route('city.store')}}">
+                        @csrf
+                        <input type="hidden" name="city" value="{{$city->city}}">
+                        <button class="hidden gradient_button" style="height: 100%" ><p style="margin-top: auto">{{$city->city}}</p></button>
+                    </form>
+                @endforeach
             </div>
             <br>
         </div>
     </div>
-    --}}
-    @yield('cities')
     <script>
         $('#city-no').on('click', function(){
             $('#city-yes-no').removeClass('page-wrapper-active');
@@ -170,7 +168,7 @@
         </footer>
     </div>
 
-    <div class="parallax-layer parallax__layer--back">
+    <div class="parallax-layer parallax__layer--back" @if($page=='contacts' or $page=='gallery') style="display: none" @endif>
     </div>
 </div>
 </body>

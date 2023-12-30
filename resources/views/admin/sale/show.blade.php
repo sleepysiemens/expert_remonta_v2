@@ -57,7 +57,7 @@
                     <td>{{$sale->title_kz}}</td>
                     <td>{{$sale->period}}</td>
                     <td>{{$sale->percent}}</td>
-                    <td>{{$sale->src}}</td>
+                    <td><img src="{{asset('img/sales/'.$sale->src)}}" style="height: 150px; width: 150px; object-fit: contain"></td>
                 </tr>
 
 

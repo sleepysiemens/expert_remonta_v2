@@ -48,8 +48,13 @@ menu-open
           </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Изображение</label>
-            <input type="file" class="form-control" placeholder="Название" name="src">
-          </div>
+            <div style="display: flex; justify-content: start">
+                <input style="width: 50%" type="file" class="form-control" id="imageFile" placeholder="Название" name="src" >
+                <img id="prevImage" style="height: 100px; width: 100px; object-fit: contain" src="{{asset('img/main_bg/'.$header->src)}}">
+            </div>
+            <input type="checkbox" name="blur" id="blur" value=1 @if($header->blur==1) checked @endif>
+            <label for="blur">Размытие</label>
+        </div>
       </div>
       <!-- /.card-body -->
 

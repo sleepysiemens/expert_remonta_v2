@@ -47,7 +47,7 @@
                     <td>{{$service->url}}</td>
                     <td>{{$service->description_ru}}</td>
                     <td>{{$service->description_kz}}</td>
-                    <td>{{$service->src}}</td>
+                    <td><img src="{{asset('img/services/'.$service->src)}}" style="height: 150px; width: 150px; object-fit: contain"></td>
                     <td>
                       <form method="post" action="{{route('admin.service.destroy',$service->id)}}">
                         @csrf

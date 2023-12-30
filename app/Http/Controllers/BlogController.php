@@ -10,6 +10,7 @@ use App\Models\About;
 use App\Models\WhyCard;
 use App\Models\Seo;
 use App\Models\Blog;
+use App\Models\City;
 
 
 
@@ -27,10 +28,10 @@ class BlogController extends Controller
         $instagram=Contact::query()->select('link')->where('name','=','instagram')->get();
         $phone=Contact::query()->select('link')->where('name','=','phone')->get();
         $seos=Seo::query()->where('page','=','contacts')->get();
-
+        $cities=City::all();
         $page='contacts';
 
 
-        return view('blog.index', compact(['blog','reviews', 'whatsapp', 'telegram', 'instagram', 'phone', 'Abouts', 'WhyCards', 'page', 'seos']));
+        return view('blog.index', compact(['cities','blog','reviews', 'whatsapp', 'telegram', 'instagram', 'phone', 'Abouts', 'WhyCards', 'page', 'seos']));
     }
 }

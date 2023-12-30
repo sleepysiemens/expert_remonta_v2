@@ -32,7 +32,7 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Текст,ru</label>
-            <textarea class="form-control" name="description_ru" placeholder="Текст описания..." required></textarea>
+            <textarea class="form-control" name="description_ru" placeholder="Текст описания..."></textarea>
         </div>
           <div class="form-group">
               <label for="exampleInputEmail1">Текст,kz</label>

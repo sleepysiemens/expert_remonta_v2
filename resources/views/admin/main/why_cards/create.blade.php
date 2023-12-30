@@ -42,10 +42,6 @@ menu-open
               <label for="exampleInputEmail1">Позаголовок, kz</label>
               <input type="text" class="form-control" placeholder="Позаголовок" name="subtitle_kz">
           </div>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Изображение</label>
-          <input type="file" class="form-control" placeholder="Название" name="src" required>
-        </div>
       </div>
       <!-- /.card-body -->
 

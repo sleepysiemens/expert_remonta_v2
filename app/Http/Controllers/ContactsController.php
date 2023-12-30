@@ -10,6 +10,7 @@ use App\Models\Contact;
 use App\Models\About;
 use App\Models\WhyCard;
 use App\Models\Seo;
+use App\Models\City;
 
 
 
@@ -27,10 +28,11 @@ class ContactsController extends Controller
         $instagram=Contact::query()->select('link')->where('name','=','instagram')->get();
         $phone=Contact::query()->select('link')->where('name','=','phone')->get();
         $seos=Seo::query()->where('page','=','contacts')->get();
+        $cities=City::all();
 
         $page='contacts';
 
 
-        return view('contacts.index', compact(['reviews', 'whatsapp', 'telegram', 'instagram', 'phone', 'Abouts', 'WhyCards', 'page', 'seos', 'Headers']));
+        return view('contacts.index', compact(['cities','reviews', 'whatsapp', 'telegram', 'instagram', 'phone', 'Abouts', 'WhyCards', 'page', 'seos', 'Headers']));
     }
 }

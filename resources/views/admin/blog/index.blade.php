@@ -47,7 +47,8 @@
                     <td>{{$blog->url}}</td>
                     <td>{{$blog->description_ru}}</td>
                     <td>{{$blog->description_kz}}</td>
-                    <td>{{$blog->src}}</td>
+                    <td><img src="{{asset('img/blog/'.$blog->src)}}" style="height: 150px; width: 150px; object-fit: contain"></td>
+
                     <td>
                       <form method="post" action="{{route('admin.blog.destroy',$blog->id)}}">
                         @csrf

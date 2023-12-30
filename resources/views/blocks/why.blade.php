@@ -8,7 +8,6 @@
 
         <span class="why-banner hidden">
             <span class="why-banner-number">{{$why_cnt}}</span>
-            <div style="height: 100px"></div>
             <h4>{{app()->db_translate($card->title_ru, $card->title_kz)}}</h4>
             <p>{{app()->db_translate($card->subtitle_ru, $card->subtitle_kz)}}</p>
         </span>

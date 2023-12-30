@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminPannelMiddleware
+class RedactorMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class AdminPannelMiddleware
     {
         if(auth()->user()==null)
             return redirect()->route('home');
-        elseif(auth()->user()->role!=='admin' and auth()->user()->role!=='redactor')
+        elseif(auth()->user()->role!=='admin')
             return redirect()->route('main.index');
 
         return $next($request);

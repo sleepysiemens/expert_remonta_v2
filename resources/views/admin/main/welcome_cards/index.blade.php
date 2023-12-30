@@ -49,7 +49,7 @@ menu-open
                     <td>{{$card->id}}</td>
                     <td>{{$card->title_ru}}</td>
                     <td>{{$card->title_kz}}</td>
-                    <td>{{$card->src}}</td>
+                    <td><img src="{{asset('img/cards/'.$card->src)}}" style="height: 150px; width: 150px; object-fit: contain"></td>
                     <td>
                       <form method="post" action="{{route('admin.main.welcome_cards.destroy',$card->id)}}">
                         @csrf

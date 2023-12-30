@@ -26,8 +26,10 @@
             <tr>
               <th>Id</th>
               <th>Страница</th>
-              <th>SEO-заголовок</th>
-              <th>META-описание</th>
+              <th>SEO-заголовок, ru</th>
+              <th>SEO-заголовок, kz</th>
+              <th>META-описание, ru</th>
+              <th>META-описание, kz</th>
               <th></th>
               <th></th>
               <th></th>
@@ -40,8 +42,10 @@
                 <tr>
                     <td>{{$seo->id}}</td>
                     <td>{{$seo->page}}</td>
-                    <td>{{$seo->seo}}</td>
-                    <td>{{$seo->meta}}</td>
+                    <td>{{$seo->seo_ru}}</td>
+                    <td>{{$seo->seo_kz}}</td>
+                    <td>{{$seo->meta_ru}}</td>
+                    <td>{{$seo->meta_kz}}</td>
                     <td>
                       <form method="post" action="{{route('admin.seo.destroy',$seo->id)}}">
                         @csrf
@@ -52,7 +56,7 @@
                     <td><a href="{{route('admin.seo.edit',$seo->id)}}"><i class="fas fa-pen"></i></a></td>
                     <td><a href="{{route('admin.seo.show',$seo->id)}}"><i class="fas fa-arrow-right"></i></a></td>
                 </tr>
-        
+
             @endforeach
 
         </tbody>

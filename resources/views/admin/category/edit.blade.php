@@ -44,15 +44,19 @@
           </div>
           <div class="form-group">
               <label for="exampleInputEmail1">Текст, ru</label>
-              <textarea id="summernote" name="description_ru" placeholder="Текст описания..." required>{{$category->description_ru}}</textarea>
+              <textarea id="summernote" name="description_ru" placeholder="Текст описания..." required>{!!$category->description_ru !!}</textarea>
           </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Текст, kz</label>
-                <textarea id="summernote1" name="description_kz" placeholder="Текст описания..." required>{{$category->description_kz}}</textarea>
+                <textarea id="summernote1" name="description_kz" placeholder="Текст описания...">{!!$category->description_kz!!}</textarea>
             </div>
           <div class="form-group">
+
             <label for="exampleInputEmail1">Обложка</label>
-            <input type="file" class="form-control" placeholder="Название" name="src">
+              <div style="display: flex; justify-content: start">
+                  <input style="width: 50%" type="file" class="form-control" id="imageFile" placeholder="Название" name="src" >
+                  <img id="prevImage" style="height: 100px; width: 100px; object-fit: contain" src="{{asset('img/categories/'.$category->src)}}">
+              </div>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Относится к</label>
@@ -64,12 +68,12 @@
           </div>
         </div>
       <!-- /.card-body -->
-
       <div class="card-footer">
         <button type="submit" class="btn btn-primary">Изменить</button>
       </div>
     </form>
   </div>
+
     <br>
 <div class="card card-primary">
     <div class="card-header">
@@ -90,12 +94,20 @@
                 <input type="text" class="form-control" placeholder="Если поле пустое,выберете (относится к)  примените изменения "  name="page" disabled required @if(isset($service[0]->url)and $service[0]->url!=NULL) value="uslugi/{{$service[0]->url.'/'.$category->url}}" @endif >
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">SEO-заголовок</label>
-                <input type="text" class="form-control" placeholder="SEO" name="seo" required value="@if(isset($seos[0]->id) and $seos[0]->id!=NULL){{$seos[0]->seo}}@endif">
+                <label for="exampleInputEmail1">SEO-заголовок, ru</label>
+                <input type="text" class="form-control" placeholder="SEO" name="seo_ru" required value="@if(isset($seos[0]->id) and $seos[0]->id!=NULL){{$seos[0]->seo_ru}}@endif">
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">META-описание</label>
-                <input type="text" class="form-control" placeholder="Meta" name="meta" required value="@if(isset($seos[0]->id) and $seos[0]->id!=NULL){{$seos[0]->meta}}@endif">
+                <label for="exampleInputEmail1">SEO-заголовок, kz</label>
+                <input type="text" class="form-control" placeholder="SEO" name="seo_kz" value="@if(isset($seos[0]->id) and $seos[0]->id!=NULL){{$seos[0]->seo_kz}}@endif">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">META-описание, ru</label>
+                <input type="text" class="form-control" placeholder="Meta" name="meta_ru" required value="@if(isset($seos[0]->id) and $seos[0]->id!=NULL){{$seos[0]->meta_ru}}@endif">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">META-описание, kz</label>
+                <input type="text" class="form-control" placeholder="Meta" name="meta_kz" required value="@if(isset($seos[0]->id) and $seos[0]->id!=NULL){{$seos[0]->meta_kz}}@endif">
             </div>
         </div>
         <!-- /.card-body -->
@@ -106,3 +118,20 @@
     </form>
 </div>
 @endsection
+
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onloadend = function(e) {
+                $('#prevImage').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#imageFile").change(function() {
+        readURL(this);
+    });
+</script>

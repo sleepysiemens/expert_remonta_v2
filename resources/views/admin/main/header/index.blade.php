@@ -29,8 +29,7 @@ menu-open
               <th>Заголовок, kz</th>
               <th>Позаголовок, ru</th>
               <th>Позаголовок, kz</th>
-			<th>Фон</th>
-              <th></th>
+                <th>Фон</th>
               <th></th>
               <th></th>
             </tr>
@@ -45,8 +44,7 @@ menu-open
                     <td>{{$header->title_kz}}</td>
                     <td>{{$header->subtitle_ru}}</td>
                     <td>{{$header->subtitle_kz}}</td>
-                    <td>{{$header->src}}</td>
-
+                    <td><img src="{{asset('img/main_bg/'.$header->src)}}" style="height: 150px; width: 150px; object-fit: contain"></td>
 
                     <td><a href="{{route('admin.main.header.edit',$header->id)}}"><i class="fas fa-pen"></i></a></td>
                     <td><a href="{{route('admin.main.header.show',$header->id)}}"><i class="fas fa-arrow-right"></i></a></td>
