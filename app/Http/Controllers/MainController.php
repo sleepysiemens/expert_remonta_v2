@@ -78,6 +78,7 @@ class MainController extends Controller
         }
 
         //dd($_COOKIE['locale']);
+        dd(request());
         return redirect('/'.request()->sourse);
     }
 

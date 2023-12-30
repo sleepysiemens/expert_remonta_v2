@@ -17,6 +17,7 @@ use App\Models\WhyCard;
 use App\Models\Seo;
 use App\Models\Blog;
 use App\Models\City;
+use App\Models\VisitsCount;
 
 
 
@@ -64,6 +65,8 @@ class UslugiController extends Controller
 
     public function category($service, $category)
     {
+        event('postHasViewed', $category);
+
         $Headers=Header::all();
         $WhyCards=WhyCard::all();
         $WelcomeCards=WelcomeCard::all();
@@ -73,13 +76,15 @@ class UslugiController extends Controller
         $telegram=Contact::query()->select('link')->where('name','=','telegram')->get();
         $instagram=Contact::query()->select('link')->where('name','=','instagram')->get();
         $phone=Contact::query()->select('link')->where('name','=','phone')->get();
-        $popular_services=Blog::query()->offset(0)->limit(6)->get();
         $CategoryImages=CategoryImage::query()->where(['category_id'=>$categories[0]->id])->select('category_images.src', 'category_images.category_id')->get();
         $seos=Seo::query()->where('page','=','uslugi/'.$service.'/'.$category)->get();
         $cities=City::all();
 
+
         $page='uslugi/'.$service.'/'.$category;
 
-        return view('category.index', compact(['cities','categories', 'reviews', 'popular_services', 'whatsapp', 'telegram', 'instagram', 'phone', 'Headers', 'WelcomeCards', 'WhyCards', 'page', 'CategoryImages', 'seos']));
+
+
+        return view('category.index', compact(['cities','categories', 'reviews', 'whatsapp', 'telegram', 'instagram', 'phone', 'Headers', 'WelcomeCards', 'WhyCards', 'page', 'CategoryImages', 'seos']));
     }
 }

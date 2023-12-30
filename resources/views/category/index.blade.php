@@ -1,18 +1,17 @@
 @extends('Layouts.wrapper')
+@php
 
+@endphp
 @section('service')
 nav-link-selected
 @endsection
 
     @foreach ($categories as $category)
 
-        @section('page_title')
-            {{$category->title}} – Эксперт Ремонта
-        @endsection
 
         @section('content')
             @include('blocks.welcome-category')
-            @include('blocks.path-category')
+            @include('blocks.popular_services')
             @include('blocks.about_category')
             @include('blocks.why')
             @include('blocks.popular_services')

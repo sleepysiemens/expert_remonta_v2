@@ -36,10 +36,10 @@
                     <a href="{{ route('contacts.index') }}/" class="nav-link @yield('contact')"><p>{{app()->translate('Контакты')}}</p></a>
                 </div>
 
-                <div class="header-contact-info">
+                <a class="header-contact-info" id="city-select" style="cursor: pointer">
                     <h1><i class="fas fa-map-marker-alt"></i> @if(isset($_COOKIE['city'])) {{$_COOKIE['city']}} @else Астана@endif</h1>
                     <p>+7 (775) 138-50-80</p>
-                </div>
+                </a>
                 <form method="post" action="{{asset(route('locale.change'))}}" class="locale-pc" style="display: flex; margin-left: 20px">
                     @csrf
                     <button class="lang_change">
@@ -69,10 +69,11 @@
                     <br>
                     <form method="post" action="{{asset(route('locale.change'))}}"  style="display: flex; margin-left: 20px">
                         @csrf
+                        <input type="hidden" name="sourse" value="{{$page}}">
                         <button class="lang_change">
                             <p>
-                                @if(!isset($_COOKIE['locale']) OR $_COOKIE['locale']=='ru') {{'ҚАЗ'}} @php $locale='ru' @endphp @endif
-                                @if(isset($_COOKIE['locale']) AND $_COOKIE['locale']=='kz') {{'РУС'}} @php $locale='kz' @endphp @endif
+                                @if(!isset($_COOKIE['locale']) OR $_COOKIE['locale']=='ru') {{'ҚАЗs'}} @php $locale='ru' @endphp @endif
+                                @if(isset($_COOKIE['locale']) AND $_COOKIE['locale']=='kz') {{'РУСs'}} @php $locale='kz' @endphp @endif
                             </p>
                         </button>
                     </form>
@@ -134,8 +135,11 @@
     <script>
         $('#city-no').on('click', function(){
             $('#city-yes-no').removeClass('page-wrapper-active');
-            $('#cities').addClass('page-wrapper-active');
         });
+        $('#city-select').on('click', function(){
+            $('#city-yes-no').addClass('page-wrapper-active');
+        });
+
     </script>
 
 <div class="parallax">

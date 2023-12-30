@@ -2,8 +2,10 @@
     <h1 class="section-header hidden">{{app()->translate('Популярные услуги')}}</h1>
 
     <div class="services-div">
+        @php         dd(event('postHasViewed', $post))
+        @endphp
 
-            @foreach ($popular_services as $popular_service)
+            {{--@foreach ($popular_services as $popular_service)
 
             <a href="{{ route('uslugi.index').'/'.$popular_service->url }}" class="popular-element">
                 <div class="popular-element-container">
@@ -15,7 +17,7 @@
                 </div>
             </a>
 
-            @endforeach
+            @endforeach--}}
 
     </div>
 </section>
