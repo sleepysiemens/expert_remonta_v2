@@ -38,14 +38,14 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="row mb-3">
+                       {{-- <div class="row mb-3">
                             <div class="col-md-6">
                             {!! captcha_img() !!}
                             </div>
                             <div class="col-md-6">
                             <input id="captcha" type="text" name="captcha" required>
                             </div>
-                        </div>
+                        </div>--}}
 
                         <div class="row mb-3">
                             <div class="col-md-6 offset-md-4">
