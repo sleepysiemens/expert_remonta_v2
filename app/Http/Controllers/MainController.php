@@ -76,10 +76,8 @@ class MainController extends Controller
             if($_COOKIE['locale']=='kz')
                 setcookie('locale','ru', time()+360000 ,'/');
         }
-
-        //dd($_COOKIE['locale']);
-        dd(request());
-        return redirect('/'.request()->sourse);
+        $page='/'.request()->all()['page'];
+        return redirect($page);
     }
 
     public function city()

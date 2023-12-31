@@ -11,10 +11,8 @@ nav-link-selected
 
         @section('content')
             @include('blocks.welcome-category')
-            @include('blocks.popular_services')
             @include('blocks.about_category')
             @include('blocks.why')
-            @include('blocks.popular_services')
             @include('blocks.reviews')
         @endsection
 

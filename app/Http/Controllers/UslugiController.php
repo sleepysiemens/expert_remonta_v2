@@ -65,7 +65,7 @@ class UslugiController extends Controller
 
     public function category($service, $category)
     {
-        event('postHasViewed', $category);
+        //event('postHasViewed', $category);
 
         $Headers=Header::all();
         $WhyCards=WhyCard::all();

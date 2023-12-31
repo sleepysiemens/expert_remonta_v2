@@ -42,6 +42,7 @@
                 </a>
                 <form method="post" action="{{asset(route('locale.change'))}}" class="locale-pc" style="display: flex; margin-left: 20px">
                     @csrf
+                    <input type="hidden" name="page" value="{{$page}}">
                     <button class="lang_change">
                         <p>
                         @if(!isset($_COOKIE['locale']) OR $_COOKIE['locale']=='ru') {{'ҚАЗ'}} @php $locale='ru' @endphp @endif
@@ -120,14 +121,14 @@
         <div class="sale-form-div">
             <h3>Выберите город</h3>
             <br>
-            <div style="width: 90%; margin: auto; justify-content: space-evenly">
-                @foreach($cities as $city)
-                    <form style="height: 35px; margin: auto; display: inline-flex; margin: 10px 0; width: 49%; justify-content: center" method="post" action="{{route('city.store')}}">
+            <div >
+                    <form class="city-form" method="post" action="{{route('city.store')}}">
                         @csrf
-                        <input type="hidden" name="city" value="{{$city->city}}">
-                        <button class="hidden gradient_button" style="height: 100%" ><p style="margin-top: auto">{{$city->city}}</p></button>
+                        @foreach($cities as $city)
+                        <button class="city-btn" name="city" value="{{$city->city}}" ><p style="margin-top: auto">{{$city->city}}</p></button>
+                        @endforeach
+
                     </form>
-                @endforeach
             </div>
             <br>
         </div>

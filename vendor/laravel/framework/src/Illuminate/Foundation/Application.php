@@ -1525,6 +1525,7 @@ class Application extends Container implements ApplicationContract, CachesConfig
 
         throw new RuntimeException('Unable to detect application namespace.');
     }
+
     public function db_translate($var_ru, $var_kz)
     {
         if(isset($_COOKIE['locale']) AND $_COOKIE['locale']=='kz')
