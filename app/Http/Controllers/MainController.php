@@ -76,7 +76,11 @@ class MainController extends Controller
             if($_COOKIE['locale']=='kz')
                 setcookie('locale','ru', time()+360000 ,'/');
         }
-        $page='/'.request()->all()['page'];
+        if(request()->all()['page']!='main')
+            $page='/'.request()->all()['page'];
+        else
+            $page='/';
+
         return redirect($page);
     }
 
