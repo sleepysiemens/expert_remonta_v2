@@ -14,7 +14,7 @@
         <img src="/img/sales/{{$sale->src}}">
         <div style="display: flex; justify-content: start; width: 95%; margin: 10px auto">
             <div class="percent"><p>-{{$sale->percent}}%</p></div>
-            <div class="timer"><p id="action{{$sale->id}}"></p></div>
+            <div class="timer"><p id="action2{{$sale->id}}"></p></div>
         </div>
 
         <h3>{{app()->db_translate($sale->title_ru,$sale->title_kz)}}</h3>

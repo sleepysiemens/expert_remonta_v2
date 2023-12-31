@@ -155,7 +155,16 @@
       </ul>
           @if(auth()->user()->role == 'admin')
         <ul class="nav nav-treeview" style="border-bottom: 1px solid rgba(255,255,255, .2)">
+
           <li class="nav-header">ЗАЯВКИ</li>
+            <li class="nav-item">
+                <a href="{{ route('admin.new_reviews.index') }}" class="nav-link @yield('new_reviews')">
+                    <i class="nav-icon fas fa-star-half-alt"></i>
+                    <p>
+                        Новые отзывы
+                    </p>
+                </a>
+            </li>
             <li class="nav-item">
               <a href="{{ route('admin.application.index') }}" class="nav-link @yield('applications')">
                 <i class="nav-icon far fa-address-book"></i>

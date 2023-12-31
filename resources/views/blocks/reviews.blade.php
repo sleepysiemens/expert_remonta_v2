@@ -3,7 +3,7 @@
     <button class="right-arrow" id="scroll-right">
         <i class="fas fa-arrow-right"></i>
     </button>
-    <button class="left-arrow arrow-hidden" id="scroll-left">
+    <button class="left-arrow" id="scroll-left">
         <i class="fas fa-arrow-left"></i>
     </button>
 
@@ -43,3 +43,20 @@
         </div>
     </div>
 </section>
+
+<script>
+    $('#scroll-right').on('click', function() {
+        $('.review-wrapper').animate({
+            scrollLeft: "+=300px"
+        }, "slow");
+        console.log('scroll-left');
+    });
+
+    $('#scroll-left').on('click', function() {
+        $('.review-wrapper').animate({
+            scrollLeft: "-=300px"
+        }, "slow");
+        console.log('scroll-right');
+
+    });
+</script>

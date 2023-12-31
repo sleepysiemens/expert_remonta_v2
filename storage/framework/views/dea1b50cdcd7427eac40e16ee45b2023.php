@@ -14,7 +14,7 @@
         <img src="/img/sales/<?php echo e($sale->src); ?>">
         <div style="display: flex; justify-content: start; width: 95%; margin: 10px auto">
             <div class="percent"><p>-<?php echo e($sale->percent); ?>%</p></div>
-            <div class="timer"><p id="action<?php echo e($sale->id); ?>"></p></div>
+            <div class="timer"><p id="action2<?php echo e($sale->id); ?>"></p></div>
         </div>
 
         <h3><?php echo e(app()->db_translate($sale->title_ru,$sale->title_kz)); ?></h3>

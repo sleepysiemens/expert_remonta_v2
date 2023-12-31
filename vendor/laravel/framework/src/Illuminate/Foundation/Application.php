@@ -1607,6 +1607,9 @@ class Application extends Container implements ApplicationContract, CachesConfig
                 case 'Почему мы?':
                     echo 'Неге біз?';
                     break;
+                case 'Заказать услугу':
+                    echo 'Пікір қалдыру';
+                    break;
 
                 default:
                     echo $var;

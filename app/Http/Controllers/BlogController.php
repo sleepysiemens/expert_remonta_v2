@@ -11,6 +11,7 @@ use App\Models\WhyCard;
 use App\Models\Seo;
 use App\Models\Blog;
 use App\Models\City;
+use Stevebauman\Location\Facades\Location;
 
 
 
@@ -31,7 +32,13 @@ class BlogController extends Controller
         $cities=City::all();
         $page='contacts';
 
+        $userIP=$_SERVER['REMOTE_ADDR'];
+        $location=Location::get($userIP);
+        if($location!=false)
+            $usr_city=$location->cityName;
+        else
+            $usr_city='Astana';
 
-        return view('blog.index', compact(['cities','blog','reviews', 'whatsapp', 'telegram', 'instagram', 'phone', 'Abouts', 'WhyCards', 'page', 'seos']));
+        return view('blog.index', compact(['usr_city','cities','blog','reviews', 'whatsapp', 'telegram', 'instagram', 'phone', 'Abouts', 'WhyCards', 'page', 'seos']));
     }
 }

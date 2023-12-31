@@ -41,7 +41,15 @@ class MainController extends Controller
 
         $page='main';
 
-        return view('main.index', compact(['cities','texts','services', 'questions', 'whatsapp', 'telegram', 'instagram', 'phone', 'sales', 'Headers', 'WelcomeCards', 'Abouts', 'WhyCards', 'page', 'seos']));
+        $userIP=$_SERVER['REMOTE_ADDR'];
+        $location=Location::get($userIP);
+        if($location!=false)
+            $usr_city=$location->cityName;
+        else
+            $usr_city='Astana';
+
+
+        return view('main.index', compact(['usr_city','cities','texts','services', 'questions', 'whatsapp', 'telegram', 'instagram', 'phone', 'sales', 'Headers', 'WelcomeCards', 'Abouts', 'WhyCards', 'page', 'seos']));
     }
 
     public function form()

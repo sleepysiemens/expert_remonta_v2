@@ -70,11 +70,11 @@
                     <br>
                     <form method="post" action="<?php echo e(asset(route('locale.change'))); ?>"  style="display: flex; margin-left: 20px">
                         <?php echo csrf_field(); ?>
-                        <input type="hidden" name="sourse" value="<?php echo e($page); ?>">
+                        <input type="hidden" name="page" value="<?php echo e($page); ?>">
                         <button class="lang_change">
                             <p>
-                                <?php if(!isset($_COOKIE['locale']) OR $_COOKIE['locale']=='ru'): ?> <?php echo e('ҚАЗs'); ?> <?php $locale='ru' ?> <?php endif; ?>
-                                <?php if(isset($_COOKIE['locale']) AND $_COOKIE['locale']=='kz'): ?> <?php echo e('РУСs'); ?> <?php $locale='kz' ?> <?php endif; ?>
+                                <?php if(!isset($_COOKIE['locale']) OR $_COOKIE['locale']=='ru'): ?> <?php echo e('ҚАЗ'); ?> <?php $locale='ru' ?> <?php endif; ?>
+                                <?php if(isset($_COOKIE['locale']) AND $_COOKIE['locale']=='kz'): ?> <?php echo e('РУС'); ?> <?php $locale='kz' ?> <?php endif; ?>
                             </p>
                         </button>
                     </form>
@@ -116,9 +116,11 @@
 
     <?php echo $__env->yieldContent('sale-form'); ?>
     <?php echo $__env->yieldContent('form-div'); ?>
+    <?php echo $__env->yieldContent('review-form'); ?>
 
     <div id="city-yes-no" class="page-wrapper <?php if(!isset($_COOKIE['city']) OR $_COOKIE['city']==NULL): ?><?php echo e('page-wrapper-active'); ?><?php endif; ?>">
         <div class="sale-form-div">
+            <button class="form-sale-close" id="form-city-close"><i class="fas fa-times" aria-hidden="true"></i></button>
             <h3>Выберите город</h3>
             <br>
             <div >
@@ -126,7 +128,7 @@
                         <?php echo csrf_field(); ?>
                         <input type="hidden" name="page" value="<?php echo e($page); ?>">
                         <?php $__currentLoopData = $cities; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $city): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <button class="city-btn" name="city" value="<?php echo e($city->city); ?>" ><p style="margin-top: auto"><?php echo e($city->city); ?></p></button>
+                        <button class="city-btn <?php if($usr_city==$city->city): ?> city-btn-active <?php endif; ?>" name="city" value="<?php echo e($city->city); ?>" ><p style="margin-top: auto"><?php echo e($city->city); ?></p></button>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                     </form>
@@ -135,9 +137,10 @@
         </div>
     </div>
     <script>
-        $('#city-no').on('click', function(){
+        $('#form-city-close').on('click', function(){
             $('#city-yes-no').removeClass('page-wrapper-active');
         });
+
         $('#city-select').on('click', function(){
             $('#city-yes-no').addClass('page-wrapper-active');
         });

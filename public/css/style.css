@@ -111,7 +111,6 @@ header
 
 .nav-link-selected, .nav-link:hover
 {
-    background-color: #F5F5F5;
     color: #9DC436;
 }
 
@@ -134,10 +133,11 @@ header
 
 .header-contact-info h1
 {
-    color: rgba(0,0,0,.5);
+    color: rgba(0,0,0,.7);
     font-weight: normal;
     font-size: 16px;
     margin: auto;
+    text-decoration: underline;
 }
 
 .header-contact-info i
@@ -147,7 +147,7 @@ header
 
 .header-contact-info p
 {
-    color: rgba(0,0,0,.5);
+    color: rgba(0,0,0,.7);
     font-weight: normal;
     font-size: 12px;
     margin: auto;
@@ -261,7 +261,8 @@ header
 
 .welcome-card-2
 {
-    background-color: #8BC3DB;
+    background-color: #DB8B8B;
+
 }
 
 .welcome-card-3
@@ -279,7 +280,7 @@ header
 
 .welcome-card-4
 {
-    background-color: #DB8B8B;
+    background-color: #8BC3DB;
 }
 
 .welcome-card-5
@@ -332,6 +333,8 @@ header
 .about-text, .about-img
 {
     width: calc(50% - 10px);
+    background-color: #fff;
+    border-radius: 15px;
 }
 
 .about-text h1
@@ -525,7 +528,7 @@ header
 {
     position: absolute;
     color: #9DC436;
-    font-size: 200px;
+    font-size: 150px;
     font-style: italic;
     font-weight: 600;
     opacity: .15;
@@ -573,6 +576,22 @@ header
 {
     width: 1000px;
     margin: auto;
+    position: relative;
+}
+
+.sales .left-arrow
+{
+    left: -15px;
+}
+
+.sales .right-arrow
+{
+    right: -15px;
+}
+
+.sales .left-arrow, .sales .right-arrow
+{
+display: none
 }
 
 .sales-div
@@ -591,7 +610,7 @@ header
     box-shadow: 0 4px 4px rgba(0,0,0,.25);
     position: relative;
     cursor: pointer;
-    margin: auto;
+    margin: auto 10px;
     display: block;
 }
 
@@ -643,7 +662,7 @@ header
     margin: auto;
     height: 120px;
     padding-bottom: 15px;
-    background-color: rgba(245,245,245,.75);
+    background-color: rgba(245,245,245,.9);
     vertical-align: middle;
     width: 100%;
     display: flex;
@@ -654,6 +673,8 @@ header
     margin: auto;
     text-align: center;
     width: calc(100% - 10px);
+    font-size: 18px;
+    color: rgba(0,0,0,.75);
 }
 
 
@@ -981,18 +1002,18 @@ footer
 
 .reviews
 {
-    width: 1000px;
+    width: 100%;
     margin: auto;
     position: relative;
 }
 
 .review-wrapper
 {
-    width: 1000px;
+    width: 100%;
     overflow-y: hidden;
     overflow-x: scroll;
-    margin-left: -10px;
     position: relative;
+    margin: 0;
 
 }
 
@@ -1001,6 +1022,7 @@ footer
     display: flex;
     height: 200px;
     width: auto;
+    min-width: 1000px;
 }
 
 .review-wrapper::-webkit-scrollbar-track
@@ -1137,23 +1159,19 @@ footer
     bottom: 0;
     margin: auto;
     cursor: pointer;
-    opacity: .7;
+    opacity: .5;
 }
 
 .left-arrow
 {
-    left: -35px;
+    left: 65px;
 }
 
 .right-arrow
 {
-    right: -15px;
+    right: 65px;
 }
 
-.arrow-hidden
-{
-    display: none;
-}
 
 /*about-service*/
 
@@ -1834,7 +1852,7 @@ footer
     display: block;
 }
 
-.form-sale input, .form-sale button
+.form-sale input, .form-sale button, .form-sale textarea
 {
     display: block;
     width: calc(90% - 20px);
@@ -1931,20 +1949,38 @@ footer
     top: -7px;
     right: -7px;
     background-color: #ffad33;
-    width: 70px;
+    width: 50px;
     height: 35px;
     border-radius: 10px;
     z-index: 3;
     display: flex;
-    border: solid 5px #fff;
 }
 
-.percent p, .timer p, .percent2 p, .top-right-percent p
+
+
+.percent p, .timer p, .percent2 p, .top-right-percent p, .top-left-timer p
 {
     margin: auto;
     text-align: center;
     font-weight: 500;
     color: #fff;
+    font-size: 16px;
+}
+.top-left-timer
+{
+    position: absolute;
+    bottom: 135px;
+    height: 35px;
+    z-index: 3;
+    display: flex;
+    width: 184px;
+    background-color: #fff;
+}
+
+.top-left-timer p
+{
+    color: red;
+    font-weight: 600;
     font-size: 18px;
 }
 
@@ -2070,7 +2106,7 @@ footer
 .city-btn
 {
     font-family: 'Montserrat';
-    font-size: 16px;
+    font-size: 14px;
     background-color: #fff;
     outline: none;
     border-radius: 5px;
@@ -2088,10 +2124,21 @@ footer
     width: 100%;
 }
 
+.city-btn-active
+{
+    border: 1px solid #9DC436;
+
+}
+
 /*ADAPTIVE*/
 
 @media screen and (max-width:1000px)
 {
+
+    .sales .left-arrow, .sales .right-arrow
+    {
+        display: flex
+    }
 
     .header-div
     {
@@ -2253,7 +2300,7 @@ footer
         width: 95% !important;
         margin: auto;
     }
-
+/*
     .reviews
     {
         width: 90% !important;
@@ -2270,7 +2317,7 @@ footer
     {
         min-width: 1000px;
     }
-
+*/
     .photo
     {
         width: 700px;
@@ -2314,6 +2361,15 @@ footer
 
 @media screen and (max-width:500px)
 {
+    .left-arrow
+    {
+        left: 15px;
+    }
+
+    .right-arrow
+    {
+        right: 15px;
+    }
 
     .nav-links
     {
@@ -2372,7 +2428,7 @@ footer
         height: 75%;
         margin: auto;
         text-align: end;
-        font-size: 16px !important;
+        font-size: 14px !important;
     }
 
     .welcome-card img
@@ -2398,6 +2454,7 @@ footer
     {
         display: block;
     }
+
 
     .main-services .service-banner, .sale-banner
     {
@@ -2426,6 +2483,11 @@ footer
     .header-contact-info
     {
         margin-right: 20px;
+        transition: .3s;
+    }
+    .header-contact-info-open
+    {
+        transform: translateX(-30vw);
     }
 
     .mobile-menu-btn, .mobile-close-btn
@@ -2484,8 +2546,8 @@ footer
 
     .service-banner
     {
-        width: 150px;
-        height: 150px;
+        width: 320px;
+        height: 320px;
         margin-bottom: 10px;
         margin: 5px;
     }
@@ -2501,6 +2563,11 @@ footer
         height: 45px;
     }
 
+    .footer-links
+    {
+        width: 300px;
+    }
+
     .footer-links-subdiv
     {
         display: block;
@@ -2510,7 +2577,26 @@ footer
 
     .footer-contact-info
     {
-        display: none;
+        transform: translateX(-50px);
+        margin: auto;
+        margin-top: 15px;
+        width: 150px;
+    }
+
+    .footer-contact-info i
+    {
+        font-size: 12px;
+        margin-right: 4px;
+    }
+
+    .footer-contact-info h1
+    {
+        font-size: 14px;
+    }
+
+    .footer-contact-info p
+    {
+        font-size: 12px;
     }
 
     .footer-link
@@ -2543,17 +2629,12 @@ footer
     {
         width: 100% !important;
     }
-
-    .review-div
-    {
-        width: 300px;
-    }
-
+/*
     .table-header p
     {
         font-size: 18px;
     }
-
+*/
     .sale-form-div p
     {
         font-size: 14px;

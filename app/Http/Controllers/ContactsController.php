@@ -11,6 +11,7 @@ use App\Models\About;
 use App\Models\WhyCard;
 use App\Models\Seo;
 use App\Models\City;
+use Stevebauman\Location\Facades\Location;
 
 
 
@@ -32,7 +33,13 @@ class ContactsController extends Controller
 
         $page='contacts';
 
+        $userIP=$_SERVER['REMOTE_ADDR'];
+        $location=Location::get($userIP);
+        if($location!=false)
+            $usr_city=$location->cityName;
+        else
+            $usr_city='Astana';
 
-        return view('contacts.index', compact(['cities','reviews', 'whatsapp', 'telegram', 'instagram', 'phone', 'Abouts', 'WhyCards', 'page', 'seos', 'Headers']));
+        return view('contacts.index', compact(['usr_city','cities','reviews', 'whatsapp', 'telegram', 'instagram', 'phone', 'Abouts', 'WhyCards', 'page', 'seos', 'Headers']));
     }
 }

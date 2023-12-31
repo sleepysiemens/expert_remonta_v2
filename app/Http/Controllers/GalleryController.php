@@ -9,6 +9,7 @@ use App\Models\Gallery;
 use App\Models\Contact;
 use App\Models\Seo;
 use App\Models\City;
+use Stevebauman\Location\Facades\Location;
 
 
 
@@ -24,9 +25,15 @@ class GalleryController extends Controller
         $seos=Seo::query()->where('page','=','gallery')->get();
         $cities=City::all();
 
+        $userIP=$_SERVER['REMOTE_ADDR'];
+        $location=Location::get($userIP);
+        if($location!=false)
+            $usr_city=$location->cityName;
+        else
+            $usr_city='Astana';
 
         $page='gallery';
 
-        return view('gallery.index', compact(['cities','galleries','whatsapp', 'telegram', 'instagram', 'phone', 'page', 'seos']));
+        return view('gallery.index', compact(['usr_city','cities','galleries','whatsapp', 'telegram', 'instagram', 'phone', 'page', 'seos']));
     }
 }

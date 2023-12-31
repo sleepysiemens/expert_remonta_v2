@@ -1265,7 +1265,7 @@ return new class extends Migration
                     'src'=>'shield_blue_gradient_with_check_and_without-ai.png',
                 ],
                 [
-                    'title_ru'=>'Проверенные мастера',
+                    'title_ru'=>'Выгодные цены закупки стройматериалов',
                     'src'=>'someone-s-hand-holding-spanner.png',
                 ],
             ];

@@ -10,6 +10,9 @@ use App\Models\About;
 use App\Models\WhyCard;
 use App\Models\Seo;
 use App\Models\City;
+use App\Models\NewReview;
+use Stevebauman\Location\Facades\Location;
+
 class ReviewController extends Controller
 {
     public function index()
@@ -27,7 +30,20 @@ class ReviewController extends Controller
 
         $page='contacts';
 
+        $userIP=$_SERVER['REMOTE_ADDR'];
+        $location=Location::get($userIP);
+        if($location!=false)
+            $usr_city=$location->cityName;
+        else
+            $usr_city='Astana';
 
-        return view('reviews.index', compact(['cities','reviews', 'whatsapp', 'telegram', 'instagram', 'phone', 'Abouts', 'WhyCards', 'page', 'seos']));
+        return view('reviews.index', compact(['usr_city','cities','reviews', 'whatsapp', 'telegram', 'instagram', 'phone', 'Abouts', 'WhyCards', 'page', 'seos']));
+    }
+
+    public function add_review()
+    {
+        $data=request()->all();
+        NewReview::create($data);
+        return redirect()->route('reviews.index');
     }
 }

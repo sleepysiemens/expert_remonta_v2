@@ -1,5 +1,12 @@
+
 <section class="sales">
     <h1 class="section-header hidden">{{app()->translate('Специальные предложения')}}</h1>
+    <button class="right-arrow" id="scroll-right">
+        <i class="fas fa-arrow-right"></i>
+    </button>
+    <button class="left-arrow" id="scroll-left">
+        <i class="fas fa-arrow-left"></i>
+    </button>
     <div class="review-wrapper">
         <div class="reviews-div" style="height: 300px">
 
@@ -11,6 +18,9 @@
             @php
                 $i++;
             @endphp
+                @php
+                    $end_date[$i]=Cookie::get('sale_'.$sale->id, date("Y-m-d", strtotime('+ '.$sale->period.' days')));
+                @endphp
 
                 @php
                 if(!isset($_COOKIE['sale_'.$i]))
@@ -26,6 +36,7 @@
 
             <a class="sale-banner scroll-hidden" id="sale-link-{{$i}}">
                 <span class="top-right-percent"><p>-{{$sale->percent}}%</p></span>
+                <span class="top-left-timer"><p id="action{{$sale->id}}"></p></span>
                 <div class="sale-bg">
                     <img src=" /img/sales/{{$sale->src}}">
                 </div>
@@ -34,7 +45,7 @@
                     <div class="sale-text-subdiv">
                         <p>{{app()->db_translate($sale->title_ru,$sale->title_kz)}}</p>
                     </div>
-                    <div class="percent2"><p id="action2{{$sale->id}}"></p></div>
+                    <div class="percent2"></div>
                 </div>
             </a>
 
@@ -61,18 +72,19 @@
     }
 </script>
 
+
 <script>
     // Предполагаем, что у вас есть массив с данными акций
-    var actions2 = [
+    var actions = [
             @php $j=1; @endphp
             @foreach ($sales as $sale)
-        { id: "action{{$sale->id}}", endDate: "{{$sale[$j]}}" },
+        { id: "action{{$sale->id}}", endDate: "{{$end_date[$j]}}" },
         @php $j++; @endphp
         @endforeach
     ];
 
 
-    actions2.forEach(function(action) {
+    actions.forEach(function(action) {
         // Конвертируем дату в формате строки в формат Date
         var countDownDate = new Date(action.endDate).getTime();
 
@@ -92,15 +104,33 @@
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             // Выводим результат в элемент с id="timer"
-            document.getElementById(action.id).innerHTML = days + "д " + hours + "ч " + minutes + "м " + seconds + "с ";
+            document.getElementById(action.id).innerHTML = days + ":" + hours + ":" + minutes + ":" + seconds;
+
 
             // Если таймер истекает, выводим текст
             if (distance < 0) {
                 clearInterval(x);
-                document.getElementById(action.id).innerHTML = "Окончена";
+                document.getElementById(action.id).innerHTML = "Акция окончена";
             }
         }, 1000);
     });
 
 </script>
 
+
+<script>
+    $('#scroll-right').on('click', function() {
+        $('.review-wrapper').animate({
+            scrollLeft: "+=300px"
+        }, "slow");
+        console.log('scroll-left');
+    });
+
+    $('#scroll-left').on('click', function() {
+        $('.review-wrapper').animate({
+            scrollLeft: "-=300px"
+        }, "slow");
+        console.log('scroll-right');
+
+    });
+</script>

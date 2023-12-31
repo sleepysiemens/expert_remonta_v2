@@ -18,6 +18,7 @@ use App\Models\Seo;
 use App\Models\Blog;
 use App\Models\City;
 use App\Models\VisitsCount;
+use Stevebauman\Location\Facades\Location;
 
 
 
@@ -36,10 +37,16 @@ class UslugiController extends Controller
         $seos=Seo::query()->where('page','=','uslugi')->get();
         $cities=City::all();
 
+        $userIP=$_SERVER['REMOTE_ADDR'];
+        $location=Location::get($userIP);
+        if($location!=false)
+            $usr_city=$location->cityName;
+        else
+            $usr_city='Astana';
 
         $page='uslugi';
 
-        return view('uslugi.index', compact(['cities','services', 'reviews', 'whatsapp', 'telegram', 'instagram', 'phone', 'Headers', 'WelcomeCards', 'page', 'seos']));
+        return view('uslugi.index', compact(['usr_city','cities','services', 'reviews', 'whatsapp', 'telegram', 'instagram', 'phone', 'Headers', 'WelcomeCards', 'page', 'seos']));
     }
 
     public function service($service)
@@ -57,10 +64,16 @@ class UslugiController extends Controller
         $ServiceImages=ServiceImage::query()->join('services', 'services.id', '=', 'service_images.service_id')->where(['services.url'=>$service])->select('service_images.src')->get();
         $cities=City::all();
 
+        $userIP=$_SERVER['REMOTE_ADDR'];
+        $location=Location::get($userIP);
+        if($location!=false)
+            $usr_city=$location->cityName;
+        else
+            $usr_city='Astana';
 
         $page='uslugi/'.$service;
 
-        return view('service.index', compact(['cities','ServiceImages','services','categories', 'reviews', 'whatsapp', 'telegram', 'instagram', 'phone', 'Headers', 'WelcomeCards', 'page', 'seos']));
+        return view('service.index', compact(['usr_city', 'cities','ServiceImages','services','categories', 'reviews', 'whatsapp', 'telegram', 'instagram', 'phone', 'Headers', 'WelcomeCards', 'page', 'seos']));
     }
 
     public function category($service, $category)
@@ -83,8 +96,14 @@ class UslugiController extends Controller
 
         $page='uslugi/'.$service.'/'.$category;
 
+        $userIP=$_SERVER['REMOTE_ADDR'];
+        $location=Location::get($userIP);
+        if($location!=false)
+            $usr_city=$location->cityName;
+        else
+            $usr_city='Astana';
 
 
-        return view('category.index', compact(['cities','categories', 'reviews', 'whatsapp', 'telegram', 'instagram', 'phone', 'Headers', 'WelcomeCards', 'WhyCards', 'page', 'CategoryImages', 'seos']));
+        return view('category.index', compact(['usr_city', 'cities','categories', 'reviews', 'whatsapp', 'telegram', 'instagram', 'phone', 'Headers', 'WelcomeCards', 'WhyCards', 'page', 'CategoryImages', 'seos']));
     }
 }

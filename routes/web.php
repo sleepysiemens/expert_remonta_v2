@@ -209,6 +209,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin/', 'middleware'=>'admin
         Route::delete('/{application}', 'DestroyController@index')->name('admin.application.destroy');
     });
 
+    Route::group(['namespace' => 'NewReview', 'prefix' => 'new_review', 'middleware' => 'redactor'], function()
+    {
+        Route::get('/', 'IndexController@index')->name('admin.new_reviews.index');
+        Route::get('/{application}', 'ShowController@index')->name('admin.new_reviews.show');
+        Route::delete('/{application}', 'DestroyController@index')->name('admin.new_reviews.destroy');
+    });
+
         Route::group(['namespace' => 'SEO', 'prefix' => 'seo'], function()
         {
             Route::get('/', 'IndexController@index')->name('admin.seo.index');
@@ -239,6 +246,7 @@ Route::post('/locale/change/', 'MainController@locale')->name('locale.change');
 
 Route::post('/form/store/', 'MainController@form')->name('form.store');
 Route::post('/city/store/', 'MainController@city')->name('city.store');
+Route::post('/review/store/', 'ReviewController@add_review')->name('review.store');
 
 Auth::routes();
 

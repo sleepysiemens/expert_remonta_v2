@@ -70,11 +70,11 @@
                     <br>
                     <form method="post" action="{{asset(route('locale.change'))}}"  style="display: flex; margin-left: 20px">
                         @csrf
-                        <input type="hidden" name="sourse" value="{{$page}}">
+                        <input type="hidden" name="page" value="{{$page}}">
                         <button class="lang_change">
                             <p>
-                                @if(!isset($_COOKIE['locale']) OR $_COOKIE['locale']=='ru') {{'ҚАЗs'}} @php $locale='ru' @endphp @endif
-                                @if(isset($_COOKIE['locale']) AND $_COOKIE['locale']=='kz') {{'РУСs'}} @php $locale='kz' @endphp @endif
+                                @if(!isset($_COOKIE['locale']) OR $_COOKIE['locale']=='ru') {{'ҚАЗ'}} @php $locale='ru' @endphp @endif
+                                @if(isset($_COOKIE['locale']) AND $_COOKIE['locale']=='kz') {{'РУС'}} @php $locale='kz' @endphp @endif
                             </p>
                         </button>
                     </form>
@@ -116,9 +116,11 @@
 
     @yield('sale-form')
     @yield('form-div')
+    @yield('review-form')
 
     <div id="city-yes-no" class="page-wrapper @if(!isset($_COOKIE['city']) OR $_COOKIE['city']==NULL){{'page-wrapper-active'}}@endif">
         <div class="sale-form-div">
+            <button class="form-sale-close" id="form-city-close"><i class="fas fa-times" aria-hidden="true"></i></button>
             <h3>Выберите город</h3>
             <br>
             <div >
@@ -126,7 +128,7 @@
                         @csrf
                         <input type="hidden" name="page" value="{{$page}}">
                         @foreach($cities as $city)
-                        <button class="city-btn" name="city" value="{{$city->city}}" ><p style="margin-top: auto">{{$city->city}}</p></button>
+                        <button class="city-btn @if($usr_city==$city->city) city-btn-active @endif" name="city" value="{{$city->city}}" ><p style="margin-top: auto">{{$city->city}}</p></button>
                         @endforeach
 
                     </form>
@@ -135,9 +137,10 @@
         </div>
     </div>
     <script>
-        $('#city-no').on('click', function(){
+        $('#form-city-close').on('click', function(){
             $('#city-yes-no').removeClass('page-wrapper-active');
         });
+
         $('#city-select').on('click', function(){
             $('#city-yes-no').addClass('page-wrapper-active');
         });

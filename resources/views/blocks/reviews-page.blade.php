@@ -1,6 +1,10 @@
 <section class="faq">
     <h1 class="section-header">{{app()->translate('Отзывы')}}</h1>
     <br>
+    <a class="gradient_button" id="add_review" style="height: 35px">
+        <span class="flare"></span><p>{{app()->translate('Оставить отзыв')}}</p>
+    </a>
+    <br>
     <div class="hidden" style="width: 95%; margin: auto">
         @foreach($reviews as $review)
                 <a class="review" style="width: 100%; height: auto; padding: 15px 0; margin: auto 0">
@@ -31,3 +35,16 @@
 </section>
 
 <script defer src="/js/faq.js"></script>
+
+@section('review-form')
+    @include('blocks.review-form')
+@endsection
+
+<script>
+    $('#add_review').on('click', function (){
+        $('#review-form').addClass('page-wrapper-active');
+    })
+    $('#review-form-close').on('click', function (){
+        $('#review-form').addClass('page-wrapper-active');
+    })
+</script>
