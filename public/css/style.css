@@ -1798,6 +1798,7 @@ footer
     z-index: 101;
     display: none;
     transition: .3s;
+    overflow: scroll;
 }
 
 .sale-form-div
