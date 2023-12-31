@@ -124,6 +124,7 @@
             <div >
                     <form class="city-form" method="post" action="<?php echo e(route('city.store')); ?>">
                         <?php echo csrf_field(); ?>
+                        <input type="hidden" name="page" value="<?php echo e($page); ?>">
                         <?php $__currentLoopData = $cities; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $city): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <button class="city-btn" name="city" value="<?php echo e($city->city); ?>" ><p style="margin-top: auto"><?php echo e($city->city); ?></p></button>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

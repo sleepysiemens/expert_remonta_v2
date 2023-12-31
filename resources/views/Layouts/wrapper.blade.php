@@ -124,6 +124,7 @@
             <div >
                     <form class="city-form" method="post" action="{{route('city.store')}}">
                         @csrf
+                        <input type="hidden" name="page" value="{{$page}}">
                         @foreach($cities as $city)
                         <button class="city-btn" name="city" value="{{$city->city}}" ><p style="margin-top: auto">{{$city->city}}</p></button>
                         @endforeach
