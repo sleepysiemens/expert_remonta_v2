@@ -17,5 +17,4 @@
         </form>
     </div>
 </div>
-
 <?php /**PATH /home/siemens/Documents/Laravel/expert_remonta_v2/resources/views/blocks/review-form.blade.php ENDPATH**/ ?>

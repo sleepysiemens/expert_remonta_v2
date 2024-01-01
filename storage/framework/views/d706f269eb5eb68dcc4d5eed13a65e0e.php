@@ -45,7 +45,7 @@
         $('#review-form').addClass('page-wrapper-active');
     })
     $('#review-form-close').on('click', function (){
-        $('#review-form').addClass('page-wrapper-active');
+        $('#review-form').removeClass('page-wrapper-active');
     })
 </script>
 <?php /**PATH /home/siemens/Documents/Laravel/expert_remonta_v2/resources/views/blocks/reviews-page.blade.php ENDPATH**/ ?>
