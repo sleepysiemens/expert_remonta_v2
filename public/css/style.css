@@ -2666,13 +2666,21 @@ footer
 
 @media screen and (max-width:375px)
 {
-    .footer-links-subdiv
-    {
-    }
 
     .footer-contact-info
     {
         transform: none;
+    }
+
+    .service-banner
+    {
+        width: 280px;
+        height: 280px;
+    }
+
+    .services-div
+    {
+        width: 280px;
     }
 }
 

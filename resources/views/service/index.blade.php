@@ -7,7 +7,6 @@
         {{$service->title}} – Эксперт Ремонта
         @endsection
         @section('content')
-            @include('blocks.welcome-service')
             @include('blocks.path-service')
             @include('blocks.about_service')
             @include('blocks.categories')

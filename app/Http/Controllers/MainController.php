@@ -95,10 +95,17 @@ class MainController extends Controller
     public function city()
     {
         setcookie('city', request()->city, time()+360000 ,'/');
+
         if(request()->all()['page']!='main')
             $page='/'.request()->all()['page'];
         else
             $page='/';
 
-        return redirect($page);    }
+        if(request()->city=='Астана')
+            $page='http://astana.expertremonta.kz'.$page;
+        elseif(request()->city=='Алматы')
+            $page='http://astana.expertremonta.kz'.$page;
+
+        return redirect($page);
+    }
 }
