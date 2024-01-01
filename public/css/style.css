@@ -2411,7 +2411,7 @@ footer
     .welcome-card
     {
         display: flex;
-        width: 70%;
+        width: 90%;
         min-height: 75px;
         margin-bottom: 10px;
         border-radius: 0 15px 15px 0;
@@ -2661,6 +2661,18 @@ footer
     .locale-pc
     {
         display: none !important;
+    }
+}
+
+@media screen and (max-width:375px)
+{
+    .footer-links-subdiv
+    {
+    }
+
+    .footer-contact-info
+    {
+        transform: none;
     }
 }
 

@@ -6,7 +6,6 @@
 
 @section('content')
 
-@include('blocks.welcome')
 @include('blocks.path')
 @include('blocks.services')
 @include('blocks.reviews')
