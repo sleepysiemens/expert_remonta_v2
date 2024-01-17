@@ -7,8 +7,9 @@
     <button class="left-arrow" id="scroll-left">
         <i class="fas fa-arrow-left"></i>
     </button>
-    <div class="review-wrapper">
-        <div class="reviews-div" style="height: 300px">
+    <div class="sales-wrapper"> {{-- class="review-wrapper" --}}
+      {{-- style="height: 300px" class="reviews-div" --}}
+        <div class="sales-div">
 
             @php
                 $i=0;

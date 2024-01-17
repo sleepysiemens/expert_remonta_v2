@@ -7,23 +7,26 @@ use Illuminate\Http\Request;
 use App\Models\question;
 use App\Models\service;
 use App\Models\serviceimage;
-use App\Models\Contact;
 use App\Models\Sale;
 use App\Models\Header;
 use App\Models\WelcomeCard;
 use App\Models\About;
 use App\Models\WhyCard;
 use App\Models\MainText;
-use App\Models\City;
+use Illuminate\Support\Facades\Cookie;
 
 use Stevebauman\Location\Facades\Location;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 use App\Models\Application;
 use App\Models\Seo;
 
 class MainController extends Controller
 {
-    public function index()
+    public function index(Request $req)
     {
+      //dd($req->all());
         $services=Service::query()->limit(4)->offset(0)->get();
         $questions=Question::all();
         $sales=Sale::all();
@@ -31,25 +34,12 @@ class MainController extends Controller
         $Abouts=About::all();
         $WelcomeCards=WelcomeCard::all();
         $WhyCards=WhyCard::all();
-        $whatsapp=Contact::query()->select('link')->where('name','=','whatsapp')->get();
-        $telegram=Contact::query()->select('link')->where('name','=','telegram')->get();
-        $instagram=Contact::query()->select('link')->where('name','=','instagram')->get();
-        $phone=Contact::query()->select('link')->where('name','=','phone')->get();
         $seos=Seo::query()->where('page','=','main')->get();
         $texts=MainText::all();
-        $cities=City::all();
 
         $page='main';
 
-        $userIP=$_SERVER['REMOTE_ADDR'];
-        $location=Location::get($userIP);
-        if($location!=false)
-            $usr_city=$location->cityName;
-        else
-            $usr_city='Astana';
-
-
-        return view('main.index', compact(['usr_city','cities','texts','services', 'questions', 'whatsapp', 'telegram', 'instagram', 'phone', 'sales', 'Headers', 'WelcomeCards', 'Abouts', 'WhyCards', 'page', 'seos']));
+        return view('main.index', compact(['texts','services', 'questions', 'sales', 'Headers', 'WelcomeCards', 'Abouts', 'WhyCards', 'page', 'seos']));
     }
 
     public function form()
@@ -66,6 +56,11 @@ class MainController extends Controller
         $data=request()->validate(['name'=>'required|string', 'phone'=>'required|string', 'sourse'=>'required']);
         $sql_data=['username'=>request()->name, 'phone'=>request()->phone, 'sourse'=>request()->sourse, 'city'=>$city, 'created_at'=>date('Y-m-d H:i:s')];
         Application::create($sql_data);
+
+        // здесь post запрос в crm
+        /*Http::withHeaders([
+            'Auth-Key' => env('CRM_AUTH_KEY'),
+        ])->post(env('CRM_URL'));*/
 
         return redirect('/'.request()->sourse);
     }
@@ -92,20 +87,29 @@ class MainController extends Controller
         return redirect($page);
     }
 
-    public function city()
+    public function city(Request $req)
     {
-        setcookie('city', request()->city, time()+360000 ,'/');
+        //setcookie('city', $req->city, time()+360000 ,'/');
+        //$cookie = cookie('city', $req->city, 360000);
+        //Cookie::queue('city', $req->city, 360000);
 
         if(request()->all()['page']!='main')
             $page='/'.request()->all()['page'];
         else
             $page='/';
 
-        if(request()->city=='Астана')
-            $page='http://astana.expertremonta.kz'.$page;
-        elseif(request()->city=='Алматы')
-            $page='http://astana.expertremonta.kz'.$page;
+        // проблема в том что невозможно записать куку пока ты в приложении на другом домене
+        if(request()->city=='Астана') {
+          $page='http://astana.expertremonta.kz'.$page;
+          //Cookie::queue('city', $req->city, 360000, '/', 'astana.expertremonta.kz');
+          Cookie::queue('city', $req->city, 360000, '/', '.expertremonta.kz');
+        }
+        elseif(request()->city=='Алматы') {
+            $page='http://almaty.expertremonta.kz'.$page;
+          //Cookie::queue('city', $req->city, 360000, '/', 'almaty.expertremonta.kz');
+          Cookie::queue('city', $req->city, 360000, '/', '.expertremonta.kz');
+        }
 
-        return redirect($page);
+        return redirect($page);//->cookie($cookie);
     }
 }

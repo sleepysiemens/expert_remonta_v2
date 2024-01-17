@@ -5,12 +5,12 @@ namespace App\Http\Controllers\Admin\Gallery;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Models\review;
+use App\Models\Review;
 use App\Models\question;
 use App\Models\service;
 use App\Models\category;
-use App\Models\sale;
-use App\Models\gallery;
+use App\Models\Sale;
+use App\Models\Gallery;
 
 
 class EditController extends Controller
@@ -21,7 +21,7 @@ class EditController extends Controller
         $reviews=Review::all();
         $services=Service::all();
         $categories=Category::all();
-        $sales=sale::all();
+        $sales=Sale::all();
         $galleries=gallery::all();
 
         return view('admin.gallery.edit', compact(['gallery', 'reviews', 'questions', 'services', 'categories', 'sales', 'galleries']));

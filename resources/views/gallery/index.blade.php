@@ -5,7 +5,8 @@
 @endsection
 
 @section('content')
-@include('blocks.gallery')
+{{--@include('blocks.gallery')--}}
+@include('blocks.nano-gallery')
 
 @endsection
 

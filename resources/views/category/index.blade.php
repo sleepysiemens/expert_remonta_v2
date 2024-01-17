@@ -26,7 +26,7 @@ nav-link-selected
 
 @section('seo-title')
     @foreach ($seos as $seo)
-        {{app()->db_translate($seo->seo_ru, $seo->seo_kz)}}
+        {{app()->db_translate(processTitle($seo->seo_ru, env('APP_CITY')), $seo->seo_kz)}}
     @endforeach
 @endsection
 

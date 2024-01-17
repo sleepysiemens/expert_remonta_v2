@@ -37,7 +37,7 @@
                 </div>
 
                 <a class="header-contact-info" id="city-select" style="cursor: pointer">
-                    <h1><i class="fas fa-map-marker-alt"></i> @if(isset($_COOKIE['city'])) {{$_COOKIE['city']}} @else Астана@endif</h1>
+                    <h1><i class="fas fa-map-marker-alt"></i> @if(isset($_COOKIE['city'])) {{$usr_city}} @else Астана@endif</h1>
                     <p>+7 (775) 138-50-80</p>
                 </a>
                 <form method="post" action="{{asset(route('locale.change'))}}" class="locale-pc" style="display: flex; margin-left: 20px">
@@ -128,8 +128,11 @@
                         @csrf
                         <input type="hidden" name="page" value="{{$page}}">
                         @foreach($cities as $city)
-                        <button class="city-btn @if($usr_city==$city->city) city-btn-active @endif" name="city" value="{{$city->city}}" ><p style="margin-top: auto">{{$city->city}}</p></button>
+                        @if(in_array($city->city, ['Астана', 'Алматы']))
+                        <button {{--@disabled($usr_city==$city->city)--}} class="city-btn @if($usr_city==$city->city) city-btn-active @endif" name="city" value="{{$city->city}}" ><p style="margin-top: auto">{{$city->city}}</p></button>
+                        @endif
                         @endforeach
+                        {{--$usr_city--}}
 
                     </form>
             </div>
@@ -170,7 +173,7 @@
                     </div>
                 </div>
                 <div class="footer-contact-info">
-                    <h1><i class="fas fa-map-marker-alt" aria-hidden="true"></i>@if(isset($_COOKIE['city'])) {{$_COOKIE['city']}} @else Астана@endif</h1>
+                    <h1><i class="fas fa-map-marker-alt" aria-hidden="true"></i>@if(isset($_COOKIE['city'])) {{$usr_city}} @else Астана@endif</h1>
                     <p>+7 (775) 138-50-80</p>
                 </div>
             </div>

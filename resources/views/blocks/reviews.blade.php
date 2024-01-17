@@ -12,7 +12,8 @@
 
             @foreach ($reviews as $review)
 
-            <a class="review" href="{{asset(route('reviews.index'))}}">
+            
+            <a class="review {{getBlockClass($loop->iteration)}}" href="{{asset(route('reviews.index'))}}">
                 <div class="review-div">
                     <div class="review-user-info">
 
@@ -45,18 +46,25 @@
 </section>
 
 <script>
+    let scroll = 345 * 3
     $('#scroll-right').on('click', function() {
-        $('.review-wrapper').animate({
-            scrollLeft: "+=300px"
+        let reviewBlockWidth = document.querySelector(".reviews-div .review").offsetWidth + 20
+        //$('.review-wrapper').animate({
+        $('.reviews-div').animate({
+            scrollLeft: `+=${reviewBlockWidth}px`
+            //scrollLeft: "+=345px"
         }, "slow");
-        console.log('scroll-left');
+        //console.log('scroll-left');
     });
 
     $('#scroll-left').on('click', function() {
-        $('.review-wrapper').animate({
-            scrollLeft: "-=300px"
+        let reviewBlockWidth = document.querySelector(".reviews-div .review").offsetWidth + 20
+        //$('.review-wrapper').animate({
+        $('.reviews-div').animate({
+            scrollLeft: `-=${reviewBlockWidth}px`
+            //scrollLeft: "-=345px"
         }, "slow");
-        console.log('scroll-right');
+        //console.log('scroll-right');
 
     });
 </script>

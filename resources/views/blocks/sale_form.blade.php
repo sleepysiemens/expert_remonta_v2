@@ -26,6 +26,8 @@
             <input class="hidden" type="text" name="username" placeholder="Имя" required>
             <input class="hidden" type="phone" name="phone" placeholder="Телефон" required>
             <input type="hidden" name="sourse" value="{{$page}}/sale/{{$sale->title}}">
+            <input type="hidden" id="cid" value="" name="cid">
+            <input type="hidden" id="ycid" value="" name="ycid">
             <button class="hidden gradient_button"><span class="flare"></span><p>{{app()->translate('Участвовать')}}</p></button>
         </form>
     </div>
@@ -75,6 +77,34 @@ actions.forEach(function(action) {
             document.getElementById(action.id).innerHTML = "Акция окончена";
         }
     }, 1000);
+});
+
+</script>
+
+<script>
+    function getYClientID() {
+        var match = document.cookie.match('(?:^|;)\\s*_ym_uid=([^;]*)');
+        return (match) ? decodeURIComponent(match[1]) : false;
+    }
+
+    function getGoogleClientID()
+    {
+        var match = document.cookie.match('(?:^|;)\\s*_ga=([^;]*)');
+        var raw = (match) ? decodeURIComponent(match[1]) : null;
+        if (raw)
+        {
+            match = raw.match(/(\d+\.\d+)$/);
+        }
+        var gacid = (match) ? match[1] : null;
+        if (gacid)
+        {
+            return gacid;
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function(){
+        document.getElementById('cid').value=getGoogleClientID();
+        document.getElementById('ycid').value=getYClientID();
 });
 
 </script>

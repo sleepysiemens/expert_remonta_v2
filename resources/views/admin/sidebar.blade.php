@@ -122,6 +122,14 @@
                   </p>
               </a>
 
+              <a href="{{ route('admin.page.index') }}" class="nav-link @yield('service_pages')">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                    Страницы услуг
+                    <span class="badge badge-info right">{{$categories->count()}}</span>
+                </p>
+            </a>
+
               <a href="{{ route('admin.category_slider.index') }}" class="nav-link @yield('category_slider')">
                 <i class="nav-icon far fa-images"></i>
                 <p>

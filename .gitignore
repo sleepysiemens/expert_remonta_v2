@@ -5,6 +5,9 @@
 /public/storage
 /storage/*.key
 /vendor
+/storage/framework
+/public/img
+/public/svg
 
 
 .env

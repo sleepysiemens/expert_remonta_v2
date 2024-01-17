@@ -47,7 +47,7 @@
                         <button style="border: none; background-color: transparent; color: rgb(196, 3, 3)"><i class="far fa-trash-alt"></i></button>
                       </form>
                     </td>
-                    <td><a href="{{route('admin.gallery.edit',$gallery->id)}}"><i class="fas fa-pen"></i></a></td>
+                    {{--<td><a href="{{route('admin.gallery.edit',$gallery->id)}}"><i class="fas fa-pen"></i></a></td>--}}
                     <td><a href="{{route('admin.gallery.show',$gallery->id)}}"><i class="fas fa-arrow-right"></i></a></td>
                 </tr>
 

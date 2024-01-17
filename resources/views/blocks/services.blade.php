@@ -16,6 +16,5 @@
         </span>
 
         @endforeach
-
     </div>
 </section>

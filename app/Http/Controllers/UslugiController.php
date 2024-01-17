@@ -30,23 +30,12 @@ class UslugiController extends Controller
         $WelcomeCards=WelcomeCard::all();
         $services=Service::all();
         $reviews=Review::all();
-        $whatsapp=Contact::query()->select('link')->where('name','=','whatsapp')->get();
-        $telegram=Contact::query()->select('link')->where('name','=','telegram')->get();
-        $instagram=Contact::query()->select('link')->where('name','=','instagram')->get();
-        $phone=Contact::query()->select('link')->where('name','=','phone')->get();
-        $seos=Seo::query()->where('page','=','uslugi')->get();
-        $cities=City::all();
 
-        $userIP=$_SERVER['REMOTE_ADDR'];
-        $location=Location::get($userIP);
-        if($location!=false)
-            $usr_city=$location->cityName;
-        else
-            $usr_city='Astana';
+        $seos=Seo::query()->where('page','=','uslugi')->get();
 
         $page='uslugi';
 
-        return view('uslugi.index', compact(['usr_city','cities','services', 'reviews', 'whatsapp', 'telegram', 'instagram', 'phone', 'Headers', 'WelcomeCards', 'page', 'seos']));
+        return view('uslugi.index', compact(['services', 'reviews', 'Headers', 'WelcomeCards', 'page', 'seos']));
     }
 
     public function service($service)
@@ -56,54 +45,32 @@ class UslugiController extends Controller
         $services= Service::query()->where(['url'=>$service])->get();
         $categories= Category::query()->join('services', 'services.id', '=', 'categories.service_id')->where(['services.url'=>$service])->select('categories.*','services.url AS service_url')->get();
         $reviews=Review::all();
-        $whatsapp=Contact::query()->select('link')->where('name','=','whatsapp')->get();
-        $telegram=Contact::query()->select('link')->where('name','=','telegram')->get();
-        $instagram=Contact::query()->select('link')->where('name','=','instagram')->get();
-        $phone=Contact::query()->select('link')->where('name','=','phone')->get();
         $seos=Seo::query()->where('page','=','uslugi/'.$service)->get();
         $ServiceImages=ServiceImage::query()->join('services', 'services.id', '=', 'service_images.service_id')->where(['services.url'=>$service])->select('service_images.src')->get();
-        $cities=City::all();
-
-        $userIP=$_SERVER['REMOTE_ADDR'];
-        $location=Location::get($userIP);
-        if($location!=false)
-            $usr_city=$location->cityName;
-        else
-            $usr_city='Astana';
 
         $page='uslugi/'.$service;
 
-        return view('service.index', compact(['usr_city', 'cities','ServiceImages','services','categories', 'reviews', 'whatsapp', 'telegram', 'instagram', 'phone', 'Headers', 'WelcomeCards', 'page', 'seos']));
+        return view('service.index', compact(['ServiceImages','services','categories', 'reviews', 'Headers', 'WelcomeCards', 'page', 'seos']));
     }
 
     public function category($service, $category)
     {
+      //dd($category);
         //event('postHasViewed', $category);
 
         $Headers=Header::all();
         $WhyCards=WhyCard::all();
         $WelcomeCards=WelcomeCard::all();
         $categories= Category::query()->join('services', 'services.id', '=', 'categories.service_id')->where(['categories.url'=>$category])->select('categories.*','services.url AS service_url','services.title_ru AS service_title_ru','services.title_kz AS service_title_kz')->limit(1)->get();
+        //dd($categories[0]);
         $reviews=Review::all();
-        $whatsapp=Contact::query()->select('link')->where('name','=','whatsapp')->get();
-        $telegram=Contact::query()->select('link')->where('name','=','telegram')->get();
-        $instagram=Contact::query()->select('link')->where('name','=','instagram')->get();
-        $phone=Contact::query()->select('link')->where('name','=','phone')->get();
         $CategoryImages=CategoryImage::query()->where(['category_id'=>$categories[0]->id])->select('category_images.src', 'category_images.category_id')->get();
         $seos=Seo::query()->where('page','=','uslugi/'.$service.'/'.$category)->get();
-        $cities=City::all();
 
 
         $page='uslugi/'.$service.'/'.$category;
 
-        $userIP=$_SERVER['REMOTE_ADDR'];
-        $location=Location::get($userIP);
-        if($location!=false)
-            $usr_city=$location->cityName;
-        else
-            $usr_city='Astana';
 
-
-        return view('category.index', compact(['usr_city', 'cities','categories', 'reviews', 'whatsapp', 'telegram', 'instagram', 'phone', 'Headers', 'WelcomeCards', 'WhyCards', 'page', 'CategoryImages', 'seos']));
+        return view('category.index', compact(['categories', 'reviews', 'Headers', 'WelcomeCards', 'WhyCards', 'page', 'CategoryImages', 'seos']));
     }
 }

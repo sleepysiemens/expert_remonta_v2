@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Gallery;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Models\gallery;
+use App\Models\Gallery;
 
 
 class UpdateController extends Controller

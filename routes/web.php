@@ -16,6 +16,7 @@ use Spatie\ResponseCache\Middlewares\CacheResponse;
 
 /*Route::group(['middleware'=>'CacheResponse:60'], function ()
 {*/
+  Route::group(['middleware'=>'app'], function() {
     Route::get('/', 'MainController@index')->name('main.index');
     Route::get('/uslugi/', 'UslugiController@index')->name('uslugi.index');
     Route::get('/price/', 'PriceController@index')->name('price.index');
@@ -25,7 +26,8 @@ use Spatie\ResponseCache\Middlewares\CacheResponse;
     Route::get('/uslugi/{service}/{category}/', 'UslugiController@category')->name('category.index');
     Route::get('/blog/{blog}', 'BlogController@index')->name('blog.index');
     Route::get('/reviews/', 'ReviewController@index')->name('reviews.index');
-//});
+  });
+    //});
 
 
 //ADMIN
@@ -74,6 +76,20 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin/', 'middleware'=>'admin
         Route::get('/{category}/edit', 'EditController@index')->name('admin.category.edit');
         Route::patch('/{category}', 'UpdateController@index')->name('admin.category.update');
         Route::delete('/{category}', 'DestroyController@index')->name('admin.category.destroy');
+    });
+
+    // resource controller ?
+    Route::group(['namespace' => 'Page', 'prefix' => 'page'], function()
+    {
+        Route::get('/', 'IndexController@index')->name('admin.page.index');
+        Route::get('/create', 'IndexController@create')->name('admin.page.create');
+        Route::post('', 'IndexController@store')->name('admin.page.store');
+        Route::get('/{category}', 'IndexController@show')->name('admin.page.show');
+        Route::get('/{category}/edit', 'IndexController@edit')->name('admin.page.edit');
+        Route::patch('/{category}', 'IndexController@update')->name('admin.page.update');
+        Route::delete('/{category}', 'IndexController@destroy')->name('admin.page.destroy');
+        Route::delete('/destroySlider/{category_slider}', 'IndexController@destroySlider')->name('admin.page.destroySlider');
+        Route::delete('/destroySliderAjax/{category_slider}', 'IndexController@destroySliderAjax')->name('admin.page.destroySliderAjax');
     });
 
     Route::group(['namespace' => 'Category_slider', 'prefix' => 'category_slider'], function()
