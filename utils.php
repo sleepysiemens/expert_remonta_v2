@@ -7,9 +7,8 @@ function processTitle($title, $city) {
 
     if($titleParts[$idx-1] !== 'в') $titleParts[$idx] = $city;
     else if($titleParts[$idx-1] === 'в' && $city === 'Астана') $titleParts[$idx] = 'Астане';
-
-    return implode(' ', $titleParts);
   }
+  return implode(' ', $titleParts);
 }
 
 function getBlockClass($idx) {
