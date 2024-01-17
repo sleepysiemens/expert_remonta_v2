@@ -46,8 +46,8 @@ class AppMiddleware
       // тут можно добавить автоматический сет куки если куки нет, но локация определена как эти 2 города
       else if($location!=false && in_array($location->cityName, ['Astana', 'Almaty']))
         $usr_city = cityEnToRu($location->cityName);
-      else //$usr_city='Астана';
-        $usr_city='Astana';
+      else
+        $usr_city= env('APP_CITY_EN');
 
       View::share('usr_city', $usr_city);
         
