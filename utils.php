@@ -3,6 +3,7 @@
 function processTitle($title, $city) {
   $titleParts = explode(' ', $title);
   foreach($titleParts as $idx => $part) {
+    // мб удобнее _CITY_ или CITY
     if($part !== '%CITY%') continue;
 
     if($titleParts[$idx-1] !== 'в') $titleParts[$idx] = $city;

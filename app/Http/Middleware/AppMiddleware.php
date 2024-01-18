@@ -12,6 +12,7 @@ use Stevebauman\Location\Facades\Location;
 
 use App\Models\Contact;
 use App\Models\City;
+use App\Models\Menu;
 
 class AppMiddleware
 {
@@ -28,13 +29,20 @@ class AppMiddleware
       $instagram=Contact::query()->select('link')->where('name','=','instagram')->get();
       $phone=Contact::query()->select('link')->where('name','=','phone')->get();
       $cities=City::all();
+      $menu=Menu::whereNull('parent_id')->with('childs.childs')->get();
+      //dd($menu);
       //dd($cities);
+      //dd($_SERVER['REQUEST_URI']);
+      $uri = $_SERVER['REQUEST_URI'];
+      //dd(substr($uri, 1));
 
       View::share('whatsapp', $whatsapp);
       View::share('telegram', $telegram);
       View::share('instagram', $instagram);
       View::share('phone', $phone);
       View::share('cities', $cities);
+      View::share('menu', $menu);
+      View::share('uri', substr($uri, 1));
 
       $userIP=$_SERVER['REMOTE_ADDR'];
       $location=Location::get($userIP);

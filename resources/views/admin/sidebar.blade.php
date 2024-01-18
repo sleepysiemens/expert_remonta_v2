@@ -90,6 +90,14 @@
           <li class="nav-header">БАЗА ДАННЫХ</li>
           <li class="nav-item">
 
+            <a href="{{ route('admin.menu.index') }}" class="nav-link @yield('menu')">
+              <i class="nav-icon fas fa-bars"></i>
+              <p>
+                  Меню
+                  <span class="badge badge-info right">{{--$reviews->count()--}}</span>
+              </p>
+          </a>
+
               <a href="{{ route('admin.review.index') }}" class="nav-link @yield('reviews')">
                   <i class="nav-icon fas fa-star-half-alt"></i>
                   <p>
@@ -114,13 +122,13 @@
                   </p>
               </a>
 
-              <a href="{{ route('admin.category.index') }}" class="nav-link @yield('categories')">
+              {{--<a href="{{ route('admin.category.index') }}" class="nav-link @yield('categories')">
                   <i class="nav-icon fas fa-th"></i>
                   <p>
                       Категории
                       <span class="badge badge-info right">{{$categories->count()}}</span>
                   </p>
-              </a>
+              </a>--}}
 
               <a href="{{ route('admin.page.index') }}" class="nav-link @yield('service_pages')">
                 <i class="nav-icon fas fa-th"></i>
@@ -130,12 +138,12 @@
                 </p>
             </a>
 
-              <a href="{{ route('admin.category_slider.index') }}" class="nav-link @yield('category_slider')">
+              {{--<a href="{{ route('admin.category_slider.index') }}" class="nav-link @yield('category_slider')">
                 <i class="nav-icon far fa-images"></i>
                 <p>
                   Категории • Слайдер
                 </p>
-              </a>
+              </a>--}}
 
               {{--<a href="{{ route('admin.service_slider.index') }}" class="nav-link @yield('service_slider')">
                   <i class="nav-icon far fa-images"></i>

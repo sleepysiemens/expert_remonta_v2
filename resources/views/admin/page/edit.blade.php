@@ -72,11 +72,14 @@
             <div class="form-group">
               <label for="exampleInputEmail1">SEO-заголовок, ru</label>
               <input type="text" class="form-control" placeholder="SEO" name="seo_ru" required value="@if(isset($seos[0]->id) and $seos[0]->id!=NULL){{$seos[0]->seo_ru}}@endif">
+              <span class="title_var">%CITY%</span>
+              <p>Нажмите на кнопку %CITY% выше для быстрой вставки динамической переменной города</p>
           </div>
           <div class="form-group">
               <label for="exampleInputEmail1">SEO-заголовок, kz</label>
               <input type="text" class="form-control" placeholder="SEO" name="seo_kz" value="@if(isset($seos[0]->id) and $seos[0]->id!=NULL){{$seos[0]->seo_kz}}@endif">
-          </div>
+              <span class="title_var">%CITY%</span>
+            </div>
           <div class="form-group">
               <label for="exampleInputEmail1">META-описание, ru</label>
               <input type="text" class="form-control" placeholder="Meta" name="meta_ru" required value="@if(isset($seos[0]->id) and $seos[0]->id!=NULL){{$seos[0]->meta_ru}}@endif">
@@ -119,8 +122,35 @@
 
 @endsection
 
+<style>
+  .title_var {
+  background: aliceblue;
+  padding: 5px;
+  cursor: pointer;
+  margin-top: 5px;
+  display: inline-block;
+}
+</style>
+
 
 <script>
+  document.addEventListener("DOMContentLoaded", function(e) {
+    //document.querySelector('#var')
+    document.addEventListener('click', function(e) {
+      if(!e.target.classList.contains('title_var')) return
+      let myField = e.target.previousElementSibling
+      let myValue = e.target.textContent
+      if (myField.selectionStart || myField.selectionStart == '0') {
+        var startPos = myField.selectionStart;
+        var endPos = myField.selectionEnd;
+        myField.value = myField.value.substring(0, startPos)
+            + myValue
+            + myField.value.substring(endPos, myField.value.length);
+      } else {
+          myField.value += myValue;
+      }
+    })
+  });
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();

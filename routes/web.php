@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Spatie\ResponseCache\Middlewares\CacheResponse;
 
+use App\Http\Controllers\Admin\MenuController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,8 +33,17 @@ use Spatie\ResponseCache\Middlewares\CacheResponse;
 
 
 //ADMIN
+//Route::resource('admin/menu', MenuController::class);
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin/', 'middleware'=>'admin'], function()
 {
+
+  //Route::resource('menu', 'MenuController');
+  //Route::resource('menu', MenuController::class);
+
+  /*Route::group(['namespace' => 'Menu', 'prefix' => 'menu'], function()
+    {
+        Route::get('/', 'IndexController@index')->name('admin.review.index');
+    });*/
 
     Route::group(['namespace' => 'Review', 'prefix' => 'review'], function()
     {
@@ -90,6 +101,17 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin/', 'middleware'=>'admin
         Route::delete('/{category}', 'IndexController@destroy')->name('admin.page.destroy');
         Route::delete('/destroySlider/{category_slider}', 'IndexController@destroySlider')->name('admin.page.destroySlider');
         Route::delete('/destroySliderAjax/{category_slider}', 'IndexController@destroySliderAjax')->name('admin.page.destroySliderAjax');
+    });
+
+  Route::group(['prefix' => 'menu', /*'name' => 'admin.menu.'*/], function()
+    {
+        Route::get('/', 'MenuController@index')->name('admin.menu.index');
+        Route::get('/create', 'MenuController@create')->name('admin.menu.create');
+        Route::post('', 'MenuController@store')->name('admin.menu.store');
+        //Route::get('/{menu}', 'MenuController@show')->name('show');
+        Route::get('/{menu}/edit', 'MenuController@edit')->name('admin.menu.edit');
+        Route::patch('/{menu}', 'MenuController@update')->name('admin.menu.update');
+        Route::delete('/{menu}', 'MenuController@destroy')->name('admin.menu.destroy');
     });
 
     Route::group(['namespace' => 'Category_slider', 'prefix' => 'category_slider'], function()

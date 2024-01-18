@@ -17,6 +17,7 @@
 
     <script src="https://kit.fontawesome.com/0a007e12dc.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
     <header>
         <div class="header-div">
 
@@ -27,14 +28,8 @@
             </div>
 
             <div class="header-subdiv">
-                <div class="nav-links">
-                    <a href="{{ route('main.index') }}/" class="nav-link @yield('main')"><p>{{app()->translate('Главная')}}</p></a>
-                    <a href="{{ route('uslugi.index') }}/" class="nav-link @yield('service')"><p>{{app()->translate('Услуги')}}</p></a>
-                    <a href="{{ route('price.index') }}/" class="nav-link @yield('price')"><p>{{app()->translate('Расценки')}}</p></a>
-                    <a href="{{ route('gallery.index') }}/" class="nav-link @yield('gallery')"><p>{{app()->translate('Галерея')}}</p></a>
-                    <a href="{{ route('reviews.index') }}/" class="nav-link @yield('reviews')"><p>{{app()->translate('Отзывы')}}</p></a>
-                    <a href="{{ route('contacts.index') }}/" class="nav-link @yield('contact')"><p>{{app()->translate('Контакты')}}</p></a>
-                </div>
+              @include('blocks.menu')
+              
 
                 <a class="header-contact-info" id="city-select" style="cursor: pointer">
                     <h1><i class="fas fa-map-marker-alt"></i> @if(isset($_COOKIE['city'])) {{$usr_city}} @else Астана@endif</h1>
