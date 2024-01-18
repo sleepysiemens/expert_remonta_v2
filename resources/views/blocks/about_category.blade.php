@@ -1,4 +1,7 @@
 <section class="about-service">
+  <div class="breadcrumbs">
+        <a href="/uslugi">Услуги</a> / <a href="/uslugi/{{$categories[0]->service->url}}">{{$categories[0]->service->title_ru}}</a>
+      </div>
     <div class="about-with-button">
         <h1>{{app()->db_translate($category->title_ru, $category->title_kz)}}</h1>
         <a class="gradient_button" id="main-form-btn" ><span class="flare"></span><p>{{app()->translate('Заказать услугу')}}</p></a>

@@ -7,16 +7,17 @@
             <div class="welcome-content">
                 <div class="welcome-header hidden">
                     @foreach ($Headers as $Header)
-                    <h1>{{app()->db_translate($Header->title_ru,$Header->title_kz)}}</h1>
-                    <h3>{{app()->db_translate($Header->subtitle_ru,$Header->subtitle_kz)}}</h3>
+                    <div>{{app()->db_translate($Header->title_ru,$Header->title_kz)}}</div>
+                    <div>{{app()->db_translate($Header->subtitle_ru,$Header->subtitle_kz)}}</div>
+                    <div class="breadcrumbs">
+                      {{--<a href="/">Главная</a> / --}}
+                      {{--<a href="/uslugi">Услуги</a> / <a href="/uslugi/{{$categories[0]->service->url}}">{{$categories[0]->service->title_ru}}</a>--}}
+                    </div>
                     @endforeach
                 </div>
                 <div class="welcome-cards">
-                    @php
-                        $i=1;
-                    @endphp
                     @foreach ($WelcomeCards as $card)
-                        <span class="welcome-card welcome-card-{{$i++}} scroll-hidden">
+                        <span class="welcome-card welcome-card-{{$loop->iteration}} scroll-hidden">
                             <p>{{app()->db_translate($card->title_ru,$card->title_kz)}}</p>
                             <img src=" /img/cards/{{$card->src}}">
                         </span>

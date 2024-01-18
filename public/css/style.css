@@ -132,7 +132,7 @@ header
     margin-left: 55px;
 }
 
-.header-contact-info h1
+.header-contact-info h1, .header-contact-info span
 {
     color: rgba(0,0,0,.7);
     font-weight: normal;
@@ -200,7 +200,7 @@ header
     margin-bottom: 50px;
 }
 
-.welcome-header h1, .welcome-header h3
+.welcome-header h1, .welcome-header h3, .welcome-header div:nth-of-type(1), .welcome-header div:nth-of-type(2)
 {
     text-align: center;
     color: #fff;
@@ -209,12 +209,12 @@ header
     font-weight: 600;
 }
 
-.welcome-header h1
+.welcome-header h1, .welcome-header div:nth-of-type(1)
 {
     font-size: 40px;
 }
 
-.welcome-header h3
+.welcome-header h3,  .welcome-header div:nth-of-type(2)
 {
     font-size: 18px;
 
@@ -935,7 +935,7 @@ footer
     margin-left: 55px;
 }
 
-.footer-contact-info h1
+.footer-contact-info h1, .footer-contact-info div
 {
     color: rgba(245,245,245,.75);
     font-weight: normal;
@@ -2205,13 +2205,13 @@ footer
         width: 75px;
     }
 
-    .header-contact-info h1
+    .header-contact-info h1, .header-contact-info span
     {
         font-size: 14px;
         display: flex;
     }
 
-    .header-contact-info h1 i
+    .header-contact-info h1 i, .header-contact-info span i
     {
         margin-right: 5px;
     }
@@ -2581,7 +2581,7 @@ footer
         margin-right: 4px;
     }
 
-    .footer-contact-info h1
+    .footer-contact-info h1, .footer-contact-info div
     {
         font-size: 14px;
     }
@@ -2932,9 +2932,12 @@ footer {
     height: 0;
     margin: 0;
     transition: opacity .35s, height .35s;
+    /* без display none меню открывается даже если наводим по его невидимому месту, что плохо */
+    display: none;
     /*bottom: -2000px;*/
   }
   .header_submenu.active, .header_deepmenu.active {
+    display: block;
     height: auto;
     opacity: 1;
     /*bottom: -255px;*/
@@ -3002,3 +3005,20 @@ footer {
   }
 }
 
+.breadcrumbs {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+  /*color: #fff;
+  text-shadow: 0 0 5px rgba(0,0,0,.75)*/
+  color: #404040;
+  margin-bottom: 20px;
+}
+.breadcrumbs a {
+  /*color: #fff;
+  text-shadow: 0 0 5px rgba(0,0,0,.75)*/
+  color: #404040;
+}
+.breadcrumbs a:hover {
+  color: #9DC436;
+}

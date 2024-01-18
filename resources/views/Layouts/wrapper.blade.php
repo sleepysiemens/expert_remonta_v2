@@ -32,7 +32,7 @@
               
 
                 <a class="header-contact-info" id="city-select" style="cursor: pointer">
-                    <h1><i class="fas fa-map-marker-alt"></i> @if(isset($_COOKIE['city'])) {{$usr_city}} @else Астана@endif</h1>
+                    <span><i class="fas fa-map-marker-alt"></i> @if(isset($_COOKIE['city'])) {{$usr_city}} @else {{env('APP_CITY')}}@endif</span>
                     <p>+7 (775) 138-50-80</p>
                 </a>
                 <form method="post" action="{{asset(route('locale.change'))}}" class="locale-pc" style="display: flex; margin-left: 20px">
@@ -168,7 +168,7 @@
                     </div>
                 </div>
                 <div class="footer-contact-info">
-                    <h1><i class="fas fa-map-marker-alt" aria-hidden="true"></i>@if(isset($_COOKIE['city'])) {{$usr_city}} @else Астана@endif</h1>
+                    <div><i class="fas fa-map-marker-alt" aria-hidden="true"></i>@if(isset($_COOKIE['city'])) {{$usr_city}} @else {{env('APP_CITY')}}@endif</div>
                     <p>+7 (775) 138-50-80</p>
                 </div>
             </div>

@@ -4,7 +4,7 @@
     Редактировать фото
 @endsection
 
-@section('gallery')
+@section('menu')
     active
 @endsection
 
@@ -12,7 +12,7 @@
 
 <div class="row">
   <div class="col-12">
-    <a href="{{route('admin.gallery.index')}}" class="btn btn-default">
+    <a href="{{route('admin.menu.index')}}" class="btn btn-default">
       <i class="fas fa-arrow-left"></i> Назад
   </a>
   </div>

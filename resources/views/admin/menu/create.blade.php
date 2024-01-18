@@ -4,7 +4,7 @@
     Добавить пункт меню
 @endsection
 
-@section('gallery')
+@section('menu')
     active
 @endsection
 

@@ -1,5 +1,5 @@
 <section class="reviews">
-    <h1 class="section-header">{{app()->translate('Отзывы')}}</h1>
+    <div class="section-header">{{app()->translate('Отзывы')}}</div>
     <button class="right-arrow" id="scroll-right">
         <i class="fas fa-arrow-right"></i>
     </button>

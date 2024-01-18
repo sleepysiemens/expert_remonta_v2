@@ -1,5 +1,5 @@
 <section class="why">
-    <h1 class="section-header">Почему мы?</h1>
+    <div class="section-header">Почему мы?</div>
     <div class="why-div">
         @php
             $why_cnt=1;
