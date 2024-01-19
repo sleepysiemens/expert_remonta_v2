@@ -29,7 +29,7 @@ class AppMiddleware
       $instagram=Contact::query()->select('link')->where('name','=','instagram')->get();
       $phone=Contact::query()->select('link')->where('name','=','phone')->get();
       $cities=City::all();
-      $menu=Menu::whereNull('parent_id')->with('childs.childs')->get();
+      $menu=Menu::where('url', '!=', '/')->whereNull('parent_id')->with('childs.childs')->get();
       //dd($menu);
       //dd($cities);
       //dd($_SERVER['REQUEST_URI']);

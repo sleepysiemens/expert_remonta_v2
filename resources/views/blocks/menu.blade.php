@@ -8,6 +8,9 @@
     <a href="{{ route('contacts.index') }}/" class="nav-link @yield('contact')"><p>{{app()->translate('Контакты')}}</p></a>
     --}}
     {{-- @yield('active_nav_class') --}}
+    <div class="header_menu_item">
+      <a href="/" @class(['nav-link', 'nav-link-selected' => '/' === $uri])>Главная</a>
+    </div>
     @foreach($menu as $m)
       <div class="header_menu_item {{count($m->childs) > 0 ? 'has_childs' : ''}} {{$m->uri === $uri ? 'active' : ''}}">
       <a href="/{{$m->url}}" @class(['nav-link', 'nav-link-selected' => $m->uri === $uri,])>{{app()->translate($m->title)}}</a>
