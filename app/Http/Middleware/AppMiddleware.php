@@ -50,14 +50,19 @@ class AppMiddleware
       $cityCookie = Cookie::get('city');
       //dd($cityCookie);
 
+      $usr_city = '';
+
       if($cityCookie) $usr_city = $cityCookie;
       // тут можно добавить автоматический сет куки если куки нет, но локация определена как эти 2 города
       else if($location!=false && in_array($location->cityName, ['Astana', 'Almaty']))
         $usr_city = cityEnToRu($location->cityName);
+        // если определило другой город по локации, ставим город текущего поддомена
+        if($usr_city !== env('APP_CITY')) $usr_city = env('APP_CITY');
       else
-        $usr_city= env('APP_CITY_EN');
+        $usr_city= env('APP_CITY');
 
       View::share('usr_city', $usr_city);
+      View::share('location', $location);
         
 
       return $next($request);

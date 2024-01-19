@@ -2924,7 +2924,8 @@ footer {
     opacity: 0;
     left: 0;
     list-style: none;
-    padding: 10px 15px;
+    /*padding: 10px 15px;*/
+    padding: 10px 10px;
     padding-left: 15px;
     background: #fff;
     border-radius: 6px;
@@ -2953,16 +2954,17 @@ footer {
     position: absolute;
     /*right: 10px;
     top: 0;*/
-    right: -12px;
+    right: -15px;
     top: 3px;
     cursor: pointer;
+    transform: scale(0.8);
   }
   .has_childs.active:after, .has_childs:hover:after {
     content: url(/svg/down-active.svg);
   }
 
   .header_submenu li.has_childs:after {
-    transform: rotate(270deg);
+    transform: scale(0.7) rotate(270deg);
     top: 5px;
     right: -10px;
   }
@@ -2970,8 +2972,12 @@ footer {
     position: relative;
   }
   .header_deepmenu {
-    left: 185px;
-    top: 0;
+    left: 178px;
+    top: -10px;
+  }
+  .header_deepmenu .nav-link, .header_deepmenu .nav-link-selected {
+    text-align: left;
+    font-size: 13px;
   }
 
 
@@ -3006,18 +3012,19 @@ footer {
 }
 
 .breadcrumbs {
-  text-align: center;
-  margin-top: 20px;
-  font-weight: bold;
+  text-align: left;
+  /*margin-top: 20px;
+  font-weight: bold;*/
   /*color: #fff;
   text-shadow: 0 0 5px rgba(0,0,0,.75)*/
   color: #404040;
   margin-bottom: 20px;
+  font-size: 13px;
 }
 .breadcrumbs a {
   /*color: #fff;
   text-shadow: 0 0 5px rgba(0,0,0,.75)*/
-  color: #404040;
+  color: rgba(0,0,0,.5);
 }
 .breadcrumbs a:hover {
   color: #9DC436;

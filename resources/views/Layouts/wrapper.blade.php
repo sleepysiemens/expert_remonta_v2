@@ -32,7 +32,8 @@
               
 
                 <a class="header-contact-info" id="city-select" style="cursor: pointer">
-                    <span><i class="fas fa-map-marker-alt"></i> @if(isset($_COOKIE['city'])) {{$usr_city}} @else {{env('APP_CITY')}}@endif</span>
+                  {{-- @if(isset($_COOKIE['city'])) {{$usr_city}} @else {{env('APP_CITY')}} @endif--}}
+                    <span><i class="fas fa-map-marker-alt"></i> {{$usr_city}}</span>
                     <p>+7 (775) 138-50-80</p>
                 </a>
                 <form method="post" action="{{asset(route('locale.change'))}}" class="locale-pc" style="display: flex; margin-left: 20px">
@@ -113,7 +114,8 @@
     @yield('form-div')
     @yield('review-form')
 
-    <div id="city-yes-no" class="page-wrapper @if(!isset($_COOKIE['city']) OR $_COOKIE['city']==NULL){{'page-wrapper-active'}}@endif">
+    {{-- @if(!isset($_COOKIE['city']) OR $_COOKIE['city']==NULL){{'page-wrapper-active'}}@endif --}}
+    <div id="city-yes-no" class="page-wrapper">
         <div class="sale-form-div">
             <button class="form-sale-close" id="form-city-close"><i class="fas fa-times" aria-hidden="true"></i></button>
             <h3>Выберите город</h3>
@@ -168,7 +170,8 @@
                     </div>
                 </div>
                 <div class="footer-contact-info">
-                    <div><i class="fas fa-map-marker-alt" aria-hidden="true"></i>@if(isset($_COOKIE['city'])) {{$usr_city}} @else {{env('APP_CITY')}}@endif</div>
+                  {{-- @if(isset($_COOKIE['city'])) {{$usr_city}} @else {{env('APP_CITY')}} @endif --}}
+                    <div><i class="fas fa-map-marker-alt" aria-hidden="true"></i>{{$usr_city}}</div>
                     <p>+7 (775) 138-50-80</p>
                 </div>
             </div>
