@@ -28,6 +28,7 @@ use App\Http\Controllers\Admin\MenuController;
     Route::get('/uslugi/{service}/{category}/', 'UslugiController@category')->name('category.index');
     Route::get('/blog/{blog}', 'BlogController@index')->name('blog.index');
     Route::get('/reviews/', 'ReviewController@index')->name('reviews.index');
+    Route::get('/franchise/', 'MainController@franchise')->name('main.franchise');
   });
     //});
 

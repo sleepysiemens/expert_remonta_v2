@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @include('blocks.seo')
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+    @stack('franchise')
     <script defer src="/js/animation.js"></script>
     <script defer src="/js/contacts.js"></script>
     <script defer src=" /js/bg.js"></script>

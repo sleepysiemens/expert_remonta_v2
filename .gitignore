@@ -8,6 +8,7 @@
 /storage/framework
 /public/img
 /public/svg
+/public/franchise_files
 
 
 .env

@@ -1,7 +1,7 @@
 @extends('Layouts.admin')
 
 @section('title')
-    Редактировать фото
+    Редактировать пункт меню
 @endsection
 
 @section('menu')

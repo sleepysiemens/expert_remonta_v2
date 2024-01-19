@@ -913,7 +913,7 @@ footer
     display: flex;
     transition: .3s;
     cursor: pointer;
-    color: rgba(245,245,245,.75);
+    color: rgba(245,245,245,.75)!important;
     height: 15px;
     margin: auto;
 }
@@ -2756,7 +2756,7 @@ span.star {
 }*/
 footer {
   height: auto;
-  margin-top: 20px;
+  /*margin-top: 20px;*/
   padding-top: 10px;
 }
 .header-div {
@@ -2972,7 +2972,8 @@ footer {
     position: relative;
   }
   .header_deepmenu {
-    left: 178px;
+    /*left: 178px;*/
+    left: 176px;
     top: -10px;
   }
   .header_deepmenu .nav-link, .header_deepmenu .nav-link-selected {

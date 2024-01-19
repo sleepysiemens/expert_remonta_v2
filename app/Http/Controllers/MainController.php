@@ -42,6 +42,12 @@ class MainController extends Controller
         return view('main.index', compact(['texts','services', 'questions', 'sales', 'Headers', 'WelcomeCards', 'Abouts', 'WhyCards', 'page', 'seos']));
     }
 
+    public function franchise() {
+      $page='franchise';
+
+      return view('main.franchise', compact('page'));
+    }
+
     public function form()
     {
         $userIP=$_SERVER['REMOTE_ADDR'];
