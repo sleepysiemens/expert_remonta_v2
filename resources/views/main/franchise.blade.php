@@ -51,12 +51,12 @@
         <div class="fr_page_wrap">
         <div class="fr_page_heading">Влияние франшизы на бизнес</div>
         <ol>
-          <li><span>Повышение эффективности</span></li>
-          <li><span>Лучшее управление ресурсами</span></li>
-          <li><span>Улучшенное взаимодействие с клиентами</span></li>
-          <li><span>Высокое качество услуг</span></li>
-          <li><span>Обоснованные решения</span></li>
-          <li><span>Финансовый контроль</span></li>
+          <li class="scroll-hidden"><span>Повышение эффективности</span></li>
+          <li class="scroll-hidden"><span>Лучшее управление ресурсами</span></li>
+          <li class="scroll-hidden"><span>Улучшенное взаимодействие с клиентами</span></li>
+          <li class="scroll-hidden"><span>Высокое качество услуг</span></li>
+          <li class="scroll-hidden"><span>Обоснованные решения</span></li>
+          <li class="scroll-hidden"><span>Финансовый контроль</span></li>
         </ol>
         </div>
       </div>
