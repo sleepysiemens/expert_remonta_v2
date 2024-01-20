@@ -11,6 +11,10 @@ class CategoryImage extends Model
     use HasFactory;
     protected $guarded=[];
 
+    public function getTable()  {
+      return env('APP_CITY') === 'Астана' ? 'category_images' : 'category_images_almaty';
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(category::class);

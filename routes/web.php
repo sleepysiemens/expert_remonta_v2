@@ -5,6 +5,7 @@ use Spatie\ResponseCache\Middlewares\CacheResponse;
 
 use App\Http\Controllers\Admin\MenuController;
 use Stevebauman\Location\Facades\Location;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,17 +34,29 @@ use Stevebauman\Location\Facades\Location;
     Route::get('/geo', function () {
       //dd(\App\Models\category::all());
       //dd(\App\Models\Seo::all()[75]);
-      // код для переноса сео инфы
-      /*$pages = \App\Models\category::all();
+      // код для переноса сео инфы, и для переноса в бд
+      $pages = \App\Models\category::all();
+      //dd($pages[0]);
+      $array = [];
       foreach($pages as $page) {
-        $pageSeo = \App\Models\Seo::where('page','=','uslugi/'.$page->service->url.'/'.$page->url)->first();
+        /*$pageSeo = \App\Models\Seo::where('page','=','uslugi/'.$page->service->url.'/'.$page->url)->first();
         //dd($pageSeo);
         $page->seo_title_ru = $pageSeo->seo_ru;
         $page->seo_title_kz = $pageSeo->seo_kz;
         $page->meta_desc_ru = $pageSeo->meta_ru;
         $page->meta_desc_kz = $pageSeo->meta_kz;
-        $page->update();
-      }*/
+        $page->update();*/
+        
+        $array[] = [
+          'url' => $page->url, 'service_id' => $page->service_id, 'src' => $page->src, 'title_ru' => $page->title_ru, 'title_kz' => $page->title_kz,
+          'description_ru' => $page->description_ru, 'description_kz' => $page->description_kz, 'visits_count' => $page->visits_count, 
+          'seo_title_ru' => $page->seo_title_ru, 'seo_title_kz' => $page->seo_title_kz,
+          'meta_desc_ru' => $page->meta_desc_ru, 'meta_desc_kz' => $page->meta_desc_kz,
+        ];
+      }
+      //dd($array);
+      //DB::table('categories_almaty')->insert($array);
+      //DB::table('categories_almaty')->truncate();
       $location = Location::get($_SERVER['REMOTE_ADDR']);
       return "
         Данные модуля местоположения <br>
