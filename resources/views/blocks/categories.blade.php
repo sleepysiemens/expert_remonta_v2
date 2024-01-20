@@ -6,13 +6,13 @@
         @foreach ($categories as $category)
 
         <span class="service-banner">
-            <a class="service-banner-link" href="{{ route('category.index', [$category->service_url, $category->url]) }}">
+            <a class="service-banner-link" href="{{ route('category.index', [$category->service->url, $category->url]) }}">
                 <img src=" /img/categories/{{$category->src}}">
             </a>
-            <a href="{{ route('category.index', [$category->service_url, $category->url]) }}" class="category-content">
+            <a href="{{ route('category.index', [$category->service->url, $category->url]) }}" class="category-content">
                 <h4>{{app()->db_translate($category->title_ru, $category->title_kz)}}</h4>
             </a>
-            <a class="service-banner-button" href="{{ route('category.index', [$category->service_url, $category->url]) }}"><p>{{app()->translate('Подробнее')}}</p></a>
+            <a class="service-banner-button" href="{{ route('category.index', [$category->service->url, $category->url]) }}"><p>{{app()->translate('Подробнее')}}</p></a>
         </span>
 
         @endforeach

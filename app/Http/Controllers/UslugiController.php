@@ -43,7 +43,9 @@ class UslugiController extends Controller
         $Headers=Header::all();
         $WelcomeCards=WelcomeCard::all();
         $services= Service::query()->where(['url'=>$service])->get();
-        $categories= Category::query()->join('services', 'services.id', '=', 'categories.service_id')->where(['services.url'=>$service])->select('categories.*','services.url AS service_url')->get();
+        //dd($services[0]->id);
+        //$categories= Category::query()->join('services', 'services.id', '=', 'categories.service_id')->where(['services.url'=>$service])->select('categories.*','services.url AS service_url')->get();
+        $categories = Category::where(['service_id' => $services[0]->id])->with('service')->get();
         $reviews=Review::all();
         $seos=Seo::query()->where('page','=','uslugi/'.$service)->get();
         $ServiceImages=ServiceImage::query()->join('services', 'services.id', '=', 'service_images.service_id')->where(['services.url'=>$service])->select('service_images.src')->get();
