@@ -13,6 +13,11 @@ class category extends Model
     use HasFactory;
     protected $guarded=[];
 
+    public function getTable()  {
+      // Your logic to determine the table name
+      return env('APP_CITY') === 'Астана' ? 'categories' : 'categories_almaty';
+    }
+
     /*public function service(): HasOne{
         return $this->hasOne(Service::class);
     }*/

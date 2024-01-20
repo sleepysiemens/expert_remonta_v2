@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Spatie\ResponseCache\Middlewares\CacheResponse;
 
 use App\Http\Controllers\Admin\MenuController;
+use Stevebauman\Location\Facades\Location;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,28 @@ use App\Http\Controllers\Admin\MenuController;
     Route::get('/blog/{blog}', 'BlogController@index')->name('blog.index');
     Route::get('/reviews/', 'ReviewController@index')->name('reviews.index');
     Route::get('/franchise/', 'MainController@franchise')->name('main.franchise');
+    Route::get('/geo', function () {
+      //dd(\App\Models\category::all());
+      //dd(\App\Models\Seo::all()[75]);
+      // код для переноса сео инфы
+      /*$pages = \App\Models\category::all();
+      foreach($pages as $page) {
+        $pageSeo = \App\Models\Seo::where('page','=','uslugi/'.$page->service->url.'/'.$page->url)->first();
+        //dd($pageSeo);
+        $page->seo_title_ru = $pageSeo->seo_ru;
+        $page->seo_title_kz = $pageSeo->seo_kz;
+        $page->meta_desc_ru = $pageSeo->meta_ru;
+        $page->meta_desc_kz = $pageSeo->meta_kz;
+        $page->update();
+      }*/
+      $location = Location::get($_SERVER['REMOTE_ADDR']);
+      return "
+        Данные модуля местоположения <br>
+        Ваша страна: $location->countryName <br>
+        Ваш город: $location->cityName
+      ";
+      //dd($location);
+    });
   });
     //});
 

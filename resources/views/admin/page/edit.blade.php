@@ -71,22 +71,22 @@
             <legend>SEO инфа</legend>
             <div class="form-group">
               <label for="exampleInputEmail1">SEO-заголовок, ru</label>
-              <input type="text" class="form-control" placeholder="SEO" name="seo_ru" required value="@if(isset($seos[0]->id) and $seos[0]->id!=NULL){{$seos[0]->seo_ru}}@endif">
+              <input type="text" class="form-control" placeholder="SEO title" name="seo_title_ru" required value="{{$category->seo_title_ru}}">
               <span class="title_var">%CITY%</span>
               <p>Нажмите на кнопку %CITY% выше для быстрой вставки динамической переменной города</p>
           </div>
           <div class="form-group">
               <label for="exampleInputEmail1">SEO-заголовок, kz</label>
-              <input type="text" class="form-control" placeholder="SEO" name="seo_kz" value="@if(isset($seos[0]->id) and $seos[0]->id!=NULL){{$seos[0]->seo_kz}}@endif">
+              <input type="text" class="form-control" placeholder="SEO title kz" name="seo_title_kz" value="{{$category->seo_title_kz}}">
               <span class="title_var">%CITY%</span>
             </div>
           <div class="form-group">
               <label for="exampleInputEmail1">META-описание, ru</label>
-              <input type="text" class="form-control" placeholder="Meta" name="meta_ru" required value="@if(isset($seos[0]->id) and $seos[0]->id!=NULL){{$seos[0]->meta_ru}}@endif">
+              <input type="text" class="form-control" placeholder="Meta desc" name="meta_desc_ru" required value="{{$category->meta_desc_ru}}">
           </div>
           <div class="form-group">
               <label for="exampleInputEmail1">META-описание, kz</label>
-              <input type="text" class="form-control" placeholder="Meta" name="meta_kz" value="@if(isset($seos[0]->id) and $seos[0]->id!=NULL){{$seos[0]->meta_kz}}@endif">
+              <input type="text" class="form-control" placeholder="Meta desc kz" name="meta_desc_kz" value="{{$category->meta_desc_kz}}">
           </div>
             
           </fieldset>

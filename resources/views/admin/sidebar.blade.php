@@ -81,7 +81,7 @@
                 <a href="{{ route('admin.seo.index') }}" class="nav-link @yield('seo')">
                     <i class="nav-icon fas fa-link"></i>
                     <p>
-                        SEO
+                        SEO статичных страниц
                     </p>
                 </a>
             </li>

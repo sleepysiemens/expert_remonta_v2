@@ -73,10 +73,10 @@
                   <td><a href="{{route('admin.service.show',$service1->id)}}">{{$service1->title}}</a></td>
                   @endforeach
                   <td>
-                    Title RU: {{$category->seo->seo_ru}} <br>
-                    Title KZ: {{$category->seo->seo_kz}} <br>
-                    Мета описание RU: {{$category->seo->meta_ru}} <br>
-                    Мета описание KZ: {{$category->seo->meta_kz}}
+                    Title RU: {{$category->seo_title_ru}} <br>
+                    Title KZ: {{$category->seo_title_kz}} <br>
+                    Мета описание RU: {{$category->meta_desc_ru}} <br>
+                    Мета описание KZ: {{$category->meta_desc_kz}}
                   </td>
                   <td>{{count($category->slides)}}</td>
 

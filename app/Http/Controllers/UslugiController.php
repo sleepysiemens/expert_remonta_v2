@@ -61,16 +61,18 @@ class UslugiController extends Controller
         $Headers=Header::all();
         $WhyCards=WhyCard::all();
         $WelcomeCards=WelcomeCard::all();
-        $categories= Category::query()->join('services', 'services.id', '=', 'categories.service_id')->where(['categories.url'=>$category])->select('categories.*','services.url AS service_url','services.title_ru AS service_title_ru','services.title_kz AS service_title_kz')->limit(1)->get();
+        $category= Category::query()->join('services', 'services.id', '=', 'categories.service_id')->where(['categories.url'=>$category])->select('categories.*','services.url AS service_url','services.title_ru AS service_title_ru','services.title_kz AS service_title_kz')->limit(1)->first();
+        if(!$category) abort(404);
         //dd($categories[0]);
         $reviews=Review::all();
-        $CategoryImages=CategoryImage::query()->where(['category_id'=>$categories[0]->id])->select('category_images.src', 'category_images.category_id')->get();
-        $seos=Seo::query()->where('page','=','uslugi/'.$service.'/'.$category)->get();
+        $CategoryImages=CategoryImage::query()->where(['category_id'=>$category->id])->select('category_images.src', 'category_images.category_id')->get();
+        //$seos=Seo::query()->where('page','=','uslugi/'.$service.'/'.$category)->get();
 
 
-        $page='uslugi/'.$service.'/'.$category;
+        $page='uslugi/'.$service.'/'.$category->url;
+        //dd($page);
 
 
-        return view('category.index', compact(['categories', 'reviews', 'Headers', 'WelcomeCards', 'WhyCards', 'page', 'CategoryImages', 'seos']));
+        return view('category.index', compact(['category', 'reviews', 'Headers', 'WelcomeCards', 'WhyCards', 'page', 'CategoryImages']));
     }
 }

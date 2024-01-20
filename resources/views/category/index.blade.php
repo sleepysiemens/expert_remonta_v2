@@ -6,8 +6,6 @@
 nav-link-selected
 @endsection
 
-    @foreach ($categories as $category)
-
 
         @section('content')
             @include('blocks.welcome-category')
@@ -16,18 +14,13 @@ nav-link-selected
             @include('blocks.reviews')
         @endsection
 
-    @endforeach
 
 @section('meta-description')
-    @foreach ($seos as $seo)
-        {{app()->db_translate($seo->meta_ru, $seo->meta_kz)}}
-    @endforeach
+        {{app()->db_translate($category->meta_desc_ru, $category->meta_desc_kz)}}
 @endsection
 
 @section('seo-title')
-    @foreach ($seos as $seo)
-        {{app()->db_translate(processTitle($seo->seo_ru, env('APP_CITY')), $seo->seo_kz)}}
-    @endforeach
+        {{app()->db_translate(processTitle($category->seo_title_ru, env('APP_CITY')), $category->seo_title_kz)}}
 @endsection
 
 @section('sale-form')

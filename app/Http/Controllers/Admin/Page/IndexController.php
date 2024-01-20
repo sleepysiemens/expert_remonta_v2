@@ -31,7 +31,7 @@ class IndexController extends Controller
 
         foreach($categories as $c) {
           $serviceSlug = $c->service->url;
-          $c->seo = Seo::where('page', '=', "uslugi/$serviceSlug/$c->url")->first();
+          //$c->seo = Seo::where('page', '=', "uslugi/$serviceSlug/$c->url")->first();
         }
         //dd($categories[0]);
 
@@ -47,7 +47,7 @@ class IndexController extends Controller
 	$sales=Sale::all();
         $service=Service::query()->where('id', '=' ,$category->service_id)->get();
         $serviceSlug = $category->service->url;
-        $category->seo = Seo::where('page', '=', "uslugi/$serviceSlug/$category->url")->first();
+        //$category->seo = Seo::where('page', '=', "uslugi/$serviceSlug/$category->url")->first();
 
         $hasBigSize = false;
         foreach($category->slides as $idx => $slide) {
@@ -73,8 +73,8 @@ class IndexController extends Controller
     {
       //dd($req->all());
       //dd($req->file("file")[1]);
-        $data= $req->except(['seo_ru', 'seo_kz', 'meta_ru', 'meta_kz', 'slides']);
-        $seoData = $req->only(['seo_ru', 'seo_kz', 'meta_ru', 'meta_kz']);
+        $data= $req->except(['slides']);
+        //$seoData = $req->only(['seo_ru', 'seo_kz', 'meta_ru', 'meta_kz']);
 
         $file = $req->file('src');
         //$name= date("Y-m-dH:i:s") . "_" . $file->getClientOriginalName();
@@ -85,11 +85,11 @@ class IndexController extends Controller
         //$data['src']=request()->title.'-image.img';
         $data['src'] = $name;
 
-        DB::transaction(function() use ($data, $seoData, $req) {
+        DB::transaction(function() use ($data, $req) {
           Category::create($data);
           $cat = Category::where(['url' => $data['url']])->with('service')->first();
-          $seoData['page'] = "uslugi/" . $cat->service->url . "/" . $cat->url;
-          Seo::create($seoData);
+          //$seoData['page'] = "uslugi/" . $cat->service->url . "/" . $cat->url;
+          //Seo::create($seoData);
           if(isset($req->slides)) {
             foreach($req->slides as $idx => $slide) {
               $file = $req->file("slides")[$idx];
@@ -111,16 +111,16 @@ class IndexController extends Controller
         $categories=Category::all();
         $sales=sale::all();
         $service=service::query()->where('id','=',$category->service_id)->get();
-        $seos=Seo::where('page','=','uslugi/'.$category->service->url.'/'.$category->url)->get();
+        //$seos=Seo::where('page','=','uslugi/'.$category->service->url.'/'.$category->url)->get();
 
-        return view('admin.page.edit', compact(['category', 'reviews', 'questions', 'services', 'categories', 'sales', 'seos']));
+        return view('admin.page.edit', compact(['category', 'reviews', 'questions', 'services', 'categories', 'sales']));
     }
 
     public function update(Request $req, Category $category)
     {
       //dd($req->all());
-      $data= $req->except(['seo_ru', 'seo_kz', 'meta_ru', 'meta_kz', 'slides']);
-      $seoData = $req->only(['seo_ru', 'seo_kz', 'meta_ru', 'meta_kz']);
+      $data= $req->except(['slides']);
+      //$seoData = $req->only(['seo_ru', 'seo_kz', 'meta_ru', 'meta_kz']);
       if(request()->hasFile('src')){
             $file = request()->file('src');
             $name= Str::random(8) . "_" . $file->getClientOriginalName();
@@ -133,8 +133,8 @@ class IndexController extends Controller
 
       DB::transaction(function() use ($data, $seoData, $category, $req) {
         $category->update($data);
-        $seo = Seo::where('page','=','uslugi/'.$category->service->url.'/'.$category->url)->first();
-        $seo->update($seoData);
+        //$seo = Seo::where('page','=','uslugi/'.$category->service->url.'/'.$category->url)->first();
+        //$seo->update($seoData);
         if(isset($req->slides)) {
           foreach($req->slides as $idx => $slide) {
             $file = $req->file("slides")[$idx];
@@ -153,8 +153,8 @@ class IndexController extends Controller
       //Storage::deleteDirectory(public_path() . '/img/category_slider/'.$category->id);
       deleteDirectory(dirname(__FILE__) . "/../../../../../public/img/category_slider/" . $category->id);
       //dd('ok');
-      $seo = Seo::where('page','=','uslugi/'.$category->service->url.'/'.$category->url)->first();
-      $seo->delete();
+      //$seo = Seo::where('page','=','uslugi/'.$category->service->url.'/'.$category->url)->first();
+      //$seo->delete();
       $slides = CategoryImage::where(['category_id' => $category->id])->delete();
       $category->delete();
         return redirect()->route('admin.page.index')->with('msg', 'Страница услуги успешно удалена вместе с SEO инфой и слайдами');

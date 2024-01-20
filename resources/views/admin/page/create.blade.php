@@ -53,19 +53,19 @@
           <legend>SEO инфа</legend>
           <div class="form-group">
             <label for="exampleInputEmail1">SEO-заголовок, ru</label>
-            <input type="text" class="form-control" placeholder="SEO" name="seo_ru" required>
+            <input type="text" class="form-control" placeholder="SEO title" name="seo_title_ru" required>
           </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">SEO-заголовок, kz</label>
-                <input type="text" class="form-control" placeholder="SEO" name="seo_kz">
+                <input type="text" class="form-control" placeholder="SEO title" name="seo_title_kz">
             </div>
           <div class="form-group">
             <label for="exampleInputEmail1">META-описание, ru</label>
-            <input type="text" class="form-control" placeholder="Meta" name="meta_ru" required>
+            <input type="text" class="form-control" placeholder="Meta desc" name="meta_desc_ru" required>
           </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">META-описание, kz</label>
-                <input type="text" class="form-control" placeholder="Meta" name="meta_kz" >
+                <input type="text" class="form-control" placeholder="Meta desc" name="meta_desc_kz" >
             </div>
           
         </fieldset>

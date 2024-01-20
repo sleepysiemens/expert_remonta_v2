@@ -99,8 +99,8 @@ class MainController extends Controller
         //$cookie = cookie('city', $req->city, 360000);
         //Cookie::queue('city', $req->city, 360000);
 
-        if(request()->all()['page']!='main')
-            $page='/'.request()->all()['page'];
+        if($req->all()['page']!='main')
+            $page='/'.$req->all()['page'];
         else
             $page='/';
 
