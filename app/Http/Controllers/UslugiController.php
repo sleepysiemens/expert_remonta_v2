@@ -61,7 +61,9 @@ class UslugiController extends Controller
         $Headers=Header::all();
         $WhyCards=WhyCard::all();
         $WelcomeCards=WelcomeCard::all();
-        $category= Category::query()->join('services', 'services.id', '=', 'categories.service_id')->where(['categories.url'=>$category])->select('categories.*','services.url AS service_url','services.title_ru AS service_title_ru','services.title_kz AS service_title_kz')->limit(1)->first();
+        //$category= Category::query()->join('services', 'services.id', '=', 'categories.service_id')->where(['categories.url'=>$category])->select('categories.*','services.url AS service_url','services.title_ru AS service_title_ru','services.title_kz AS service_title_kz')->limit(1)->first();
+        $category = Category::where(['url' => $category])->with('service')->first();
+        //dd($category);
         if(!$category) abort(404);
         //dd($categories[0]);
         $reviews=Review::all();
