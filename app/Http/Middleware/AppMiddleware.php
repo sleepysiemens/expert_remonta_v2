@@ -36,10 +36,21 @@ class AppMiddleware
       $uri = $_SERVER['REQUEST_URI'];
       //dd(substr($uri, 1));
 
+      $tel = $phone[0]->link; 
+      $tel = str_replace('tel:', '', $tel); 
+      $telArr = str_split($tel);
+      $tel = '';
+      foreach($telArr as $idx => $char) {
+        if($idx === 2) $tel .= " ($char";  
+        else if($idx === 4) $tel .= "$char) "; 
+        else $tel .= "$char";
+      }
+
       View::share('whatsapp', $whatsapp);
       View::share('telegram', $telegram);
       View::share('instagram', $instagram);
       View::share('phone', $phone);
+      View::share('tel', $tel);
       View::share('cities', $cities);
       View::share('menu', $menu);
       View::share('uri', substr($uri, 1));

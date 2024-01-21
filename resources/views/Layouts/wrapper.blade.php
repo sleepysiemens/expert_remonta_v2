@@ -35,7 +35,9 @@
                 <a class="header-contact-info" id="city-select" style="cursor: pointer">
                   {{-- @if(isset($_COOKIE['city'])) {{$usr_city}} @else {{env('APP_CITY')}} @endif--}}
                     <span><i class="fas fa-map-marker-alt"></i> {{$usr_city}}</span>
-                    <p>+7 (775) 138-50-80</p>
+                    {{--<p>+7 (775) 138-50-80</p>--}}
+                    <p>{{$tel}}</p>
+                    <p></p>
                 </a>
                 <form method="post" action="{{asset(route('locale.change'))}}" class="locale-pc" style="display: flex; margin-left: 20px">
                     @csrf
@@ -173,7 +175,8 @@
                 <div class="footer-contact-info">
                   {{-- @if(isset($_COOKIE['city'])) {{$usr_city}} @else {{env('APP_CITY')}} @endif --}}
                     <div><i class="fas fa-map-marker-alt" aria-hidden="true"></i>{{$usr_city}}</div>
-                    <p>+7 (775) 138-50-80</p>
+                    {{--<p>+7 (775) 138-50-80</p>--}}
+                    <p>{{$tel}}</p>
                 </div>
             </div>
         </footer>
