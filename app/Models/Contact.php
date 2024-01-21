@@ -9,4 +9,8 @@ class Contact extends Model
 {
     use HasFactory;
     protected $guarded=[];
+
+    public function getTable()  {
+      return env('APP_CITY') === 'Астана' ? 'contacts' : 'contacts_almaty';
+    }
 }

@@ -32,31 +32,30 @@ use Illuminate\Support\Facades\DB;
     Route::get('/reviews/', 'ReviewController@index')->name('reviews.index');
     Route::get('/franchise/', 'MainController@franchise')->name('main.franchise');
     Route::get('/geo', function () {
+      /*$arr = [];
+      foreach(\App\Models\Contact::all() as $c) {
+        $arr[] = ['name' => $c->name, 'link' => $c->link];
+      }
+      DB::table('contacts_almaty')->insert($arr);*/
       //dd(\App\Models\category::all());
       //dd(\App\Models\Seo::all()[75]);
       // код для переноса сео инфы, и для переноса в бд
-      $pages = \App\Models\category::all();
+      //$pages = \App\Models\category::all();
       //dd($pages[0]);
-      $array = [];
-      foreach($pages as $page) {
-        /*$pageSeo = \App\Models\Seo::where('page','=','uslugi/'.$page->service->url.'/'.$page->url)->first();
-        //dd($pageSeo);
-        $page->seo_title_ru = $pageSeo->seo_ru;
-        $page->seo_title_kz = $pageSeo->seo_kz;
-        $page->meta_desc_ru = $pageSeo->meta_ru;
-        $page->meta_desc_kz = $pageSeo->meta_kz;
-        $page->update();*/
-        
+      //$array = [];
+      /*foreach($pages as $page) {       
         $array[] = [
           'url' => $page->url, 'service_id' => $page->service_id, 'src' => $page->src, 'title_ru' => $page->title_ru, 'title_kz' => $page->title_kz,
           'description_ru' => $page->description_ru, 'description_kz' => $page->description_kz, 'visits_count' => $page->visits_count, 
           'seo_title_ru' => $page->seo_title_ru, 'seo_title_kz' => $page->seo_title_kz,
           'meta_desc_ru' => $page->meta_desc_ru, 'meta_desc_kz' => $page->meta_desc_kz,
         ];
-      }
+      }*/
+      // хотя если переносить, то и со слайдами нужно, ну это если попросят
       //dd($array);
       //DB::table('categories_almaty')->insert($array);
       //DB::table('categories_almaty')->truncate();
+      //dd(1);
       $location = Location::get($_SERVER['REMOTE_ADDR']);
       return "
         Данные модуля местоположения <br>
