@@ -10,6 +10,14 @@
 
 @section('content')
 
+<div class="row">
+  <div class="col-12">
+    <a href="{{route('admin.user.create')}}" class="btn btn-success">
+      <i class="fas fa-plus"></i> Добавить
+    </a>
+  </div>
+</div>
+
 
 <div class="row">
     <div class="col-12 table-responsive">

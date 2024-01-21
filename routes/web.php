@@ -217,6 +217,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin/', 'middleware'=>'admin
   	Route::group(['namespace' => 'Users', 'prefix' => 'user', 'middleware' => 'redactor'], function()
     {
         Route::get('/', 'IndexController@index')->name('admin.user.index');
+        Route::get('/create', 'CreateController@index')->name('admin.user.create');
+        Route::post('', 'StoreController@index')->name('admin.user.store');
         Route::get('/{user}', 'ShowController@index')->name('admin.user.show');
         Route::get('/{user}/edit', 'EditController@index')->name('admin.user.edit');
         Route::patch('/{user}', 'UpdateController@index')->name('admin.user.update');
