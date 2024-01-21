@@ -48,19 +48,38 @@ class MainController extends Controller
       return view('main.franchise', compact('page'));
     }
 
-    public function form()
+    public function form(Request $req)
     {
+      //dd($req->all());
         $userIP=$_SERVER['REMOTE_ADDR'];
         $location=Location::get($userIP);
 
+      if(!$req->city) {
         if($location==false)
-
             $city='not set';
         else
-            $city=$location->cityName;
-
-        $data=request()->validate(['name'=>'required|string', 'phone'=>'required|string', 'sourse'=>'required']);
-        $sql_data=['username'=>request()->name, 'phone'=>request()->phone, 'sourse'=>request()->sourse, 'city'=>$city, 'created_at'=>date('Y-m-d H:i:s')];
+            $req->city=$location->cityName;
+      }
+      //dd($req->city);
+      //dd($req->all());
+        
+        $data= $req->validate([
+          'name'=>'required|string', 
+          'phone'=>'required|string', 
+          //'city'=>'required|string', 
+          'email'=>'nullable|string',
+          'sourse'=>'required'
+        ]);
+        //dd($data);
+        $sql_data=[
+          'username'=>$req->name, 
+          'phone'=>$req->phone, 
+          'sourse'=>$req->sourse, 
+          'city'=>$req->city, 
+          'date_time'=>date('Y-m-d H:i:s')
+        ];
+        //dd($sql_data);
+        //Application::create($req->except('_token'));
         Application::create($sql_data);
 
         // здесь post запрос в crm
@@ -68,7 +87,10 @@ class MainController extends Controller
             'Auth-Key' => env('CRM_AUTH_KEY'),
         ])->post(env('CRM_URL'));*/
 
-        return redirect('/'.request()->sourse);
+        // уведомление о заявке в телеграм, допустим
+        $path = '/';
+        if($req->sourse !== 'main/sale/') $path = $req->sourse;
+        return redirect($path)->with('msg', 'Ваша заявка успешно отправлена');
     }
 
     public function locale()

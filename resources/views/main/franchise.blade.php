@@ -13,6 +13,10 @@
 
     @extends('Layouts.wrapper')
 
+    @section('franchise')
+      nav-link-selected
+    @endsection
+
     @section('seo-title')
     Франшиза
 @endsection
@@ -35,14 +39,14 @@
           <p>Факты о рынке недвижимости:</p>
           <ul>
             <li>·Вторичное жилье часто требует ремонта</li>
-            <li>·Износ старого жилья и реконструкция</li>
-            <li>·Вклад в экономику и ВВП</li>
+            <li>·Износ ветхого жилья и реконструкция</li>
+            <li>·Высокий вклад строительства в экономику и ВВП</li>
             <li>·Рост числа новостроек</li>
             <li>·Тенденция урбанизации и рост жилищного рынка</li>
           </ul>
           </div>
 
-          <a href="">Получить бизнес-план</a>
+          <a href="#fr_page_calc">Получить бизнес-план</a>
         </div>
         </div>
       </div>
@@ -80,13 +84,61 @@
             <li>
               <div class="spoiler">
                 <div class="spoiler-title">Индивидуальный подход</div>
-                <div class="spoiler-body">Квалифицированные мастера с опытом работы обеспечивают профессионализм в каждом аспекте ремонта.</div>
+                <div class="spoiler-body">Персонализированные решения и учет индивидуальных пожеланий клиента в проектах ремонта.</div>
               </div>
             </li>
             <li>
               <div class="spoiler">
                 <div class="spoiler-title">Прозрачность и честность</div>
-                <div class="spoiler-body">Квалифицированные мастера с опытом работы обеспечивают профессионализм в каждом аспекте ремонта.</div>
+                <div class="spoiler-body">Ясные условия сотрудничества, отсутствие скрытых платежей и честный расчет стоимости.</div>
+              </div>
+            </li>
+            <li>
+              <div class="spoiler">
+                <div class="spoiler-title">Соблюдение Сроков</div>
+                <div class="spoiler-body">Строгое придерживание заявленных сроков выполнения работ.</div>
+              </div>
+            </li>
+            <li>
+              <div class="spoiler">
+                <div class="spoiler-title">Гарантия на Работы</div>
+                <div class="spoiler-body">Предоставление гарантии на выполненные работы, обеспечивающей дополнительное спокойствие клиента.</div>
+              </div>
+            </li>
+            <li>
+              <div class="spoiler">
+                <div class="spoiler-title">Широкий Спектр Услуг</div>
+                <div class="spoiler-body">Возможность выполнения различных видов ремонтных и отделочных работ.</div>
+              </div>
+            </li>
+            <li>
+              <div class="spoiler">
+                <div class="spoiler-title">Использование Качественных Материалов</div>
+                <div class="spoiler-body">Использование только качественных и проверенных материалов.</div>
+              </div>
+            </li>
+            <li>
+              <div class="spoiler">
+                <div class="spoiler-title">Полный Цикл Услуг</div>
+                <div class="spoiler-body">От проектирования до финальной сдачи объекта "под ключ" и клининга.</div>
+              </div>
+            </li>
+            <li>
+              <div class="spoiler">
+                <div class="spoiler-title">Доступные Цены</div>
+                <div class="spoiler-body">Конкурентоспособные цены при сохранении высокого уровня качества услуг.</div>
+              </div>
+            </li>
+            <li>
+              <div class="spoiler">
+                <div class="spoiler-title">Профессиональное Оборудование</div>
+                <div class="spoiler-body">Использование современного и эффективного оборудования для достижения лучших результатов.</div>
+              </div>
+            </li>
+            <li>
+              <div class="spoiler">
+                <div class="spoiler-title">Консультации и Поддержка</div>
+                <div class="spoiler-body">Предоставление профессиональных консультаций на всех этапах сотрудничества и послегарантийное обслуживание.</div>
               </div>
             </li>
           </ol>
@@ -291,17 +343,11 @@
         </div>
       </div>
 
-      <div class="fr_page_calc">
+      <div class="fr_page_calc" id="fr_page_calc">
         <div class="fr_page_wrap">
           <div class="fr_page_heading">Калькулятор прибыли</div>
           <div class="fr_page_flex">
             <div class="fr_page_calc_inner">
-              <label for="city">Выберите город</label>
-              <select name="city" id="city">
-                <option>Город</option>
-                <option value="Astana" @selected($usr_city === 'Астана')>Астана</option>
-                <option value="Almaty" @selected($usr_city === 'Алматы')>Алматы</option>
-              </select>
               <div id="range">
                 <label for="investments">Инвестиции на открытие</label>
                 <input id="investments" type="range" min="1000000" max="5000000" value="1500000">
@@ -331,14 +377,26 @@
               </table>
             </div>
             <div class="fr_page_form">
-              <form action="" method="POST">
+              <form action="{{route('form.store')}}" method="POST">
+                @csrf
                 <div class="fr_page_form_title">Хотите получить подробный бизнес-план?</div>
                 <div class="fr_page_form_text">Оставьте заявку и наш менеджер свяжется с вами</div>
-                <input type="text" placeholder="Ваше имя">
-                <input type="text" placeholder="Город">
-                <input type="text" placeholder="+7-XXX-XXX-XX-XX">
-                <input type="email" placeholder="Ваш email">
-                <button type="submit">Получить бизнес план</button>
+                <input type="text" name="name" placeholder="Ваше имя" required>
+                {{--<label for="city">Выберите город</label>--}}
+                <select name="city" id="city" required>
+                  {{--<option>Город</option>--}}
+                  @foreach($cities as $city)
+                  <option value="{{$city->city}}" 
+                    @selected($usr_city === $city->city && !in_array($city->city, ['Астана', 'Алматы'])) 
+                    @disabled(in_array($city->city, ['Астана', 'Алматы']))
+                  >{{$city->city}}</option>
+                  @endforeach
+                </select>
+                {{--<input type="text" placeholder="Город">--}}
+                <input type="text" name="phone" placeholder="+7-XXX-XXX-XX-XX" required>
+                <input type="email" name="email" placeholder="Ваш email">
+                <input type="hidden" name="sourse" value={{$page}}>
+                <div class="fr_page_btn_flex"><button type="submit">Получить бизнес план</button></div>        
               </form>
             </div>
           </div>
@@ -347,6 +405,11 @@
     </div>
 
     <script>
+      let option = document.querySelector('.fr_page_form select option:nth-of-type(1)')
+      option.textContent = option.textContent + " (занято)"
+      option = document.querySelector('.fr_page_form select option:nth-of-type(2)')
+      option.textContent = option.textContent + " (занято)"
+
       document.addEventListener('click', function(event) {
   if(event.target.classList.contains('spoiler-title')) {
     let spoiler = event.target.parentNode

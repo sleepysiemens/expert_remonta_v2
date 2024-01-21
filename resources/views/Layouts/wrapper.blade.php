@@ -19,10 +19,14 @@
     <script src="https://kit.fontawesome.com/0a007e12dc.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
+    @if(session('msg'))
+      <div class="success_msg">{{ session('msg') }}</div>
+    @endif
+
     <header>
         <div class="header-div">
 
-            <div style="display: flex">
+            <div style="display: flex" class="site_logo">
                 <a class="logo" href="{{ route('main.index') }}">
                     <img src=" /img/logo.png">
                 </a>
@@ -31,11 +35,9 @@
             <div class="header-subdiv">
               @include('blocks.menu')
               
-
+              <div class="header-contact-info-div">
                 <a class="header-contact-info" id="city-select" style="cursor: pointer">
-                  {{-- @if(isset($_COOKIE['city'])) {{$usr_city}} @else {{env('APP_CITY')}} @endif--}}
                     <span><i class="fas fa-map-marker-alt"></i> {{$usr_city}}</span>
-                    {{--<p>+7 (775) 138-50-80</p>--}}
                     <p>{{$tel}}</p>
                     <p></p>
                 </a>
@@ -78,6 +80,7 @@
                         </button>
                     </form>
                 </div>
+              </div>
             </div>
         </div>
     </header>
@@ -185,5 +188,16 @@
     <div class="parallax-layer parallax__layer--back" @if($page=='contacts' or $page=='gallery') style="display: none" @endif>
     </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", e => {
+    let success_msg = document.querySelector('.success_msg')
+    if(!success_msg) return
+    success_msg.classList.add('active');
+    setTimeout(() => {
+      success_msg.classList.remove('active');
+    }, 3000);
+  });
+</script>
 </body>
 </html>

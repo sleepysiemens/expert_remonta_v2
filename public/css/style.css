@@ -2415,10 +2415,10 @@ footer
         right: 15px;
     }
 
-    .nav-links
+    /*.nav-links
     {
         display: none;
-    }
+    }*/
 
     .welcome-header h1
     {
@@ -2474,7 +2474,7 @@ footer
         height: auto;
     }*/
 
-    .contacts-right
+    /*.contacts-right
     {
         bottom: 20px;
         right: 10px;
@@ -2526,7 +2526,7 @@ footer
         box-shadow: 4px 4px 4px rgba(0,0,0,.25);
         transform: translateX(50vw);
         transition: .3s;
-    }
+    }*/
 
     .nav-link
     {
@@ -2650,10 +2650,10 @@ footer
         margin-left: 30px;
     }
 
-    .locale-pc
+    /*.locale-pc
     {
         display: none !important;
-    }
+    }*/
 }
 
 @media screen and (max-width:375px)
@@ -2869,6 +2869,17 @@ footer {
       width: 184px;
     }
   }
+  @media screen and (max-width: 435px) {
+    .sale-banner {
+      width: 100%;
+    }
+    .sale-bg, .sale-banner img {
+      width: 100%;
+    }
+    .sale-text-div, .top-left-timer {
+      width: 100%;
+    }
+  }
 
   @media screen and (max-width: 520px) {
     .header-div {
@@ -2980,6 +2991,12 @@ footer {
     text-align: left;
     font-size: 13px;
   }
+  .header_submenu .nav-link, .header_submenu .nav-link-selected {
+    text-align: left;
+  }
+  .header_submenu .nav-link p, .header_submenu .nav-link-selected p {
+    margin: 0;
+  }
 
 
   .nav-link, .nav-link-selected {
@@ -3029,4 +3046,148 @@ footer {
 }
 .breadcrumbs a:hover {
   color: #9DC436;
+}
+
+
+/* вариант меню */
+/*header {
+  background-color: rgba(255, 255, 255, .9);
+}
+.container {
+  margin-top: 0px;
+}*/
+
+.header-div {
+  width: auto;
+  max-width: 1200px;
+}
+.header-contact-info-div {
+  display: flex;
+}
+
+@media screen and (max-width: 1100px) {
+  header {
+    /*min-height: 60px;*/
+    height: auto;
+    background-color: rgba(255, 255, 255, .9);
+    position: relative;
+  }
+  .header-div {
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 1085px) {
+  .header-contact-info-div {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }
+  .header {
+    min-height: 60px;
+  }
+  .header-div .site_logo, .header-div .header-subdiv {
+    width: 100%;
+    padding: 5px 10px;
+  }
+}
+
+/* моб меню будем внедрять уже на 768 пикселях */
+@media screen and (max-width: 768px) {
+  .contacts-right
+    {
+        bottom: 20px;
+        right: 10px;
+    }
+
+    .header-contact-info
+    {
+        margin-right: 20px;
+        transition: .3s;
+    }
+    .header-contact-info-open
+    {
+        transform: translateX(-30vw);
+    }
+
+    .mobile-menu-btn, .mobile-close-btn
+    {
+        display: flex;
+        width: 30px;
+        height: 25px;
+        margin: auto;
+        margin-right: 5px;
+        font-size: 25px;
+    }
+
+    .menu-header
+    {
+        height: 60px;
+        display: flex;
+        margin-bottom: 100px;
+    }
+
+    .mobile-close-btn
+    {
+        margin: auto;
+        margin-right: 25px;
+    }
+
+    .mobile-menu
+    {
+        display: block;
+        /*display: none;*/
+        position: fixed;
+        right: 0;
+        top: 0;
+        /*opacity: 0;*/
+        /*bottom: 0;*/
+        width: 50vw;
+        height: 100vh;
+        background-color: #fff;
+        box-shadow: 4px 4px 4px rgba(0,0,0,.25);
+        transform: translateX(50vw);
+        transition: .3s;
+    }
+    .mobile-menu.show {
+          transform: translateX(0);
+          transform: translateY(0);
+          transform: translateZ(0);
+    }
+    .locale-pc
+    {
+        display: none !important;
+    }
+    .nav-links
+    {
+        display: none;
+    }
+    .header-contact-info-div {
+      top: 15px;
+    }
+}
+
+
+
+.success_msg {
+  position: fixed;
+  top: 150px;
+  left: -5px;
+  z-index: 9999999;
+  box-shadow: 0 0 2px 0 #404040;
+  padding: 10px 20px;
+  transition: all .35s;
+  opacity: 0;
+  background: #fff url(../svg/check.svg) no-repeat;
+  background-position-y: 50%;
+  padding-left: 40px;
+  color: #9DC436;
+  border-radius: 4px;
+  background-position-x: 10px;
+  font-size: 18px;
+  transform: translateX(-500px);
+}
+.success_msg.active {
+  opacity: 1;
+  transform: translateX(0px);
 }

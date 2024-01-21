@@ -72,13 +72,13 @@
             <div class="form-group">
               <label for="exampleInputEmail1">SEO-заголовок, ru</label>
               <input type="text" class="form-control" placeholder="SEO title" name="seo_title_ru" required value="{{$category->seo_title_ru}}">
-              <span class="title_var">%CITY%</span>
-              <p>Нажмите на кнопку %CITY% выше для быстрой вставки динамической переменной города</p>
+              {{--<span class="title_var">%CITY%</span>
+              <p>Нажмите на кнопку %CITY% выше для быстрой вставки динамической переменной города</p>--}}
           </div>
           <div class="form-group">
               <label for="exampleInputEmail1">SEO-заголовок, kz</label>
               <input type="text" class="form-control" placeholder="SEO title kz" name="seo_title_kz" value="{{$category->seo_title_kz}}">
-              <span class="title_var">%CITY%</span>
+              {{--<span class="title_var">%CITY%</span>--}}
             </div>
           <div class="form-group">
               <label for="exampleInputEmail1">META-описание, ru</label>

@@ -7,7 +7,6 @@
 /vendor
 /storage/framework
 /public/img
-/public/svg
 
 
 .env

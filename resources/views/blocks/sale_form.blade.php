@@ -23,12 +23,12 @@
         </p>
         <form class="form-sale" method="post" action="{{route('form.store')}}">
             @csrf
-            <input class="hidden" type="text" name="username" placeholder="Имя" required>
+            <input class="hidden" type="text" name="name" placeholder="Имя" required>
             <input class="hidden" type="phone" name="phone" placeholder="Телефон" required>
             <input type="hidden" name="sourse" value="{{$page}}/sale/{{$sale->title}}">
             <input type="hidden" id="cid" value="" name="cid">
             <input type="hidden" id="ycid" value="" name="ycid">
-            <button class="hidden gradient_button"><span class="flare"></span><p>{{app()->translate('Участвовать')}}</p></button>
+            <button type="submit" class="hidden gradient_button"><span class="flare"></span><p>{{app()->translate('Участвовать')}}</p></button>
         </form>
     </div>
 </div>

@@ -19,7 +19,6 @@
             <th>Дата создания</th>
             <th>Имя пользователя</th>
             <th>Телефон</th>
-            <th>Дата</th>
             <th>Город</th>
             <th>Источник</th>
             <th></th>
@@ -34,7 +33,6 @@
                 <td>{{$application->created_at}}</td>
                 <td>{{$application->username}}</td>
                 <td>{{$application->phone}}</td>
-                <td>{{$application->date_time}}</td>
                 <td>{{$application->city}}</td>
                 <td>{{$application->sourse}}</td>
                 <td>

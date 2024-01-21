@@ -8,12 +8,24 @@
   .spoiler-title {
     font-size: 20px;
   }
+  .fr_page_steps .fr_page_wrap {
+    background-position: 0px 190px;
+  }
+  .fr_page_steps ol.fr_page_r {
+    margin-top: -10px;
+  }
 }
 
 @media (max-width: 900px) {
   .fr_page_welcome_wrap h1 {
     font-size: 32px;
     max-width: 460px;
+  }
+}
+
+@media (max-width: 650px) {
+  .fr_page_steps .fr_page_wrap {
+    background-position: -100px 190px;
   }
 }
 
@@ -81,6 +93,9 @@
 }
 
 @media (max-width: 634px) {
+  .fr_page_get ol > li {
+    text-align: left;
+  }
   .fr_page_soft .fr_page_list {
     flex-wrap: wrap;
   }
