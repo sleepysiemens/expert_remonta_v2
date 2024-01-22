@@ -15,6 +15,6 @@ class UpdateController extends Controller
         $data=request()->all();
         $question->update($data);
 
-        return redirect()->route('admin.FAQ.show', $question->id);
+        return redirect()->route('admin.faq.show', $question->id);
     }
 }

@@ -10,10 +10,11 @@ body, html {
 
 .fr_page_welcome {
   background: url(../franchise_files/image.jpg) no-repeat;
-  background-size: cover;
+  background-size: 100% 90%;
+  /*background-size: cover;*/
   /*padding-bottom: 50px;*/
   /*padding-bottom: 315px;*/
-  padding-bottom: calc(100vw * 0.17);
+  padding-bottom: calc(100vw * 0.14);
 }
 .fr_page_welcome_wrap, .fr_page_wrap {
   max-width: 1040px;
@@ -261,6 +262,7 @@ body, html {
 }
 .fr_page_steps ol.fr_page_r {
   flex-direction: row-reverse;
+  margin-top: -6px;
 }
 .fr_page_steps ol.m {
   margin-top: -20px;
@@ -477,11 +479,15 @@ body, html {
 .fr_page_adv2, .fr_page_adv {
   margin-top: calc(100vw * 0.1);
 }
-.fr_page_get, .fr_page_fr {
+.fr_page_get {
   margin-top: calc(100vw * 0.08);
 }
 .fr_page_soft {
   margin-top: calc(100vw * 0.075);
+}
+.fr_page_fr {
+  /*margin-top: calc(-100vw * 0.01);*/
+  margin-top: calc(100vw * 0.01);
 }
 
 /* input range */

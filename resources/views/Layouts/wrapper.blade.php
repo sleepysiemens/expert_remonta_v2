@@ -56,30 +56,8 @@
                     <i class="fas fa-bars"></i>
                 </a>
 
-                <div class="mobile-menu">
-                    <div class="menu-header">
-                        <a class="mobile-close-btn">
-                            <i class="fas fa-times"></i>
-                        </a>
-                    </div>
-                    <a href="{{ route('main.index') }}/" class="nav-link"><p>{{app()->translate('Главная')}}</p></a>
-                    <a href="{{ route('uslugi.index') }}/" class="nav-link"><p>{{app()->translate('Услуги')}}</p></a>
-                    <a href="{{ route('price.index') }}/" class="nav-link"><p>{{app()->translate('Расценки')}}</p></a>
-                    <a href="{{ route('gallery.index') }}/" class="nav-link"><p>{{app()->translate('Галерея')}}</p></a>
-                    <a href="{{ route('reviews.index') }}/" class="nav-link"><p>{{app()->translate('Отзывы')}}</p></a>
-                    <a href="{{ route('contacts.index') }}/" class="nav-link"><p>{{app()->translate('Контакты')}}</p></a>
-                    <br>
-                    <form method="post" action="{{asset(route('locale.change'))}}"  style="display: flex; margin-left: 20px">
-                        @csrf
-                        <input type="hidden" name="page" value="{{$page}}">
-                        <button class="lang_change">
-                            <p>
-                                @if(!isset($_COOKIE['locale']) OR $_COOKIE['locale']=='ru') {{'ҚАЗ'}} @php $locale='ru' @endphp @endif
-                                @if(isset($_COOKIE['locale']) AND $_COOKIE['locale']=='kz') {{'РУС'}} @php $locale='kz' @endphp @endif
-                            </p>
-                        </button>
-                    </form>
-                </div>
+                @include('blocks.mobile_menu')
+                
               </div>
             </div>
         </div>

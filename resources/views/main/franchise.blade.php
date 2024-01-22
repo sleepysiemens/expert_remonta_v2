@@ -1,16 +1,3 @@
-{{--<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <title>Vite App</title>
-  </head>
-  <body>--}}
-
     @extends('Layouts.wrapper')
 
     @section('franchise')
@@ -245,14 +232,14 @@
             </li>
             <li>
               <span class="fr_page_counter">6</span>
-              <span>Открытие</span>
+              <span>Подготовка к открытию</span>
             </li>
           </ol>
 
           <ol class="m">
             <li>
               <span class="fr_page_counter">7</span>
-              <span>Подготовка к открытию</span>
+              <span>Открытие</span>
             </li>
             <li>
               <span class="fr_page_counter">8</span>
@@ -403,6 +390,65 @@
         </div>
       </div>
     </div>
+
+    {{--@if(auth()->user() && auth()->user()->role === 'admin')
+      <script>
+        // https://developer.mozilla.org/en-US/docs/Glossary/Base64#the_unicode_problem 
+        function base64ToBytes(base64) {
+  const binString = atob(base64);
+  return Uint8Array.from(binString, (m) => m.codePointAt(0));
+}
+
+function bytesToBase64(bytes) {
+  const binString = String.fromCodePoint(...bytes);
+  return btoa(binString);
+}
+        function updateContent(html) {
+          //console.log(bytesToBase64(new TextEncoder().encode(html)));
+          //console.log(btoa(html))
+          //return
+          //let content = bytesToBase64(new TextEncoder().encode(html))
+          
+        const headers = new Headers({
+            //'Content-Type': 'x-www-form-urlencoded',
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': `{{csrf_token()}}`
+        });
+          fetch(`/admin/dynamic-page/franchise`, {
+            method: 'PUT',
+            headers,
+            //body: { page: 'franchise', html: JSON.stringify(html)}
+            //body: { page: 'franchise', html: html}
+            //body: { page: 'franchise', html: btoa(html)}
+            //body: { page: 'franchise', html: bytesToBase64(new TextEncoder().encode(html))}
+            //body: { page: 'franchise', content: '123'}
+            //body: { page: '123'}
+            // да, надо весь body превращать в json
+            body: JSON.stringify({page: 'franchise', html: html})
+        }).then(response => {
+          //response.json()
+          console.log('updated')
+        })
+        }
+        let app = document.querySelector('#app')
+        app.childNodes.forEach(node => {
+          if(node.tagName !== undefined) {
+            node.setAttribute('contenteditable', true)
+            // только не на инпут бы, а на ctrl + s сделать
+            node.addEventListener('input', e => {
+              // вычищать надо будет contenteditable
+              //console.log(e.target.parentNode.innerHTML)
+              updateContent(e.target.parentNode.innerHTML)
+              //console.log(e)
+              //console.log(e.target.innerHTML)
+              // даже скорее e.target.parentNode.innerHTML
+              // ага, и вот здесь надо делать ajax запрос на редактирование html, огонь!
+              // ну и надо завести табличку для хранения кода динамических страниц
+            })
+          }
+        })
+      </script>
+    @endif--}}
 
     <script>
       let option = document.querySelector('.fr_page_form select option:nth-of-type(1)')

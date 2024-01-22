@@ -3165,6 +3165,37 @@ footer {
     .header-contact-info-div {
       top: 15px;
     }
+
+    /* для моб меню вложенного, стили */
+    .nav-link {
+      justify-content: center;
+    }
+    .header_menu_item > .nav-link {
+      display: inline-block;
+      margin-left: 50px;
+    }
+    .has_childs:after {
+      right: 50px;
+    }
+    .header_submenu, .header_deepmenu {
+      position: static;
+    }
+    .header_submenu li.has_childs:after {
+      transform: scale(0.7);
+    }
+    .header_deepmenu {
+      box-shadow: none;
+    }
+    .header_submenu li a, .header_deepmenu li a {
+      display: block;
+    }
+}
+/* увеличить меню на узких экранах */
+@media screen and (max-width: 500px) {
+.mobile-menu {
+  width: 75vw;
+  transform: translateX(75vw);
+}
 }
 
 

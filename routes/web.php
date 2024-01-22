@@ -32,6 +32,12 @@ use Illuminate\Support\Facades\DB;
     Route::get('/reviews/', 'ReviewController@index')->name('reviews.index');
     Route::get('/franchise/', 'MainController@franchise')->name('main.franchise');
     Route::get('/geo', function () {
+      //dd(\App\Models\DynamicPage::where(['url' => 'franchise'])->first());
+      /*\App\Models\DynamicPage::create([
+        'seo_title' => 'Франшиза',
+        'url' => 'franchise',
+        'html' => '123'
+      ]);*/
       /*$arr = [];
       foreach(\App\Models\Contact::all() as $c) {
         $arr[] = ['name' => $c->name, 'link' => $c->link];
@@ -149,6 +155,11 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin/', 'middleware'=>'admin
         Route::patch('/{menu}', 'MenuController@update')->name('admin.menu.update');
         Route::delete('/{menu}', 'MenuController@destroy')->name('admin.menu.destroy');
     });
+
+  Route::group(['prefix' => 'dynamic-page', /*'name' => 'admin.menu.'*/], function()
+  {
+      Route::put('/{page}', 'DynamicPageController@update')->name('admin.dynamic-page.update');
+  });
 
     Route::group(['namespace' => 'Category_slider', 'prefix' => 'category_slider'], function()
     {

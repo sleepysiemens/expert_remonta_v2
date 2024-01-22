@@ -9,7 +9,7 @@
     --}}
     {{-- @yield('active_nav_class') --}}
     <div class="header_menu_item">
-      <a href="/" @class(['nav-link', 'nav-link-selected' => '/' === $uri])>Главная</a>
+      <a href="/" @class(['nav-link', 'nav-link-selected' => '/' === $uri])>{{app()->translate('Главная')}}</a>
     </div>
     @foreach($menu as $m)
       <div class="header_menu_item {{count($m->childs) > 0 ? 'has_childs' : ''}} {{$m->uri === $uri ? 'active' : ''}}">
@@ -39,6 +39,9 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function(e) {
+    //let navLinks = document.querySelector('.nav-links')
+    //console.log(window.innerWidth)
+    if(window.innerWidth < 768) return;
     function toggleMenu(e, show = true) {
       let target = e.target.classList.contains('nav-link') ? e.target.parentNode : e.target
       let submenu = target.querySelector('ul.header_submenu')
