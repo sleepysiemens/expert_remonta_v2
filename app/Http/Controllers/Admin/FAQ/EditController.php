@@ -23,6 +23,6 @@ class EditController extends Controller
         $categories=Category::all();
         $sales=sale::all();
 
-        return view('admin.faq.edit', compact(['question', 'reviews', 'questions', 'services', 'categories', 'sales']));
+        return view('admin.FAQ.edit', compact(['question', 'reviews', 'questions', 'services', 'categories', 'sales']));
     }
 }

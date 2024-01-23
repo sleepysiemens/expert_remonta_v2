@@ -131,7 +131,7 @@ class IndexController extends Controller
       }
 
 
-      DB::transaction(function() use ($data, $seoData, $category, $req) {
+      DB::transaction(function() use ($data, $category, $req) {
         $category->update($data);
         //$seo = Seo::where('page','=','uslugi/'.$category->service->url.'/'.$category->url)->first();
         //$seo->update($seoData);
