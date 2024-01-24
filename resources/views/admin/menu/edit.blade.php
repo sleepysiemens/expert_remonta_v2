@@ -35,6 +35,11 @@
             <input type="text" class="form-control" placeholder="Название" name="title" required value="{{$menu->title}}">
           </div>
           <div class="form-group">
+            <label for="exampleInputEmail1">Название пункта КЗ</label>
+            <input type="text" class="form-control" placeholder="название" name="title_kz" value="{{$menu->title_kz}}">
+          </div>
+
+          <div class="form-group">
             <label for="exampleInputEmail1">URL</label>
             <input type="text" class="form-control" placeholder="URL" name="url" required value="{{$menu->url}}">
           </div>
@@ -44,7 +49,7 @@
             <select class="form-control" name="parent_id">
               <option></option>
               @foreach ($menuItems as $m)
-              <option value="{{$m->id}}">{{$m->title}}</option>
+              <option value="{{$m->id}}" @selected($menu->parent_id == $m->id)>{{$m->title}}</option>
               @endforeach
             </select>
           </div>

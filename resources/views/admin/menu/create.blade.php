@@ -23,6 +23,10 @@
           <input type="text" class="form-control" placeholder="название" name="title" required>
         </div>
         <div class="form-group">
+          <label for="exampleInputEmail1">Название пункта КЗ</label>
+          <input type="text" class="form-control" placeholder="название" name="title_kz">
+        </div>
+        <div class="form-group">
           <label for="exampleInputEmail1">URL</label>
           <input type="text" class="form-control" placeholder="URL" name="url" required>
         </div>

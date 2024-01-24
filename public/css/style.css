@@ -3131,23 +3131,30 @@ footer {
     {
         margin: auto;
         margin-right: 25px;
+        position: absolute;
+        right: 0px;
+        top: 18px;
+        z-index: 999999999;
     }
 
     .mobile-menu
     {
         display: block;
         /*display: none;*/
-        position: fixed;
+        /*position: fixed;*/
+        position: absolute;
         right: 0;
         top: 0;
         /*opacity: 0;*/
         /*bottom: 0;*/
         width: 50vw;
-        height: 100vh;
+        min-height: 100vh;
+        /*height: 2000px;*/
         background-color: #fff;
         box-shadow: 4px 4px 4px rgba(0,0,0,.25);
         transform: translateX(50vw);
         transition: .3s;
+        overflow-y: auto;
     }
     .mobile-menu.show {
           transform: translateX(0);

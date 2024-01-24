@@ -3,7 +3,7 @@
 
     <div class="services-div">
 
-            @foreach ($services as $service)
+            @foreach ($homeServices as $service)
             <span class="service-banner scroll-hidden">
                 <a class="service-banner-link" href="{{ route('uslugi.index') }}/{{$service->url}}/">
                     <img src=" /img/services/{{$service->src}}">

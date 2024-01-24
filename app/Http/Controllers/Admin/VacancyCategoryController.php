@@ -12,10 +12,11 @@ use App\Models\category;
 use App\Models\Sale;
 use App\Models\Gallery;
 use App\Models\Menu;
+use App\Models\VacancyCategory;
 
 
 
-class MenuController extends Controller
+class VacancyCategoryController extends Controller
 {
     public function index()
     {
@@ -25,9 +26,9 @@ class MenuController extends Controller
         $categories=Category::all();
         $sales=sale::all();
         $galleries=gallery::all();
-        $menu=Menu::with('parent')->get();
+        $vcs=VacancyCategory::all();
 
-        return view('admin.menu.index', compact(['reviews', 'questions', 'services', 'categories', 'sales', 'galleries', 'menu']));
+        return view('admin.vc.index', compact(['reviews', 'questions', 'services', 'categories', 'sales', 'galleries', 'vcs']));
     }
 
     public function create()
@@ -40,19 +41,18 @@ class MenuController extends Controller
         $galleries=Gallery::all();
         $menu=Menu::all();
 
-        return view('admin.menu.create', compact('reviews', 'questions', 'services', 'categories', 'sales', 'galleries', 'menu'));
+        return view('admin.vc.create', compact('reviews', 'questions', 'services', 'categories', 'sales', 'galleries', 'menu'));
     }
 
     public function store(Request $req)
     {
 
-        //$sql_data = ['title'=>$req->title, 'url'=> $req->url, 'parent_id' => $req->parent_id];
-        Menu::create($req->all());
+        VacancyCategory::create($req->all());
 
-        return redirect()->route('admin.menu.index');
+        return redirect()->route('admin.vc.index');
     }
 
-    public function edit(Menu $menu)
+    public function edit(VacancyCategory $vc)
     {
         $questions=Question::all();
         $reviews=Review::all();
@@ -60,23 +60,21 @@ class MenuController extends Controller
         $categories=Category::all();
         $sales=Sale::all();
         $galleries=gallery::all();
-        $menuItems=Menu::all();
 
-        return view('admin.menu.edit', compact(['menu', 'reviews', 'questions', 'services', 'categories', 'sales', 'galleries', 'menuItems']));
+        return view('admin.vc.edit', compact(['reviews', 'questions', 'services', 'categories', 'sales', 'galleries', 'vc']));
     }
 
-    public function update(Request $req, Menu $menu)
+    public function update(Request $req, VacancyCategory $vc)
     {
-      $sql_data = ['title'=>$req->title, 'url'=> $req->url, 'parent_id' => $req->parent_id];
 
-      $menu->update($req->all());
+      $vc->update($req->all());
 
-      return redirect()->route('admin.menu.index');
+      return redirect()->route('admin.vc.index');
     }
 
-    public function destroy(Menu $menu)
+    public function destroy(VacancyCategory $vc)
     {
-        $menu->delete();
-        return redirect()->route('admin.menu.index');
+        $vc->delete();
+        return redirect()->route('admin.vc.index');
     }
 }

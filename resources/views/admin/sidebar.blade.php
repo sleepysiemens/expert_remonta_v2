@@ -90,13 +90,13 @@
           <li class="nav-header">БАЗА ДАННЫХ</li>
           <li class="nav-item">
 
-            <a href="{{ route('admin.menu.index') }}" class="nav-link @yield('menu')">
+            {{--<a href="{{ route('admin.menu.index') }}" class="nav-link @yield('menu')">
               <i class="nav-icon fas fa-bars"></i>
               <p>
                   Меню
-                  <span class="badge badge-info right">{{--$reviews->count()--}}</span>
+                  <span class="badge badge-info right"></span>
               </p>
-          </a>
+          </a>--}}
 
               <a href="{{ route('admin.review.index') }}" class="nav-link @yield('reviews')">
                   <i class="nav-icon fas fa-star-half-alt"></i>
@@ -122,14 +122,6 @@
                   </p>
               </a>
 
-              {{--<a href="{{ route('admin.category.index') }}" class="nav-link @yield('categories')">
-                  <i class="nav-icon fas fa-th"></i>
-                  <p>
-                      Категории
-                      <span class="badge badge-info right">{{$categories->count()}}</span>
-                  </p>
-              </a>--}}
-
               <a href="{{ route('admin.page.index') }}" class="nav-link @yield('service_pages')">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
@@ -137,13 +129,6 @@
                     <span class="badge badge-info right">{{$categories->count()}}</span>
                 </p>
             </a>
-
-              {{--<a href="{{ route('admin.category_slider.index') }}" class="nav-link @yield('category_slider')">
-                <i class="nav-icon far fa-images"></i>
-                <p>
-                  Категории • Слайдер
-                </p>
-              </a>--}}
 
               {{--<a href="{{ route('admin.service_slider.index') }}" class="nav-link @yield('service_slider')">
                   <i class="nav-icon far fa-images"></i>
@@ -166,6 +151,42 @@
                       <span class="badge badge-info right">{{$sales->count()}}</span>
                   </p>
               </a>
+
+              @if(auth()->user()->role == 'admin')
+
+              <li class="nav-item @yield('menu-dropdown')">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon far fa-address-book"></i>
+                  <p>
+                    Вакансии
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview" style="display: none; @yield('dropdown')">
+                      <li class="nav-item">
+                        <a href="{{ route('admin.vacancy.index',) }}" class="nav-link">
+                          <i class="nav-icon far fa-address-book"></i>
+                          <p>Вакансии • Список</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="{{ route('admin.vc.index',) }}" class="nav-link">
+                          <i class="nav-icon far fa-address-book"></i>
+                          <p>Вакансии • Категории вакансий</p>
+                        </a>
+                      </li>
+                </ul>
+              </li>
+
+              {{--<a href="{{ route('admin.vacancy.index') }}" class="nav-link @yield('vacancies')">
+                <i class="nav-icon far fa-address-book"></i>
+                <p>
+                    Вакансии
+                    <span class="badge badge-info right"></span>
+                </p>
+            </a>--}}
+
+              @endif
 
           </li>
       </ul>

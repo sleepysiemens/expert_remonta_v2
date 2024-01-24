@@ -49,8 +49,10 @@
                 <td>{{$category->title_ru}}</td>
                 <td>{{$category->title_kz}}</td>
                 <td>{{$category->url}}</td>
-                <td>{!! $category->description_ru !!}</td>
-                <td>{!! $category->description_kz !!}</td>
+                {{--<td>{!! $category->description_ru !!}</td>--}}
+                <td>{{ $category->description_ru ? mb_strlen($category->description_ru) . " символов" : 'Нет'}}</td>
+                <td>{{ $category->description_kz ? mb_strlen($category->description_kz) . " символов" : 'Нет'}}</td>
+                {{--<td>{!! $category->description_kz !!}</td>--}}
                 <td><img src="{{asset('img/categories/'.$category->src)}}" style="height: 150px; width: 150px; object-fit: contain"></td>
                 <td>
                   Title RU: {{$category->seo_title_ru}} <br>

@@ -1,0 +1,70 @@
+body,html {
+  margin: 0;
+}
+* {
+  font-family: Montserrat;
+  color: #404040;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+a {
+  text-decoration: none;
+}
+.ui_kit_h1_heading {
+  font-size: 36px;
+  font-weight: 500;
+}
+.ui_kit_h2_heading {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 29px;
+}
+.ui_kit_h3_heading {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+.ui_kit_button {
+  background: #9DC436;
+  padding: 16px 24px;
+  border-radius: 6px;
+  font-size: 20px;
+  line-height: 26px;
+  cursor: pointer;
+  border: none;
+  transition: all .35s;
+}
+.ui_kit_button:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+.ui_kit_button_v2 {
+  background: #fff;
+  border: 1px solid #F2C20E
+}
+.ui_kit_button_v2:hover {
+  background: #F2C20E;
+  text-decoration: none;
+}
+/* здесь еще будут input, titles */
+
+.footer-link p
+{
+  color: rgba(245,245,245,.75)!important;
+}
+.form-sale-close i {
+  color: #fff;
+}
+
+
+
+@media (max-width: 550px) {
+  .ui_kit_h2_heading {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}

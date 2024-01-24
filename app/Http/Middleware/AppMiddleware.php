@@ -29,7 +29,10 @@ class AppMiddleware
       $instagram=Contact::query()->select('link')->where('name','=','instagram')->get();
       $phone=Contact::query()->select('link')->where('name','=','phone')->get();
       $cities=City::all();
-      $menu=Menu::where('url', '!=', '/')->whereNull('parent_id')->with('childs.childs')->get();
+      //$menu=Menu::where('url', '!=', '/')->whereNull('parent_id')->with('childs.childs')->get();
+      $services = \App\Models\service::with('categories')->get();
+      //dd($services);
+      View::share('services', $services);
       //dd($menu);
       //dd($cities);
       //dd($_SERVER['REQUEST_URI']);
@@ -52,7 +55,7 @@ class AppMiddleware
       View::share('phone', $phone);
       View::share('tel', $tel);
       View::share('cities', $cities);
-      View::share('menu', $menu);
+      //View::share('menu', $menu);
       View::share('uri', substr($uri, 1));
 
       $userIP=$_SERVER['REMOTE_ADDR'];

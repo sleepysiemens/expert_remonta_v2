@@ -7,6 +7,7 @@
     @include('blocks.seo')
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
     @stack('franchise')
+    @stack('vacancies')
     <script defer src="/js/animation.js"></script>
     <script defer src="/js/contacts.js"></script>
     <script defer src=" /js/bg.js"></script>
@@ -33,7 +34,8 @@
             </div>
 
             <div class="header-subdiv">
-              @include('blocks.menu')
+              {{--@include('blocks.menu')--}}
+              @include('blocks.menu_dynamic')
               
               <div class="header-contact-info-div">
                 <a class="header-contact-info" id="city-select" style="cursor: pointer">
@@ -56,12 +58,14 @@
                     <i class="fas fa-bars"></i>
                 </a>
 
-                @include('blocks.mobile_menu')
+                {{--@include('blocks.mobile_menu')--}}
+                @include('blocks.mobile_menu_dynamic')
                 
               </div>
             </div>
         </div>
     </header>
+    
     <div class="contacts-right">
         <div class="contacts-wrapper">
 
@@ -177,5 +181,6 @@
     }, 3000);
   });
 </script>
+@stack('vacancies_script')
 </body>
 </html>

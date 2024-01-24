@@ -1,7 +1,6 @@
 @extends('Layouts.wrapper')
 
 
-    @foreach ($services as $service)
 
         @section('page_title')
         {{$service->title}} – Эксперт Ремонта
@@ -12,7 +11,6 @@
             @include('blocks.categories')
             {{--@include('blocks.reviews')--}}
         @endsection
-    @endforeach
 
 
 

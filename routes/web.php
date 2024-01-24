@@ -31,7 +31,10 @@ use Illuminate\Support\Facades\DB;
     Route::get('/blog/{blog}', 'BlogController@index')->name('blog.index');
     Route::get('/reviews/', 'ReviewController@index')->name('reviews.index');
     Route::get('/franchise/', 'MainController@franchise')->name('main.franchise');
+    Route::get('/vacancies/', 'VacancyController@index')->name('vacancy.index');
+    Route::get('/vacancy/{vacancy}', 'VacancyController@show')->name('vacancy.show');
     Route::get('/geo', function () {
+      //dd(\App\Models\service::with('categories')->get());
       //dd(\App\Models\DynamicPage::where(['url' => 'franchise'])->first());
       /*\App\Models\DynamicPage::create([
         'seo_title' => 'Франшиза',
@@ -78,6 +81,27 @@ use Illuminate\Support\Facades\DB;
 //Route::resource('admin/menu', MenuController::class);
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin/', 'middleware'=>'admin'], function()
 {
+
+  Route::group(['namespace' => 'Vacancy', 'prefix' => 'vacancy', 'name' => 'admin.vacancy.', 'middleware' => 'redactor'], function()
+    {
+        Route::get('/', 'IndexController@index')->name('admin.vacancy.index');
+        Route::get('/create', 'IndexController@create')->name('admin.vacancy.create');
+        Route::post('', 'IndexController@store')->name('admin.vacancy.store');
+        Route::get('/{vacancy}', 'IndexController@show')->name('admin.vacancy.show');
+        Route::get('/{vacancy}/edit', 'IndexController@edit')->name('admin.vacancy.edit');
+        Route::patch('/{vacancy}', 'IndexController@update')->name('admin.vacancy.update');
+        Route::delete('/{vacancy}', 'IndexController@destroy')->name('admin.vacancy.destroy');
+    });
+
+    Route::group(['prefix' => 'vacancy_category', 'middleware' => 'redactor'], function()
+    {
+        Route::get('/', 'VacancyCategoryController@index')->name('admin.vc.index');
+        Route::get('/create', 'VacancyCategoryController@create')->name('admin.vc.create');
+        Route::post('', 'VacancyCategoryController@store')->name('admin.vc.store');
+        Route::get('/{vc}/edit', 'VacancyCategoryController@edit')->name('admin.vc.edit');
+        Route::patch('/{vc}', 'VacancyCategoryController@update')->name('admin.vc.update');
+        Route::delete('/{vc}', 'VacancyCategoryController@destroy')->name('admin.vc.destroy');
+    });
 
   //Route::resource('menu', 'MenuController');
   //Route::resource('menu', MenuController::class);
@@ -144,6 +168,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin/', 'middleware'=>'admin
         Route::delete('/destroySlider/{category_slider}', 'IndexController@destroySlider')->name('admin.page.destroySlider');
         Route::delete('/destroySliderAjax/{category_slider}', 'IndexController@destroySliderAjax')->name('admin.page.destroySliderAjax');
     });
+
+    
 
   Route::group(['prefix' => 'menu', /*'name' => 'admin.menu.'*/], function()
     {

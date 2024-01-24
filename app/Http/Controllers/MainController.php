@@ -27,7 +27,7 @@ class MainController extends Controller
     public function index(Request $req)
     {
       //dd($req->all());
-        $services=Service::query()->limit(4)->offset(0)->get();
+        $homeServices=Service::query()->limit(4)->offset(0)->get();
         $questions=Question::all();
         $sales=Sale::all();
         $Headers=Header::all();
@@ -39,7 +39,7 @@ class MainController extends Controller
 
         $page='main';
 
-        return view('main.index', compact(['texts','services', 'questions', 'sales', 'Headers', 'WelcomeCards', 'Abouts', 'WhyCards', 'page', 'seos']));
+        return view('main.index', compact(['texts','homeServices', 'questions', 'sales', 'Headers', 'WelcomeCards', 'Abouts', 'WhyCards', 'page', 'seos']));
     }
 
     public function franchise() {
