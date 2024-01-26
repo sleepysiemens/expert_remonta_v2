@@ -43,13 +43,13 @@ class MainController extends Controller
     }
 
     public function vacanciesLanding() {
-      $page='vacanciesLanding';
+      $page='vacancies-landing';
 
       return view('main.vacanciesLanding', compact('page'));
     }
 
     public function vacanciesLanding2() {
-      $page='vacanciesLanding2';
+      $page='vacancies-landing2';
 
       return view('main.vacanciesLanding2', compact('page'));
     }
@@ -129,6 +129,7 @@ class MainController extends Controller
 
     public function city(Request $req)
     {
+      //dd($_SERVER['HTTP_REFERER']);
         //setcookie('city', $req->city, time()+360000 ,'/');
         //$cookie = cookie('city', $req->city, 360000);
         //Cookie::queue('city', $req->city, 360000);
