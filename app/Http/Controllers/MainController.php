@@ -42,6 +42,18 @@ class MainController extends Controller
         return view('main.index', compact(['texts','homeServices', 'questions', 'sales', 'Headers', 'WelcomeCards', 'Abouts', 'WhyCards', 'page', 'seos']));
     }
 
+    public function vacanciesLanding() {
+      $page='vacanciesLanding';
+
+      return view('main.vacanciesLanding', compact('page'));
+    }
+
+    public function vacanciesLanding2() {
+      $page='vacanciesLanding2';
+
+      return view('main.vacanciesLanding2', compact('page'));
+    }
+
     public function franchise() {
       $page='franchise';
 

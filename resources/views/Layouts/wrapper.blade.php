@@ -7,6 +7,7 @@
     @include('blocks.seo')
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
     @stack('franchise')
+    @stack('customStyles')
     @stack('vacancies')
     <script defer src="/js/animation.js"></script>
     <script defer src="/js/contacts.js"></script>
@@ -182,5 +183,6 @@
   });
 </script>
 @stack('vacancies_script')
+@stack('customScripts')
 </body>
 </html>

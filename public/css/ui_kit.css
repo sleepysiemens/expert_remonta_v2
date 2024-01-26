@@ -4,6 +4,7 @@ body,html {
 * {
   font-family: Montserrat;
   color: #404040;
+  scroll-behavior: smooth;
 }
 
 ul {
@@ -51,6 +52,21 @@ a {
   text-decoration: none;
 }
 /* здесь еще будут input, titles */
+.ui_kit_card {
+  border: 1px solid #9DC436;
+  border-radius: 6px;
+  transition: all .35s;
+}
+.ui_kit_input {
+  border: 1px solid #CEE19A;
+  border-radius: 6px;
+  font-size: 20px;
+  color: #bfbfbf;
+}
+.ui_kit_input:focus-visible {
+  border: 2px solid #9DC436;
+  outline: 2px solid #9DC436;
+}
 
 .footer-link p
 {
@@ -63,6 +79,9 @@ a {
 
 
 @media (max-width: 550px) {
+  .ui_kit_h1_heading {
+    font-size: 26px;
+  }
   .ui_kit_h2_heading {
     font-size: 20px;
     line-height: 24px;

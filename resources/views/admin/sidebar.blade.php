@@ -175,6 +175,12 @@
                           <p>Вакансии • Категории вакансий</p>
                         </a>
                       </li>
+                      <li class="nav-item">
+                        <a href="{{ route('admin.vacancy.resumes',) }}" class="nav-link">
+                          <i class="nav-icon far fa-address-book"></i>
+                          <p>Отклики • Резюме</p>
+                        </a>
+                      </li>
                 </ul>
               </li>
 

@@ -31,6 +31,8 @@ use Illuminate\Support\Facades\DB;
     Route::get('/blog/{blog}', 'BlogController@index')->name('blog.index');
     Route::get('/reviews/', 'ReviewController@index')->name('reviews.index');
     Route::get('/franchise/', 'MainController@franchise')->name('main.franchise');
+    Route::get('/vacancies-landing/', 'MainController@vacanciesLanding')->name('main.vacanciesLanding');
+    Route::get('/vacancies-landing2/', 'MainController@vacanciesLanding2')->name('main.vacanciesLanding2');
     Route::get('/vacancies/', 'VacancyController@index')->name('vacancy.index');
     Route::get('/vacancy/{vacancy}', 'VacancyController@show')->name('vacancy.show');
     Route::get('/geo', function () {
@@ -85,12 +87,15 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin/', 'middleware'=>'admin
   Route::group(['namespace' => 'Vacancy', 'prefix' => 'vacancy', 'name' => 'admin.vacancy.', 'middleware' => 'redactor'], function()
     {
         Route::get('/', 'IndexController@index')->name('admin.vacancy.index');
+        Route::get('/resumes', 'IndexController@resumes')->name('admin.vacancy.resumes');
+        Route::post('/resumes/{resume}', 'IndexController@getResume')->name('admin.vacancy.getResume');
         Route::get('/create', 'IndexController@create')->name('admin.vacancy.create');
         Route::post('', 'IndexController@store')->name('admin.vacancy.store');
         Route::get('/{vacancy}', 'IndexController@show')->name('admin.vacancy.show');
         Route::get('/{vacancy}/edit', 'IndexController@edit')->name('admin.vacancy.edit');
         Route::patch('/{vacancy}', 'IndexController@update')->name('admin.vacancy.update');
         Route::delete('/{vacancy}', 'IndexController@destroy')->name('admin.vacancy.destroy');
+        Route::delete('/resume/{resume}', 'IndexController@destroyResume')->name('admin.resume.destroy');
     });
 
     Route::group(['prefix' => 'vacancy_category', 'middleware' => 'redactor'], function()
@@ -360,6 +365,7 @@ Route::post('/locale/change/', 'MainController@locale')->name('locale.change');
 Route::post('/form/store/', 'MainController@form')->name('form.store');
 Route::post('/city/store/', 'MainController@city')->name('city.store');
 Route::post('/review/store/', 'ReviewController@add_review')->name('review.store');
+Route::post('/resume/store/', 'VacancyController@form')->name('resume.store');
 
 Auth::routes();
 

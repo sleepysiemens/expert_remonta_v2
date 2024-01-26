@@ -42,6 +42,10 @@
 .vacancies_page_card_title, .vacancies_page_card_salary {
   margin-bottom: 15px;
 }
+.vacancies_page_card_title a:hover {
+  color: #9DC436;
+  text-decoration: underline;
+}
 .vacancies_page_card_desc {
   font-size: 16px;
   font-weight: 300;

@@ -38,7 +38,7 @@
               <tr>
                 <td>{{$v->id}}</td>
                 <td>{{$v->city->city}}</td>
-                <td>{{$v->category->name}}</td>
+                <td>{{isset($v->category->name) ? $v->category->name : 'Не определено'}}</td>
                 <td>{{$v->name}}</td>
                 <td>{{$v->salary_from}}-{{$v->salary_to}}</td>
                 <td>{{$v->experience}}</td>

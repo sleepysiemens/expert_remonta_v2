@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Main\Header;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 use App\Models\Header;
 
@@ -15,8 +16,17 @@ class UpdateController extends Controller
       	if(request()->hasFile('src'))
         {
           	$file = request()->file('src');
-            $file->move(public_path() . '/img/main_bg/','bg-image.img');
-			$sql_data=['title_ru'=>request()->title_ru, 'title_kz'=>request()->title_kz, 'subtitle_ru'=>request()->subtitle_ru, 'subtitle_kz'=>request()->subtitle_kz, 'src'=>'/img/main_bg/bg-image.img'];
+            $name= Str::random(8) . "_" . $file->getClientOriginalName();
+            $file->move(public_path() . '/img/main_bg/', $name);
+            //$file->move(public_path() . '/img/main_bg/','bg-image.img');
+			      $sql_data=[
+              'title_ru'=>request()->title_ru, 
+              'title_kz'=>request()->title_kz, 
+              'subtitle_ru'=>request()->subtitle_ru, 
+              'subtitle_kz'=>request()->subtitle_kz, 
+              //'src'=>'/img/main_bg/bg-image.img'
+              'src' => $name
+            ];
         }
       	else
         {

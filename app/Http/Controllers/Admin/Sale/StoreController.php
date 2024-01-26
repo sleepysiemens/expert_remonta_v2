@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Sale;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 use App\Models\Sale;
 
@@ -14,7 +15,11 @@ class StoreController extends Controller
         $sql_data=request()->all();
 
         $file = request()->file('src');
-        $file->move(public_path() . '/img/sales/',request()->title.'-image.img');
+        $name= Str::random(8) . "_" . $file->getClientOriginalName();
+        $file->move(public_path() . '/img/sales/', $name);
+        unset($sql_data['src']);
+        $sql_data['src'] = $name;
+        //$file->move(public_path() . '/img/sales/',request()->title.'-image.img');
 
         Sale::create($sql_data);
 
