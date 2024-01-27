@@ -44,5 +44,5 @@ function cityEnToRu($city) {
 
 // функция для получения ресурса, который разделяется между двумя поддоменами
 function getCommonResource($url) {
-  return env('APP_CITY') === 'Астана' ? $url : "http://astana/expertremonta.kz" . $url;
+  return env('APP_CITY') === 'Астана' ? $url : "http://astana.expertremonta.kz" . $url;
 }
