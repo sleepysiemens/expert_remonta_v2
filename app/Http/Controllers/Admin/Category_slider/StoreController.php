@@ -12,7 +12,7 @@ class StoreController extends Controller
 {
     public function index()
     {
-        $name=request()->file('src')->getClientOriginalName();
+        $name=request()->file('src')->hashName();
         $data=request()->validate(['category_id'=>'required|integer', 'src'=>'required']);
         $sql_data=['src'=>$name, 'category_id'=>request()->category_id];
 

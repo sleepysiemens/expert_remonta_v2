@@ -1,6 +1,7 @@
 <section class="welcome">
   @foreach ($Headers as $Header)
-            <img class="welcome-bg" src="/img/main_bg/{{$Header->src}}" @if($Header->blur==1) style="filter: blur(4px);" @endif>
+            {{--<img class="welcome-bg" src="/img/main_bg/{{$Header->src}}" @if($Header->blur==1) style="filter: blur(4px);" @endif>--}}
+            <img class="welcome-bg" src="{{getCommonResource("/img/main_bg/".$Header->src)}}" @if($Header->blur==1) style="filter: blur(4px);" @endif>
   @endforeach
             <div class="welcome-content">
                 <div class="welcome-header hidden">
@@ -16,7 +17,8 @@
                     @foreach ($WelcomeCards as $card)
                         <span class="welcome-card welcome-card-{{$i++}} scroll-hidden">
                             <p>{{app()->db_translate($card->title_ru,$card->title_kz)}}</p>
-                            <img src=" /img/cards/{{$card->src}}">
+                            {{--<img src="/img/cards/{{$card->src}}">--}}
+                            <img src="{{getCommonResource("/img/cards/".$card->src)}}">
                         </span>
                     @endforeach
                 </div>

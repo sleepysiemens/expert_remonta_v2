@@ -12,7 +12,7 @@ class StoreController extends Controller
 {
     public function index()
     {
-        $name=request()->file('src')->getClientOriginalName();
+        $name=request()->file('src')->hashName();
         $sql_data=['src'=>$name, 'service_id'=>request()->service_id];
 
         $file = request()->file('src');

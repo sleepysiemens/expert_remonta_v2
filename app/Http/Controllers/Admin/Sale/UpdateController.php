@@ -17,7 +17,7 @@ class UpdateController extends Controller
         {
           @unlink(dirname(__FILE__) . "/../../../../../public/img/sales/" . $sale->src);
             $file = request()->file('src');
-            $name= Str::random(8) . "_" . $file->getClientOriginalName();
+            $name= Str::random(8) . "_" . $file->hashName();
             $file->move(public_path() . '/img/sales/', $name);
 
             $sql_data=$req->except('src');

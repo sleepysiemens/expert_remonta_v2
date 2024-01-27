@@ -7,6 +7,11 @@
 /vendor
 /storage/framework
 /public/img
+#/public/img/blog
+#/public/img/categories
+#/public/img/sales
+#/public/img/gallery
+#/public/img/categories
 
 
 .env

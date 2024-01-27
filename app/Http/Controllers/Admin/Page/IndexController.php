@@ -77,8 +77,8 @@ class IndexController extends Controller
         //$seoData = $req->only(['seo_ru', 'seo_kz', 'meta_ru', 'meta_kz']);
 
         $file = $req->file('src');
-        //$name= date("Y-m-dH:i:s") . "_" . $file->getClientOriginalName();
-        $name= Str::random(8) . "_" . $file->getClientOriginalName();
+        //$name= date("Y-m-dH:i:s") . "_" . $file->hashName();
+        $name= Str::random(8) . "_" . $file->hashName();
         //$file->move(public_path() . '/img/categories/',request()->title.'-image.img');
         $file->move(public_path() . '/img/categories/', $name);
         unset($data['src']);
@@ -93,7 +93,7 @@ class IndexController extends Controller
           if(isset($req->slides)) {
             foreach($req->slides as $idx => $slide) {
               $file = $req->file("slides")[$idx];
-              $name = Str::random(8) . "_" . $file->getClientOriginalName();
+              $name = Str::random(8) . "_" . $file->hashName();
               $file->move(public_path() . '/img/category_slider/'.$cat->id, $name);
               CategoryImage::create(['src' => $name, 'category_id' => $cat->id]);
             }
@@ -123,7 +123,7 @@ class IndexController extends Controller
       //$seoData = $req->only(['seo_ru', 'seo_kz', 'meta_ru', 'meta_kz']);
       if(request()->hasFile('src')){
             $file = request()->file('src');
-            $name= Str::random(8) . "_" . $file->getClientOriginalName();
+            $name= Str::random(8) . "_" . $file->hashName();
             $file->move(public_path() . '/img/categories/', $name);
             unset($data['src']);
             //$data['src']=request()->title.'-image.img';
@@ -138,7 +138,7 @@ class IndexController extends Controller
         if(isset($req->slides)) {
           foreach($req->slides as $idx => $slide) {
             $file = $req->file("slides")[$idx];
-            $name = Str::random(8) . "_" . $file->getClientOriginalName();
+            $name = Str::random(8) . "_" . $file->hashName();
             $file->move(public_path() . '/img/category_slider/'.$category->id, $name);
             CategoryImage::create(['src' => $name, 'category_id' => $category->id]);
           }

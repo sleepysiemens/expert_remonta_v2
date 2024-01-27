@@ -9,4 +9,8 @@ class Sale extends Model
 {
     use HasFactory;
     protected $guarded=[];
+
+    public function getTable()  {
+      return env('APP_CITY') === 'Астана' ? 'sales' : 'sales_almaty';
+    }
 }

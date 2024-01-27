@@ -36,6 +36,7 @@ use Illuminate\Support\Facades\DB;
     Route::get('/vacancies/', 'VacancyController@index')->name('vacancy.index');
     Route::get('/vacancy/{vacancy}', 'VacancyController@show')->name('vacancy.show');
     Route::get('/geo', function () {
+      //dd(getCommonResource(123));
       //dd(\App\Models\service::with('categories')->get());
       //dd(\App\Models\DynamicPage::where(['url' => 'franchise'])->first());
       /*\App\Models\DynamicPage::create([

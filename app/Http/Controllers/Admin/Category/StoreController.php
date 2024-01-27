@@ -18,7 +18,7 @@ class StoreController extends Controller
         $data=request()->all();
 
         $file = request()->file('src');
-        $name= Str::random(8) . "_" . $file->getClientOriginalName();
+        $name= Str::random(8) . "_" . $file->hashName();
         //dd($name);
         //$file->move(public_path() . '/img/categories/',request()->title.'-image.img');
         $file->move(public_path() . '/img/categories/', $name);

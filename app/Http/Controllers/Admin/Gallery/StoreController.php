@@ -19,7 +19,7 @@ class StoreController extends Controller
         
 
         $file = $req->file('src');
-        $name= Str::random(8) . "_" . $file->getClientOriginalName();
+        $name= Str::random(8) . "_" . $file->hashName();
         $file->move(public_path() . '/img/gallery/', $name);
 
         $sql_data = ['title'=>$req->title, 'src'=> $name];

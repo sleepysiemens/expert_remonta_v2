@@ -16,7 +16,7 @@ class UpdateController extends Controller
       	if(request()->hasFile('src'))
         {
           	$file = request()->file('src');
-            $name= Str::random(8) . "_" . $file->getClientOriginalName();
+            $name= Str::random(8) . "_" . $file->hashName();
             $file->move(public_path() . '/img/main_bg/', $name);
             //$file->move(public_path() . '/img/main_bg/','bg-image.img');
 			      $sql_data=[
