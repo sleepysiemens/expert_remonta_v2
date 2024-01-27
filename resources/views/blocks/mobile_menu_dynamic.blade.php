@@ -47,6 +47,7 @@
   
 </div>
 
+@push('customScripts')
 <script>
   document.addEventListener('DOMContentLoaded', function(e) {
     if(window.innerWidth > 768) return;
@@ -73,3 +74,5 @@
     })
   })
 </script>
+
+@endPush

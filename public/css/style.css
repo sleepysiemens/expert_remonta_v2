@@ -1643,7 +1643,7 @@ footer
 
 .contact-links-active
 {
-    height: 220px;
+    height: auto;
     bottom: 45px;
     z-index: 2;
     overflow: hidden;
@@ -3232,4 +3232,18 @@ footer {
 .success_msg.active {
   opacity: 1;
   transform: translateX(0px);
+}
+
+
+.price_page_info {
+  margin:20px auto;
+  text-align: left;
+  max-width: 1000px;
+  background: rgba(0,0,0,.1);
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 15px;
+}
+.main-content-container {
+  min-height: 85vh;
 }

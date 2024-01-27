@@ -13,6 +13,8 @@ class UpdateController extends Controller
 {
     public function index(Header $header)
     {
+      // почему то application/octet-stream, мб из-за размера, картинка весит больше 2МБ
+      //dd(request()->all());
       	if(request()->hasFile('src'))
         {
           	$file = request()->file('src');

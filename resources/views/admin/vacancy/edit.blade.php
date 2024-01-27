@@ -37,32 +37,47 @@
           <label for="exampleInputEmail1">Название вакансии</label>
           <input type="text" class="form-control" placeholder="Название" name="name" value="{{$vacancy->name}}" required>
         </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">URL (укажите сами или сгенерируется автоматически из названия)</label>
+          <input type="text" class="form-control" placeholder="название" name="url" value="{{$vacancy->url}}">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Название КЗ</label>
+          <input type="text" class="form-control" placeholder="название" name="name_kz" value="{{$vacancy->name_kz}}">
+        </div>
+
+        <div class="form_flex" style="display:flex;justify-content:space-around">
+
           <div class="form-group">
-              <label for="exampleInputEmail1">Зарплата от</label>
-              <input type="text" class="form-control" placeholder="Название" name="salary_from" value="{{$vacancy->salary_from}}">
-          </div>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Зарплата до</label>
-          <input type="text" class="form-control" placeholder="Ссылка" name="salary_to" value="{{$vacancy->salary_to}}" required>
+            <label for="exampleInputEmail1">Зарплата от</label>
+            <input type="text" class="form-control" placeholder="Название" name="salary_from" value="{{$vacancy->salary_from}}">
+        </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Зарплата до</label>
+        <input type="text" class="form-control" placeholder="Ссылка" name="salary_to" value="{{$vacancy->salary_to}}">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Опыт</label>
+        <select class="form-control" name="experience" required>
+          @foreach (['Без опыта', '1-3 года', '4-6 лет', '7-10 лет'] as $v)
+          <option @selected($vacancy->experience == $v) value="{{$v}}">{{$v}}</option>
+          @endforeach
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Занятость</label>
+        <br>
+        Полная 
+        <input type="radio" class="form-control" placeholder="Ссылка" name="employment_type" value="Полная" @checked($vacancy->employment_type == 'Полная') required>
+        Частичная 
+        <input type="radio" class="form-control" placeholder="Ссылка" name="employment_type" value="Частичная" @checked($vacancy->employment_type == 'Частичная') required>
+      </div>
+
         </div>
 
-        <div class="form-group">
-          <label for="exampleInputEmail1">Опыт</label>
-          <select class="form-control" name="experience" required>
-            @foreach (['Без опыта', '1-3 года', '4-6 лет', '7-10 лет'] as $v)
-            <option @selected($vacancy->experience == $v) value="{{$v}}">{{$v}}</option>
-            @endforeach
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="exampleInputEmail1">Занятость</label>
-          <br>
-          Полная 
-          <input type="radio" class="form-control" placeholder="Ссылка" name="employment_type" value="Полная" @checked($vacancy->employment_type == 'Полная') required>
-          Частичная 
-          <input type="radio" class="form-control" placeholder="Ссылка" name="employment_type" value="Частичная" @checked($vacancy->employment_type == 'Частичная') required>
-        </div>
+          
 
         <div class="form-group">
           <label for="exampleInputEmail1">Телефон</label>
@@ -70,41 +85,53 @@
         </div>
 
         <div class="form-group">
-            <label for="exampleInputEmail1">Что нужно делать</label>
-              <textarea id="summernote" name="overview" placeholder="Текст описания..." required>{!!$vacancy->overview!!}</textarea>
+          <label for="exampleInputEmail1">SEO Title ru</label>
+          <input type="text" class="form-control" placeholder="название" name="seo_title_ru" value="{{$vacancy->seo_title_ru}}">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">SEO Title kz</label>
+          <input type="text" class="form-control" placeholder="название" name="seo_title_kz" value="{{$vacancy->seo_title_kz}}">
+        </div>
+        <div class="form-group">
+          <label for="mtru">Meta desc ru</label>
+          <input type="text" class="form-control" placeholder="название" name="meta_desc_ru" value="{{$vacancy->meta_desc_ru}}">
+        </div>
+        <div class="form-group">
+          <label for="mtkz">Meta desc kz</label>
+          <input type="text" class="form-control" placeholder="название" name="meta_desc_kz" value="{{$vacancy->meta_desc_kz}}">
+      </div>
+
+        <div class="form-group">
+            <label for="summernote">Что нужно делать</label>
+              <textarea id="summernote" name="overview" placeholder="Текст описания...">{!!$vacancy->overview!!}</textarea>
         </div>
 
         <div class="form-group">
-          <label for="exampleInputEmail1">Мы предлагаем</label>
-            <textarea id="summernote1" name="offers" placeholder="Текст описания..." value="{{$vacancy->offers}}"></textarea>
+          <label for="summernote4">Что нужно делать КЗ</label>
+            <textarea id="summernote4" name="overview_kz" placeholder="Текст описания...">{!!$vacancy->overview_kz!!}</textarea>
+      </div>
+
+        <div class="form-group">
+          <label for="summernote1">Мы предлагаем</label>
+            <textarea id="summernote1" name="offers" placeholder="Текст описания...">{!!$vacancy->offers!!}</textarea>
       </div>
 
       <div class="form-group">
-        <label for="exampleInputEmail1">Требования</label>
-          <textarea id="summernote2" name="requirements" placeholder="Текст описания..." value="{{$vacancy->requirements}}"></textarea>
+        <label for="summernote5">Мы предлагаем КЗ</label>
+          <textarea id="summernote5" name="offers_kz" placeholder="Текст описания...">{!!$vacancy->offers_kz!!}</textarea>
     </div>
 
+      <div class="form-group">
+        <label for="summernote2">Требования</label>
+          <textarea id="summernote2" name="requirements" placeholder="Текст описания..." >{!!$vacancy->requirements!!}</textarea>
+    </div>
 
-        {{--<fieldset>
-          <legend>SEO инфа</legend>
-          <div class="form-group">
-            <label for="exampleInputEmail1">SEO-заголовок, ru</label>
-            <input type="text" class="form-control" placeholder="SEO title" name="seo_title_ru" required>
-          </div>
-            <div class="form-group">
-                <label for="exampleInputEmail1">SEO-заголовок, kz</label>
-                <input type="text" class="form-control" placeholder="SEO title" name="seo_title_kz">
-            </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">META-описание, ru</label>
-            <input type="text" class="form-control" placeholder="Meta desc" name="meta_desc_ru" required>
-          </div>
-            <div class="form-group">
-                <label for="exampleInputEmail1">META-описание, kz</label>
-                <input type="text" class="form-control" placeholder="Meta desc" name="meta_desc_kz" >
-            </div>
-          
-        </fieldset>--}}
+    <div class="form-group">
+      <label for="summernote6">Требования КЗ</label>
+        <textarea id="summernote6" name="requirements_kz" placeholder="Текст описания..." >{!!$vacancy->requirements_kz!!}</textarea>
+  </div>
+
+
       </div>
 
       <!-- /.card-body -->

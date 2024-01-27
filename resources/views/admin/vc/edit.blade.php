@@ -30,6 +30,30 @@
             <label for="exampleInputEmail1">Название</label>
             <input type="text" class="form-control" placeholder="Название" name="name" required value="{{$vc->name}}">
           </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">URL</label>
+            <input type="text" class="form-control" placeholder="название" name="url" value="{{$vc->url}}">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Название КЗ</label>
+            <input type="text" class="form-control" placeholder="название" name="name_kz" value="{{$vc->name_kz}}">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">SEO Title ru</label>
+            <input type="text" class="form-control" placeholder="название" name="seo_title_ru" value="{{$vc->seo_title_ru}}">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">SEO Title kz</label>
+            <input type="text" class="form-control" placeholder="название" name="seo_title_kz" value="{{$vc->seo_title_kz}}">
+          </div>
+          <div class="form-group">
+            <label for="mtru">Meta desc ru</label>
+            <input type="text" class="form-control" placeholder="название" name="meta_desc_ru" value="{{$vc->meta_desc_ru}}">
+          </div>
+          <div class="form-group">
+            <label for="mtkz">Meta desc kz</label>
+            <input type="text" class="form-control" placeholder="название" name="meta_desc_kz" value="{{$vc->meta_desc_kz}}">
+        </div>
         </div>
       <!-- /.card-body -->
 

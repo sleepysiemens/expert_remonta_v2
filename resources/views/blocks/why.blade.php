@@ -1,5 +1,5 @@
 <section class="why">
-    <div class="section-header">Почему мы?</div>
+    <div class="section-header">{{__("Почему мы?")}}</div>
     <div class="why-div">
         @php
             $why_cnt=1;

@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Cookie;
 use Stevebauman\Location\Facades\Location;
+use Illuminate\Support\Facades\App;
 
 use App\Models\Contact;
 use App\Models\City;
@@ -23,11 +24,18 @@ class AppMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
+      $locale = 'ru';
+      if(isset($_COOKIE['locale']) && $_COOKIE['locale']=='kz') {
+        // у laravel локаль такая - kk для казахского
+        // https://laravel-lang.com/usage-list-of-locales.html#list_of_codes_with_names
+        $locale = 'kk';
+      }
 
       $whatsapp=Contact::query()->select('link')->where('name','=','whatsapp')->get();
       $telegram=Contact::query()->select('link')->where('name','=','telegram')->get();
       $instagram=Contact::query()->select('link')->where('name','=','instagram')->get();
       $phone=Contact::query()->select('link')->where('name','=','phone')->get();
+      $googlemaps=Contact::query()->select('link')->where('name','=','googlemaps')->first();
       $cities=City::all();
       //$menu=Menu::where('url', '!=', '/')->whereNull('parent_id')->with('childs.childs')->get();
       $services = \App\Models\service::with('categories')->get();
@@ -54,6 +62,7 @@ class AppMiddleware
       View::share('instagram', $instagram);
       View::share('phone', $phone);
       View::share('tel', $tel);
+      View::share('googlemaps', $googlemaps);
       View::share('cities', $cities);
       //View::share('menu', $menu);
       View::share('uri', substr($uri, 1));
@@ -77,7 +86,12 @@ class AppMiddleware
 
       View::share('usr_city', $usr_city);
       View::share('location', $location);
-        
+      
+      App::setLocale($locale);
+      //App::setLocale('en');
+      //dd($locale);
+
+      //dd(__('Оставить отзыв'));
 
       return $next($request);
     }

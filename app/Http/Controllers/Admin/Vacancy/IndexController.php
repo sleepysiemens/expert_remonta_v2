@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Vacancy;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 use App\Models\Review;
 use App\Models\question;
@@ -77,6 +78,7 @@ class IndexController extends Controller
     {
       //dd($req->all());
         //$sql_data = ['title'=>$req->title, 'url'=> $req->url, 'parent_id' => $req->parent_id];
+        if(!$req->url) $req->merge(['url' => strtolower(translit($req->name)) . '-' . strtolower(Str::random(6))]);
         Vacancy::create($req->all());
 
         return redirect()->route('admin.vacancy.index');
@@ -99,6 +101,7 @@ class IndexController extends Controller
 
     public function update(Request $req, Vacancy $vacancy)
     {
+      if(!$req->url) $req->merge(['url' => strtolower(translit($req->name)) . '-' . strtolower(Str::random(6))]);
       $vacancy->update($req->all());
 
       return redirect()->route('admin.vacancy.index');

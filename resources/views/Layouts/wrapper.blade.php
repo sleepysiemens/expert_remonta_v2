@@ -72,6 +72,12 @@
 
         </div>
         <div class="contact-links">
+
+          <a href="{{$googlemaps->link}}" target="_blank" class="maps" style="background:#2F8B47">
+            <i class="fas fa-map"></i>
+            {{--<i class="fas fa-map-marker-alt"></i>--}}
+        </a>
+
             <a href="@foreach ($whatsapp as $wp){{$wp->link}}@endforeach" target="_blank" class="whatsapp">
                 <i class="fab fa-whatsapp"></i>
             </a>

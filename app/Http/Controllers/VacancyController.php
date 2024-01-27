@@ -9,23 +9,49 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Vacancy;
 use App\Models\VacancyCategory;
 use App\Models\Resume;
+use App\Models\City;
+use App\Models\Seo;
 
 class VacancyController extends Controller
 {
 
     public function index(Request $req) {
-      $vacancies = Vacancy::with('city')->with('category')->get();
+      $vacancies = Vacancy::filtered2()->with('city')->with('category')->get();
       $vacancyCategories = VacancyCategory::all();
       //dd($vacancies);
       $page = 'vacancies';
+      //dd(Vacancy::all());
 
-      return view('vacancies.index', compact('page', 'vacancies', 'vacancyCategories'));
+      $requestInfo = [];
+      if($req->city_select) $requestInfo['city'] = City::find($req->city_select);
+      if($req->category_select) $requestInfo['category'] = VacancyCategory::find($req->category_select);
+      if($req->exp_select) $requestInfo['exp'] = $req->exp_select;
+
+      $seo = Seo::query()->where('page','=','vacancies')->first();
+
+      return view('vacancies.index', compact('page', 'vacancies', 'vacancyCategories', 'requestInfo', 'seo'));
     }
 
-    public function show(Request $req, Vacancy $vacancy) {
+    public function filter(Request $req) {
+      return Vacancy::filtered()->count();
+    }
+
+    public function show(Request $req, /*Vacancy $vacancy*/) {
       $page = 'vacancy';
+      $vacancy = Vacancy::where(['url' => $req->vacancy])->first();
+      if(!$vacancy) abort(404);
 
       return view('vacancies.show', compact('page', 'vacancy'));
+    }
+
+    public function showCategory(Request $req, /*VacancyCategory $vacancyCategory*/) {
+      //dd($req->vacancyCategory);
+      $page = 'vacancyCategory';
+
+      $vacancyCategory = VacancyCategory::where(['url' => $req->vacancyCategory])->with('vacancies')->first();
+      if(!$vacancyCategory) abort(404);
+
+      return view('vacancies.showCategory', compact('page', 'vacancyCategory'));
     }
 
     public function form(Request $req)

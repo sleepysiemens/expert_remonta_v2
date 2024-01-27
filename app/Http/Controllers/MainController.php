@@ -44,20 +44,23 @@ class MainController extends Controller
 
     public function vacanciesLanding() {
       $page='vacancies-landing';
+      $seo = Seo::query()->where('page','=',$page)->first();
 
-      return view('main.vacanciesLanding', compact('page'));
+      return view('main.vacanciesLanding', compact('page', 'seo'));
     }
 
     public function vacanciesLanding2() {
       $page='vacancies-landing2';
+      $seo = Seo::query()->where('page','=',$page)->first();
 
-      return view('main.vacanciesLanding2', compact('page'));
+      return view('main.vacanciesLanding2', compact('page', 'seo'));
     }
 
     public function franchise() {
+      $seo = Seo::query()->where('page','=','franchise')->first();
       $page='franchise';
 
-      return view('main.franchise', compact('page'));
+      return view('main.franchise', compact('page', 'seo'));
     }
 
     public function form(Request $req)
@@ -119,10 +122,16 @@ class MainController extends Controller
             if($_COOKIE['locale']=='kz')
                 setcookie('locale','ru', time()+360000 ,'/');
         }
-        if(request()->all()['page']!='main')
+        /*if(request()->all()['page']!='main')
             $page='/'.request()->all()['page'];
         else
-            $page='/';
+            $page='/';*/
+
+        $page = parse_url($_SERVER['HTTP_REFERER'])['path'];
+        // нужна доп логика, если на страницах статей, то лучше редирект на главную
+        // если есть элемент с индексом 3 то мы на страницах статей услуг
+        $pathParts = explode('/', $page);
+        if(isset($pathParts[3]) && str_contains($page, 'uslugi')) $page = '/';
 
         return redirect($page);
     }
@@ -134,6 +143,10 @@ class MainController extends Controller
         //Cookie::queue('city', $req->city, 360000);
 
         $page = parse_url($_SERVER['HTTP_REFERER'])['path'];
+        // нужна доп логика, если на страницах статей, то лучше редирект на главную
+        // если есть элемент с индексом 3 то мы на страницах статей услуг
+        $pathParts = explode('/', $page);
+        if(isset($pathParts[3]) && str_contains($page, 'uslugi')) $page = '/';
 
         // проблема в том что невозможно записать куку пока ты в приложении на другом домене
         if(request()->city=='Астана') {

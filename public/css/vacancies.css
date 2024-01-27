@@ -28,7 +28,9 @@
   border: 1px solid #CEE19A;
   border-radius: 6px;
   padding: 32px 16px 32px 16px;
-  max-height: 320px;
+  /*max-height: 320px;*/
+  height: fit-content;
+  max-height: 370px;
 }
 .vacancies_page_search button {
   display: none;
@@ -76,6 +78,14 @@
   width: 92%;
   border: none;
   border-bottom: 1px solid #CEE19A
+}
+.choices__item {
+  word-break: break-word;
+  /*padding-right: 100px;*/
+  padding-right: 50px!important;
+}
+.choices__list--single .choices__item {
+  width: 92%;
 }
 .choices__item.is-selected {
   position: relative;
@@ -126,4 +136,17 @@
   .vacancies_page {
     background: none;
   }
+}
+
+
+.vacancy_category .vacancies_page_list {
+  margin: 0 auto;
+}
+.vacancy_category .vacancies_page_flex {
+  display: block;
+}
+.vacancy_category .vacancies_page_wrap:first-of-type {
+  padding: 20px 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }

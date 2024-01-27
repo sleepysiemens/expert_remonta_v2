@@ -22,7 +22,9 @@
             <tr>
               <th>Id</th>
               <th>Имя</th>
-              <th></th>
+              <th>Имя КЗ</th>
+              <th>SEO инфа</th>
+              <th>URL</th>
               <th></th>
             </tr>
         </thead>
@@ -33,6 +35,14 @@
                 <tr>
                     <td>{{$v->id}}</td>
                     <td>{{$v->name}}</td>
+                    <td>{{$v->name_kz}}</td>
+                    <td>
+                      Title RU: {{$v->seo_title_ru}} <br>
+                      Title KZ: {{$v->seo_title_kz}} <br>
+                      Мета описание RU: {{$v->meta_desc_ru}} <br>
+                      Мета описание KZ: {{$v->meta_desc_kz}}
+                    </td>
+                    <td>{{$v->url}}</td>
                     <td><a href="{{route('admin.vc.edit',$v->id)}}"><i class="fas fa-pen"></i></a></td>
                     <td>
                       <form method="post" action="{{route('admin.vc.destroy',$v->id)}}">
@@ -43,6 +53,7 @@
                         })();"><i class="far fa-trash-alt"></i></button>
                       </form>
                     </td>
+                    <td><a href="{{route('vacancy.category',$v->url)}}"><i class="fas fa-arrow-right"></i></a></td>
                 </tr>
 
             @endforeach

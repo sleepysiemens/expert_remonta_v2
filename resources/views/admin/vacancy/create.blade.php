@@ -36,13 +36,21 @@
           <label for="exampleInputEmail1">Название вакансии</label>
           <input type="text" class="form-control" placeholder="Название" name="name" required>
         </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">URL (укажите сами или сгенерируется автоматически из названия)</label>
+          <input type="text" class="form-control" placeholder="название" name="url">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Название КЗ</label>
+          <input type="text" class="form-control" placeholder="название" name="name_kz">
+        </div>
           <div class="form-group">
               <label for="exampleInputEmail1">Зарплата от</label>
               <input type="text" class="form-control" placeholder="" name="salary_from">
           </div>
         <div class="form-group">
           <label for="exampleInputEmail1">Зарплата до</label>
-          <input type="text" class="form-control" placeholder="" name="salary_to" required>
+          <input type="text" class="form-control" placeholder="" name="salary_to">
         </div>
 
         <div class="form-group">
@@ -67,19 +75,51 @@
         </div>
 
         <div class="form-group">
-            <label for="exampleInputEmail1">Что нужно делать</label>
-              <textarea id="summernote" name="overview" placeholder="Текст описания..." required></textarea>
+          <label for="exampleInputEmail1">SEO Title ru</label>
+          <input type="text" class="form-control" placeholder="название" name="seo_title_ru">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">SEO Title kz</label>
+          <input type="text" class="form-control" placeholder="название" name="seo_title_kz">
+        </div>
+        <div class="form-group">
+          <label for="mtru">Meta desc ru</label>
+          <input type="text" class="form-control" placeholder="название" name="meta_desc_ru">
+        </div>
+        <div class="form-group">
+          <label for="mtkz">Meta desc kz</label>
+          <input type="text" class="form-control" placeholder="название" name="meta_desc_kz">
+      </div>
+
+        <div class="form-group">
+            <label for="summernote">Что нужно делать</label>
+              <textarea id="summernote" name="overview" placeholder="Текст описания..."></textarea>
         </div>
 
         <div class="form-group">
-          <label for="exampleInputEmail1">Мы предлагаем</label>
-            <textarea id="summernote1" name="offers" placeholder="Текст описания..." required></textarea>
+          <label for="summernote4">Что нужно делать КЗ</label>
+            <textarea id="summernote4" name="overview_kz" placeholder="Текст описания..."></textarea>
+      </div>
+
+        <div class="form-group">
+          <label for="summernote1">Мы предлагаем</label>
+            <textarea id="summernote1" name="offers" placeholder="Текст описания..."></textarea>
       </div>
 
       <div class="form-group">
-        <label for="exampleInputEmail1">Требования</label>
-          <textarea id="summernote2" name="requirements" placeholder="Текст описания..." required></textarea>
+        <label for="summernote5">Мы предлагаем КЗ</label>
+          <textarea id="summernote5" name="offers_kz" placeholder="Текст описания..."></textarea>
     </div>
+
+      <div class="form-group">
+        <label for="summernote2">Требования</label>
+          <textarea id="summernote2" name="requirements" placeholder="Текст описания..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="summernote6">Требования КЗ</label>
+        <textarea id="summernote6" name="requirements_kz" placeholder="Текст описания..."></textarea>
+  </div>
 
 
         {{--<fieldset>

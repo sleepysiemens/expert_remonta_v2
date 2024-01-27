@@ -83,7 +83,8 @@ return [
     |
     */
 
-    'locale' => 'en',
+    //'locale' => 'en',
+    'locale' => 'ru',
     'blade' => [
         // ...
         'escaped' => false,
@@ -100,7 +101,14 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    //'fallback_locale' => 'en',
+    'fallback_locale' => 'ru',
+
+    'available_locales' => [
+      //'English' => 'en',
+      'Russian' => 'ru',
+      'Kazakh' => 'kk',
+    ],
 
     /*
     |--------------------------------------------------------------------------

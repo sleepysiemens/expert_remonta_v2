@@ -34,8 +34,11 @@ use Illuminate\Support\Facades\DB;
     Route::get('/vacancies-landing/', 'MainController@vacanciesLanding')->name('main.vacanciesLanding');
     Route::get('/vacancies-landing2/', 'MainController@vacanciesLanding2')->name('main.vacanciesLanding2');
     Route::get('/vacancies/', 'VacancyController@index')->name('vacancy.index');
+    Route::get('/vacancies/filter/', 'VacancyController@filter')->name('vacancy.filter');
     Route::get('/vacancy/{vacancy}', 'VacancyController@show')->name('vacancy.show');
+    Route::get('/vacancies/category/{vacancyCategory}', 'VacancyController@showCategory')->name('vacancy.category');
     Route::get('/geo', function () {
+      //dd(app()->translate());
       //dd(getCommonResource(123));
       //dd(\App\Models\service::with('categories')->get());
       //dd(\App\Models\DynamicPage::where(['url' => 'franchise'])->first());

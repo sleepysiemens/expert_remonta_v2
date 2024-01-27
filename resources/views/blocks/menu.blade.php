@@ -37,6 +37,7 @@
       @endforeach
 </div>
 
+@push('customScripts')
 <script>
   document.addEventListener('DOMContentLoaded', function(e) {
     //let navLinks = document.querySelector('.nav-links')
@@ -73,3 +74,5 @@
     })
   })
 </script>
+
+@endPush

@@ -2,7 +2,7 @@
     <h1 class="section-header">{{app()->translate('Отзывы')}}</h1>
     <br>
     <a class="gradient_button" id="add_review" style="height: 35px">
-        <span class="flare"></span><p>{{app()->translate('Оставить отзыв')}}</p>
+        <span class="flare"></span><p>{{__('Оставить отзыв')}}</p>
     </a>
     <br>
     <div class="hidden" style="width: 95%; margin: auto">

@@ -18,6 +18,29 @@
           <label for="exampleInputEmail1">Название</label>
           <input type="text" class="form-control" placeholder="название" name="name" required>
         </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">URL (укажите сами или сгенерируется автоматически из названия)</label>
+          <input type="text" class="form-control" placeholder="название" name="url">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Название КЗ</label>
+          <input type="text" class="form-control" placeholder="название" name="name_kz">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">SEO Title ru</label>
+          <input type="text" class="form-control" placeholder="название" name="seo_title_ru">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">SEO Title kz</label>
+          <input type="text" class="form-control" placeholder="название" name="seo_title_kz">
+        </div>
+        <div class="form-group">
+          <label for="mtru">Meta desc ru</label>
+          <input type="text" class="form-control" placeholder="название" name="meta_desc_ru">
+        </div>
+        <div class="form-group">
+          <label for="mtkz">Meta desc kz</label>
+          <input type="text" class="form-control" placeholder="название" name="meta_desc_kz">
       </div>
       
       <!-- /.card-body -->

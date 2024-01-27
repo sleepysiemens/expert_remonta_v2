@@ -4,8 +4,12 @@
       nav-link-selected
     @endsection
 
-    @section('seo-title')
-    Франшиза
+@section('seo-title')
+    {{app()->db_translate($seo->seo_ru, $seo->seo_kz)}}
+@endsection
+
+@section('meta-description')
+{{app()->db_translate($seo->meta_ru, $seo->meta_kz)}}
 @endsection
 
   @push('franchise')
@@ -23,7 +27,7 @@
           <h1>Ремонт помещений в городах сегодня это Большая История, Большие Возможности</h1>
           <div class="fr_page_welcome_flex">
           <div class="fr_page_welcome_info">
-          <p>Факты о рынке недвижимости:</p>
+          <p>{{__('Факты о рынке недвижимости:')}}</p>
           <ul>
             <li>·Вторичное жилье часто требует ремонта</li>
             <li>·Износ ветхого жилья и реконструкция</li>

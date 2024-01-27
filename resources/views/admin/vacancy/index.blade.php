@@ -24,6 +24,9 @@
               <th>Город</th>
               <th>Категория</th>
               <th>Название, ru</th>
+              <th>Название КЗ</th>
+              <th>SEO инфа</th>
+              <th>URL</th>
               {{--<th>Название, kz</th>--}}
               <th>ЗП</th>
               <th>Опыт</th>
@@ -40,6 +43,14 @@
                 <td>{{$v->city->city}}</td>
                 <td>{{isset($v->category->name) ? $v->category->name : 'Не определено'}}</td>
                 <td>{{$v->name}}</td>
+                <td>{{$v->name_kz}}</td>
+                    <td>
+                      Title RU: {{$v->seo_title_ru}} <br>
+                      Title KZ: {{$v->seo_title_kz}} <br>
+                      Мета описание RU: {{$v->meta_desc_ru}} <br>
+                      Мета описание KZ: {{$v->meta_desc_kz}}
+                    </td>
+                    <td>{{$v->url}}</td>
                 <td>{{$v->salary_from}}-{{$v->salary_to}}</td>
                 <td>{{$v->experience}}</td>
                 <td>{{$v->employment_type}}</td>
@@ -54,7 +65,8 @@
                   </form>
                 </td>
                 <td><a href="{{route('admin.vacancy.edit',$v->id)}}"><i class="fas fa-pen"></i></a></td>
-                <td><a href="{{route('admin.vacancy.show',$v->id)}}"><i class="fas fa-arrow-right"></i></a></td>
+                {{--<td><a href="{{route('admin.vacancy.show',$v->id)}}"><i class="fas fa-arrow-right"></i></a></td>--}}
+                <td><a href="{{route('vacancy.show',$v->url)}}"><i class="fas fa-arrow-right"></i></a></td>
             </tr>
 
               @endforeach
