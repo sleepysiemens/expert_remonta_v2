@@ -30,7 +30,7 @@ class IndexController extends Controller
         $sales=sale::all();
 
         foreach($categories as $c) {
-          $serviceSlug = $c->service->url;
+          //$serviceSlug = $c->service->url;
           //$c->seo = Seo::where('page', '=', "uslugi/$serviceSlug/$c->url")->first();
         }
         //dd($categories[0]);
