@@ -129,15 +129,11 @@ class MainController extends Controller
 
     public function city(Request $req)
     {
-      //dd($_SERVER['HTTP_REFERER']);
         //setcookie('city', $req->city, time()+360000 ,'/');
         //$cookie = cookie('city', $req->city, 360000);
         //Cookie::queue('city', $req->city, 360000);
 
-        if($req->all()['page']!='main')
-            $page='/'.$req->all()['page'];
-        else
-            $page='/';
+        $page = parse_url($_SERVER['HTTP_REFERER'])['path'];
 
         // проблема в том что невозможно записать куку пока ты в приложении на другом домене
         if(request()->city=='Астана') {
