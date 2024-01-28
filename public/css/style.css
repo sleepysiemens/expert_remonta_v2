@@ -3156,7 +3156,7 @@ footer {
         /*height: 2000px;*/
         background-color: #fff;
         box-shadow: 4px 4px 4px rgba(0,0,0,.25);
-        transform: translateX(50vw);
+        transform: translateX(55vw);
         transition: .3s;
         overflow-y: auto;
     }
@@ -3205,7 +3205,7 @@ footer {
 @media screen and (max-width: 500px) {
 .mobile-menu {
   width: 75vw;
-  transform: translateX(75vw);
+  transform: translateX(80vw);
 }
 }
 

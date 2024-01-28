@@ -317,7 +317,8 @@
   justify-content: space-between;
 }
 .vc_page_value .vc_page_card:first-of-type {
-  width: 50%;
+  /*width: 50%;*/
+  width: 525px;
   padding: 40px 16px 24px 16px;
   background: #fff url(../landing_files/logo.png) no-repeat 95% 95%;
 }

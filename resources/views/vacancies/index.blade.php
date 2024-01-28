@@ -24,7 +24,7 @@
 
 <div class="vacancies_page">
   <div class="vacancies_page_wrap">
-    <h1 class="vacancies_page_heading ui_kit_h1_heading">Вакансии «Эксперт Ремонта»</h1>
+    <h1 class="vacancies_page_heading ui_kit_h1_heading">{{--Вакансии «Эксперт Ремонта»--}}{{app()->db_translate($seo->seo_ru, $seo->seo_kz)}}</h1>
     @if(isset($requestInfo['city']))
       <p>Применен фильтр. Город: {{$requestInfo['city']->city}}, категория: {{$requestInfo['category']->name}}, опыт: {{$requestInfo['exp']}}</p>
     @endif
@@ -44,7 +44,7 @@
             <label for="category_select">Направление</label>
             <select name="category_select" id="category_select" class="ajax_select"> 
               @foreach($vacancyCategories as $cat)
-              <option value="{{$cat->id}}">{{$cat->name}} </option>
+              <option value="{{$cat->id}}">{{app()->db_translate($cat->name, $cat->name_kz)}} </option>
               @endforeach
             </select>
           </div>
@@ -61,19 +61,7 @@
       </div>
       <div class="vacancies_page_list">
         @foreach($vacancies as $v)
-        <div class="vacancies_page_card">
-          <div class="vacancies_page_card_title ui_kit_h3_heading"> <a href="{{route('vacancy.show', $v->url)}}">{{$v->name}}</a></div>
-          <div class="vacancies_page_card_salary ui_kit_h3_heading">@if($v->salary_from){{$v->salary_from}}-{{$v->salary_to}} ₸@else зп: по результатам собеседования@endif</div>
-          <div class="vacancies_page_card_desc">
-            {{--Покраска, лакирование поверхности, подготовка поверхности под покраску; выполнение работ по оштукатуриванию поверхности, ремонту штукатурки; нанесение защитного покрытия поверхности специальными растворами, жидкостями, смесями;--}}
-            {{app()->db_translate($v->overview, $v->overview_kz)}}
-          </div>
-          <div class="vacancies_page_card_info">{{$v->city->city}}, опыт: {{$v->experience}}</div>
-          <div class="vacancies_page_inline_flex">
-            <button class="ui_kit_button vacancies_page_button show_form">Откликнуться</button>
-            <a class="ui_kit_button ui_kit_button_v2 vacancies_page_button" data-phone="{{$v->phone}}"> Показать телефон</a>
-          </div>
-        </div>
+          <x-vacancy-card :v="$v"/>
         @endforeach
       </div>
     </div>

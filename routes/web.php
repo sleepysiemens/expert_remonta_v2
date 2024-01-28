@@ -38,6 +38,7 @@ use Illuminate\Support\Facades\DB;
     Route::get('/vacancy/{vacancy}', 'VacancyController@show')->name('vacancy.show');
     Route::get('/vacancies/category/{vacancyCategory}', 'VacancyController@showCategory')->name('vacancy.category');
     Route::get('/geo', function () {
+      //dd(\App\Models\City::all());
       //dd(app()->translate());
       //dd(getCommonResource(123));
       //dd(\App\Models\service::with('categories')->get());

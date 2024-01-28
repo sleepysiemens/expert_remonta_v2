@@ -87,26 +87,13 @@ document.querySelector('#file').addEventListener('change', e => {
   <div class="vc_page_wrap">
     <div class="vc_page_heading ui_kit_h1_heading">Нам требуются профессиональные навыки</div>
     <div class="vc_page_flex">
-      <div class="vc_page_skill">Укладка ламината, паркета</div>
-      <div class="vc_page_skill">Демонтажные работы</div>
-      <div class="vc_page_skill">Монтаж теплых полов</div>
-      <div class="vc_page_skill">Сантехнические работы</div>
-      <div class="vc_page_skill">Чистовая подрезка плитки</div>
-      <div class="vc_page_skill">Оклейка обоев, фресок</div>
-      <div class="vc_page_skill">Нанесение декоративных штукатурок</div>
-      <div class="vc_page_skill">Малярные работы</div>
-      <div class="vc_page_skill">Создание наливных полов</div>
-      <div class="vc_page_skill">Монтаж багетов, плинтусов</div>
-      <div class="vc_page_skill">Шумоизоляция помещений</div>
-      <div class="vc_page_skill">Оклейка декоративного кирпича</div>
-      <div class="vc_page_skill">Уборка после работ</div>
-      <div class="vc_page_skill">Электромонтажные работы</div>
-      <div class="vc_page_skill">Проверка качества работ</div>
-      <div class="vc_page_skill">Использование технологических карт</div>
-      <div class="vc_page_skill">Знание СНиП/ТУ</div>
-      <div class="vc_page_skill">Работа с натуральным камнем</div>
-      <div class="vc_page_skill">Работа с проектной документацией</div>
-      <div class="vc_page_skill">Установка вентиляционных систем</div>
+      @foreach(['Укладка ламината, паркета', 'Демонтажные работы', 'Монтаж теплых полов', 'Сантехнические работы', 'Чистовая подрезка плитки', 'Оклейка обоев, фресок',
+      'Нанесение декоративных штукатурок', 'Малярные работы', 'Создание наливных полов', 'Монтаж багетов, плинтусов', 'Шумоизоляция помещений', 
+      'Оклейка декоративного кирпича', 'Уборка после работ', 'Электромонтажные работы', 'Проверка качества работ', 'Использование технологических карт',
+      'Знание СНиП/ТУ', 'Работа с натуральным камнем', 'Работа с проектной документацией', 'Установка вентиляционных систем'
+      ] as $skill)
+        <div class="vc_page_skill scroll-hidden">{{$skill}}</div>
+      @endforeach
     </div>
   </div>
 </div>
