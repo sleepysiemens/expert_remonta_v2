@@ -866,6 +866,7 @@ footer
     height: 130px;
     background-color: rgb(42, 42, 42);
     /*padding-bottom: 5px;*/
+    padding: 0 10px;
     padding-bottom: 25px;
 }
 
@@ -1224,6 +1225,8 @@ footer
 {
     width: 1000px;
     margin: auto;
+    padding: 10px 20px;
+    box-sizing: border-box;
 }
 
 .about-service h1
@@ -3206,6 +3209,14 @@ footer {
 .mobile-menu {
   width: 75vw;
   transform: translateX(80vw);
+}
+.footer-div div {
+  width: 100%;
+}
+.footer-contact-info {
+  text-align: center;
+  margin-left: 0;
+  margin-top: 20px;
 }
 }
 
