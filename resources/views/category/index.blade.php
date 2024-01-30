@@ -10,8 +10,8 @@ nav-link-selected
         @section('content')
             @include('blocks.welcome-category')
             @include('blocks.about_category')
-            @include('blocks.why')
-            @include('blocks.reviews')
+            @include('blocks.why_new')
+            @include('blocks.reviews_new')
         @endsection
 
 

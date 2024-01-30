@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Cookie;
 use Stevebauman\Location\Facades\Location;
 use Illuminate\Support\Facades\App;
+use Jenssegers\Date\Date;
 
 use App\Models\Contact;
 use App\Models\City;
@@ -88,6 +89,7 @@ class AppMiddleware
       View::share('location', $location);
       
       App::setLocale($locale);
+      Date::setLocale($locale);
       //App::setLocale('en');
       //dd($locale);
 

@@ -8,7 +8,7 @@
 
 @include('blocks.path')
 @include('blocks.services')
-@include('blocks.reviews')
+@include('blocks.reviews_new')
 
 @endsection
 

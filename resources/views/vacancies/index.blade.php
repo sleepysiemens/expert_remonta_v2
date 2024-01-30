@@ -51,7 +51,7 @@
           <div class="vacancies_page_input">
             <label for="exp_select">Опыт</label>
             <select name="exp_select" id="exp_select" class="ajax_select"> 
-              @foreach(['Не имеет значение', '1-3 года', '4-6 лет'] as $v)
+              @foreach(\App\Models\VacancyCategory::$experienceList as $v)
               <option value="{{$v}}">{{$v}}</option>
               @endforeach
             </select>

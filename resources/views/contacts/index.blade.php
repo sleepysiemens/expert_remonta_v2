@@ -7,7 +7,7 @@
 @section('content')
     @include('blocks.welcome-contacts')
     @include('blocks.about_company')
-    @include('blocks.reviews')
+    @include('blocks.reviews_new')
 @endsection
 
 @section('contact')

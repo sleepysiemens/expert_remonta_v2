@@ -9,7 +9,7 @@
             @include('blocks.path-service')
             @include('blocks.about_service')
             @include('blocks.categories')
-            {{--@include('blocks.reviews')--}}
+            {{--@include('blocks.reviews_new')--}}
         @endsection
 
 

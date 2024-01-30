@@ -6,7 +6,7 @@
 @include('blocks.text_company')
 @include('blocks.about_company')
 @include('blocks.our_services')
-@include('blocks.why')
+@include('blocks.why_new')
 @include('blocks.faq')
 @include('blocks.sales')
 

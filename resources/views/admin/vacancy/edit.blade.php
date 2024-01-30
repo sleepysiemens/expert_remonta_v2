@@ -60,7 +60,7 @@
       <div class="form-group">
         <label for="exampleInputEmail1">Опыт</label>
         <select class="form-control" name="experience" required>
-          @foreach (['Без опыта', '1-3 года', '4-6 лет', '7-10 лет'] as $v)
+          @foreach (['Без опыта', '1-3 года', '4-6 лет'] as $v)
           <option @selected($vacancy->experience == $v) value="{{$v}}">{{$v}}</option>
           @endforeach
         </select>

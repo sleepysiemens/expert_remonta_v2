@@ -10,6 +10,8 @@ class VacancyCategory extends Model
 {
     use HasFactory;
 
+    public static $experienceList = ['Не имеет значение', '1-3 года', '4-6 лет'];
+
     protected $guarded=[];
 
     /*public function getRouteKeyName(): string {

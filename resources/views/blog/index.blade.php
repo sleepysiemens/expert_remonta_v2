@@ -14,9 +14,9 @@ nav-link-selected
             @include('blocks.path-category')
             @include('blocks.about_category')
             @include('blocks.photo-slider')
-            @include('blocks.why')
+            @include('blocks.why_new')
             @include('blocks.popular_services')
-            @include('blocks.reviews')
+            @include('blocks.reviews_new')
 
     @endforeach
 

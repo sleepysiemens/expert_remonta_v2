@@ -101,7 +101,7 @@ document.querySelector('#file').addEventListener('change', e => {
   <div class="vc_page_wrap">
     <div class="vc_page_flex">
       <div class="vc_page_card ui_kit_card">
-        <div class="vc_page_card_title ui_kit_h1_heading">Мы поощряем</div>
+        <div class="vc_page_card_main_title ui_kit_h1_heading">Мы поощряем</div>
         <div class="vc_page_card_subtitle">Навыки, которые мы ценим в наших сотрудниках</div><a class="ui_kit_button vc_page_button" href="#vc_page_contact">Присоединиться</a>
       </div>
       <div class="vc_page_card ui_kit_card">
