@@ -12,6 +12,7 @@ class DestroyController extends Controller
 {
     public function index(Service $service)
     {
+        @unlink(dirname(__FILE__) . "/../../../../../public/img/services/" . $service->src);
         $service->delete();
         return redirect()->route('admin.service.index');
     }
