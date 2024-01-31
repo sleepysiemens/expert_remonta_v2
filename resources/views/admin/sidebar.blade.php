@@ -117,7 +117,7 @@
               <a href="{{ route('admin.service.index') }}" class="nav-link @yield('services')">
                   <i class="nav-icon fas fa-bars"></i>
                   <p>
-                      Услуги
+                      Категории услуг
                       <span class="badge badge-info right">{{$services->count()}}</span>
                   </p>
               </a>
@@ -140,7 +140,7 @@
               <a href="{{ route('admin.blog.index') }}" class="nav-link @yield('blog')">
                 <i class="nav-icon fas fa-clipboard-check"></i>
                 <p>
-                  Статьи
+                  Блог
                 </p>
               </a>
 
