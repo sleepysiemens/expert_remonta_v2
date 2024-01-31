@@ -23,8 +23,8 @@ class UpdateController extends Controller
             unset($sql_data['src']);
             $sql_data['src'] = $name;           
         }
-        else
-            $sql_data=['title_ru'=>request()->title_ru, 'title_kz'=>request()->title_kz, 'url'=>request()->url, 'description_ru'=>request()->description_ru, 'description_kz'=>request()->description_kz];
+        else $sql_data = request()->except('src');
+            //$sql_data=['title_ru'=>request()->title_ru, 'title_kz'=>request()->title_kz, 'url'=>request()->url, 'description_ru'=>request()->description_ru, 'description_kz'=>request()->description_kz];
 
 
         $service->update($sql_data);

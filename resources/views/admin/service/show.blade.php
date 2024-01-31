@@ -47,6 +47,7 @@
               <th>Описание, ru</th>
               <th>Описание, kz</th>
               <th>Обложка</th>
+              <th>SEO инфа</th>
             </tr>
         </thead>
         <tbody>
@@ -60,7 +61,13 @@
                   <td>{{$service->description_ru}}</td>
                   <td>{{$service->description_kz}}</td>
                     <td><img src="{{asset('img/services/'.$service->src)}}" style="height: 150px; width: 150px; object-fit: contain"></td>
-                </tr>
+                    <td>
+                      Title RU: {{$service->seo_title_ru}} <br>
+                      Title KZ: {{$service->seo_title_kz}} <br>
+                      Мета описание RU: {{$service->meta_desc_ru}} <br>
+                      Мета описание KZ: {{$service->meta_desc_kz}}
+                    </td>
+                  </tr>
 
 
         </tbody>

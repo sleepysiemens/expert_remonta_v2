@@ -56,6 +56,28 @@
                   <img id="prevImage" style="height: 100px; width: 100px; object-fit: contain" src="{{asset('img/services/'.$service->src)}}">
               </div>
           </div>
+
+          <fieldset>
+            <legend>SEO инфа</legend>
+            <div class="form-group">
+              <label for="exampleInputEmail1">SEO-заголовок, ru</label>
+              <input type="text" class="form-control" placeholder="SEO title" name="seo_title_ru" value="{{$service->seo_title_ru}}">
+          </div>
+          <div class="form-group">
+              <label for="exampleInputEmail1">SEO-заголовок, kz</label>
+              <input type="text" class="form-control" placeholder="SEO title kz" name="seo_title_kz" value="{{$service->seo_title_kz}}">
+            </div>
+          <div class="form-group">
+              <label for="exampleInputEmail1">META-описание, ru</label>
+              <input type="text" class="form-control" placeholder="Meta desc" name="meta_desc_ru" value="{{$service->meta_desc_ru}}">
+          </div>
+          <div class="form-group">
+              <label for="exampleInputEmail1">META-описание, kz</label>
+              <input type="text" class="form-control" placeholder="Meta desc kz" name="meta_desc_kz" value="{{$service->meta_desc_kz}}">
+          </div>
+            
+          </fieldset>
+
         </div>
       <!-- /.card-body -->
 
@@ -65,7 +87,8 @@
     </form>
   </div>
     <br>
-    <div class="card card-primary">
+
+    {{--<div class="card card-primary">
         <div class="card-header">
             <h3 class="card-title">SEO</h3>
         </div>
@@ -106,6 +129,6 @@
                 <button type="submit" class="btn btn-primary">Изменить</button>
             </div>
         </form>
-    </div>
+    </div> --}}
 
 @endsection

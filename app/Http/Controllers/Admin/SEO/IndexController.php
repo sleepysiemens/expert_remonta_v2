@@ -23,7 +23,7 @@ class IndexController extends Controller
         $services=Service::all();
         $categories=Category::all();
         $sales=sale::all();
-        $seos=Seo::where('id', '<', 13)->orWhere('id', '>', 76)->get();
+        $seos=Seo::where('id', '<', 7)->orWhere('id', '>', 76)->get();
 
 
         return view('admin.seo.index', compact(['reviews', 'questions', 'services', 'categories', 'sales', 'seos']));
