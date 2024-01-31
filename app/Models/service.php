@@ -11,6 +11,10 @@ class service extends Model
     use HasFactory;
     protected $guarded=[];
 
+    public function getTable()  {
+        return env('APP_CITY') === 'Астана' ? 'services' : 'services_almaty';
+      }
+
     // оптимизация чтобы не брать весь контент
     public function categories(): HasMany {
         return $this->hasMany(category::class)->select(['id', 'url', 'title_ru', 'title_kz', 'service_id']);

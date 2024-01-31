@@ -6,6 +6,7 @@ use Spatie\ResponseCache\Middlewares\CacheResponse;
 use App\Http\Controllers\Admin\MenuController;
 use Stevebauman\Location\Facades\Location;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,16 @@ use Illuminate\Support\Facades\DB;
     Route::get('/vacancy/{vacancy}', 'VacancyController@show')->name('vacancy.show');
     Route::get('/vacancies/category/{vacancyCategory}', 'VacancyController@showCategory')->name('vacancy.category');
     Route::get('/geo', function () {
+        //\App\Models\Service::truncate();
+        //dd(\App\Models\Service::all());
+        /*foreach(Cache::get('services') as $s) {
+            $new = $s->replicate();
+            $new->save();
+        }
+        dd(\App\Models\Service::all());
+        dd(Cache::get('services'));*/
+        //Cache::add('key', '123', now()->addHours(4));
+        //Cache::add('services', \App\Models\Service::all(), now()->addHours(4));
       //dd(\App\Models\Review::all());
       //dd(\App\Models\City::all());
       //dd(app()->translate());
