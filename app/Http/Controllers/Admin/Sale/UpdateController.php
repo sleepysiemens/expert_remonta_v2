@@ -13,6 +13,7 @@ class UpdateController extends Controller
 {
     public function index(Request $req, Sale $sale)
     {
+        $req->merge(['active' => $req->active === 'on']);
         if(request()->hasFile('src'))
         {
           @unlink(dirname(__FILE__) . "/../../../../../public/img/sales/" . $sale->src);
@@ -24,8 +25,8 @@ class UpdateController extends Controller
             $sql_data['src'] = $name;
         }
         else
-            $sql_data=['title_ru'=>request()->title_ru, 'title_kz'=>request()->title_kz, 'period'=>request()->period, 'percent'=>request()->percent, 'description_ru'=>request()->description_ru, 'description_kz'=>request()->description_kz];
-
+            //$sql_data=['title_ru'=>request()->title_ru, 'title_kz'=>request()->title_kz, 'period'=>request()->period, 'percent'=>request()->percent, 'description_ru'=>request()->description_ru, 'description_kz'=>request()->description_kz];
+            $sql_data=request()->all();
 
         $sale->update($sql_data);
 

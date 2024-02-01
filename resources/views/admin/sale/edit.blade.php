@@ -54,6 +54,10 @@
                 <label for="exampleInputEmail1">Срок действия, д</label>
                 <input type="number" class="form-control" placeholder="Срок действия, д" name="period" required value="{{$sale->period}}">
             </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Добавить в архив?</label>
+              <input type="checkbox" name="active" value="{{!$sale->active}}" @checked(!$sale->active)>
+          </div>
             <label for="exampleInputEmail1">Фон</label>
             <input type="file" class="form-control" name="src">
         </div>

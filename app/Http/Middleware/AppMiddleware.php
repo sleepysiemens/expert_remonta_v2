@@ -87,6 +87,7 @@ class AppMiddleware
 
       View::share('usr_city', $usr_city);
       View::share('location', $location);
+      View::share('locale', $locale);
       
       App::setLocale($locale);
       Date::setLocale($locale);

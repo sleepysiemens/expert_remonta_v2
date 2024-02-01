@@ -32,13 +32,28 @@ use Illuminate\Support\Facades\Cache;
     Route::get('/blog/{blog}', 'BlogController@index')->name('blog.index');
     Route::get('/reviews/', 'ReviewController@index')->name('reviews.index');
     Route::get('/franchise/', 'MainController@franchise')->name('main.franchise');
-    Route::get('/vacancies-landing/', 'MainController@vacanciesLanding')->name('main.vacanciesLanding');
-    Route::get('/vacancies-landing2/', 'MainController@vacanciesLanding2')->name('main.vacanciesLanding2');
+    Route::get('/vacancies-office/', 'MainController@vacanciesLanding')->name('main.vacanciesLanding');
+    Route::get('/vacancies-objects/', 'MainController@vacanciesLanding2')->name('main.vacanciesLanding2');
     Route::get('/vacancies/', 'VacancyController@index')->name('vacancy.index');
     Route::get('/vacancies/filter/', 'VacancyController@filter')->name('vacancy.filter');
     Route::get('/vacancy/{vacancy}', 'VacancyController@show')->name('vacancy.show');
     Route::get('/vacancies/category/{vacancyCategory}', 'VacancyController@showCategory')->name('vacancy.category');
     Route::get('/geo', function () {
+        //$content = file_get_contents(dirname(__FILE__) . "/../resources/views/main/vacanciesLandingCopy.blade.php");
+        // есть контакт
+        //dd($content);
+        /*preg_match_all("/([а-яА-Яa-zA-Z0-9,: \"«»-]*)<\//u", $content, $matches);
+        $strings = array_filter($matches[1], function($i) {
+            return mb_strlen($i) > 10;
+        });
+        //dd($strings);
+        foreach($strings as $s) {
+            $content = preg_replace("/$s/u", "@lang('$s')", $content);
+        }*/
+        //dd($content);
+        /*foreach($matches[1] as $m) {
+            if(mb_strlen($m) > 10) dump($m);
+        }*/
         //\App\Models\Service::truncate();
         //dd(\App\Models\Service::all());
         /*foreach(Cache::get('services') as $s) {

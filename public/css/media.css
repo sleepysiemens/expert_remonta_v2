@@ -32,7 +32,8 @@
 @media (max-width: 590px) {
   .fr_page_welcome_wrap h1 {
     font-size: 26px;
-    max-width: 276px;
+    /*max-width: 276px;*/
+    max-width: 296px;
   }
 }
 
@@ -214,5 +215,16 @@
     /*background-size: 1920px 849px;*/
     /*background-size: contain;*/
     background-size: 100% 90%;
+  }
+}
+
+@media (max-width: 593px) {
+  .fr_page_kk .fr_page_soft .fr_page_icon {
+    top: 70px;
+  }
+}
+@media (max-width: 407px) {
+  .fr_page_kk .fr_page_soft .fr_page_icon {
+    top: 105px;
   }
 }

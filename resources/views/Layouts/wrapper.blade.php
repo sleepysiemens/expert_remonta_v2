@@ -45,7 +45,7 @@
                     <p></p>
                 </a>
                 <form method="post" action="{{asset(route('locale.change'))}}" class="locale-pc" style="display: flex; margin-left: 20px">
-                    @csrf
+                    {{--@csrf--}}
                     <input type="hidden" name="page" value="{{$page}}">
                     <button class="lang_change">
                         <p>
@@ -60,12 +60,13 @@
                 </a>
 
                 {{--@include('blocks.mobile_menu')--}}
-                @include('blocks.mobile_menu_dynamic')
+                {{--@include('blocks.mobile_menu_dynamic')--}}
                 
               </div>
             </div>
         </div>
     </header>
+    @include('blocks.mobile_menu_dynamic')
     
     <div class="contacts-right">
         <div class="contacts-wrapper">
@@ -119,7 +120,7 @@
             <br>
             <div >
                     <form class="city-form" method="post" action="{{route('city.store')}}">
-                        @csrf
+                        {{--@csrf--}}
                         <input type="hidden" name="page" value="{{$page}}">
                         @foreach($cities as $city)
                         @if(in_array($city->city, ['Астана', 'Алматы']))

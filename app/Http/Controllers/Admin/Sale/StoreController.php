@@ -10,9 +10,11 @@ use App\Models\Sale;
 
 class StoreController extends Controller
 {
-    public function index()
+    public function index(Request $req)
     {
+        $req->merge(['active' => $req->active === 'on']);
         $sql_data=request()->all();
+        //dd($sql_data);
 
         $file = request()->file('src');
         $name= Str::random(8) . "_" . $file->hashName();

@@ -4,7 +4,7 @@
           <i class="fas fa-times"></i>
       </a>
   </div>
-  <form method="post" action="{{asset(route('locale.change'))}}"  style="display: flex; margin-left: 20px;transform: translate(10px, -140px);">
+  {{--<form method="post" action="{{asset(route('locale.change'))}}"  style="display: flex; margin-left: 20px;transform: translate(10px, -140px);">
     @csrf
     <input type="hidden" name="page" value="{{$page}}">
     <button class="lang_change">
@@ -13,7 +13,7 @@
             @if(isset($_COOKIE['locale']) AND $_COOKIE['locale']=='kz') {{'РУС'}} @php $locale='kz' @endphp @endif
         </p>
     </button>
-</form>
+</form>--}}
 
 <div class="header_menu_item">
   <a href="/" @class(['nav-link', 'nav-link-selected' => '/' === $uri])>{{app()->translate('Главная')}}</a>
@@ -42,7 +42,13 @@
 <div class="header_menu_item"><a href="{{ route('reviews.index') }}/" class="nav-link @yield('reviews')">{{app()->translate('Отзывы')}}</a></div>
 <div class="header_menu_item"><a href="{{ route('contacts.index') }}/" class="nav-link @yield('contact')">{{app()->translate('Контакты')}}</a></div>
 <div class="header_menu_item"><a href="{{ route('main.franchise') }}/" class="nav-link @yield('franchise')">{{app()->translate('Франшиза')}}</a></div>
-<div class="header_menu_item"><a href="{{ route('vacancy.index') }}/" class="nav-link @yield('vacancies')">{{app()->translate('Вакансии')}}</a></div>
+<div class="header_menu_item has_childs">
+  <a href="{{ route('vacancy.index') }}/" class="nav-link @yield('vacancies')">{{app()->translate('Вакансии')}}</a>
+  <ul class="header_submenu">
+    <li><a href="/vacancies-office" class="nav-link">@lang('В офис')</a></li>
+    <li><a href="/vacancies-objects" class="nav-link">@lang('На объекты')</a></li>
+  </ul>
+</div>
 
   
 </div>

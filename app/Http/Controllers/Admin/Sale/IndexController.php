@@ -20,7 +20,8 @@ class IndexController extends Controller
         $questions=Question::all();
         $services=Service::all();
         $categories=Category::all();
-        $sales=sale::all();
+        $sales=sale::filtered()->get();
+        //$archived=sale::archived()->get();
 
 
         return view('admin.sale.index', compact(['reviews', 'questions', 'services', 'categories', 'sales']));

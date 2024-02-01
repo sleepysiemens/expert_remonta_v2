@@ -29,7 +29,7 @@ class MainController extends Controller
       //dd($req->all());
         $homeServices=Service::query()->limit(4)->offset(0)->get();
         $questions=Question::all();
-        $sales=Sale::all();
+        $sales=Sale::active()->get();
         $Headers=Header::all();
         $Abouts=About::all();
         $WelcomeCards=WelcomeCard::all();
@@ -128,10 +128,6 @@ class MainController extends Controller
             $page='/';*/
 
         $page = parse_url($_SERVER['HTTP_REFERER'])['path'];
-        // нужна доп логика, если на страницах статей, то лучше редирект на главную
-        // если есть элемент с индексом 3 то мы на страницах статей услуг
-        $pathParts = explode('/', $page);
-        if(isset($pathParts[3]) && str_contains($page, 'uslugi')) $page = '/';
 
         return redirect($page);
     }

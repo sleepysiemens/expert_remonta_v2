@@ -1,12 +1,12 @@
 
 <section class="sales">
     <h1 class="section-header hidden">{{app()->translate('Специальные предложения')}}</h1>
-    <button class="right-arrow" id="scroll-right">
+    {{--<button class="right-arrow" id="scroll-right">
         <i class="fas fa-arrow-right"></i>
     </button>
     <button class="left-arrow" id="scroll-left">
         <i class="fas fa-arrow-left"></i>
-    </button>
+    </button>--}}
     <div class="sales-wrapper"> {{-- class="review-wrapper" --}}
       {{-- style="height: 300px" class="reviews-div" --}}
         <div class="sales-div">

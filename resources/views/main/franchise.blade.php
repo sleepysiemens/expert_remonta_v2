@@ -21,7 +21,7 @@
   @section('content')
 
 
-    <div id="app" class="fr_page">
+    <div id="app" class="fr_page {{'fr_page_'.$locale}}">
       <div class="fr_page_welcome">
         <div class="fr_page_welcome_wrap">
           <h1>@lang('Ремонт помещений в городах сегодня это Большая История, Большие Возможности')</h1>
@@ -34,6 +34,9 @@
             <li>·@lang('Высокий вклад строительства в экономику и ВВП')</li>
             <li>·@lang('Рост числа новостроек')</li>
             <li>·@lang('Тенденция урбанизации и рост жилищного рынка')</li>
+            <li>·@lang('Программы финансирования в рассрочки для ремонта ')</li>
+            <li>·@lang('Растущий спрос на современный качественный ремонт')</li>
+            <li>·@lang('Тренд на "умные дома" и интегрированные технологии')</li>
           </ul>
           </div>
 
@@ -511,13 +514,14 @@ function calcObjectsCount(money, idx = null) {
   let totalObjectsCount = 0
   let totalIncome = 0
   let royaltyBonus = 0
+  let maxObjects = 12
   // формат 1 : { new: 2, inWork: 2 }
   let objectsInWork = { }
   for(let i = 1; i <= 12; i++) {
     // вычислим сколько объектов можно взять в этом месяце
     let objectsToWork = Math.floor(money / objectAvgCheck)
     // не берем больше 12-ти объектов
-    if(objectsToWork > 12) objectsToWork = 12
+    if(objectsToWork > maxObjects) objectsToWork = maxObjects
     //money = money - (objectsToWork * objectAvgCheck) + (objectsToWork * objectAvgCheck + 100000)
     //money += objectsToWork * 100000
     // заполним объекты в работе (как в экселе)
@@ -569,13 +573,18 @@ function calcObjectsCount(money, idx = null) {
     }
   }
   //totalIncome = money - initialMoney
+  if(initialMoney > 3500000) {
+    moneyRest = initialMoney - 3500000
+    totalIncome += moneyRest * 3
+    profit += moneyRest * 1.4
+  }
 
   const table = document.querySelector('.fr_page_calc table')
-  document.querySelector('.fr_page_calc table tr:nth-of-type(2) td:nth-of-type(2)').textContent = totalObjectsCount
+  document.querySelector('.fr_page_calc table tr:nth-of-type(2) td:nth-of-type(2)').textContent = Math.floor(totalObjectsCount * 0.4)
   document.querySelector('.fr_page_calc table tr:nth-of-type(3) td:nth-of-type(2)').textContent = totalIncome
   document.querySelector('.fr_page_calc table tr:nth-of-type(4) td:nth-of-type(2)').textContent = profit
   // для 2го года пока подсчет моковый
-  document.querySelector('.fr_page_calc table tr:nth-of-type(2) td:nth-of-type(3)').textContent = Math.floor(totalObjectsCount * 1.6)
+  document.querySelector('.fr_page_calc table tr:nth-of-type(2) td:nth-of-type(3)').textContent = Math.floor(totalObjectsCount * 0.4 * 1.6)
   document.querySelector('.fr_page_calc table tr:nth-of-type(3) td:nth-of-type(3)').textContent = Math.floor(totalIncome * 1.6)
   document.querySelector('.fr_page_calc table tr:nth-of-type(4) td:nth-of-type(3)').textContent = Math.floor(profit * 1.6)
 }
