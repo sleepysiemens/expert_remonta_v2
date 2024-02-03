@@ -45,7 +45,7 @@
               <tr>
                 <td>{{$category->id}}</td>
                 <td>{{$category->title_ru}}/{{$category->title_kz}}</td>
-                <td>{{$category->url}}</td>
+                <td style="max-width:100px;word-wrap:break-word">{{$category->url}}</td>
                 {{--<td>{!! $category->description_ru !!}</td>--}}
                 <td>
                   {{ $category->description_ru ? mb_strlen($category->description_ru) . " символов" : 'Нет'}}
