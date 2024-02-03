@@ -15,6 +15,19 @@
       <a href="{{route('admin.page.create')}}" class="btn btn-success">
         <i class="fas fa-plus"></i> Добавить
       </a>
+      @if(!request()->query('archive'))
+        <a href="{{route('admin.page.index', ['archive' => 1])}}" class="btn btn-info">
+          <i class="fas fa-box"></i> Архив
+        </a>
+      @else
+        <a href="{{route('admin.page.index')}}" class="btn btn-info">
+          <i class="fas fa-list"></i> Вернуться к неархивным записям
+        </a>
+      @endif
+    </div>
+    @if(request()->query('archive'))
+    <div class="col-12">Архивные записи не выводятся на сайте</div>
+    @endif
     </div>
   </div>
   <br>

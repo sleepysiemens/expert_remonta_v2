@@ -37,7 +37,7 @@
   @endforeach
   </ul>
 </div>
-<div class="header_menu_item"><a href="{{ route('price.index') }}/" class="nav-link @yield('price')">{{app()->translate('Расценки')}}</a></div>
+{{--<div class="header_menu_item"><a href="{{ route('price.index') }}/" class="nav-link @yield('price')">{{app()->translate('Расценки')}}</a></div>
 <div class="header_menu_item"><a href="{{ route('gallery.index') }}/" class="nav-link @yield('gallery')">{{app()->translate('Галерея')}}</a></div>
 <div class="header_menu_item"><a href="{{ route('reviews.index') }}/" class="nav-link @yield('reviews')">{{app()->translate('Отзывы')}}</a></div>
 <div class="header_menu_item"><a href="{{ route('contacts.index') }}/" class="nav-link @yield('contact')">{{app()->translate('Контакты')}}</a></div>
@@ -48,7 +48,21 @@
     <li><a href="/vacancies-office" class="nav-link">@lang('В офис')</a></li>
     <li><a href="/vacancies-objects" class="nav-link">@lang('На объекты')</a></li>
   </ul>
-</div>
+</div>--}}
+@foreach($menu as $m)
+      <div class="header_menu_item {{count($m->childs) > 0 ? 'has_childs' : ''}} {{$m->uri === $uri ? 'active' : ''}}">
+      <a href="/{{$m->url}}" @class(['nav-link', 'nav-link-selected' => $m->uri === $uri,])>{{app()->db_translate($m->title, $m->title_kz)}}</a>
+        @if(count($m->childs) > 0)
+        <ul class="header_submenu">
+          @foreach($m->childs as $child)
+            <li @class(['active' => $child->uri === $uri])>
+              <a href="/{{$child->url}}" class="nav-link {{$child->uri === $uri ? 'nav-link-selected' : ''}}"><p>{{app()->db_translate($child->title, $child->title_kz)}}</p></a>
+            </li>
+          @endforeach
+        </ul>
+      @endif
+      </div> 
+    @endforeach
 
   
 </div>

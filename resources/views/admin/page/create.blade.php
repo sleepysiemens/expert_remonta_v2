@@ -48,6 +48,10 @@
             @endforeach
           </select>
         </div>
+        <div class="form-group">
+          <label for="active">Добавить в архив?</label>
+          <input id="active" type="checkbox" name="active">
+        </div>
 
         <fieldset>
           <legend>SEO инфа</legend>

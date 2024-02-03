@@ -12,7 +12,7 @@ class StoreController extends Controller
 {
     public function index(Request $req)
     {
-        $req->merge(['active' => $req->active === 'on']);
+        $req->merge(['active' => $req->active !== 'on']);
         $sql_data=request()->all();
         //dd($sql_data);
 

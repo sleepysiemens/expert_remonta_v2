@@ -15,6 +15,7 @@ use Jenssegers\Date\Date;
 use App\Models\Contact;
 use App\Models\City;
 use App\Models\Menu;
+use App\Models\Counter;
 
 class AppMiddleware
 {
@@ -38,7 +39,7 @@ class AppMiddleware
       $phone=Contact::query()->select('link')->where('name','=','phone')->get();
       $googlemaps=Contact::query()->select('link')->where('name','=','googlemaps')->first();
       $cities=City::all();
-      //$menu=Menu::where('url', '!=', '/')->whereNull('parent_id')->with('childs.childs')->get();
+      $menu=Menu::where('url', '!=', '/')->whereNull('parent_id')->with('childs.childs')->get();
       $services = \App\Models\service::with('categories')->get();
       //dd($services);
       View::share('services', $services);
@@ -65,7 +66,7 @@ class AppMiddleware
       View::share('tel', $tel);
       View::share('googlemaps', $googlemaps);
       View::share('cities', $cities);
-      //View::share('menu', $menu);
+      View::share('menu', $menu);
       View::share('uri', substr($uri, 1));
 
       $userIP=$_SERVER['REMOTE_ADDR'];
@@ -88,6 +89,9 @@ class AppMiddleware
       View::share('usr_city', $usr_city);
       View::share('location', $location);
       View::share('locale', $locale);
+
+      $code=Counter::first();
+      View::share('code', $code);
       
       App::setLocale($locale);
       Date::setLocale($locale);

@@ -25,7 +25,7 @@
         <thead>
             <tr>
               {{--<th>Id</th>--}}
-              <th>Пункт</th>
+              <th>Пункт ru/kz</th>
               <th>URL</th>
               <th>Родительский пункт</th>
               <th></th>
@@ -37,7 +37,7 @@
             @foreach ($menu as $m)
 
                 <tr>
-                    <td>{{$m->title}}</td>
+                    <td>{{$m->title}} @if($m->title_kz)/{{$m->title_kz}}@endif</td>
                     <td>{{$m->url}}</td>
                     <td>
                       @if($m->parent_id) {{$m->parent->title}} @endif

@@ -67,6 +67,11 @@
             </select>
           </div>
 
+          <div class="form-group">
+            <label for="active">Добавить в архив?</label>
+            <input id="active" type="checkbox" name="active" @checked(!$category->active)>
+        </div>
+
           <fieldset>
             <legend>SEO инфа</legend>
             <div class="form-group">

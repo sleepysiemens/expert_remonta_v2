@@ -15,6 +15,7 @@
     <script defer src=" /js/mobile-menu.js"></script>
     <script defer src=" /js/review.js"></script>
     <link rel="icon" href="/img/favicon/favicon.png">
+    {!!$code->head_code!!}
 </head>
 <body>
 
@@ -193,5 +194,6 @@
 </script>
 @stack('vacancies_script')
 @stack('customScripts')
+{!!$code->body_code!!}
 </body>
 </html>

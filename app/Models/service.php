@@ -17,7 +17,9 @@ class service extends Model
 
     // оптимизация чтобы не брать весь контент
     public function categories(): HasMany {
-        return $this->hasMany(category::class)->select(['id', 'url', 'title_ru', 'title_kz', 'service_id']);
+        return $this->hasMany(category::class)
+        ->select(['id', 'url', 'title_ru', 'title_kz', 'service_id'])
+        ->where(['active' => true]);
     }
 
 }

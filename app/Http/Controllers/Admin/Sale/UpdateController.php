@@ -13,7 +13,7 @@ class UpdateController extends Controller
 {
     public function index(Request $req, Sale $sale)
     {
-        $req->merge(['active' => $req->active === 'on']);
+        $req->merge(['active' => $req->active !== 'on']);
         if(request()->hasFile('src'))
         {
           @unlink(dirname(__FILE__) . "/../../../../../public/img/sales/" . $sale->src);
@@ -30,6 +30,7 @@ class UpdateController extends Controller
 
         $sale->update($sql_data);
 
-        return redirect()->route('admin.sale.show', $sale->id);
+        //return redirect()->route('admin.sale.show', $sale->id);
+        return redirect()->route('admin.sale.index');
     }
 }

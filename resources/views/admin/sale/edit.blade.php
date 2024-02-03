@@ -56,7 +56,7 @@
             </div>
             <div class="form-group">
               <label for="exampleInputEmail1">Добавить в архив?</label>
-              <input type="checkbox" name="active" value="{{!$sale->active}}" @checked(!$sale->active)>
+              <input type="checkbox" name="active" @checked(!$sale->active)>
           </div>
             <label for="exampleInputEmail1">Фон</label>
             <input type="file" class="form-control" name="src">

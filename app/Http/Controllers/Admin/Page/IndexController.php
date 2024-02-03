@@ -26,7 +26,7 @@ class IndexController extends Controller
         $reviews=Review::all();
         $questions=Question::all();
         $services=Service::all();
-        $categories=Category::with('service')->with('slides')->get();
+        $categories=Category::filtered()->with('service')->with('slides')->get();
         $sales=sale::all();
 
         foreach($categories as $c) {
@@ -73,6 +73,7 @@ class IndexController extends Controller
     {
       //dd($req->all());
       //dd($req->file("file")[1]);
+      $req->merge(['active' => $req->active !== 'on']);
         $data= $req->except(['slides']);
         //$seoData = $req->only(['seo_ru', 'seo_kz', 'meta_ru', 'meta_kz']);
 
@@ -118,6 +119,8 @@ class IndexController extends Controller
 
     public function update(Request $req, Category $category)
     {
+      //$req->merge(['active' => $req->active != 1 && $req->active !== null]);
+      $req->merge(['active' => $req->active !== 'on']);
       //dd($req->all());
       $data= $req->except(['slides']);
       //$seoData = $req->only(['seo_ru', 'seo_kz', 'meta_ru', 'meta_kz']);

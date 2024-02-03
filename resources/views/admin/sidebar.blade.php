@@ -90,13 +90,13 @@
           <li class="nav-header">БАЗА ДАННЫХ</li>
           <li class="nav-item">
 
-            {{--<a href="{{ route('admin.menu.index') }}" class="nav-link @yield('menu')">
+            <a href="{{ route('admin.menu.index') }}" class="nav-link @yield('menu')">
               <i class="nav-icon fas fa-bars"></i>
               <p>
                   Меню
                   <span class="badge badge-info right"></span>
               </p>
-          </a>--}}
+          </a>
 
               <a href="{{ route('admin.review.index') }}" class="nav-link @yield('reviews')">
                   <i class="nav-icon fas fa-star-half-alt"></i>
@@ -224,6 +224,24 @@
                 </p>
               </a>
             </li>
+          </li>
+
+        </ul>
+       @endif
+
+       @if(auth()->user()->role == 'admin')
+        <ul class="nav nav-treeview" style="border-bottom: 1px solid rgba(255,255,255, .2)">
+
+          <li class="nav-header">Другое</li>
+            <li class="nav-item">
+                <a href="{{ route('admin.counter.index') }}" class="nav-link @yield('new_reviews')">
+                    <i class="nav-icon fas fa-counter"></i>
+                    <p>
+                        Счетчики
+                    </p>
+                </a>
+            </li>
+
           </li>
 
         </ul>

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Builder;
 
 class category extends Model
 {
@@ -31,6 +32,22 @@ class category extends Model
     public function slides(): HasMany
     {
         return $this->hasMany(CategoryImage::class);
+    }
+
+    public function scopeActive(Builder $query): void
+    {
+      $query->where(['active' => true]);
+    }
+
+    public function scopeArchived(Builder $query): void
+    {
+      $query->where(['active' => false]);
+    }
+
+    public function scopeFiltered(Builder $query): void
+    {
+      if(request()->query('archive')) $query->where(['active' => false]);
+      else $query->where(['active' => true]);
     }
 
 }

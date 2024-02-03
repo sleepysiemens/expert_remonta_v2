@@ -352,6 +352,12 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin/', 'middleware'=>'admin
 
     });// /MAIN
 
+    Route::group(['prefix' => 'counter', 'middleware' => 'redactor'], function()
+    {
+        Route::get('/', 'CounterController@index')->name('admin.counter.index');
+        Route::post('/', 'CounterController@store')->name('admin.counter.store');
+    });
+
     Route::group(['namespace' => 'Application', 'prefix' => 'application', 'middleware' => 'redactor'], function()
     {
         Route::get('/', 'IndexController@index')->name('admin.application.index');

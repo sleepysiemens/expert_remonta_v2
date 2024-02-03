@@ -45,7 +45,7 @@ class UslugiController extends Controller
         $service= Service::query()->where(['url'=>$service])->first();
         //dd($services[0]->id);
         //$categories= Category::query()->join('services', 'services.id', '=', 'categories.service_id')->where(['services.url'=>$service])->select('categories.*','services.url AS service_url')->get();
-        $categories = Category::where(['service_id' => $service->id])->with('service')->get();
+        $categories = Category::active()->where(['service_id' => $service->id])->with('service')->get();
         $reviews=Review::all();
         //$seos=Seo::query()->where('page','=','uslugi/'.$service->url)->get();
         $ServiceImages=ServiceImage::query()->join('services', 'services.id', '=', 'service_images.service_id')->where(['services.url'=>$service])->select('service_images.src')->get();
@@ -64,7 +64,7 @@ class UslugiController extends Controller
         $WhyCards=WhyCard::all();
         $WelcomeCards=WelcomeCard::all();
         //$category= Category::query()->join('services', 'services.id', '=', 'categories.service_id')->where(['categories.url'=>$category])->select('categories.*','services.url AS service_url','services.title_ru AS service_title_ru','services.title_kz AS service_title_kz')->limit(1)->first();
-        $category = Category::where(['url' => $category])->with('service')->first();
+        $category = Category::active()->where(['url' => $category])->with('service')->first();
         //dd($category);
         if(!$category) abort(404);
         //dd($categories[0]);
