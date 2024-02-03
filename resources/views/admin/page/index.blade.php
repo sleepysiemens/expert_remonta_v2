@@ -29,11 +29,9 @@
             </tr>
             <tr>
               <th>Id</th>
-              <th>Название, ru</th>
-              <th>Название, kz</th>
+              <th>Название, ru/kz</th>
               <th>Url</th>
-              <th>Описание, ru</th>
-              <th>Описание, kz</th>
+              <th>Описание, ru/kz</th>
               <th>Обложка</th>
               <th>SEO инфа</th>
               <th>Кол-во слайдов</th>
@@ -46,19 +44,20 @@
             @if ($category->service_id==$service->id)
               <tr>
                 <td>{{$category->id}}</td>
-                <td>{{$category->title_ru}}</td>
-                <td>{{$category->title_kz}}</td>
+                <td>{{$category->title_ru}}/{{$category->title_kz}}</td>
                 <td>{{$category->url}}</td>
                 {{--<td>{!! $category->description_ru !!}</td>--}}
-                <td>{{ $category->description_ru ? mb_strlen($category->description_ru) . " символов" : 'Нет'}}</td>
-                <td>{{ $category->description_kz ? mb_strlen($category->description_kz) . " символов" : 'Нет'}}</td>
+                <td>
+                  {{ $category->description_ru ? mb_strlen($category->description_ru) . " символов" : 'Нет'}}
+                  / {{ $category->description_kz ? mb_strlen($category->description_kz) . " символов" : 'Нет'}}
+                </td>
                 {{--<td>{!! $category->description_kz !!}</td>--}}
                 <td><img src="{{asset('img/categories/'.$category->src)}}" style="height: 150px; width: 150px; object-fit: contain"></td>
                 <td>
                   Title RU: {{$category->seo_title_ru}} <br>
                   Title KZ: {{$category->seo_title_kz}} <br>
-                  Мета описание RU: {{$category->meta_desc_ru}} <br>
-                  Мета описание KZ: {{$category->meta_desc_kz}}
+                  Мета описание RU: {{mb_strlen($category->meta_desc_ru)}} симв. <br>
+                  Мета описание KZ: {{mb_strlen($category->meta_desc_kz)}} симв.
                 </td>
                 <td>{{count($category->slides)}}</td>
                 <td>
