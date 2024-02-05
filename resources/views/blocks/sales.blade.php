@@ -39,7 +39,18 @@
                 <span class="top-right-percent"><p>-{{$sale->percent}}%</p></span>
                 <span class="top-left-timer"><p id="action{{$sale->id}}"></p></span>
                 <div class="sale-bg">
-                    <img src=" /img/sales/{{$sale->src}}">
+                    {{-- вот здесь нужно влепить srcset --}}
+                    {{--<img src=" /img/sales/{{$sale->src}}">--}}
+                    {{-- нужна функция genSrcset --}}
+                    {{-- по хорошемуименно здесь srcset не нужен так как рендер минимал--}}
+                    {{-- хотя не, как-то качество проседает --}}
+                    {{-- хм, пока srcset не работает, не берет мин размер на мобилах --}}
+                    {{-- возможно не работает из-за разного aspect ratio --}}
+                    <img 
+                        src="/img/sales/x-360-{{str_replace('.png', '.jpg', $sale->src)}}"
+                        srcset="/img/sales/x-450-{{str_replace('.png', '.jpg', $sale->src)}} 500w,
+                        /img/sales/x-768-{{str_replace('.png', '.jpg', $sale->src)}} 600w
+                        ">
                 </div>
 
                 <div class="sale-text-div">
@@ -64,11 +75,13 @@
         $('#sale-link-'+i).on('click', function()
         {
             $('#sale-form-'+i).addClass('page-wrapper-active');
+            //$(`#sale-form-${i} .sale-form-div`).show(300);
         });
 
         $('#sale-form-close-'+i).on('click', function()
         {
             $('#sale-form-'+i).removeClass('page-wrapper-active');
+            //$(`#sale-form-${i} .sale-form-div`).hide(300);
         });
     }
 </script>

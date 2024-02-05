@@ -21,6 +21,9 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use App\Models\Application;
 use App\Models\Seo;
+use App\Models\FormType;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\FormEmail;
 
 class MainController extends Controller
 {
@@ -95,12 +98,32 @@ class MainController extends Controller
         ];
         //dd($sql_data);
         //Application::create($req->except('_token'));
+        //dd($req->sourse);
         Application::create($sql_data);
+
+        $formTypeId = 1;
+        if($req->form_type_id) $formTypeId = $req->form_type_id;
 
         // здесь post запрос в crm
         /*Http::withHeaders([
             'Auth-Key' => env('CRM_AUTH_KEY'),
         ])->post(env('CRM_URL'));*/
+
+        //  отправка почты, тут
+        //$formTypeId = getFormTypeId($req->sourse);
+        $objDemo = new \stdClass();
+        $objDemo->form_type_id = $formTypeId;
+        $objDemo->req_data = $req->except('_token');
+        //dd($objDemo);
+        if($formTypeId == 1) $objDemo->title = 'Новая заявка на услугу';
+
+        $formType = FormType::where(['id' => $formTypeId])->first();
+        $emails = preg_split("/\r\n|\n|\r/", $formType->emails);
+        //dd($emails);
+
+        foreach($emails as $email) {
+          Mail::to($email)->send(new FormEmail($objDemo));
+        }
 
         // уведомление о заявке в телеграм, допустим
         $path = '/';

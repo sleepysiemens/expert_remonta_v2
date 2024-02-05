@@ -18,23 +18,23 @@
       <div class="card-body">
         <div class="form-group">
           <label for="exampleInputEmail1">Название, ru</label>
-          <input type="text" class="form-control" placeholder="Название" name="title_ru" required>
+          <input type="text" class="form-control" placeholder="Название" name="title_ru" value="{{old('title_ru')}}" required>
         </div>
           <div class="form-group">
               <label for="exampleInputEmail1">Название, kz</label>
-              <input type="text" class="form-control" placeholder="Название" name="title_kz">
+              <input type="text" class="form-control" placeholder="Название" name="title_kz" value="{{old('title_kz')}}">
           </div>
         <div class="form-group">
           <label for="exampleInputEmail1">Ссылка</label>
-          <input type="text" class="form-control" placeholder="Ссылка" name="url" required>
+          <input type="text" class="form-control" placeholder="Ссылка" name="url" value="{{old('url')}}" required>
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Текст, ru</label>
-              <textarea id="summernote" name="description_ru" placeholder="Текст описания..." required></textarea>
+              <textarea id="summernote" name="description_ru" placeholder="Текст описания..." required>{!!old('description_ru')!!}</textarea>
         </div>
           <div class="form-group">
               <label for="exampleInputEmail1">Текст, kz</label>
-              <textarea id="summernote1" name="description_kz" placeholder="Текст описания..."></textarea>
+              <textarea id="summernote1" name="description_kz" placeholder="Текст описания...">{!!old('description_kz')!!}</textarea>
           </div>
         <div class="form-group">
           <label for="exampleInputEmail1">Обложка</label>
@@ -57,19 +57,19 @@
           <legend>SEO инфа</legend>
           <div class="form-group">
             <label for="exampleInputEmail1">SEO-заголовок, ru</label>
-            <input type="text" class="form-control" placeholder="SEO title" name="seo_title_ru" required>
+            <input type="text" class="form-control" placeholder="SEO title" name="seo_title_ru" value="{{old('seo_title_ru')}}" required>
           </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">SEO-заголовок, kz</label>
-                <input type="text" class="form-control" placeholder="SEO title" name="seo_title_kz">
+                <input type="text" class="form-control" placeholder="SEO title" name="seo_title_kz" value="{{old('seo_title_kz')}}">
             </div>
           <div class="form-group">
             <label for="exampleInputEmail1">META-описание, ru</label>
-            <input type="text" class="form-control" placeholder="Meta desc" name="meta_desc_ru" required>
+            <input type="text" class="form-control" placeholder="Meta desc" name="meta_desc_ru" value="{{old('meta_desc_ru')}}" required>
           </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">META-описание, kz</label>
-                <input type="text" class="form-control" placeholder="Meta desc" name="meta_desc_kz" >
+                <input type="text" class="form-control" placeholder="Meta desc" name="meta_desc_kz" value="{{old('meta_desc_kz')}}">
             </div>
           
         </fieldset>

@@ -369,6 +369,41 @@ body, html {
 .fr_page_calc {
   background: #CEE19A;
 }
+.fr_page_calc .fr_page_heading {
+  cursor: help;
+  position:relative;
+  /*width: fit-content;*/
+  max-width: 600px;
+}
+#calc_hint {
+  display: none;
+  /*opacity: 0;*/
+  position: absolute;
+  top: 50px;
+  left: 0;
+  /*transition: all .35s;*/
+  font-size: 14px;
+  background: #fff;
+  max-width: 600px;
+  padding: 20px;
+  padding-right: 40px;
+  border-radius: 6px;
+  z-index: 9;
+  box-sizing: border-box;
+}
+#calc_hint i {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 20px;
+  z-index: 9999;
+  padding: 5px;
+  /*display: none;*/
+}
+#calc_hint.show {
+  opacity: 1;
+}
 .fr_page_calc .fr_page_wrap {
   padding: 50px 20px;
 }

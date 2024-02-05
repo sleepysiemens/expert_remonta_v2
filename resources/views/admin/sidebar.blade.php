@@ -234,13 +234,22 @@
 
           <li class="nav-header">Другое</li>
             <li class="nav-item">
-                <a href="{{ route('admin.counter.index') }}" class="nav-link @yield('new_reviews')">
+                <a href="{{ route('admin.counter.index') }}" class="nav-link @yield('counters')">
                     <i class="nav-icon fas fa-counter"></i>
                     <p>
                         Счетчики
                     </p>
                 </a>
             </li>
+
+            <li class="nav-item">
+              <a href="{{ route('admin.formtype.index') }}" class="nav-link @yield('forms')">
+                  <i class="nav-icon fas fa-form"></i>
+                  <p>
+                      Формы
+                  </p>
+              </a>
+          </li>
 
           </li>
 

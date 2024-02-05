@@ -1,5 +1,20 @@
 <?php
 
+function deleteImgWithCrops($folder, $fileName) {
+  @unlink(dirname(__FILE__) . "/public/img/$folder/" . $fileName);
+  $resizesBreakpoints = [768, 450, 360];
+  foreach($resizesBreakpoints as $b) {
+    @unlink(dirname(__FILE__) . "/public/img/$folder/x-$b-" . $fileName);
+  }
+}
+
+function deleteImgCrops($folder, $fileName) {
+  $resizesBreakpoints = [768, 450, 360];
+  foreach($resizesBreakpoints as $b) {
+    @unlink(dirname(__FILE__) . "/public/img/$folder/x-$b-" . $fileName);
+  }
+}
+
 function processTitle($title, $city) {
   $titleParts = explode(' ', $title);
   foreach($titleParts as $idx => $part) {

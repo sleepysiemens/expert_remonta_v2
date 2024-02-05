@@ -176,12 +176,73 @@
   }
 }
 
-@media (max-width: 335px) {
+@media (max-width: 409px) {
+  .vc_page_kk .vc_page_value .vc_page_card:first-of-type {
+    background: #fff url(../landing_files/logo.png) no-repeat 10% 185px;
+  }
+}
+@media (max-width: 379px) {
+  .vc_page_kk .vc_page_value .vc_page_card:first-of-type {
+    background: #fff url(../landing_files/logo.png) no-repeat 10% 215px;
+  }
+}
+@media (max-width: 350px) {
+  .vc_page_kk .vc_page_value .vc_page_card:first-of-type {
+    background: #fff url(../landing_files/logo.png) no-repeat 10% 245px;
+  }
+}
+@media (max-width: 320px) {
+  .vc_page_2.vc_page_kk .vc_page_value .vc_page_card_subtitle {
+    font-size: 16px;
+    line-height: 26px;
+}
+.vc_page_kk .vc_page_value .vc_page_card:first-of-type {
+  background: #fff url(../landing_files/logo.png) no-repeat 10% 225px;
+}
+}
+
+@media (max-width: 395px) {
+  .vc_page_welcome2_kk .vc_page_welcome_wrap {
+    background: url(../landing_files/welcome2.png) no-repeat 50% 120px;
+    background-size: calc(100vw * 0.7);
+    padding: 0 10px;
+    padding-top: calc(100vw * 0.05);
+    padding-bottom: calc(100vw * 0.065);
+  }
+}
+
+@media (max-width: 355px) {
+  .vc_page_welcome_kk .vc_page_welcome_wrap {
+    background: url(../landing_files/welcome.png) no-repeat 50% 140px;
+    background-size: calc(100vw * 0.7);
+    padding: 0 10px;
+    padding-top: calc(100vw * 0.05);
+    padding-bottom: calc(100vw * 0.065);
+  }
+  .vc_page_welcome_kk .vc_page_heading {
+    font-size: 24px;
+    padding-bottom: calc(100vw * 0.75);
+  }
+  .vc_page_welcome2 .vc_page_heading {
+    font-size: 24px;
+  }
   .vc_page_button {
     font-size: 16px;
     line-height: 20px;
     display: block;
+    text-align: center;
   }
+}
+
+@media (max-width: 435px) {
+  .vc_page_kk .vc_page_button {
+    display: block;
+    text-align: center;
+  }
+
+}
+
+@media (max-width: 335px) {
   .vc_page_contact form {
     max-width: 280px;
     padding: 18px;

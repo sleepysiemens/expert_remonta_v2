@@ -24,16 +24,16 @@
 
 <div class="vacancies_page">
   <div class="vacancies_page_wrap">
-    <h1 class="vacancies_page_heading ui_kit_h1_heading">{{--Вакансии «Эксперт Ремонта»--}}{{app()->db_translate($seo->seo_ru, $seo->seo_kz)}}</h1>
+    <h1 class="vacancies_page_heading ui_kit_h1_heading">{{app()->db_translate($seo->seo_ru, $seo->seo_kz)}}</h1>
     @if(isset($requestInfo['city']))
-      <p>Применен фильтр. Город: {{$requestInfo['city']->city}}, категория: {{$requestInfo['category']->name}}, опыт: {{$requestInfo['exp']}}</p>
+      <p>@lang('Применен фильтр'). @lang('Город'): {{$requestInfo['city']->city}}, @lang('категория'): {{$requestInfo['category']->name}}, @lang('опыт'): {{$requestInfo['exp']}}</p>
     @endif
     <div class="vacancies_page_flex">
       <div class="vacancies_page_search">
-        <div class="vacancies_page_search_heading ui_kit_h3_heading">Подберите вакансию:</div>
+        <div class="vacancies_page_search_heading ui_kit_h3_heading">@lang('Подберите вакансию:')</div>
         <form action="" method="GET"> 
           <div class="vacancies_page_input">
-            <label for="city_select">Город</label>
+            <label for="city_select">@lang('Город')</label>
             <select name="city_select" id="city_select" class="ajax_select"> 
               @foreach($cities as $city)
               <option @selected($city->city === $usr_city) value="{{$city->id}}">{{$city->city}} </option>
@@ -41,7 +41,7 @@
             </select>
           </div>
           <div class="vacancies_page_input">
-            <label for="category_select">Направление</label>
+            <label for="category_select">@lang('Направление')</label>
             <select name="category_select" id="category_select" class="ajax_select"> 
               @foreach($vacancyCategories as $cat)
               <option value="{{$cat->id}}">{{app()->db_translate($cat->name, $cat->name_kz)}} </option>
@@ -49,14 +49,14 @@
             </select>
           </div>
           <div class="vacancies_page_input">
-            <label for="exp_select">Опыт</label>
+            <label for="exp_select">@lang('Опыт')</label>
             <select name="exp_select" id="exp_select" class="ajax_select"> 
               @foreach(\App\Models\VacancyCategory::$experienceList as $v)
-              <option value="{{$v}}">{{$v}}</option>
+              <option value="{{$v}}">@lang($v)</option>
               @endforeach
             </select>
           </div>
-          <button type="submit" class="ui_kit_button vacancies_page_button vacancies_page_search_button">Посмотреть</button>
+          <button type="submit" class="ui_kit_button vacancies_page_button vacancies_page_search_button">@lang('Посмотреть')</button>
         </form>
       </div>
       <div class="vacancies_page_list">
@@ -147,7 +147,9 @@
       let vacancyTitle = e.target.parentNode.parentNode.querySelector('.vacancies_page_card_title').textContent
       //let vacancySalary = e.target.parentNode.parentNode.querySelector('.vacancies_page_card_salary').textContent
         $('#main-form').addClass('page-wrapper-active');
-        $('#main-form h3').text(`Оставьте ваши контакты на вакансию ${vacancyTitle}`)
+        //@php $j=1; @endphp
+        //let title = `Оставьте ваши контакты на вакансию ${vacancyTitle}`
+        $('#main-form h3').text(`@lang('Оставьте ваши контакты на вакансию') ${vacancyTitle}`)
     });
 
     $('#main-form-close').on('click', function()

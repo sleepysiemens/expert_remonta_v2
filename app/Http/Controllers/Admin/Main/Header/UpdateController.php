@@ -20,6 +20,7 @@ class UpdateController extends Controller
           	$file = request()->file('src');
             $name= Str::random(8) . "_" . $file->hashName();
             $file->move(public_path() . '/img/main_bg/', $name);
+            \App\Events\ImageUploaded::dispatch(public_path() . '/img/main_bg/', $name);
             //$file->move(public_path() . '/img/main_bg/','bg-image.img');
 			      $sql_data=[
               'title_ru'=>request()->title_ru, 

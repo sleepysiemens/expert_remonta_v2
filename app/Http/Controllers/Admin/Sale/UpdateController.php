@@ -16,10 +16,12 @@ class UpdateController extends Controller
         $req->merge(['active' => $req->active !== 'on']);
         if(request()->hasFile('src'))
         {
-          @unlink(dirname(__FILE__) . "/../../../../../public/img/sales/" . $sale->src);
+        deleteImgWithCrops('sales', $sale->src);
+          //@unlink(dirname(__FILE__) . "/../../../../../public/img/sales/" . $sale->src);
             $file = request()->file('src');
             $name= Str::random(8) . "_" . $file->hashName();
             $file->move(public_path() . '/img/sales/', $name);
+            \App\Events\ImageUploaded::dispatch(public_path() . '/img/sales/', $name);
 
             $sql_data=$req->except('src');
             $sql_data['src'] = $name;

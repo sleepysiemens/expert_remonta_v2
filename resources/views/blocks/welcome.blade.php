@@ -1,7 +1,13 @@
 <section class="welcome">
   @foreach ($Headers as $Header)
             {{--<img class="welcome-bg" src="/img/main_bg/{{$Header->src}}" @if($Header->blur==1) style="filter: blur(4px);" @endif>--}}
-            <img class="welcome-bg" src="{{getCommonResource("/img/main_bg/".$Header->src)}}" @if($Header->blur==1) style="filter: blur(4px);" @endif>
+            <img class="welcome-bg" 
+            src="{{getCommonResource("/img/main_bg/".$Header->src)}}" 
+            srcset="{{getCommonResource('/img/main_bg/x-768-' . str_replace('.png', '.jpg', $Header->src))}} 1199w,
+            {{getCommonResource("/img/main_bg/".$Header->src)}} 1200w
+            "
+            @if($Header->blur==1) style="filter: blur(4px);" @endif
+            >
   @endforeach
             <div class="welcome-content">
                 <div class="welcome-header hidden">

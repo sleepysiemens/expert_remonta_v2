@@ -1885,11 +1885,11 @@ footer
     border-radius: 15px;
     border: solid 1px #9DC436;
     background-color: #fff;
-
     margin: auto;
-
     position: relative;
     overflow: hidden;
+    display: block;
+    /*display: none;*/
     /*overflow-y: scroll;*/
 }
 
@@ -1905,11 +1905,6 @@ footer
     width: 90%;
     margin: auto;
     margin-top: 20px;
-}
-
-.sale-form-div
-{
-    display: block;
 }
 
 .form-sale input, .form-sale button, .form-sale textarea
@@ -3477,3 +3472,21 @@ section.why  .section-header {
         margin-top: 60px;
     }
   }
+
+
+  .categories-div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .categories-div .service-banner {
+    margin: 0;
+    display: block;
+    margin-bottom: 20px;
+    border: none;
+        /* border: #9DC436 1px solid;*/
+    box-shadow: #9dc436 0px 0px 5px;
+  }
+  /*.categories-div .service-banner-link {
+    border: #9DC436 1px solid;
+  }*/

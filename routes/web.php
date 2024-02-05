@@ -39,22 +39,13 @@ use Illuminate\Support\Facades\Cache;
     Route::get('/vacancy/{vacancy}', 'VacancyController@show')->name('vacancy.show');
     Route::get('/vacancies/category/{vacancyCategory}', 'VacancyController@showCategory')->name('vacancy.category');
     Route::get('/geo', function () {
-        //$content = file_get_contents(dirname(__FILE__) . "/../resources/views/main/vacanciesLandingCopy.blade.php");
-        // есть контакт
-        //dd($content);
-        /*preg_match_all("/([а-яА-Яa-zA-Z0-9,: \"«»-]*)<\//u", $content, $matches);
-        $strings = array_filter($matches[1], function($i) {
-            return mb_strlen($i) > 10;
-        });
-        //dd($strings);
-        foreach($strings as $s) {
-            $content = preg_replace("/$s/u", "@lang('$s')", $content);
-        }*/
-        //dd($content);
-        /*foreach($matches[1] as $m) {
-            if(mb_strlen($m) > 10) dump($m);
-        }*/
-        //\App\Models\Service::truncate();
+        /*foreach(\App\Models\Sale::all() as $item) {
+            if(file_exists(public_path() . '/img/sales/x-360-' . $item->src)) {
+                deleteImgCrops('sales', $item->src);
+                //continue;
+            }
+            \App\Events\ImageUploaded::dispatch(public_path() . '/img/sales/', $item->src);
+        }  */ 
         //dd(\App\Models\Service::all());
         /*foreach(Cache::get('services') as $s) {
             $new = $s->replicate();
@@ -64,48 +55,13 @@ use Illuminate\Support\Facades\Cache;
         dd(Cache::get('services'));*/
         //Cache::add('key', '123', now()->addHours(4));
         //Cache::add('services', \App\Models\Service::all(), now()->addHours(4));
-      //dd(\App\Models\Review::all());
-      //dd(\App\Models\City::all());
-      //dd(app()->translate());
-      //dd(getCommonResource(123));
-      //dd(\App\Models\service::with('categories')->get());
-      //dd(\App\Models\DynamicPage::where(['url' => 'franchise'])->first());
-      /*\App\Models\DynamicPage::create([
-        'seo_title' => 'Франшиза',
-        'url' => 'franchise',
-        'html' => '123'
-      ]);*/
-      /*$arr = [];
-      foreach(\App\Models\Contact::all() as $c) {
-        $arr[] = ['name' => $c->name, 'link' => $c->link];
-      }
-      DB::table('contacts_almaty')->insert($arr);*/
-      //dd(\App\Models\category::all());
-      //dd(\App\Models\Seo::all()[75]);
-      // код для переноса сео инфы, и для переноса в бд
-      //$pages = \App\Models\category::all();
-      //dd($pages[0]);
-      //$array = [];
-      /*foreach($pages as $page) {       
-        $array[] = [
-          'url' => $page->url, 'service_id' => $page->service_id, 'src' => $page->src, 'title_ru' => $page->title_ru, 'title_kz' => $page->title_kz,
-          'description_ru' => $page->description_ru, 'description_kz' => $page->description_kz, 'visits_count' => $page->visits_count, 
-          'seo_title_ru' => $page->seo_title_ru, 'seo_title_kz' => $page->seo_title_kz,
-          'meta_desc_ru' => $page->meta_desc_ru, 'meta_desc_kz' => $page->meta_desc_kz,
-        ];
-      }*/
-      // хотя если переносить, то и со слайдами нужно, ну это если попросят
-      //dd($array);
-      //DB::table('categories_almaty')->insert($array);
-      //DB::table('categories_almaty')->truncate();
-      //dd(1);
+     
       $location = Location::get($_SERVER['REMOTE_ADDR']);
       return "
         Данные модуля местоположения <br>
         Ваша страна: $location->countryName <br>
         Ваш город: $location->cityName
       ";
-      //dd($location);
     });
   });
     //});
@@ -138,6 +94,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin/', 'middleware'=>'admin
         Route::get('/{vc}/edit', 'VacancyCategoryController@edit')->name('admin.vc.edit');
         Route::patch('/{vc}', 'VacancyCategoryController@update')->name('admin.vc.update');
         Route::delete('/{vc}', 'VacancyCategoryController@destroy')->name('admin.vc.destroy');
+    });
+
+    Route::group(['prefix' => 'form_types', 'middleware' => 'redactor'], function()
+    {
+        Route::get('/', 'FormTypeController@index')->name('admin.formtype.index');
+        Route::get('/{type}/edit', 'FormTypeController@edit')->name('admin.formtype.edit');
+        Route::patch('/{type}', 'FormTypeController@update')->name('admin.formtype.update');
     });
 
   //Route::resource('menu', 'MenuController');

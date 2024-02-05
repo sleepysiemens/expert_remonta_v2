@@ -74,6 +74,10 @@ class IndexController extends Controller
       //dd($req->all());
       //dd($req->file("file")[1]);
       $req->merge(['active' => $req->active !== 'on']);
+      $req->validate([
+        'src' => 'mimes:jpg,bmp,png,gif,jpeg,avif,jfif',
+        'slides.*' => 'mimes:jpg,bmp,png,gif,jpeg,avif,jfif',
+      ]);
         $data= $req->except(['slides']);
         //$seoData = $req->only(['seo_ru', 'seo_kz', 'meta_ru', 'meta_kz']);
 
@@ -121,6 +125,10 @@ class IndexController extends Controller
     {
       //$req->merge(['active' => $req->active != 1 && $req->active !== null]);
       $req->merge(['active' => $req->active !== 'on']);
+      $req->validate([
+        'src' => 'mimes:jpg,bmp,png,gif,jpeg,avif,jfif',
+        'slides.*' => 'mimes:jpg,bmp,png,gif,jpeg,avif,jfif',
+      ]);
       //dd($req->all());
       $data= $req->except(['slides']);
       //$seoData = $req->only(['seo_ru', 'seo_kz', 'meta_ru', 'meta_kz']);

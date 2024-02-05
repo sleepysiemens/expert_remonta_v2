@@ -13,7 +13,6 @@
 @endsection
 
   @push('franchise')
-    {{--<script src="/example.js"></script>--}}
     <link rel="stylesheet" href="{{ asset('/css/franchise.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/media.css') }}">
   @endpush
@@ -342,7 +341,10 @@
 
       <div class="fr_page_calc" id="fr_page_calc">
         <div class="fr_page_wrap">
-          <div class="fr_page_heading">@lang('Калькулятор прибыли')</div>
+          <div class="fr_page_heading">@lang('Калькулятор прибыли') 
+            <i class="fas fa-question-circle" style="color:#9DC436"></i>
+          <div id="calc_hint">@lang('Представленные данные являются консервативной оценкой, рассчитанной на основе минимально возможных показателей для регионов с населением около 300 человек. Эти показатели служат базовой линией для начального планирования и могут отличаться в зависимости от реальной экономической активности и демографических характеристик конкретного города или региона. Пользователи, заинтересованные в получении более детализированного бизнес-плана, могут заполнить форму обратной связи и проконсультироваться с нашим менеджером, который предоставит персонализированные расчеты, учитывающие уникальные аспекты в зависимости от суммы инвестиций и локализации будущего филиала.') <i class="fas fa-times"></i></div>
+          </div>
           <div class="fr_page_flex">
             <div class="fr_page_calc_inner">
               <div id="range">
@@ -401,194 +403,12 @@
       </div>
     </div>
 
-    {{--@if(auth()->user() && auth()->user()->role === 'admin')
-      <script>
-        // https://developer.mozilla.org/en-US/docs/Glossary/Base64#the_unicode_problem 
-        function base64ToBytes(base64) {
-  const binString = atob(base64);
-  return Uint8Array.from(binString, (m) => m.codePointAt(0));
-}
 
-function bytesToBase64(bytes) {
-  const binString = String.fromCodePoint(...bytes);
-  return btoa(binString);
-}
-        function updateContent(html) {
-          //console.log(bytesToBase64(new TextEncoder().encode(html)));
-          //console.log(btoa(html))
-          //return
-          //let content = bytesToBase64(new TextEncoder().encode(html))
-          
-        const headers = new Headers({
-            //'Content-Type': 'x-www-form-urlencoded',
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': `{{csrf_token()}}`
-        });
-          fetch(`/admin/dynamic-page/franchise`, {
-            method: 'PUT',
-            headers,
-            //body: { page: 'franchise', html: JSON.stringify(html)}
-            //body: { page: 'franchise', html: html}
-            //body: { page: 'franchise', html: btoa(html)}
-            //body: { page: 'franchise', html: bytesToBase64(new TextEncoder().encode(html))}
-            //body: { page: 'franchise', content: '123'}
-            //body: { page: '123'}
-            // да, надо весь body превращать в json
-            body: JSON.stringify({page: 'franchise', html: html})
-        }).then(response => {
-          //response.json()
-          console.log('updated')
-        })
-        }
-        let app = document.querySelector('#app')
-        app.childNodes.forEach(node => {
-          if(node.tagName !== undefined) {
-            node.setAttribute('contenteditable', true)
-            // только не на инпут бы, а на ctrl + s сделать
-            node.addEventListener('input', e => {
-              // вычищать надо будет contenteditable
-              //console.log(e.target.parentNode.innerHTML)
-              updateContent(e.target.parentNode.innerHTML)
-              //console.log(e)
-              //console.log(e.target.innerHTML)
-              // даже скорее e.target.parentNode.innerHTML
-              // ага, и вот здесь надо делать ajax запрос на редактирование html, огонь!
-              // ну и надо завести табличку для хранения кода динамических страниц
-            })
-          }
-        })
-      </script>
-    @endif--}}
-
-    <script>
-      let option = document.querySelector('.fr_page_form select option:nth-of-type(1)')
-      option.textContent = option.textContent + " (занято)"
-      option = document.querySelector('.fr_page_form select option:nth-of-type(2)')
-      option.textContent = option.textContent + " (занято)"
-
-      document.addEventListener('click', function(event) {
-  if(event.target.classList.contains('spoiler-title')) {
-    let spoiler = event.target.parentNode
-
-    if(spoiler.classList.contains('active')) {
-      spoiler.classList.remove('active') 
-    }
-    else {
-      spoiler.classList.add('active')
-    }
-  }
-})
-
-const rangeInput = document.querySelector('input[type="range"]')
-calcObjectsCount(1500000)
-
-rangeInput.addEventListener('input', e => {
-  let percent = (Math.round(100 / (4000000 / Number(e.target.value))) - 25)
-  percent = percent <= 100 ? percent : 100
-  percent -= 5
-  if(percent > 75) percent -= 5
-  if(percent > 85) percent -= 5
-  //console.log(percent)
-  document.querySelector('#rangevalue').value = e.target.value + " ₸"
-  document.querySelector('#rangevalue').style.left = `${percent}%`
-  if(percent > 84) document.querySelector('#rangevalue').style.fontSize = '16px'
-  else document.querySelector('#rangevalue').style.fontSize = '18px'
-  calcObjectsCount(Number(e.target.value))
-})
-
-function calcObjectsCount(money, idx = null) {
-  let initialMoney = money
-  // money это инвестиции, значение которое приходит из инпута
-  // отнимаем сразу 500к на подготовку
-  // оплата труда административного преснола, по месяцам
-  let adminPresnol = [0, 40000, 60000, 80000, 80000, 120000, 120000, 120000, 120000, 120000, 120000, 120000]
-  // бюджет на маркетинг начиная с 40 месяца
-  let marketingBudget = [0, 0, 0, 50000, 50000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000]
-  // роялти процент начиная с 4го месяца
-  //let royalty = [0, 0, 0, 10, 9, 8, 7, 7, 7, 6, 5, 5]
-  let royalty = [0, 0, 0, 0.1, 0.09, 0.08, 0.07, 0.07, 0.07, 0.06, 0.05, 0.05]
-  money -= 500000
-  let objectAvgCheck = 250000 // средний чек объекта, сказали что 250к, в экселе 300к
-  let objectIncome = 100000 // средний доход с одного объекта в мес
-  let profit = 0
-  let totalObjectsCount = 0
-  let totalIncome = 0
-  let royaltyBonus = 0
-  let maxObjects = 12
-  // формат 1 : { new: 2, inWork: 2 }
-  let objectsInWork = { }
-  for(let i = 1; i <= 12; i++) {
-    // вычислим сколько объектов можно взять в этом месяце
-    let objectsToWork = Math.floor(money / objectAvgCheck)
-    // не берем больше 12-ти объектов
-    if(objectsToWork > maxObjects) objectsToWork = maxObjects
-    //money = money - (objectsToWork * objectAvgCheck) + (objectsToWork * objectAvgCheck + 100000)
-    //money += objectsToWork * 100000
-    // заполним объекты в работе (как в экселе)
-    objectsInWork[i] = { new: objectsToWork, inWork: i === 1 ? objectsToWork : objectsInWork[i-1].inWork + objectsToWork}
-    // здесь еще начиная с 3го месяца нужно корректировать объекты в работе, старые сливаем
-    if(i >= 3) {
-      objectsInWork[i].inWork -= objectsInWork[i-2].new
-    }
-    let monthIncome = objectsInWork[i].inWork * objectIncome
-    let monthPureProfit = monthIncome // чистая прибыль месяца
-    // вычисляем доход от объектов
-    if(i >= 4) {
-      //royaltyBonus = monthIncome * ((royalty[i-1] / 100) * 10)
-      royaltyBonus = (monthIncome * royalty[i-1]) * 0.4
-      money += royaltyBonus, monthPureProfit += royaltyBonus
-    }
-    monthIncome += royaltyBonus
-    totalIncome += monthIncome
-    money += monthIncome
-    // отнимаем Оплата труда Административного преснола
-    money -= adminPresnol[i-1], monthPureProfit -= adminPresnol[i-1]
-    // отнимаем зп рабочим
-    money -= monthIncome * 0.45, monthPureProfit -= monthIncome * 0.45
-    // отнимаем 15к на налоги всегда
-    money -= 15000, monthPureProfit -= 15000
-    // начиная с 3го месяца отнимаем еще и всегда разные расходы
-    if(i >= 3) {
-      money -= 47500, monthPureProfit -= 47500
-    }
-    // в 3й месяц отнимаем за мебель и оборудку 
-    if(i === 3) money -= 150000, monthPureProfit -= 150000
-    // отнимаем бюджет на маркетинг
-    money -= marketingBudget[i-1], monthPureProfit -= marketingBudget[i-1]
-    // начиная с 4го месяца учитывпем роялти
-    profit += monthPureProfit
-    totalObjectsCount += objectsInWork[i].new
-
-    if(idx && i === idx) {
-      return {
-        totalObjectsCount: totalObjectsCount,
-        monthObjects: objectsInWork[i],
-        monthIncome: monthIncome,
-        totalIncome: totalIncome,
-        inbestmentsReturn: money - initialMoney,
-        monthPureProfit: monthPureProfit,
-        profit: profit,
-        royaltyBonus: royaltyBonus
-      }
-    }
-  }
-  //totalIncome = money - initialMoney
-  if(initialMoney > 3500000) {
-    moneyRest = initialMoney - 3500000
-    totalIncome += moneyRest * 3
-    profit += moneyRest * 1.4
-  }
-
-  const table = document.querySelector('.fr_page_calc table')
-  document.querySelector('.fr_page_calc table tr:nth-of-type(2) td:nth-of-type(2)').textContent = Math.floor(totalObjectsCount * 0.4)
-  document.querySelector('.fr_page_calc table tr:nth-of-type(3) td:nth-of-type(2)').textContent = totalIncome
-  document.querySelector('.fr_page_calc table tr:nth-of-type(4) td:nth-of-type(2)').textContent = profit
-  // для 2го года пока подсчет моковый
-  document.querySelector('.fr_page_calc table tr:nth-of-type(2) td:nth-of-type(3)').textContent = Math.floor(totalObjectsCount * 0.4 * 1.6)
-  document.querySelector('.fr_page_calc table tr:nth-of-type(3) td:nth-of-type(3)').textContent = Math.floor(totalIncome * 1.6)
-  document.querySelector('.fr_page_calc table tr:nth-of-type(4) td:nth-of-type(3)').textContent = Math.floor(profit * 1.6)
-}
-    </script>
-
+    @push('customScripts')
+      <script src="/js/franchise.js"></script>
+      {{--@if(auth()->user() && auth()->user()->role === 'admin') 
+        <script src="/js/dynamicPage.js"></script>
+      @endif--}}
+    @endPush
 @endsection
 

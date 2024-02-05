@@ -20,33 +20,33 @@
 @section('content')
 
 <div class="vacancy_page">
-  <div class="vacancy_page_wrap"><a href="{{route('vacancy.index')}}">< Все вакансии</a></div>
+  <div class="vacancy_page_wrap"><a href="{{route('vacancy.index')}}">< @lang('Все вакансии')</a></div>
   <div class="vacancy_page_hero">
     <div class="vacancy_page_wrap">
       <h1 class="vacancy_page_vacancy_title ui_kit_h2_heading">{{app()->db_translate($vacancy->name, $vacancy->name_kz)}}</h1>
-      <div class="vacancy_page_vacancy_salary ui_kit_h2_heading">@if($vacancy->salary_from){{$vacancy->salary_from}}-{{$vacancy->salary_to}} ₸@else зп: по результатам собеседования@endif </div>
-      <p class="vacancy_page_info">Город: {{$vacancy->city->city}}</p>
-      <p class="vacancy_page_info">Требуемый опыт работы: {{$vacancy->experience}}</p>
-      <p class="vacancy_page_info">{{$vacancy->employment_type}} занятость</p>
+      <div class="vacancy_page_vacancy_salary ui_kit_h2_heading">@if($vacancy->salary_from){{$vacancy->salary_from}}-{{$vacancy->salary_to}} ₸@else @lang('зп: по результатам собеседования')@endif </div>
+      <p class="vacancy_page_info">@lang('Город'): {{$vacancy->city->city}}</p>
+      <p class="vacancy_page_info">@lang('Требуемый опыт работы'): @lang($vacancy->experience)</p>
+      <p class="vacancy_page_info">@lang("$vacancy->employment_type занятость")</p>
       <div class="vacancies_page_inline_flex">
-      <button class="ui_kit_button vacancies_page_button show_form">Откликнуться</button>
-      <a class="ui_kit_button ui_kit_button_v2 vacancies_page_button vacancies_page_button_v2" data-phone="{{$vacancy->phone}}"> Показать телефон</a>
+      <button class="ui_kit_button vacancies_page_button show_form">@lang('Откликнуться')</button>
+      <a class="ui_kit_button ui_kit_button_v2 vacancies_page_button vacancies_page_button_v2" data-phone="{{$vacancy->phone}}">@lang('Показать телефон')</a>
       </div>
     </div>
   </div>
 </div>
 <div class="vacancy_page_content"> 
   <div class="vacancy_page_wrap">
-    <h2 class="vacancy_page_subtitle ui_kit_h2_heading">Что нужно делать:</h2>
+    <h2 class="vacancy_page_subtitle ui_kit_h2_heading">@lang('Что нужно делать'):</h2>
     {!!app()->db_translate($vacancy->overview, $vacancy->overview_kz)!!}
-    <h2 class="vacancy_page_subtitle ui_kit_h2_heading">Мы предлагаем:</h2>
+    <h2 class="vacancy_page_subtitle ui_kit_h2_heading">@lang('Мы предлагаем'):</h2>
     {!!app()->db_translate($vacancy->offers, $vacancy->offers_kz)!!}
-    <h2 class="vacancy_page_subtitle ui_kit_h2_heading">Требования:</h2>
+    <h2 class="vacancy_page_subtitle ui_kit_h2_heading">@lang('Требования'):</h2>
     {!!app()->db_translate($vacancy->requirements, $vacancy->requirements_kz)!!}
 
     <div class="vacancies_page_inline_flex">
-    <button class="ui_kit_button vacancies_page_button show_form">Откликнуться</button>
-    <a class="ui_kit_button ui_kit_button_v2 vacancies_page_button" data-phone="{{$vacancy->phone}}"> Показать телефон</a>
+    <button class="ui_kit_button vacancies_page_button show_form">@lang('Откликнуться')</button>
+    <a class="ui_kit_button ui_kit_button_v2 vacancies_page_button" data-phone="{{$vacancy->phone}}">@lang('Показать телефон')</a>
     </div>
   </div>
 </div>
@@ -79,7 +79,7 @@
   {
     let vacancyTitle = document.querySelector('.vacancy_page_vacancy_title').textContent
       $('#main-form').addClass('page-wrapper-active');
-      $('#main-form h3').text(`Оставьте ваши контакты на вакансию ${vacancyTitle}`)
+      $('#main-form h3').text(`@lang('Оставьте ваши контакты на вакансию') ${vacancyTitle}`)
   });
 
   $('#main-form-close').on('click', function()

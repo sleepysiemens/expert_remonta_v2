@@ -12,8 +12,10 @@ class DestroyController extends Controller
 {
     public function index(Sale $sale)
     {
-      @unlink(dirname(__FILE__) . "/../../../../../public/img/sales/" . $sale->src);
-        $sale->delete();
-        return redirect()->route('admin.sale.index');
+      // удаление со всеми кропами
+      deleteImgWithCrops('sales', $sale->src);
+      //@unlink(dirname(__FILE__) . "/../../../../../public/img/sales/" . $sale->src);
+      $sale->delete();
+      return redirect()->route('admin.sale.index');
     }
 }

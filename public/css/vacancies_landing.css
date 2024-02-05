@@ -336,6 +336,7 @@
   line-height: 22px;
   font-weight: 500;
   margin-bottom: 25px;
+  word-wrap: break-word;
 }
 .vc_page_value .vc_page_card_subtitle  {
   font-size: 20px;

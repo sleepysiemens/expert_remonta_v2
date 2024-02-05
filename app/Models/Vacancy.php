@@ -26,7 +26,7 @@ class Vacancy extends Model
       if(request()->city_id) $query->where('city_id', '=', request()->city_id);
       if(request()->category_id) $query->where('category_id', '=', request()->category_id);
       if(request()->exp) {
-        if(request()->exp !== 'Не имеет значение') $query->where('experience', '=', request()->exp);
+        if(request()->exp !== 'Не имеет значения') $query->where('experience', '=', request()->exp);
       }
     }
 
@@ -35,7 +35,7 @@ class Vacancy extends Model
       if(request()->city_select) $query->where('city_id', '=', request()->city_select);
       if(request()->category_select) $query->where('category_id', '=', request()->category_select);
       if(request()->exp_select) {
-        if(request()->exp_select !== 'Не имеет значение') $query->where('experience', '=', request()->exp_select);
+        if(request()->exp_select !== 'Не имеет значения') $query->where('experience', '=', request()->exp_select);
       }
     }
 }

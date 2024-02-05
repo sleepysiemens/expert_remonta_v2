@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
+use Intervention\Image\ImageServiceProvider;
+
 return [
 
     /*
@@ -180,7 +182,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Mews\Captcha\CaptchaServiceProvider::class
+        //Mews\Captcha\CaptchaServiceProvider::class
+        // https://packagist.org/packages/mews/captcha
+        //ImageServiceProvider::class
 
     ])->toArray(),
 
@@ -197,7 +201,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
-        'Captcha' => Mews\Captcha\Facades\Captcha::class,
+        //'Captcha' => Mews\Captcha\Facades\Captcha::class,
+        //'Image' => \Intervention\Image\Facades\Image::class
 
     ])->toArray(),
 
