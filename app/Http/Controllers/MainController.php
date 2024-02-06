@@ -22,7 +22,9 @@ use Illuminate\Support\Str;
 use App\Models\Application;
 use App\Models\Seo;
 use App\Models\FormType;
+use App\Models\category;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use App\Mail\FormEmail;
 
 class MainController extends Controller
@@ -68,41 +70,49 @@ class MainController extends Controller
 
     public function form(Request $req)
     {
+      $path = parse_url($_SERVER['HTTP_REFERER'])['path'];
+      //dd($path);
       //dd($req->all());
+
+      //$formTypeId = FormType::getFormTypeId($req->sourse);
+      $formTypeId = FormType::getFormTypeId($path);
+      //dd($formTypeId);
+
         $userIP=$_SERVER['REMOTE_ADDR'];
         $location=Location::get($userIP);
 
       if(!$req->city) {
         if($location==false)
             $city='not set';
-        else
-            $req->city=$location->cityName;
+        else {
+          $city=$location->cityName;
+          if(in_array($city, ['Astana', 'Almaty'])) $req->merge(['city' => $city]);
+          else $req->merge(['city' => env('APP_CITY')]);
+        }
       }
-      //dd($req->city);
-      //dd($req->all());
-        
-        $data= $req->validate([
-          'name'=>'required|string', 
-          'phone'=>'required|string', 
-          //'city'=>'required|string', 
-          'email'=>'nullable|string',
-          'sourse'=>'required'
-        ]);
-        //dd($data);
-        $sql_data=[
-          'username'=>$req->name, 
-          'phone'=>$req->phone, 
-          'sourse'=>$req->sourse, 
-          'city'=>$req->city, 
-          'date_time'=>date('Y-m-d H:i:s')
-        ];
-        //dd($sql_data);
-        //Application::create($req->except('_token'));
-        //dd($req->sourse);
-        Application::create($sql_data);
 
-        $formTypeId = 1;
-        if($req->form_type_id) $formTypeId = $req->form_type_id;
+      $req->merge(['sourse' => $path]);
+
+      $validationRules = [
+        'name'=>'required|string', 
+        'phone'=>'required|string', 
+        'city'=>'required|string', 
+        'email'=>'nullable|email',
+        'sourse'=>'required'
+      ];
+      if(in_array($formTypeId, [2, 3])) {
+        $validationRules['resume_file'] = 'required|max:8096|mimes:pdf,doc,docx,xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+      }
+      $data= $req->validate($validationRules);
+      //dd($data);
+      if(in_array($formTypeId, [2, 3])) {
+        $path = Storage::put('resumes', $req->file('resume_file'));
+        $data['resume_file'] = $path;
+      }
+        //dd($data);
+        //Application::create($req->except('_token'));
+        //$application = Application::create($req->all());
+        $application = Application::create($data);
 
         // здесь post запрос в crm
         /*Http::withHeaders([
@@ -110,12 +120,49 @@ class MainController extends Controller
         ])->post(env('CRM_URL'));*/
 
         //  отправка почты, тут
-        //$formTypeId = getFormTypeId($req->sourse);
         $objDemo = new \stdClass();
         $objDemo->form_type_id = $formTypeId;
         $objDemo->req_data = $req->except('_token');
         //dd($objDemo);
-        if($formTypeId == 1) $objDemo->title = 'Новая заявка на услугу';
+        if($formTypeId == 1) {
+          $objDemo->title = 'Новая заявка на услугу';
+          $pageUrl = explode('/', $path)[3];
+          $category = Category::where(['url' => $pageUrl])->first();
+          $objDemo->service = $category->title_ru;
+        }
+        else if($formTypeId == 2) $objDemo->title = 'Новая заявка на вакансии в офис';
+        else if($formTypeId == 3) $objDemo->title = 'Новая заявка на вакансии на объекты';
+        else if($formTypeId == 5) $objDemo->title = 'Новая заявка на франшизу';
+        else if($formTypeId == 4) {
+          if(str_contains($path, 'vacancies')) {
+            $vacancyId = 1;
+            if($req->vacancy_id) $vacancyId = $req->vacancy_id;
+            $vacancy = \App\Models\Vacancy::where(['id' => $vacancyId])->first();
+            $objDemo->title = 'Новая заявка на вакансию ' . $vacancy->title_ru;
+          }
+          else {
+            $pageUrl = explode('/', $path)[2];
+            $vacancy = \App\Models\Vacancy::where(['url' => $pageUrl])->first();
+            $objDemo->title = 'Новая заявка на вакансию ' . $vacancy->title_ru;
+          }
+          $objDemo->vacancy = $vacancy;
+        }
+        else if($formTypeId == 6) {
+          $saleId = 1;
+          if($req->sale_id) $saleId = $req->sale_id;
+          $sale = \App\Models\Sale::find($saleId);
+          $objDemo->title = 'Новая заявка на акцию ' . $sale->title_ru;
+          $objDemo->sale = $sale;
+        }
+
+        $objDemo->date = $application->date;
+        if(in_array($formTypeId, [2, 3])) {
+          $objDemo->file = Storage::url('resumes', $application->resume_file);
+        }
+        $urlParts = parse_url($_SERVER['HTTP_REFERER']);
+        //dd($urlParts);
+        $objDemo->url = $urlParts['scheme'] . '://' . $urlParts['host'] . $urlParts['path'];
+        if($req->vacancy_url) $objDemo->url = $req->vacancy_url;
 
         $formType = FormType::where(['id' => $formTypeId])->first();
         $emails = preg_split("/\r\n|\n|\r/", $formType->emails);
@@ -126,8 +173,9 @@ class MainController extends Controller
         }
 
         // уведомление о заявке в телеграм, допустим
-        $path = '/';
-        if($req->sourse !== 'main/sale/') $path = $req->sourse;
+        $path = parse_url($_SERVER['HTTP_REFERER'])['path'];
+        //$path = '/';
+        //if($req->sourse !== 'main/sale/') $path = $req->sourse;
         return redirect($path)->with('msg', 'Ваша заявка успешно отправлена');
     }
 
@@ -145,10 +193,6 @@ class MainController extends Controller
             if($_COOKIE['locale']=='kz')
                 setcookie('locale','ru', time()+360000 ,'/');
         }
-        /*if(request()->all()['page']!='main')
-            $page='/'.request()->all()['page'];
-        else
-            $page='/';*/
 
         $page = parse_url($_SERVER['HTTP_REFERER'])['path'];
 

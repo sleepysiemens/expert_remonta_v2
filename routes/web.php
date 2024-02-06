@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\MenuController;
 use Stevebauman\Location\Facades\Location;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\DemoEmail;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +41,7 @@ use Illuminate\Support\Facades\Cache;
     Route::get('/vacancy/{vacancy}', 'VacancyController@show')->name('vacancy.show');
     Route::get('/vacancies/category/{vacancyCategory}', 'VacancyController@showCategory')->name('vacancy.category');
     Route::get('/geo', function () {
+        //dd(\App\Models\Application::all());
         /*foreach(\App\Models\Sale::all() as $item) {
             if(file_exists(public_path() . '/img/sales/x-360-' . $item->src)) {
                 deleteImgCrops('sales', $item->src);
@@ -76,7 +79,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin/', 'middleware'=>'admin
     {
         Route::get('/', 'IndexController@index')->name('admin.vacancy.index');
         Route::get('/resumes', 'IndexController@resumes')->name('admin.vacancy.resumes');
-        Route::post('/resumes/{resume}', 'IndexController@getResume')->name('admin.vacancy.getResume');
+        Route::post('/resumes/{app}', 'IndexController@getResume')->name('admin.vacancy.getResume');
         Route::get('/create', 'IndexController@create')->name('admin.vacancy.create');
         Route::post('', 'IndexController@store')->name('admin.vacancy.store');
         Route::get('/{vacancy}', 'IndexController@show')->name('admin.vacancy.show');

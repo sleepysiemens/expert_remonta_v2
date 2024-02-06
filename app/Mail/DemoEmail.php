@@ -7,22 +7,19 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
-use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Queue\SerializesModels;
 
-class FormEmail extends Mailable
+class DemoEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $props;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($props)
+    public function __construct()
     {
-        $this->props = $props;
-        //dd($this->props);
+
     }
 
     /**
@@ -31,8 +28,7 @@ class FormEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            //from: new Address('jeffrey@example.com', 'Jeffrey Way'),
-            subject: 'ExpertRemonta ' . env('APP_CITY') . ' - ' . $this->props->title,
+            subject: 'Demo',
         );
     }
 
@@ -42,10 +38,7 @@ class FormEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.form',
-            /*with: [
-                'props' => $this->props,
-            ],*/
+            view: 'mail.test',
         );
     }
 
@@ -56,8 +49,6 @@ class FormEmail extends Mailable
      */
     public function attachments(): array
     {
-        return isset($props->file) ? [
-            Attachment::fromStorage($props->file),
-        ] : [];
+        return [];
     }
 }

@@ -2,14 +2,14 @@
 
 function deleteImgWithCrops($folder, $fileName) {
   @unlink(dirname(__FILE__) . "/public/img/$folder/" . $fileName);
-  $resizesBreakpoints = [768, 450, 360];
+  $resizesBreakpoints = [768, 600, 450, 360];
   foreach($resizesBreakpoints as $b) {
     @unlink(dirname(__FILE__) . "/public/img/$folder/x-$b-" . $fileName);
   }
 }
 
 function deleteImgCrops($folder, $fileName) {
-  $resizesBreakpoints = [768, 450, 360];
+  $resizesBreakpoints = [768, 600, 450, 360];
   foreach($resizesBreakpoints as $b) {
     @unlink(dirname(__FILE__) . "/public/img/$folder/x-$b-" . $fileName);
   }

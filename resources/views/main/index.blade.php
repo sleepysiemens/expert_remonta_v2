@@ -8,7 +8,8 @@
 @include('blocks.our_services')
 @include('blocks.why_new')
 @include('blocks.faq')
-@include('blocks.sales')
+{{--@include('blocks.sales')--}}
+@include('blocks.sales_new')
 
 
 @endsection

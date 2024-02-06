@@ -13,7 +13,7 @@
         <button class="form-sale-close" id="sale-form-close-{{$i}}"><i class="fas fa-times"></i></button>
         <img src="/img/sales/{{$sale->src}}"
         srcset="/img/sales/x-360-{{str_replace('.png', '.jpg', $sale->src)}} 400w,
-        /img/sales/x-768-{{str_replace('.png', '.jpg', $sale->src)}} 600w">
+        /img/sales/x-600-{{str_replace('.png', '.jpg', $sale->src)}} 600w">
         <div style="display: flex; justify-content: start; width: 95%; margin: 10px auto">
             <div class="percent"><p>-{{$sale->percent}}%</p></div>
             <div class="timer"><p id="action2{{$sale->id}}"></p></div>
@@ -28,6 +28,7 @@
             <input class="hidden" type="text" name="name" placeholder="Имя" required>
             <input class="hidden" type="phone" name="phone" placeholder="Телефон" required>
             <input type="hidden" name="sourse" value="{{$page}}/sale/{{$sale->title}}">
+            <input type="hidden" id="sale_id" value="{{$sale->id}}" name="sale_id">
             <input type="hidden" id="cid" value="" name="cid">
             <input type="hidden" id="ycid" value="" name="ycid">
             <button type="submit" class="hidden gradient_button"><span class="flare"></span><p>{{app()->translate('Участвовать')}}</p></button>

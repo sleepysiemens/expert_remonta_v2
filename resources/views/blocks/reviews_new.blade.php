@@ -37,7 +37,7 @@
           @if($loop->iteration === 3)
             <a href="/reviews" class="review send_review_card">
                 <div class="review-div">
-                    <button class="ui_kit_button">Оставьте свой отзыв</button>
+                    <button class="ui_kit_button">@lang('Оставьте свой отзыв')</button>
                 </div>
             </a>
           @endif

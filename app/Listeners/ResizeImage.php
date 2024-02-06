@@ -44,7 +44,7 @@ class ResizeImage
 
         //$image->save($event->folder . "x-100-" . $event->fileName);
 
-        $resizesBreakpoints = [768, 450, 360];
+        $resizesBreakpoints = [768, 600, 450, 360];
 
         foreach($resizesBreakpoints as $breakpoint) {
             if($imageWidth <= $breakpoint) continue;

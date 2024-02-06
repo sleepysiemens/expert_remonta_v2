@@ -13,12 +13,13 @@ class UpdateController extends Controller
 {
     public function index(Request $req, Sale $sale)
     {
+        //dd($req->all());
         $req->merge(['active' => $req->active !== 'on']);
         if(request()->hasFile('src'))
         {
         deleteImgWithCrops('sales', $sale->src);
           //@unlink(dirname(__FILE__) . "/../../../../../public/img/sales/" . $sale->src);
-            $file = request()->file('src');
+            $file = request()->file('src');;
             $name= Str::random(8) . "_" . $file->hashName();
             $file->move(public_path() . '/img/sales/', $name);
             \App\Events\ImageUploaded::dispatch(public_path() . '/img/sales/', $name);

@@ -9,7 +9,7 @@
   </div>
   <div class="vacancies_page_card_info">{{$v->city->city}}, @lang('опыт'): @lang($v->experience)</div>
   <div class="vacancies_page_inline_flex">
-    <button class="ui_kit_button vacancies_page_button show_form">@lang('Откликнуться')</button>
+    <button class="ui_kit_button vacancies_page_button show_form" data-id="{{$v->id}}" data-url="{{route('vacancy.show', $v->url)}}">@lang('Откликнуться')</button>
     <a class="ui_kit_button ui_kit_button_v2 vacancies_page_button" data-phone="{{$v->phone}}">@lang('Показать телефон')</a>
   </div>
 </div>

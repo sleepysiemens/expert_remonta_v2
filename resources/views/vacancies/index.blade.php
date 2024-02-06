@@ -147,14 +147,16 @@
       let vacancyTitle = e.target.parentNode.parentNode.querySelector('.vacancies_page_card_title').textContent
       //let vacancySalary = e.target.parentNode.parentNode.querySelector('.vacancies_page_card_salary').textContent
         $('#main-form').addClass('page-wrapper-active');
-        //@php $j=1; @endphp
-        //let title = `Оставьте ваши контакты на вакансию ${vacancyTitle}`
+        $('#main-form form').append(`<input type="hidden" name="vacancy_id" id="vacancy_id" value=${e.target.dataset.id}>`)
+        $('#main-form form').append(`<input type="hidden" name="vacancy_url" id="vacancy_url" value=${e.target.dataset.url}>`)
         $('#main-form h3').text(`@lang('Оставьте ваши контакты на вакансию') ${vacancyTitle}`)
     });
 
     $('#main-form-close').on('click', function()
     {
         $('#main-form').removeClass('page-wrapper-active');
+        $('#main-form form #vacancy_id').remove();
+        $('#main-form form #vacancy_url').remove();
     });
 </script>
 @endpush

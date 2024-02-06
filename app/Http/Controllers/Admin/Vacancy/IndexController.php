@@ -18,6 +18,7 @@ use App\Models\City;
 use App\Models\Vacancy;
 use App\Models\VacancyCategory;
 use App\Models\Resume;
+use App\Models\Application;
 
 
 
@@ -50,8 +51,8 @@ class IndexController extends Controller
         return view('admin.vacancy.resumes', compact(['reviews', 'questions', 'services', 'categories', 'sales', 'galleries', 'resumes']));
     }
 
-    public function getResume(Request $req, Resume $resume) {
-        return Storage::download($resume->resume_file);
+    public function getResume(Request $req, Application $app) {
+        return Storage::download($app->resume_file);
         //return Storage::download($req->resumeFile);
     }
 
