@@ -219,7 +219,7 @@ class MainController extends Controller
         }
         elseif(request()->city=='Алматы') {
             $page='http://almaty.expertremonta.kz'.$page;
-            $page='http://expertremonta.kz'.$page;
+            //$page='http://expertremonta.kz'.$page;
           //Cookie::queue('city', $req->city, 360000, '/', 'almaty.expertremonta.kz');
           Cookie::queue('city', $req->city, 360000, '/', '.expertremonta.kz');
         }
