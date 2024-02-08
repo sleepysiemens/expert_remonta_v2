@@ -15,34 +15,25 @@
       <a href="{{route('admin.page.create')}}" class="btn btn-success">
         <i class="fas fa-plus"></i> Добавить
       </a>
-      <a href="{{route('admin.page.unlink')}}" class="btn btn-warning">
-        <i class="fas fa-list"></i> Непривязанные к категориям услуг
+      <a href="{{route('admin.page.index')}}" class="btn btn-warning">
+        <i class="fas fa-list"></i> Обычные страницы услуг
       </a>
-      @if(!request()->query('archive'))
-        <a href="{{route('admin.page.index', ['archive' => 1])}}" class="btn btn-info">
-          <i class="fas fa-box"></i> Архив
-        </a>
-      @else
-        <a href="{{route('admin.page.index')}}" class="btn btn-info">
-          <i class="fas fa-list"></i> Вернуться к неархивным записям
-        </a>
-      @endif
+
+      <p>
+        Непривязанные к категории страницы услуг. Возможно так получилось, потому что была удалена категория услуг, привязанные к этим страницам и они лишились привязки.
+        <br> Эти страницы не могут корректно выводиться на сайте, потому что лишены привязки к категории.
+      </p>
+
     </div>
-    @if(request()->query('archive'))
-    <div class="col-12">Архивные записи не выводятся на сайте</div>
-    @endif
     </div>
   </div>
   <br>
 
-  @foreach ($services as $service)
+
   <div class="row">
     <div class="col-12 table-responsive">
       <table class="table table-striped">
         <thead>
-            <tr>
-              <th colspan="8">{{$service->title_ru}}</th>
-            </tr>
             <tr>
               <th>Id</th>
               <th>Название, ru/kz</th>
@@ -57,17 +48,14 @@
         <tbody>
           @foreach ($categories as $category)
 
-            @if ($category->service_id==$service->id)
               <tr>
                 <td>{{$category->id}}</td>
                 <td>{{$category->title_ru}}/{{$category->title_kz}}</td>
                 <td style="max-width:100px;word-wrap:break-word">{{$category->url}}</td>
-                {{--<td>{!! $category->description_ru !!}</td>--}}
                 <td>
                   {{ $category->description_ru ? mb_strlen($category->description_ru) . " символов" : 'Нет'}}
                   / {{ $category->description_kz ? mb_strlen($category->description_kz) . " символов" : 'Нет'}}
                 </td>
-                {{--<td>{!! $category->description_kz !!}</td>--}}
                 <td><img src="{{asset('img/categories/'.$category->src)}}" style="height: 150px; width: 150px; object-fit: contain"></td>
                 <td>
                   Title RU: {{$category->seo_title_ru}} <br>
@@ -88,7 +76,6 @@
                 <td><a href="{{route('admin.page.edit',$category->id)}}"><i class="fas fa-pen"></i></a></td>
                 <td><a href="{{route('admin.page.show',$category->id)}}"><i class="fas fa-arrow-right"></i></a></td>
             </tr>
-            @endif
 
               @endforeach
 
@@ -100,6 +87,5 @@
       <br>
       <br>
       <br>
-  @endforeach
 
 @endsection

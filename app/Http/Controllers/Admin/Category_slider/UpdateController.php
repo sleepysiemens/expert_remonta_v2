@@ -27,4 +27,13 @@ class UpdateController extends Controller
 
         return redirect()->route('admin.category_slider.index');
     }
+
+    public function alt(Request $req, CategoryImage $category_slider)
+    {
+      //$alt = $req->alt;
+      //return $req->all();
+      $category_slider->alt = $req->alt;
+      $category_slider->update();
+      return json_encode('OK');
+    }
 }

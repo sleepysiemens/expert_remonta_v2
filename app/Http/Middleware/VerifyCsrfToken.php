@@ -12,6 +12,6 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        '/locale/change/', '/city/store/'
+        '/locale/change/', '/city/store/', '/admin/category_slider/updateSliderAlt/*'
     ];
 }

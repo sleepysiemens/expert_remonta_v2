@@ -27,6 +27,7 @@ class IndexController extends Controller
         $questions=Question::all();
         $services=Service::all();
         $categories=Category::filtered()->with('service')->with('slides')->get();
+        //dd($categories);
         $sales=sale::all();
 
         foreach($categories as $c) {
@@ -36,6 +37,18 @@ class IndexController extends Controller
         //dd($categories[0]);
 
         return view('admin.page.index', compact(['reviews', 'questions', 'services', 'categories', 'sales']));
+    }
+
+    public function unlink() {
+      $reviews=Review::all();
+      $questions=Question::all();
+      $services=Service::all();
+      $categories=Category::doesntHave('service')->with('slides')->get();
+      //dd($categories);
+      $sales=sale::all();
+
+
+      return view('admin.page.unlink', compact(['reviews', 'questions', 'services', 'categories', 'sales']));
     }
 
     public function show(Category $category)
@@ -86,6 +99,7 @@ class IndexController extends Controller
         $name= Str::random(8) . "_" . $file->hashName();
         //$file->move(public_path() . '/img/categories/',request()->title.'-image.img');
         $file->move(public_path() . '/img/categories/', $name);
+        \App\Events\ImageUploaded::dispatch(public_path() . '/img/categories/', $name);
         unset($data['src']);
         //$data['src']=request()->title.'-image.img';
         $data['src'] = $name;
@@ -100,6 +114,7 @@ class IndexController extends Controller
               $file = $req->file("slides")[$idx];
               $name = Str::random(8) . "_" . $file->hashName();
               $file->move(public_path() . '/img/category_slider/'.$cat->id, $name);
+              \App\Events\ImageUploaded::dispatch(public_path() . '/img/category_slider/'.$cat->id.'/', $name);
               CategoryImage::create(['src' => $name, 'category_id' => $cat->id]);
             }
           }
@@ -136,6 +151,7 @@ class IndexController extends Controller
             $file = request()->file('src');
             $name= Str::random(8) . "_" . $file->hashName();
             $file->move(public_path() . '/img/categories/', $name);
+            \App\Events\ImageUploaded::dispatch(public_path() . '/img/categories/', $name);
             unset($data['src']);
             //$data['src']=request()->title.'-image.img';
             $data['src'] = $name;
@@ -151,6 +167,7 @@ class IndexController extends Controller
             $file = $req->file("slides")[$idx];
             $name = Str::random(8) . "_" . $file->hashName();
             $file->move(public_path() . '/img/category_slider/'.$category->id, $name);
+            \App\Events\ImageUploaded::dispatch(public_path() . '/img/category_slider/'.$category->id.'/', $name);
             CategoryImage::create(['src' => $name, 'category_id' => $category->id]);
           }
         }
@@ -173,13 +190,15 @@ class IndexController extends Controller
 
     public function destroySlider(CategoryImage $category_slider) {
       //dd($category_slider);
-      @unlink(dirname(__FILE__) . "/../../../../../public/img/category_slider/" . $category_slider->category->id . "/" . $category_slider->src);
+      //@unlink(dirname(__FILE__) . "/../../../../../public/img/category_slider/" . $category_slider->category->id . "/" . $category_slider->src);
+      deleteImgWithCrops("category_slider/$category_slider->category_id", $category_slider->src);
       $category_slider->delete();
       return redirect()->route('admin.page.show', $category_slider->category_id)->with('msg', 'Слайд удален');
     }
 
     public function destroySliderAjax(CategoryImage $category_slider) {
-      @unlink(dirname(__FILE__) . "/../../../../../public/img/category_slider/" . $category_slider->category->id . "/" . $category_slider->src);
+      //@unlink(dirname(__FILE__) . "/../../../../../public/img/category_slider/" . $category_slider->category->id . "/" . $category_slider->src);
+      deleteImgWithCrops("category_slider/$category_slider->category_id", $category_slider->src);
       $category_slider->delete();
       return 'ok';
     }

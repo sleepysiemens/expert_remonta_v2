@@ -78,6 +78,7 @@
           <legend>Слайды (можно выбрать несколько)</legend>
           
           <input type="file" name="slides[]" multiple="multiple" />
+          @include('admin.page.rules')
         </fieldset>
       </div>
 

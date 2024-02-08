@@ -23,14 +23,15 @@
               <th>Id</th>
               <th>Город</th>
               <th>Категория</th>
-              <th>Название, ru</th>
-              <th>Название КЗ</th>
+              <th>Название, ru/kz</th>
+              {{--<th>Название КЗ</th>--}}
               <th>SEO инфа</th>
-              <th>URL</th>
+              {{--<th>URL</th>--}}
               {{--<th>Название, kz</th>--}}
-              <th>ЗП</th>
+              <th>Инфо</th>
+              {{--<th>ЗП</th>
               <th>Опыт</th>
-              <th>Занятость</th>
+              <th>Занятость</th>--}}
               <th>Телефон</th>
               <th></th>
             </tr>
@@ -42,18 +43,23 @@
                 <td>{{$v->id}}</td>
                 <td>{{$v->city->city}}</td>
                 <td>{{isset($v->category->name) ? $v->category->name : 'Не определено'}}</td>
-                <td>{{$v->name}}</td>
-                <td>{{$v->name_kz}}</td>
+                <td>{{$v->name}}/{{$v->name_kz}}</td>
                     <td>
+                      URL: {{$v->url}} <br>
                       Title RU: {{$v->seo_title_ru}} <br>
                       Title KZ: {{$v->seo_title_kz}} <br>
                       Мета описание RU: {{$v->meta_desc_ru}} <br>
                       Мета описание KZ: {{$v->meta_desc_kz}}
                     </td>
-                    <td>{{$v->url}}</td>
-                <td>{{$v->salary_from}}-{{$v->salary_to}}</td>
+                    {{--<td>{{$v->url}}</td>--}}
+                    <td>
+                      ЗП: {{$v->salary_from}}-{{$v->salary_to}} <br>
+                      Опыт: {{$v->experience}} <br>
+                      Занятость: {{$v->employment_type}}
+                    </td>
+                {{--<td>{{$v->salary_from}}-{{$v->salary_to}}</td>
                 <td>{{$v->experience}}</td>
-                <td>{{$v->employment_type}}</td>
+                <td>{{$v->employment_type}}</td>--}}
                 <td>{{$v->phone}}</td>
                 <td>
                   <form method="post" action="{{route('admin.vacancy.destroy',$v->id)}}">

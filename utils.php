@@ -15,6 +15,12 @@ function deleteImgCrops($folder, $fileName) {
   }
 }
 
+function transformCropExtension($fileName) {
+  preg_match('/\.([a-z]{1,6})$/', $fileName, $matches);
+  if(in_array($matches[1], ['png', 'gif'])) $fileName = preg_replace('/\.[a-z]{1,6}$/', '.jpg', $fileName);
+  return $fileName;
+}
+
 function processTitle($title, $city) {
   $titleParts = explode(' ', $title);
   foreach($titleParts as $idx => $part) {

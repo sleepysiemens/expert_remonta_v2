@@ -69,7 +69,7 @@ class UslugiController extends Controller
         if(!$category) abort(404);
         //dd($categories[0]);
         $reviews=Review::all();
-        $CategoryImages=CategoryImage::query()->where(['category_id'=>$category->id])->select('src', 'category_id')->get();
+        $CategoryImages=CategoryImage::query()->where(['category_id'=>$category->id])->select('src', 'category_id', 'alt')->get();
         //$seos=Seo::query()->where('page','=','uslugi/'.$service.'/'.$category)->get();
 
 

@@ -60,6 +60,7 @@
           </div>
             <label for="exampleInputEmail1">Фон</label>
             <input type="file" class="form-control" name="src">
+            @include('admin.sale.rules')
         </div>
       <!-- /.card-body -->
 

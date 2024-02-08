@@ -3686,3 +3686,10 @@ linear-gradient(0deg, #CEE19A, #CEE19A);
     }
     .sale_timer {left: -15px;}
   }
+
+
+  @media only screen and (max-width: 830px) {
+    .welcome-content {
+      bottom: 0;
+    }
+  }

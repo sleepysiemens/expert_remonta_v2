@@ -1,7 +1,7 @@
 @extends('Layouts.admin')
 
 @section('title')
-    Редактировать страницу услуг
+    Редактировать страницу услуг "{{$category->title_ru}}"
 @endsection
 
 @section('service_pages')
@@ -100,17 +100,20 @@
             <legend>Слайды (можно выбрать несколько)</legend>
             
             <input type="file" name="slides[]" multiple="multiple" />
+            @include('admin.page.rules')
           </fieldset>
           @if(count($category->slides) > 0)
       <div class="col-12">
         <h3>Слайды для этой страницы (<span id="slides_count">{{count($category->slides)}}</span>)</h3>
         <div class="row">
         @foreach($category->slides as $slide)
-          <div class="col-2 ajax_slides" data-slide="{{$slide->id}}">
-            <img src="{{asset('img/category_slider/'."$category->id/".$slide->src)}}" alt="" width="200">
+          <div class="col-2 ajax_slides" data-slide="{{$slide->id}}" style="position:relative">
+            <img src="{{asset('img/category_slider/'."$category->id/".$slide->src)}}" alt="{{$slide->alt}}" width="200" 
+            onclick="showAltForm(event, {{$slide->id}})" style="cursor:pointer">
             <i class="far fa-trash-alt" style="cursor:pointer;color:rgb(196, 3, 3);" onclick="(function() {
               if(confirm('Действительно удалить этот слайд?')) deleteSlide({{$slide->id}}, '{{csrf_token()}}')
             })();"></i>
+            <div class="alt_hint" style="">alt: {{$slide->alt}}</div>
           </div>
         @endforeach
         </div>
@@ -142,6 +145,9 @@
   document.addEventListener("DOMContentLoaded", function(e) {
     //document.querySelector('#var')
     document.addEventListener('click', function(e) {
+      if(e.target.id === 'alt_form_btn') {
+        sendAltForm()
+      }
       if(!e.target.classList.contains('title_var')) return
       let myField = e.target.previousElementSibling
       let myValue = e.target.textContent
@@ -170,6 +176,45 @@
     $("#imageFile").change(function() {
         readURL(this);
     });
+
+    function showAltForm(event, id) {
+      //console.log(event)
+      let body = document.querySelector('body')
+      let altForm = document.querySelector('#alt_form')
+      let alt = event.target.alt;
+      if(altForm) altForm.remove()
+      body.insertAdjacentHTML('beforeend', `
+        <div id="alt_form" data-id="${id}"
+        style="position:fixed;left:${event.clientX}px;top:${event.clientY}px;background:rgba(255,255,255,0.8);padding:20px;border-radius:6px">
+          <label>Пропишите alt для этого изображения</label> <br>
+          <input type="text" value="${alt ? alt : ''}" style="width:400px"> <br>
+          <button id="alt_form_btn" class="btn btn-success">Сохранить</button>
+          </div>
+      `)
+    }
+
+    function sendAltForm() {
+      let altForm = document.querySelector('#alt_form')
+      let altVal = altForm.querySelector('input').value
+      let slideId = altForm.dataset.id
+      //console.log(slideId)
+      //return
+      //console.log(altVal)
+      const headers = new Headers({
+          'Content-Type': 'application/json',
+        });
+      fetch(`/admin/category_slider/updateSliderAlt/${slideId}`, {
+        method: 'PATCH',
+        headers,
+        body: JSON.stringify({alt: altVal})
+    }).then(response => {
+      response.json()
+      document.querySelector(`.ajax_slides[data-slide="${slideId}"] img`).setAttribute('alt', altVal)
+      document.querySelector(`.ajax_slides[data-slide="${slideId}"] .alt_hint`).textContent = `alt: ${altVal}`
+      altForm.remove()
+    })
+      
+    }
 
 
     function deleteSlide(id, token) {

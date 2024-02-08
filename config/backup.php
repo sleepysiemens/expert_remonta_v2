@@ -18,7 +18,8 @@ return [
                  * The list of directories and files that will be included in the backup.
                  */
                 'include' => [
-                    //base_path(),
+                    base_path(),
+                    '/var/www/html2/public/img'
                 ],
 
                 /*
@@ -29,6 +30,8 @@ return [
                 'exclude' => [
                     base_path('vendor'),
                     base_path('node_modules'),
+                    base_path('storage/app/ExpertRemonta'),
+                    base_path('.git'),
                 ],
 
                 /*

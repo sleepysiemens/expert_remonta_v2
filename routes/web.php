@@ -23,7 +23,11 @@ use App\Mail\DemoEmail;
 
 /*Route::group(['middleware'=>'CacheResponse:60'], function ()
 {*/
-  Route::group(['middleware'=>'app'], function() {
+  // cache.headers:public;max_age=3600
+  // cache.headers:max_age=3600
+  // даже при cache.headers:public;max_age=31536000 гугл page speed показывает проблему кэширования, хз
+  // https://blog.jjdiaz.dev/boost-api-performance-with-http-caching-in-laravel
+  Route::group(['middleware'=>['app', 'cache.headers:max_age=3600']], function() {
     Route::get('/', 'MainController@index')->name('main.index');
     Route::get('/uslugi/', 'UslugiController@index')->name('uslugi.index');
     Route::get('/price/', 'PriceController@index')->name('price.index');
@@ -41,14 +45,38 @@ use App\Mail\DemoEmail;
     Route::get('/vacancy/{vacancy}', 'VacancyController@show')->name('vacancy.show');
     Route::get('/vacancies/category/{vacancyCategory}', 'VacancyController@showCategory')->name('vacancy.category');
     Route::get('/geo', function () {
+      //dd(\App\Models\Category::all());
+      //dd(\App\Models\CategoryImage::where(['category_id' => 1])->first());
         //dd(\App\Models\Application::all());
-        /*foreach(\App\Models\Sale::all() as $item) {
-            if(file_exists(public_path() . '/img/sales/x-360-' . $item->src)) {
-                deleteImgCrops('sales', $item->src);
-                //continue;
+        $extensions = [];
+        /*foreach(scandir(public_path() . '/img/category_slider') as $idx => $path) {
+          if($idx < 2) continue;
+          $folder = scandir(public_path() . "/img/category_slider/$path");
+          foreach($folder as $i => $file) {
+            if($i < 2) continue;
+            preg_match('/\.[a-z]{1,6}$/', $file, $matches);
+            $extensions[] = $matches[0];
+          }
+        }*/
+        //dd(array_unique($extensions));
+        //dd(array_count_values($extensions));
+        // проблемы с отсутствием кропов только для отсутствующих в плане заливки картинок, гифок (2) и слишком маленьких изначально, меньше 400 пикс
+        /*$notExist = [];
+        foreach(\App\Models\CategoryImage::all() as $idx => $item) {
+          if(!file_exists(public_path() . "/img/category_slider/$item->category_id/x-360-" . transformCropExtension($item->src))) {
+            $notExist[] = ['item_id' => $item->id, 'item_src' => $item->src, 'category_id' => $item->category_id];
+          }
+          continue;
+            if(file_exists(public_path() . "/img/category_slider/$item->category_id/x-360-" . transformCropExtension($item->src))) {
+                //deleteImgCrops("category_slider/$item->category_id", $item->src);
+                continue;
             }
-            \App\Events\ImageUploaded::dispatch(public_path() . '/img/sales/', $item->src);
-        }  */ 
+            if(file_exists(public_path() . "/img/category_slider/$item->category_id/" . $item->src)) {
+              \App\Events\ImageUploaded::dispatch(public_path() . "/img/category_slider/$item->category_id/", $item->src);
+            }
+            if($idx > 450) break;
+        }
+        dd($notExist);*/
         //dd(\App\Models\Service::all());
         /*foreach(Cache::get('services') as $s) {
             $new = $s->replicate();
@@ -162,6 +190,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin/', 'middleware'=>'admin
     Route::group(['namespace' => 'Page', 'prefix' => 'page'], function()
     {
         Route::get('/', 'IndexController@index')->name('admin.page.index');
+        Route::get('/unlink', 'IndexController@unlink')->name('admin.page.unlink');
         Route::get('/create', 'IndexController@create')->name('admin.page.create');
         Route::post('', 'IndexController@store')->name('admin.page.store');
         Route::get('/{category}', 'IndexController@show')->name('admin.page.show');
@@ -197,6 +226,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin/', 'middleware'=>'admin
         Route::post('', 'StoreController@index')->name('admin.category_slider.store');
         Route::get('/{category_slider}/edit', 'EditController@index')->name('admin.category_slider.edit');
         Route::patch('/{category_slider}', 'UpdateController@index')->name('admin.category_slider.update');
+        Route::patch('/updateSliderAlt/{category_slider}', 'UpdateController@alt')->name('admin.category_slider.update_alt');
         Route::delete('/{category_slider}', 'DestroyController@index')->name('admin.category_slider.destroy');
     });
 

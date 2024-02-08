@@ -47,11 +47,10 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Название, ru</th>
-                <th>Название, kz</th>
-                <th>Url</th>
-                <th>Описание, ru</th>
-                <th>Описание, kz</th>
+                <th>Название, ru/kz</th>
+                {{--<th>Url</th>--}}
+                {{--<th>Описание, ru</th>
+                <th>Описание, kz</th>--}}
                 <th>Обложка</th>
               <th>Относится к</th>
               <th>SEO инфа</th>
@@ -63,16 +62,16 @@
 
                 <tr>
                   <td>{{$category->id}}</td>
-                  <td>{{$category->title_ru}}</td>
-                  <td>{{$category->title_kz}}</td>
-                  <td>{{$category->url}}</td>
-                  <td>{!! $category->description_ru !!}</td>
-                  <td>{!! $category->description_kz !!}</td>
+                  <td>{{$category->title_ru}}/{{$category->title_kz}}</td>
+                  {{--<td>{{$category->url}}</td>--}}
+                  {{--<td>{!! $category->description_ru !!}</td>
+                  <td>{!! $category->description_kz !!}</td>--}}
                     <td><img src="{{asset('img/categories/'.$category->src)}}" style="height: 150px; width: 150px; object-fit: contain"></td>
                   @foreach ($service as $service1)
-                  <td><a href="{{route('admin.service.show',$service1->id)}}">{{$service1->title}}</a></td>
+                  <td><a href="{{route('admin.service.show',$service1->id)}}">{{$service1->title_ru}}</a></td>
                   @endforeach
                   <td>
+                    URL: {{$category->url}}
                     Title RU: {{$category->seo_title_ru}} <br>
                     Title KZ: {{$category->seo_title_kz}} <br>
                     Мета описание RU: {{$category->meta_desc_ru}} <br>
@@ -86,6 +85,9 @@
         </tbody>
       </table>
     </div>
+
+    <div class="col-12"><h3>Описание RU</h3>{!! $category->description_ru !!}</div>
+    <div class="col-12"><h3>Описание KZ</h3>{!! $category->description_kz !!}</div>
     <!-- /.col -->
     @if(count($category->slides) > 0)
       <div class="col-12">
