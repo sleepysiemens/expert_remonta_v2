@@ -22,7 +22,8 @@ class IndexController extends Controller
         $services=Service::all();
         $categories=Category::all();
         $sales=sale::all();
-        $applications=application::all();
+        $applications=application::with('sale')->with('vacancy')->get();
+        //dd($applications[2]->vacancy);
 
         return view('admin.application.index', compact(['reviews', 'questions', 'services', 'categories', 'sales', 'applications']));
     }

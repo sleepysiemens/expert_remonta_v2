@@ -25,8 +25,8 @@ use App\Mail\DemoEmail;
   // cache.headers:max_age=3600
   // даже при cache.headers:public;max_age=31536000 гугл page speed показывает проблему кэширования, хз
   // https://blog.jjdiaz.dev/boost-api-performance-with-http-caching-in-laravel
-  // 'cacheResponse:60' - spatie response cache
-  Route::group(['middleware'=>['app', 'cache.headers:max_age=3600', 'cacheResponse:86400']], function() {
+  // 'cacheResponse:86400' - spatie response cache
+  Route::group(['middleware'=>['app', 'cache.headers:max_age=3600']], function() {
     Route::get('/', 'MainController@index')->name('main.index');//->middleware('page-cache');
     Route::get('/uslugi/', 'UslugiController@index')->name('uslugi.index');
     Route::get('/price/', 'PriceController@index')->name('price.index');

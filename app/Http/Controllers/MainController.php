@@ -112,7 +112,6 @@ class MainController extends Controller
         //dd($data);
         //Application::create($req->except('_token'));
         //$application = Application::create($req->all());
-        $application = Application::create($data);
 
         // здесь post запрос в crm
         /*Http::withHeaders([
@@ -139,11 +138,13 @@ class MainController extends Controller
             if($req->vacancy_id) $vacancyId = $req->vacancy_id;
             $vacancy = \App\Models\Vacancy::where(['id' => $vacancyId])->first();
             $objDemo->title = 'Новая заявка на вакансию ' . $vacancy->title_ru;
+            $data['vacancy_id'] = $vacancy->id;
           }
           else {
             $pageUrl = explode('/', $path)[2];
             $vacancy = \App\Models\Vacancy::where(['url' => $pageUrl])->first();
             $objDemo->title = 'Новая заявка на вакансию ' . $vacancy->title_ru;
+            $data['vacancy_id'] = $vacancy->id;
           }
           $objDemo->vacancy = $vacancy;
         }
@@ -153,7 +154,10 @@ class MainController extends Controller
           $sale = \App\Models\Sale::find($saleId);
           $objDemo->title = 'Новая заявка на акцию ' . $sale->title_ru;
           $objDemo->sale = $sale;
+          $data['sale_id'] = $sale->id;
         }
+
+        $application = Application::create($data);
 
         $objDemo->date = $application->date;
         if(in_array($formTypeId, [2, 3])) {

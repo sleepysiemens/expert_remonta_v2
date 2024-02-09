@@ -25,6 +25,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return redirect()->route('admin.gallery.index');
+        return redirect()->route('admin.page.index');
     }
 }

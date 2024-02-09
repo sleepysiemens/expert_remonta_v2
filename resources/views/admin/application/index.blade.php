@@ -22,8 +22,9 @@
             <th>Город</th>
             <th>Источник</th>
             <th>Тип заявки</th>
-            <th>Email</th>
-            <th>Файл с резюме</th>
+            <th>Доп инфа</th>
+            {{--<th>Email</th>
+            <th>Файл с резюме</th>--}}
             <th></th>
           </tr>
       </thead>
@@ -39,8 +40,23 @@
                 <td>{{$application->city}}</td>
                 <td>{{$application->sourse}}</td>
                 <td>{{\App\Models\FormType::getFormTypeIdAndName($application->sourse)}}</td>
-                <td>{{$application->email}}</td>
-                <td>{{--{{$application->resume_file}}--}}
+                <td>
+                  @if($application->email)Email: {{$application->email}} <br>@endif
+                  @if($application->resume_file)
+                  Файл с резюме:
+                  <form method="post" action="{{route('admin.vacancy.getResume',$application->id)}}">
+                    @csrf
+                    <button style="border: none; background-color: transparent; color: rgb(12, 64, 220)" onclick="(function() {
+                      if(!confirm('Действительно скачать файл с резюме?')) event.preventDefault();
+                    })();">Скачать <i class="fas fa-download"></i></button>
+                  </form> <br>
+                  @endif
+                  @if($application->sale) Скидка: {{$application->sale->title_ru}} <br> @endif
+                  @if($application->vacancy) 
+                    Вакансия: <a href="{{route('vacancy.show', ['vacancy' => $application->vacancy->url])}}">{{$application->vacancy->name}}</a> <br> 
+                  @endif
+                </td>
+                {{--<td>
                   @if($application->resume_file)
                   <form method="post" action="{{route('admin.vacancy.getResume',$application->id)}}">
                     @csrf
@@ -49,7 +65,7 @@
                     })();">Скачать <i class="fas fa-download"></i></button>
                   </form>
                   @endif
-                </td>
+                </td>--}}
                 <td>
                   <form method="post" action="{{route('admin.application.destroy',$application->id)}}">
                     @csrf
