@@ -39,6 +39,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            //\Spatie\ResponseCache\Middlewares\CacheResponse::class,
         ],
 
         'api' => [
@@ -70,5 +71,8 @@ class Kernel extends HttpKernel
         'admin'=> AdminPannelMiddleware::class,
         'redactor'=> RedactorMiddleware::class,
         'app'=> AppMiddleware::class,
+        'doNotCacheResponse' => \Spatie\ResponseCache\Middlewares\DoNotCacheResponse::class,
+        'cacheResponse' => \Spatie\ResponseCache\Middlewares\CacheResponse::class,
+        'page-cache' => \Silber\PageCache\Middleware\CacheResponse::class,
     ];
 }

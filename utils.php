@@ -1,24 +1,10 @@
 <?php
 
-function deleteImgWithCrops($folder, $fileName) {
-  @unlink(dirname(__FILE__) . "/public/img/$folder/" . $fileName);
-  $resizesBreakpoints = [768, 600, 450, 360];
-  foreach($resizesBreakpoints as $b) {
-    @unlink(dirname(__FILE__) . "/public/img/$folder/x-$b-" . $fileName);
-  }
-}
+require_once __DIR__.'/app/Utils/files.php';
 
-function deleteImgCrops($folder, $fileName) {
-  $resizesBreakpoints = [768, 600, 450, 360];
-  foreach($resizesBreakpoints as $b) {
-    @unlink(dirname(__FILE__) . "/public/img/$folder/x-$b-" . $fileName);
-  }
-}
-
-function transformCropExtension($fileName) {
-  preg_match('/\.([a-z]{1,6})$/', $fileName, $matches);
-  if(in_array($matches[1], ['png', 'gif'])) $fileName = preg_replace('/\.[a-z]{1,6}$/', '.jpg', $fileName);
-  return $fileName;
+// функция для получения ресурса, который разделяется между двумя поддоменами
+function getCommonResource($url) {
+  return env('APP_CITY') === 'Астана' ? $url : "http://astana.expertremonta.kz" . $url;
 }
 
 function processTitle($title, $city) {
@@ -41,31 +27,9 @@ function getBlockClass($idx) {
     if($idx % 4 === 0) return 'yellow';
 }
 
-function deleteDirectory($dirPath) {
-  if (is_dir($dirPath)) {
-      $objects = scandir($dirPath);
-      foreach ($objects as $object) {
-          if ($object != "." && $object !="..") {
-              if (filetype($dirPath . DIRECTORY_SEPARATOR . $object) == "dir") {
-                  deleteDirectory($dirPath . DIRECTORY_SEPARATOR . $object);
-              } else {
-                  unlink($dirPath . DIRECTORY_SEPARATOR . $object);
-              }
-          }
-      }
-  reset($objects);
-  rmdir($dirPath);
-  }
-}
-
 function cityEnToRu($city) {
   if($city === 'Astana') return 'Астана';
   if($city === 'Almaty') return 'Алматы';
-}
-
-// функция для получения ресурса, который разделяется между двумя поддоменами
-function getCommonResource($url) {
-  return env('APP_CITY') === 'Астана' ? $url : "http://astana.expertremonta.kz" . $url;
 }
 
 function translit($text) {

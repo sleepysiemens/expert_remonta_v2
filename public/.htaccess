@@ -14,6 +14,33 @@
     RewriteCond %{REQUEST_URI} (.+)/$
     RewriteRule ^ %1 [L,R=301]
 
+    # Serve Cached Page If Available...
+    #RewriteCond %{REQUEST_URI} ^/?$
+    #RewriteCond %{DOCUMENT_ROOT}/page-cache/pc__index__pc.html -f
+    #RewriteRule .? page-cache/pc__index__pc.html [L]
+    #RewriteCond %{DOCUMENT_ROOT}/page-cache%{REQUEST_URI}.html -f
+    #RewriteRule . page-cache%{REQUEST_URI}.html [L]
+    #RewriteCond %{DOCUMENT_ROOT}/page-cache%{REQUEST_URI}.json -f
+    #RewriteRule . page-cache%{REQUEST_URI}.json [L]
+    #RewriteCond %{DOCUMENT_ROOT}/page-cache%{REQUEST_URI}.xml -f
+    #RewriteRule . page-cache%{REQUEST_URI}.xml [L]
+
+    #FileETag MTime Size
+    <IfModule mod_expires.c>
+      # Enable expirations.
+      ExpiresActive On
+
+      # Cache all files for 2 weeks after access (A).
+      ExpiresDefault A1209600
+
+      <FilesMatch \.php$>
+        # Do not allow PHP scripts to be cached unless they explicitly send cache
+        # headers themselves. Otherwise all scripts would have to overwrite the
+        # headers set by mod_expires if they want another caching behavior.
+        ExpiresActive Off
+      </FilesMatch>
+    </IfModule>
+
     # Send Requests To Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f

@@ -21,14 +21,13 @@ use App\Mail\DemoEmail;
 |
 */
 
-/*Route::group(['middleware'=>'CacheResponse:60'], function ()
-{*/
   // cache.headers:public;max_age=3600
   // cache.headers:max_age=3600
   // даже при cache.headers:public;max_age=31536000 гугл page speed показывает проблему кэширования, хз
   // https://blog.jjdiaz.dev/boost-api-performance-with-http-caching-in-laravel
-  Route::group(['middleware'=>['app', 'cache.headers:max_age=3600']], function() {
-    Route::get('/', 'MainController@index')->name('main.index');
+  // 'cacheResponse:60' - spatie response cache
+  Route::group(['middleware'=>['app', 'cache.headers:max_age=3600', 'cacheResponse:86400']], function() {
+    Route::get('/', 'MainController@index')->name('main.index');//->middleware('page-cache');
     Route::get('/uslugi/', 'UslugiController@index')->name('uslugi.index');
     Route::get('/price/', 'PriceController@index')->name('price.index');
     Route::get('/gallery/', 'GalleryController@index')->name('gallery.index');
@@ -40,68 +39,37 @@ use App\Mail\DemoEmail;
     Route::get('/franchise/', 'MainController@franchise')->name('main.franchise');
     Route::get('/vacancies-office/', 'MainController@vacanciesLanding')->name('main.vacanciesLanding');
     Route::get('/vacancies-objects/', 'MainController@vacanciesLanding2')->name('main.vacanciesLanding2');
-    Route::get('/vacancies/', 'VacancyController@index')->name('vacancy.index');
-    Route::get('/vacancies/filter/', 'VacancyController@filter')->name('vacancy.filter');
+    Route::get('/vacancies/', 'VacancyController@index')->name('vacancy.index')->middleware('doNotCacheResponse');
+    Route::get('/vacancies/filter/', 'VacancyController@filter')->name('vacancy.filter')->middleware('doNotCacheResponse');
     Route::get('/vacancy/{vacancy}', 'VacancyController@show')->name('vacancy.show');
     Route::get('/vacancies/category/{vacancyCategory}', 'VacancyController@showCategory')->name('vacancy.category');
-    Route::get('/geo', function () {
-      //dd(\App\Models\Category::all());
-      //dd(\App\Models\CategoryImage::where(['category_id' => 1])->first());
-        //dd(\App\Models\Application::all());
-        $extensions = [];
-        /*foreach(scandir(public_path() . '/img/category_slider') as $idx => $path) {
-          if($idx < 2) continue;
-          $folder = scandir(public_path() . "/img/category_slider/$path");
-          foreach($folder as $i => $file) {
-            if($i < 2) continue;
-            preg_match('/\.[a-z]{1,6}$/', $file, $matches);
-            $extensions[] = $matches[0];
-          }
-        }*/
-        //dd(array_unique($extensions));
-        //dd(array_count_values($extensions));
-        // проблемы с отсутствием кропов только для отсутствующих в плане заливки картинок, гифок (2) и слишком маленьких изначально, меньше 400 пикс
-        /*$notExist = [];
-        foreach(\App\Models\CategoryImage::all() as $idx => $item) {
-          if(!file_exists(public_path() . "/img/category_slider/$item->category_id/x-360-" . transformCropExtension($item->src))) {
-            $notExist[] = ['item_id' => $item->id, 'item_src' => $item->src, 'category_id' => $item->category_id];
-          }
-          continue;
-            if(file_exists(public_path() . "/img/category_slider/$item->category_id/x-360-" . transformCropExtension($item->src))) {
-                //deleteImgCrops("category_slider/$item->category_id", $item->src);
-                continue;
-            }
-            if(file_exists(public_path() . "/img/category_slider/$item->category_id/" . $item->src)) {
-              \App\Events\ImageUploaded::dispatch(public_path() . "/img/category_slider/$item->category_id/", $item->src);
-            }
-            if($idx > 450) break;
-        }
-        dd($notExist);*/
-        //dd(\App\Models\Service::all());
-        /*foreach(Cache::get('services') as $s) {
-            $new = $s->replicate();
-            $new->save();
-        }
-        dd(\App\Models\Service::all());
-        dd(Cache::get('services'));*/
-        //Cache::add('key', '123', now()->addHours(4));
-        //Cache::add('services', \App\Models\Service::all(), now()->addHours(4));
+    Route::get('/geo', function () {  
+      //dd(\App\Models\category::all());
+      //dd(scandir(public_path() . '/img'));
+      //dd(\App\Models\Application::all());             
      
-      $location = Location::get($_SERVER['REMOTE_ADDR']);
-      return "
-        Данные модуля местоположения <br>
-        Ваша страна: $location->countryName <br>
-        Ваш город: $location->cityName
-      ";
+      //$location = Location::get($_SERVER['REMOTE_ADDR']);
+      //return "Данные модуля местоположения <br> Ваша страна: $location->countryName <br> Ваш город: $location->cityName";
     });
+    // Make sure this route doesn't use the page-cache middleware
+    // https://github.com/JosephSilber/page-cache/issues/7 возможное решение проблемы с csrf
+    /*Route::get('csrf', function () {
+      // заодно тут и сессию можно получить, да?
+      return json_encode(csrf_token());
+    });*/
   });
-    //});
 
 
 //ADMIN
 //Route::resource('admin/menu', MenuController::class);
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin/', 'middleware'=>'admin'], function()
 {
+
+  Route::group(['prefix' => 'settings', 'name' => 'admin.settings.', 'middleware' => 'redactor'], function()
+    {
+      Route::get('/', 'SettingsController@index')->name('admin.settings.index');
+      Route::get('/reset', 'SettingsController@resetCache')->name('admin.settings.cache.reset');
+    });
 
   Route::group(['namespace' => 'Vacancy', 'prefix' => 'vacancy', 'name' => 'admin.vacancy.', 'middleware' => 'redactor'], function()
     {

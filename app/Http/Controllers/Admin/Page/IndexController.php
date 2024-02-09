@@ -99,7 +99,7 @@ class IndexController extends Controller
         $name= Str::random(8) . "_" . $file->hashName();
         //$file->move(public_path() . '/img/categories/',request()->title.'-image.img');
         $file->move(public_path() . '/img/categories/', $name);
-        \App\Events\ImageUploaded::dispatch(public_path() . '/img/categories/', $name);
+        \App\Events\ImageUploaded::dispatch(public_path() . '/img/categories/', $name, [768]);
         unset($data['src']);
         //$data['src']=request()->title.'-image.img';
         $data['src'] = $name;
@@ -114,7 +114,7 @@ class IndexController extends Controller
               $file = $req->file("slides")[$idx];
               $name = Str::random(8) . "_" . $file->hashName();
               $file->move(public_path() . '/img/category_slider/'.$cat->id, $name);
-              \App\Events\ImageUploaded::dispatch(public_path() . '/img/category_slider/'.$cat->id.'/', $name);
+              \App\Events\ImageUploaded::dispatch(public_path() . '/img/category_slider/'.$cat->id.'/', $name, [768]);
               CategoryImage::create(['src' => $name, 'category_id' => $cat->id]);
             }
           }
@@ -151,7 +151,7 @@ class IndexController extends Controller
             $file = request()->file('src');
             $name= Str::random(8) . "_" . $file->hashName();
             $file->move(public_path() . '/img/categories/', $name);
-            \App\Events\ImageUploaded::dispatch(public_path() . '/img/categories/', $name);
+            \App\Events\ImageUploaded::dispatch(public_path() . '/img/categories/', $name, [768]);
             unset($data['src']);
             //$data['src']=request()->title.'-image.img';
             $data['src'] = $name;
@@ -167,7 +167,7 @@ class IndexController extends Controller
             $file = $req->file("slides")[$idx];
             $name = Str::random(8) . "_" . $file->hashName();
             $file->move(public_path() . '/img/category_slider/'.$category->id, $name);
-            \App\Events\ImageUploaded::dispatch(public_path() . '/img/category_slider/'.$category->id.'/', $name);
+            \App\Events\ImageUploaded::dispatch(public_path() . '/img/category_slider/'.$category->id.'/', $name, [768]);
             CategoryImage::create(['src' => $name, 'category_id' => $category->id]);
           }
         }
@@ -179,6 +179,7 @@ class IndexController extends Controller
     public function destroy(Category $category)
     {
       //Storage::deleteDirectory(public_path() . '/img/category_slider/'.$category->id);
+      deleteImgWithCrops("categories", $category->src);
       deleteDirectory(dirname(__FILE__) . "/../../../../../public/img/category_slider/" . $category->id);
       //dd('ok');
       //$seo = Seo::where('page','=','uslugi/'.$category->service->url.'/'.$category->url)->first();

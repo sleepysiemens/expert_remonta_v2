@@ -194,6 +194,17 @@
 </script>
 @stack('vacancies_script')
 @stack('customScripts')
+{{-- скрипт для подстановки csrf токенов в кэшированые страницы
+<script>
+  let tokens = document.querySelectorAll('input[name="_token"]')
+  fetch('/csrf')
+  .then(response => response.json())
+  .then(csrf => {
+    tokens.forEach((token, idx) => {
+      tokens[idx].value = csrf
+    })
+  });
+</script>--}}
 {!!$code->body_code!!}
 </body>
 </html>

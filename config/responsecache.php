@@ -4,7 +4,7 @@ return [
     /*
      * Determine if the response cache middleware should be enabled.
      */
-    'enabled' => env('RESPONSE_CACHE_ENABLED', false),
+    'enabled' => env('RESPONSE_CACHE_ENABLED', true),
 
     /*
      *  The given class will determinate if a request should be cached. The
@@ -91,6 +91,4 @@ return [
      * This class is responsible for serializing responses.
      */
     'serializer' => \Spatie\ResponseCache\Serializers\DefaultSerializer::class,
-
-    'cache_lifetime_in_minutes' => 60, // Кешировать страницы на 60 минут
 ];

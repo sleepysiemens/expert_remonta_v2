@@ -43,6 +43,28 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
+      @if(auth()->user()->role == 'admin')
+      <li class="nav-item">
+        <a href="{{ route('admin.counter.index') }}" class="nav-link">
+          <i class="nav-icon fas fa-chart-bar"></i> Счетчики
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="{{ route('admin.formtype.index') }}" class="nav-link">
+          <i class="nav-icon fas fa-envelope"></i> Формы
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="{{ route('admin.settings.index') }}" class="nav-link">
+          <i class="nav-icon fas fa-cog"></i> Настройки
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="{{ route('admin.settings.cache.reset') }}" class="nav-link">
+          <i class="nav-icon fas fa-database"></i> Очистить кэш
+        </a>
+      </li>
+      @endif
     </ul>
 
     <!-- Right navbar links -->
@@ -95,7 +117,18 @@
             @if(session('msg'))
               <div class="mt-2">
                 @if(session('msg'))
-                  <div class="success_msg">{{ session('msg') }}</div>
+                  <div class="success_msg" style="position: fixed;
+                  top: 0;
+                  left: 0;
+                  font-size: 20px;
+                  width: 100%;
+                  text-align: center;
+                  background: #17a2b8;
+                  padding: 5px 0;
+                  transition: all .35s;
+                  opacity: 1;
+                  z-index: 999999;
+                  color: #fff;">{{ session('msg') }}</div>
                 @endif
               </div>
           @endif
@@ -166,6 +199,18 @@
 <script src="{{asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.js')}}"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", e => {
+    let success_msg = document.querySelector('.success_msg')
+    if(!success_msg) return
+    //success_msg.classList.add('active');
+    setTimeout(() => {
+      //success_msg.style.opacity = 0;
+      success_msg.style.display = 'none';
+    }, 3000);
+  });
+</script>
 
   <script>
     $(document).ready(function() {
@@ -274,6 +319,8 @@
       );
   });
 </script>
+
+
 
 </body>
 </html>

@@ -17,10 +17,11 @@ class ImageUploaded
     /**
      * Create a new event instance.
      */
-    public function __construct($folder, $fileName)
+    public function __construct($folder, $fileName, $breakpoints = [768, 600, 450, 360])
     {
         $this->folder = $folder;
         $this->fileName = $fileName;
+        $this->breakpoints = $breakpoints;
     }
 
     /**

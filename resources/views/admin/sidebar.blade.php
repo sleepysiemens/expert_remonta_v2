@@ -251,6 +251,15 @@
               </a>
           </li>
 
+          <li class="nav-item">
+            <a href="{{ route('admin.settings.index') }}" class="nav-link @yield('settings')">
+                <i class="nav-icon fas fa-cog"></i>
+                <p>
+                    Настройки
+                </p>
+            </a>
+        </li>
+
           </li>
 
         </ul>
