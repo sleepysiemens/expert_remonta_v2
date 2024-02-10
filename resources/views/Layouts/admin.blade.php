@@ -200,7 +200,7 @@
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.js')}}"></script>
 
-<script>
+{{--<script>
   document.addEventListener("DOMContentLoaded", e => {
     let success_msg = document.querySelector('.success_msg')
     if(!success_msg) return
@@ -210,7 +210,7 @@
       success_msg.style.display = 'none';
     }, 3000);
   });
-</script>
+</script>--}}
 
   <script>
     $(document).ready(function() {
