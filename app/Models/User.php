@@ -12,6 +12,10 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function getTable()  {
+        return env('APP_CITY') === 'Астана' ? 'users' : 'users_almaty';
+    }
+
     /**
      * The attributes that are mass assignable.
      *
