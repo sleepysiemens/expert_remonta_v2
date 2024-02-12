@@ -22,6 +22,14 @@
       </a>
     @endif
   </div>
+  <br>
+  <p>Поскольку вы находитесь на домене {{request()->getHttpHost()}} то вы видите
+  только заявки, относящиеся к городу {{env('APP_CITY')}} + любые заявки на франшизу.
+    Для просмотра заявок для города {{env('APP_CITY_OPPOSITE')}} перейдите по ссылке
+    <a href="https://{{$oppositeDomain . $_SERVER['REQUEST_URI']}}" target="_blank">
+      {{$oppositeDomain . $_SERVER['REQUEST_URI']}}
+    </a>
+</p>
 </div>
 
 <div class="row">

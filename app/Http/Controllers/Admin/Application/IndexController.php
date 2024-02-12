@@ -25,7 +25,11 @@ class IndexController extends Controller
         $applications=application::with('sale')->with('vacancy')->filtered()->latest()->get();
         //dd($applications[2]->vacancy);
 
-        return view('admin.application.index', compact(['reviews', 'questions', 'services', 'categories', 'sales', 'applications']));
+        //dd(request()->getHttpHost());
+        $oppositeDomain = 'expertremonta.kz';
+        if(env('APP_CITY') === 'Алматы') $oppositeDomain = 'astana.expertremonta.kz';
+
+        return view('admin.application.index', compact(['oppositeDomain', 'reviews', 'questions', 'services', 'categories', 'sales', 'applications']));
     }
 
     public function archive(Application $application)

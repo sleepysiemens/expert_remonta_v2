@@ -22,6 +22,8 @@ class Application extends Model
     {
       if(request()->query('archive')) $query->where(['active' => false]);
       else $query->where(['active' => true]);
+
+      $query->whereNotIn('city', [env('APP_CITY_OPPOSITE'), env('APP_CITY_OPPOSITE_EN')]);
     }
 
     public function sale(): BelongsTo
