@@ -325,6 +325,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin/', 'middleware'=>'admin
     Route::group(['namespace' => 'Application', 'prefix' => 'application', 'middleware' => 'redactor'], function()
     {
         Route::get('/', 'IndexController@index')->name('admin.application.index');
+        Route::post('/{application}', 'IndexController@archive')->name('admin.application.archive');
         Route::get('/{application}', 'ShowController@index')->name('admin.application.show');
         Route::delete('/{application}', 'DestroyController@index')->name('admin.application.destroy');
     });

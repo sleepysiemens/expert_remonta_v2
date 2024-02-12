@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Jenssegers\Date\Date;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Builder;
 
 class Application extends Model
 {
@@ -15,6 +16,12 @@ class Application extends Model
     public function getDateAttribute() {
         $date = new Date($this->created_at);
         return $date->format("d F Y H:i");
+    }
+
+    public function scopeFiltered(Builder $query): void
+    {
+      if(request()->query('archive')) $query->where(['active' => false]);
+      else $query->where(['active' => true]);
     }
 
     public function sale(): BelongsTo

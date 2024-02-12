@@ -22,9 +22,16 @@ class IndexController extends Controller
         $services=Service::all();
         $categories=Category::all();
         $sales=sale::all();
-        $applications=application::with('sale')->with('vacancy')->get();
+        $applications=application::with('sale')->with('vacancy')->filtered()->latest()->get();
         //dd($applications[2]->vacancy);
 
         return view('admin.application.index', compact(['reviews', 'questions', 'services', 'categories', 'sales', 'applications']));
+    }
+
+    public function archive(Application $application)
+    {
+        $application->active = false;
+        $application->update();
+        return redirect()->route('admin.application.index')->with('msg', 'Заявка отправлена в архив');
     }
 }

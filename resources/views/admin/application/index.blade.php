@@ -11,6 +11,20 @@
 @section('content')
 
 <div class="row">
+  <div class="col-12">
+    @if(!request()->query('archive'))
+      <a href="{{route('admin.application.index', ['archive' => 1])}}" class="btn btn-info">
+        <i class="fas fa-box"></i> Архив
+      </a>
+    @else
+      <a href="{{route('admin.application.index')}}" class="btn btn-info">
+        <i class="fas fa-list"></i> Вернуться к неархивным заявкам
+      </a>
+    @endif
+  </div>
+</div>
+
+<div class="row">
   <div class="col-12 table-responsive">
     <table class="table table-striped">
       <thead>
@@ -34,11 +48,12 @@
 
               <tr>
                 <td>{{$application->id}}</td>
-                <td>{{$application->created_at}}</td>
+                {{--<td>{{$application->created_at}}</td>--}}
+                <td>{{$application->date}}</td>
                 <td>{{$application->name}}</td>
                 <td>{{$application->phone}}</td>
                 <td>{{$application->city}}</td>
-                <td>{{$application->sourse}}</td>
+                <td style="word-break: break-all;max-width:200px">{{$application->sourse}}</td>
                 <td>{{\App\Models\FormType::getFormTypeIdAndName($application->sourse)}}</td>
                 <td>
                   @if($application->email)Email: {{$application->email}} <br>@endif
@@ -56,21 +71,19 @@
                     Вакансия: <a href="{{route('vacancy.show', ['vacancy' => $application->vacancy->url])}}">{{$application->vacancy->name}}</a> <br> 
                   @endif
                 </td>
-                {{--<td>
-                  @if($application->resume_file)
-                  <form method="post" action="{{route('admin.vacancy.getResume',$application->id)}}">
+                <td>
+                  <form method="post" action="{{route('admin.application.archive',$application->id)}}">
                     @csrf
                     <button style="border: none; background-color: transparent; color: rgb(12, 64, 220)" onclick="(function() {
-                      if(!confirm('Действительно скачать файл с резюме?')) event.preventDefault();
-                    })();">Скачать <i class="fas fa-download"></i></button>
+                      if(!confirm('Действительно перенести заявку в архив?')) event.preventDefault();
+                    })();">В архив <i class="fas fa-archive"></i></button>
                   </form>
-                  @endif
-                </td>--}}
-                <td>
                   <form method="post" action="{{route('admin.application.destroy',$application->id)}}">
                     @csrf
                     @method('delete')
-                    <button style="border: none; background-color: transparent; color: rgb(196, 3, 3)"><i class="far fa-trash-alt"></i></button>
+                    <button style="border: none; background-color: transparent; color: rgb(196, 3, 3)" onclick="(function() {
+                      if(!confirm('Действительно удалить заявку?')) event.preventDefault();
+                    })();"><i class="far fa-trash-alt"></i></button>
                   </form>
                 </td>
               </tr>
