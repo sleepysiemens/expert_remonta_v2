@@ -8,6 +8,7 @@ use Stevebauman\Location\Facades\Location;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Artisan;
 use App\Mail\DemoEmail;
 
 /*
@@ -44,6 +45,11 @@ use App\Mail\DemoEmail;
     Route::get('/vacancy/{vacancy}', 'VacancyController@show')->name('vacancy.show');
     Route::get('/vacancies/category/{vacancyCategory}', 'VacancyController@showCategory')->name('vacancy.category');
     Route::get('/geo', function () {  
+        // оптимизация
+        //Artisan::call('config:cache');
+        //Artisan::call('event:cache');
+        //Artisan::call('route:cache');
+        //Artisan::call('view:cache');
       //dd(\App\Models\category::all());
       //dd(scandir(public_path() . '/img'));
       //dd(\App\Models\Application::all());             
