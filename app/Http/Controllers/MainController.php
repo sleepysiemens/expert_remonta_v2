@@ -169,7 +169,8 @@ class MainController extends Controller
         if($req->vacancy_url) $objDemo->url = $req->vacancy_url;
 
         $formType = FormType::where(['id' => $formTypeId])->first();
-        $emails = preg_split("/\r\n|\n|\r/", $formType->emails);
+        $emails = env('APP_CITY') === 'Астана' ? $formType->emails : $formType->emails_almaty;
+        $emails = preg_split("/\r\n|\n|\r/", $emails);
         //dd($emails);
 
         foreach($emails as $email) {
