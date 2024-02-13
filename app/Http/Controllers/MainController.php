@@ -175,6 +175,7 @@ class MainController extends Controller
         foreach($emails as $email) {
           Mail::to($email)->send(new FormEmail($objDemo));
         }
+        //$tg->sendMessage(1, (string)view('tg.form'));
 
         // уведомление о заявке в телеграм, допустим
         $path = parse_url($_SERVER['HTTP_REFERER'])['path'];

@@ -8,7 +8,7 @@ use App\Models\Sale;
 use Spatie\Sitemap\SitemapGenerator;
 use Illuminate\Support\Facades\Log;
 
-class AutoResize extends Command
+class GenSitemap extends Command
 {
     /**
      * The name and signature of the console command.

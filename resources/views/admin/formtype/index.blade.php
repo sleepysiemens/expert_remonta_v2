@@ -30,7 +30,9 @@
                     <td>
                       {{$t->name}}
                     </td>
-                    <td>{!!nl2br($t->emails)!!}</td>
+                    @if(env('APP_CITY') === 'Астана')<td>{!!nl2br($t->emails)!!}</td>
+                    @else <td>{!!nl2br($t->emails_almaty)!!}</td>
+                    @endif
                     <td><a href="{{route('admin.formtype.edit',$t->id)}}"><i class="fas fa-pen"></i></a></td>
                 </tr>
 

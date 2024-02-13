@@ -10,6 +10,10 @@ class FormType extends Model
     use HasFactory;
     protected $guarded=[];
 
+    /*public function getTable()  {
+        return env('APP_CITY') === 'Астана' ? 'form_types' : 'form_types_almaty';
+      }*/
+
     public static function getFormTypeId($path) {
         if(str_contains($path, 'uslugi/')) return 1;
         else if(str_contains($path, 'vacancies-office')) return 2;

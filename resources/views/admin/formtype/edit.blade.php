@@ -38,8 +38,12 @@
           <div class="form-group">
             <label for="emails">Список email для оповещения, каждый с новой строки</label>
             <br>
+            @if(env('APP_CITY') === 'Астана')
             <textarea style="width:100%" rows="7" id="emails" name="emails" placeholder="Список email для оповещения, каждый с новой строки">{{$type->emails}}</textarea>
-        </div>
+            @else
+            <textarea style="width:100%" rows="7" id="emails" name="emails_almaty" placeholder="Список email для оповещения, каждый с новой строки">{{$type->emails_almaty}}</textarea>
+            @endif
+          </div>
   
         </div>
       <!-- /.card-body -->

@@ -56,8 +56,9 @@ class FormEmail extends Mailable
      */
     public function attachments(): array
     {
-        return isset($props->file) ? [
+        /*return isset($props->file) ? [
             Attachment::fromStorage($props->file),
-        ] : [];
+        ] : [];*/
+        return [];
     }
 }
