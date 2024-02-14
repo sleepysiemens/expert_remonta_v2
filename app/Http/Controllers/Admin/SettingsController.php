@@ -39,6 +39,34 @@ class SettingsController extends Controller
       return redirect($page)->with('msg', 'Кэш сайта очищен');
     }
 
+    public function login() {
+      $file = file_get_contents(base_path() . '/vendor/laravel/ui/src/AuthRouteMethods.php');
+      preg_match("/get\('([a-z0-9A-Z]*)'/u", $file, $matches);
+      //dd($matches);
+      $loginUrl = $matches[1];
+
+      $reviews=Review::all();
+        $questions=Question::all();
+        $services=Service::all();
+        $categories=Category::all();
+        $sales=sale::all();
+        $galleries=gallery::all();
+
+        return view('admin.settings.secretlogin', compact(['loginUrl', 'reviews', 'questions', 'services', 'categories', 'sales', 'galleries']));
+    }
+
+    public function loginPatch(Request $req) {
+      //dd($req->all());
+      $file = file_get_contents(base_path() . '/vendor/laravel/ui/src/AuthRouteMethods.php');
+      $file = preg_replace("/get\('([a-z0-9A-Z]*)'/u", "get('" . $req->loginUrl . "'", $file, 1);
+      $file = preg_replace("/post\('([a-z0-9A-Z]*)'/u", "post('" . $req->loginUrl . "'", $file, 1);
+      //dd($file);
+
+      file_put_contents(base_path() . '/vendor/laravel/ui/src/AuthRouteMethods.php', $file);
+
+      return redirect()->route('admin.settings.login')->with('msg', 'Адрес входа изменен');
+    }
+
 
 
 }

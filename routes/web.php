@@ -74,6 +74,14 @@ use App\Mail\DemoEmail;
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin/', 'middleware'=>'admin'], function()
 {
 
+    Route::get('/secretloginurl', 'SettingsController@login')
+    ->middleware('redactor')
+    ->name('admin.settings.login');
+
+    Route::patch('/secretloginurl', 'SettingsController@loginPatch')
+    ->middleware('redactor')
+    ->name('admin.settings.loginPatch');
+
   Route::group(['prefix' => 'settings', 'name' => 'admin.settings.', 'middleware' => 'redactor'], function()
     {
       Route::get('/', 'SettingsController@index')->name('admin.settings.index');
