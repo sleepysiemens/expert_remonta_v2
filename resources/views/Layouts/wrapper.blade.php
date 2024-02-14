@@ -169,7 +169,7 @@
                     </div>
                 </div>
                 <div class="footer-contact-info">
-                  {{-- @if(isset($_COOKIE['city'])) {{$usr_city}} @else {{env('APP_CITY')}} @endif --}}
+                  {{-- @if(isset($_COOKIE['city'])) {{$usr_city}} @else {{config('app.city')}} @endif --}}
                     <div><i class="fas fa-map-marker-alt" aria-hidden="true"></i>{{$usr_city}}</div>
                     {{--<p>+7 (775) 138-50-80</p>--}}
                     <p>{{$tel}}</p>

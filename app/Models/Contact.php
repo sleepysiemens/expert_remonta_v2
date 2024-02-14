@@ -11,6 +11,6 @@ class Contact extends Model
     protected $guarded=[];
 
     public function getTable()  {
-      return env('APP_CITY') === 'Астана' ? 'contacts' : 'contacts_almaty';
+      return config('app.city') === 'Астана' ? 'contacts' : 'contacts_almaty';
     }
 }

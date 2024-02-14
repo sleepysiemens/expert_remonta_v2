@@ -56,8 +56,8 @@ class VacancyController extends Controller
 
     public function form(Request $req)
     {
-      $req->merge(['city' => env('APP_CITY')]);
-      //$req->city = env('APP_CITY');
+      $req->merge(['city' => config('app.city')]);
+      //$req->city = config('app.city');
       //dd($req->all());
         $userIP=$_SERVER['REMOTE_ADDR'];
         //$location=Location::get($userIP);

@@ -12,6 +12,6 @@ class Counter extends Model
     protected $guarded=[];
 
     public function getTable()  {
-        return env('APP_CITY') === 'Астана' ? 'counters' : 'counters_almaty';
+        return config('app.city') === 'Астана' ? 'counters' : 'counters_almaty';
     }
 }

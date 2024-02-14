@@ -11,7 +11,7 @@ class FormType extends Model
     protected $guarded=[];
 
     /*public function getTable()  {
-        return env('APP_CITY') === 'Астана' ? 'form_types' : 'form_types_almaty';
+        return config('app.city') === 'Астана' ? 'form_types' : 'form_types_almaty';
       }*/
 
     public static function getFormTypeId($path) {

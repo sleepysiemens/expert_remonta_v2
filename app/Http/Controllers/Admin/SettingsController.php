@@ -12,6 +12,7 @@ use App\Models\category;
 use App\Models\Sale;
 use App\Models\Gallery;
 use App\Models\Menu;
+use Illuminate\Support\Facades\Artisan;
 
 use Spatie\ResponseCache\Facades\ResponseCache;
 
@@ -37,6 +38,23 @@ class SettingsController extends Controller
       $page = parse_url($_SERVER['HTTP_REFERER'])['path'];
       //return redirect()->route('admin.settings.index')->with('msg', 'Кэш сайта очищен');
       return redirect($page)->with('msg', 'Кэш сайта очищен');
+    }
+
+    public function cacheAll() {
+      // кэширование всей внутрянки Laravel
+      // https://laravel.com/docs/10.x/deployment#optimization
+      // для config cache нужно заменить все env на config видимо
+      Artisan::call('config:cache');
+      Artisan::call('event:cache');
+      Artisan::call('route:cache');
+      Artisan::call('view:cache');
+    }
+    public function uncacheAll() {
+      // сброс кэша всей внутрянки лары
+      Artisan::call('config:clear');
+      Artisan::call('event:clear');
+      Artisan::call('route:clear');
+      Artisan::call('view:clear');
     }
 
     public function login() {

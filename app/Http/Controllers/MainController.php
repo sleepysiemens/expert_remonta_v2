@@ -87,7 +87,7 @@ class MainController extends Controller
         else {
           $city=$location->cityName;
           if(in_array($city, ['Astana', 'Almaty'])) $req->merge(['city' => $city]);
-          else $req->merge(['city' => env('APP_CITY')]);
+          else $req->merge(['city' => config('app.city')]);
         }
       }
 
@@ -169,7 +169,7 @@ class MainController extends Controller
         if($req->vacancy_url) $objDemo->url = $req->vacancy_url;
 
         $formType = FormType::where(['id' => $formTypeId])->first();
-        $emails = env('APP_CITY') === 'Астана' ? $formType->emails : $formType->emails_almaty;
+        $emails = config('app.city') === 'Астана' ? $formType->emails : $formType->emails_almaty;
         $emails = preg_split("/\r\n|\n|\r/", $emails);
         //dd($emails);
 

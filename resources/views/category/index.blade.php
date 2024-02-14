@@ -20,7 +20,7 @@ nav-link-selected
 @endsection
 
 @section('seo-title')
-        {{db_translate(processTitle($category->seo_title_ru, env('APP_CITY')), $category->seo_title_kz)}}
+        {{db_translate(processTitle($category->seo_title_ru, config('app.city')), $category->seo_title_kz)}}
 @endsection
 
 @section('sale-form')

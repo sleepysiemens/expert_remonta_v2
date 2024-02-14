@@ -27,7 +27,7 @@ class IndexController extends Controller
 
         //dd(request()->getHttpHost());
         $oppositeDomain = 'expertremonta.kz';
-        if(env('APP_CITY') === 'Алматы') $oppositeDomain = 'astana.expertremonta.kz';
+        if(config('app.city') === 'Алматы') $oppositeDomain = 'astana.expertremonta.kz';
 
         return view('admin.application.index', compact(['oppositeDomain', 'reviews', 'questions', 'services', 'categories', 'sales', 'applications']));
     }

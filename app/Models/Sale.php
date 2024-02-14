@@ -12,7 +12,7 @@ class Sale extends Model
     protected $guarded=[];
 
     public function getTable()  {
-      return env('APP_CITY') === 'Астана' ? 'sales' : 'sales_almaty';
+      return config('app.city') === 'Астана' ? 'sales' : 'sales_almaty';
     }
 
     public function scopeActive(Builder $query): void

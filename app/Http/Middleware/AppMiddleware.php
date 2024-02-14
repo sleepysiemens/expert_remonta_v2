@@ -82,9 +82,9 @@ class AppMiddleware
       else if($location!=false && in_array($location->cityName, ['Astana', 'Almaty']))
         $usr_city = cityEnToRu($location->cityName);
         // если определило другой город по локации, ставим город текущего поддомена
-        if($usr_city !== env('APP_CITY')) $usr_city = env('APP_CITY');
+        if($usr_city !== config('app.city')) $usr_city = config('app.city');
       else
-        $usr_city= env('APP_CITY');
+        $usr_city= config('app.city');
 
       View::share('usr_city', $usr_city);
       View::share('location', $location);

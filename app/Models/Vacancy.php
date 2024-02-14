@@ -35,7 +35,7 @@ class Vacancy extends Model
     {
       if(request()->city_select) $query->where('city_id', '=', request()->city_select);
       else {
-        env('APP_CITY') === 'Астана' 
+        config('app.city') === 'Астана' 
           ? $query->where('city_id', '=', 2)
           : $query->where('city_id', '=', 1);
       }

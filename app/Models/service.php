@@ -12,7 +12,7 @@ class service extends Model
     protected $guarded=[];
 
     public function getTable()  {
-        return env('APP_CITY') === 'Астана' ? 'services' : 'services_almaty';
+        return config('app.city') === 'Астана' ? 'services' : 'services_almaty';
       }
 
     // оптимизация чтобы не брать весь контент

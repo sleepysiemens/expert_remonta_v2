@@ -16,8 +16,8 @@ class category extends Model
 
     public function getTable()  {
       // Your logic to determine the table name
-      return env('APP_CITY') === 'Астана' ? 'categories' : 'categories_almaty';
-      //return env('APP_CITY') === 'Астана' ? 'categories_almaty' : 'categories';
+      return config('app.city') === 'Астана' ? 'categories' : 'categories_almaty';
+      //return config('app.city') === 'Астана' ? 'categories_almaty' : 'categories';
     }
 
     /*public function service(): HasOne{

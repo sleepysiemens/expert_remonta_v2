@@ -33,7 +33,7 @@ class GenSitemap extends Command
         //dd($path);
         $domain = 'astana.';
         $scheme = 'http';
-        if(env('APP_CITY' === 'Алматы')) $domain = '';
+        if(config('app.city') === 'Алматы') $domain = '';
         $domain .= 'expertremonta.kz';
 
         //SitemapGenerator::create("http://$domain")->writeToFile($path);

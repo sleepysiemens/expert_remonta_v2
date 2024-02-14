@@ -6,7 +6,7 @@
             srcset="{{getCommonResource('/img/main_bg/x-768-' . str_replace('.png', '.jpg', $Header->src))}} 1199w,
             {{getCommonResource("/img/main_bg/".$Header->src)}} 1200w
             "
-            alt="{{"Эксперт Ремонта " . env('APP_CITY') . " - эксперты в ремонте квартир"}}"
+            alt="{{"Эксперт Ремонта " . config('app.city') . " - эксперты в ремонте квартир"}}"
             @if($Header->blur==1) style="filter: blur(4px);" @endif
             >
   @endforeach

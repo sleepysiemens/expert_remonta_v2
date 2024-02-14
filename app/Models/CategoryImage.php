@@ -12,7 +12,7 @@ class CategoryImage extends Model
     protected $guarded=[];
 
     public function getTable()  {
-      return env('APP_CITY') === 'Астана' ? 'category_images' : 'category_images_almaty';
+      return config('app.city') === 'Астана' ? 'category_images' : 'category_images_almaty';
     }
 
     public function category(): BelongsTo

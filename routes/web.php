@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Artisan;
 use App\Mail\DemoEmail;
 
 /*
@@ -46,14 +45,9 @@ use App\Mail\DemoEmail;
     Route::get('/vacancy/{vacancy}', 'VacancyController@show')->name('vacancy.show');
     Route::get('/vacancies/category/{vacancyCategory}', 'VacancyController@showCategory')->name('vacancy.category');
     Route::get('/geo', function () {  
+        //dump(env('APP_CITY'));
+        //dd(config('app.city'));
         //dd(\App\Models\City::all());
-        //dd(\App\Models\FormType::all());
-        // оптимизация
-        //Artisan::call('config:cache');
-        //Artisan::call('event:cache');
-        //Artisan::call('route:cache');
-        //Artisan::call('view:cache');
-      //dd(\App\Models\category::all());
       //dd(scandir(public_path() . '/img'));
       //dd(\App\Models\Application::all());             
      
@@ -86,6 +80,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin/', 'middleware'=>'admin
     {
       Route::get('/', 'SettingsController@index')->name('admin.settings.index');
       Route::get('/reset', 'SettingsController@resetCache')->name('admin.settings.cache.reset');
+      Route::get('/cacheAll', 'SettingsController@cacheAll')->name('admin.settings.cacheAll');
+      Route::get('/uncacheAll', 'SettingsController@uncacheAll')->name('admin.settings.uncacheAll');
     });
 
 Route::group(['prefix' => 'cities', 'middleware' => 'redactor'], function()
