@@ -1,11 +1,11 @@
 @extends('Layouts.wrapper')
 
 @section('seo-title')
-  {{app()->db_translate($seo->seo_ru, $seo->seo_kz)}}
+  {{db_translate($seo->seo_ru, $seo->seo_kz)}}
 @endsection
 
 @section('meta-description')
-  {{app()->db_translate($seo->meta_ru, $seo->meta_kz)}}
+  {{db_translate($seo->meta_ru, $seo->meta_kz)}}
 @endsection
 
 @push('customStyles')

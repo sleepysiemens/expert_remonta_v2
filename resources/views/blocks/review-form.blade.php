@@ -20,7 +20,7 @@
                 <span class="star" data-rating="5"></span>
             </div>
             <textarea class="hidden" name="text" placeholder="текст..." rows="5" required></textarea>
-            <button class="hidden gradient_button"><span class="flare"></span><p>{{app()->translate('Отправить')}}</p></button>
+            <button class="hidden gradient_button"><span class="flare"></span><p>{{__('Отправить')}}</p></button>
         </form>
     </div>
 </div>

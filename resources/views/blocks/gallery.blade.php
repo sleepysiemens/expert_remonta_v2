@@ -15,7 +15,7 @@
         <span class="service-banner" id="item_{{$i}}">
             <a class="close_{{$i}} close"><i class="fas fa-times"></i></a>
             <a class="service-banner-link item_{{$i}}">
-                <img alt="{{app()->db_translate($gallery->title_ru, $gallery->title_kz)}}" src=" /img/gallery/{{$gallery->src}}">
+                <img alt="{{db_translate($gallery->title_ru, $gallery->title_kz)}}" src=" /img/gallery/{{$gallery->src}}">
             </a>
         </span>
 

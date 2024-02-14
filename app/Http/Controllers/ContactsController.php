@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Review;
 use App\Models\About;
 use App\Models\Seo;
+use App\Models\Block;
 
 
 
@@ -21,7 +22,8 @@ class ContactsController extends Controller
         $seo = Seo::query()->where('page','=','contacts')->first();
 
         $page='contacts';
+        $block = Block::where(['code_name' => $page])->first();
 
-        return view('contacts.index', compact(['reviews', 'Abouts', 'page', 'seo', 'Headers']));
+        return view('contacts.index', compact(['block', 'reviews', 'Abouts', 'page', 'seo', 'Headers']));
     }
 }

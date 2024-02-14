@@ -11,14 +11,14 @@
             <div class="welcome-content">
                 <div class="welcome-header hidden">
                     @foreach ($Headers as $Header)
-                    <div>{{app()->db_translate($Header->title_ru,$Header->title_kz)}}</div>
-                    <div>{{app()->db_translate($Header->subtitle_ru,$Header->subtitle_kz)}}</div>
+                    <div>{{db_translate($Header->title_ru,$Header->title_kz)}}</div>
+                    <div>{{db_translate($Header->subtitle_ru,$Header->subtitle_kz)}}</div>
                     @endforeach
                 </div>
                 <div class="welcome-cards">
                     @foreach ($WelcomeCards as $card)
                         <span class="welcome-card welcome-card-{{$loop->iteration}} scroll-hidden">
-                            <p>{{app()->db_translate($card->title_ru,$card->title_kz)}}</p>
+                            <p>{{db_translate($card->title_ru,$card->title_kz)}}</p>
                             <img src=" /img/cards/{{$card->src}}">
                         </span>
                     @endforeach

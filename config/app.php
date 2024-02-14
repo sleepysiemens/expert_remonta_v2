@@ -185,6 +185,7 @@ return [
         //Mews\Captcha\CaptchaServiceProvider::class
         // https://packagist.org/packages/mews/captcha
         //ImageServiceProvider::class
+        App\Providers\UtilsServiceProvider::class,
 
     ])->toArray(),
 

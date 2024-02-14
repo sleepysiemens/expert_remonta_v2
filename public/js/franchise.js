@@ -39,10 +39,14 @@ $( "#calc_hint i" ).click(
 );
 
 
-      let option = document.querySelector('.fr_page_form select option:nth-of-type(1)')
+      /*let option = document.querySelector('.fr_page_form select option:nth-of-type(1)')
       option.textContent = option.textContent + " (занято)"
       option = document.querySelector('.fr_page_form select option:nth-of-type(2)')
-      option.textContent = option.textContent + " (занято)"
+      option.textContent = option.textContent + " (занято)"*/
+      let options = document.querySelectorAll('.fr_page_form select option:disabled')
+      options.forEach((opt,idx) => {
+        options[idx].textContent = options[idx].textContent + " (занято)"
+      })
 
       document.addEventListener('click', function(event) {
   if(event.target.classList.contains('spoiler-title')) {

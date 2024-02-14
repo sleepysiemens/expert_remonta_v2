@@ -23,13 +23,13 @@
     @endif
   </div>
   <br>
-  <p>Поскольку вы находитесь на домене {{request()->getHttpHost()}} то вы видите
+  {{--<p>Поскольку вы находитесь на домене {{request()->getHttpHost()}} то вы видите
   только заявки, относящиеся к городу {{env('APP_CITY')}} + любые заявки на франшизу.
     Для просмотра заявок для города {{env('APP_CITY_OPPOSITE')}} перейдите по ссылке
     <a href="https://{{$oppositeDomain . $_SERVER['REQUEST_URI']}}" target="_blank">
       {{$oppositeDomain . $_SERVER['REQUEST_URI']}}
     </a>
-</p>
+</p>--}}
 </div>
 
 <div class="row">
@@ -80,12 +80,14 @@
                   @endif
                 </td>
                 <td>
+                  @if(!request()->query('archive'))
                   <form method="post" action="{{route('admin.application.archive',$application->id)}}">
                     @csrf
                     <button style="border: none; background-color: transparent; color: rgb(12, 64, 220)" onclick="(function() {
                       if(!confirm('Действительно перенести заявку в архив?')) event.preventDefault();
                     })();">В архив <i class="fas fa-archive"></i></button>
                   </form>
+                  @endif
                   <form method="post" action="{{route('admin.application.destroy',$application->id)}}">
                     @csrf
                     @method('delete')

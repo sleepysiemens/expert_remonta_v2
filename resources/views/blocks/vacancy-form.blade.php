@@ -13,7 +13,7 @@
           <input class="hidden" type="text" name="name" placeholder="Имя" required>
           <input class="hidden" type="phone" name="phone" placeholder="Телефон" required>
           <input type="hidden" name="sourse" value="{{$page}}">
-          <button class="hidden gradient_button"><span class="flare"></span><p>{{app()->translate('Отправить')}}</p></button>
+          <button class="hidden gradient_button"><span class="flare"></span><p>{{__('Отправить')}}</p></button>
       </form>
   </div>
 </div>

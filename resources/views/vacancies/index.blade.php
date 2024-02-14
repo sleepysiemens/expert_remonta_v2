@@ -5,11 +5,11 @@
 @endsection
 
 @section('seo-title')
-  {{app()->db_translate($seo->seo_ru, $seo->seo_kz)}}
+  {{db_translate($seo->seo_ru, $seo->seo_kz)}}
 @endsection
 
 @section('meta-description')
-  {{app()->db_translate($seo->meta_ru, $seo->meta_kz)}}
+  {{db_translate($seo->meta_ru, $seo->meta_kz)}}
 @endsection
 
 @push('vacancies')
@@ -24,7 +24,7 @@
 
 <div class="vacancies_page">
   <div class="vacancies_page_wrap">
-    <h1 class="vacancies_page_heading ui_kit_h1_heading">{{app()->db_translate($seo->seo_ru, $seo->seo_kz)}}</h1>
+    <h1 class="vacancies_page_heading ui_kit_h1_heading">{{db_translate($seo->seo_ru, $seo->seo_kz)}}</h1>
     @if(isset($requestInfo['city']))
       <p>@lang('Применен фильтр'). @lang('Город'): {{$requestInfo['city']->city}}, @lang('категория'): {{$requestInfo['category']->name}}, @lang('опыт'): {{$requestInfo['exp']}}</p>
     @endif
@@ -44,7 +44,7 @@
             <label for="category_select">@lang('Направление')</label>
             <select name="category_select" id="category_select" class="ajax_select"> 
               @foreach($vacancyCategories as $cat)
-              <option value="{{$cat->id}}">{{app()->db_translate($cat->name, $cat->name_kz)}} </option>
+              <option value="{{$cat->id}}">{{db_translate($cat->name, $cat->name_kz)}} </option>
               @endforeach
             </select>
           </div>

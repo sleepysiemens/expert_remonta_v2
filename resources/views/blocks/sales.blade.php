@@ -1,6 +1,6 @@
 
 <section class="sales">
-    <h1 class="section-header hidden">{{app()->translate('Специальные предложения')}}</h1>
+    <h1 class="section-header hidden">{{__('Специальные предложения')}}</h1>
     {{--<button class="right-arrow" id="scroll-right">
         <i class="fas fa-arrow-right"></i>
     </button>
@@ -55,7 +55,7 @@
 
                 <div class="sale-text-div">
                     <div class="sale-text-subdiv">
-                        <p>{{app()->db_translate($sale->title_ru,$sale->title_kz)}}</p>
+                        <p>{{db_translate($sale->title_ru,$sale->title_kz)}}</p>
                     </div>
                     <div class="percent2"></div>
                 </div>

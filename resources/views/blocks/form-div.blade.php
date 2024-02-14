@@ -16,7 +16,7 @@
             <input type="hidden" name="sourse" value="{{$page}}">
             <input type="hidden" id="cid" value="" name="cid">
             <input type="hidden" id="ycid" value="" name="ycid">
-            <button class="hidden gradient_button"><span class="flare"></span><p>{{app()->translate('Отправить')}}</p></button>
+            <button class="hidden gradient_button"><span class="flare"></span><p>{{__('Отправить')}}</p></button>
         </form>
     </div>
 </div>

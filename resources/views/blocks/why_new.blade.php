@@ -12,7 +12,7 @@
             @foreach($WhyCards as $card)
                 @if($loop->iteration <= 2)
                 <div class="why_item hidden">
-                    {{app()->db_translate($card->title_ru, $card->title_kz)}}
+                    {{db_translate($card->title_ru, $card->title_kz)}}
                 </div>
                 @endif
             @endforeach
@@ -26,7 +26,7 @@
             @foreach($WhyCards as $card)
             @if($loop->iteration >= 3 && $loop->iteration < 5)
                 <div class="why_item hidden">
-                    {{app()->db_translate($card->title_ru, $card->title_kz)}}
+                    {{db_translate($card->title_ru, $card->title_kz)}}
                 </div>
             @endif
             @endforeach

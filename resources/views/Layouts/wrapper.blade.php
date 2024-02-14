@@ -161,11 +161,11 @@
                         <img src="/img/footerLogo.png">
                     </div>
                     <div class="footer-links-subdiv">
-                        <a href="{{ route('main.index') }}/" class="footer-link"><p>{{app()->translate('Главная')}}</p></a>
-                        <a href="{{ route('uslugi.index') }}/" class="footer-link"><p>{{app()->translate('Услуги')}}</p></a>
-                        <a href="{{ route('price.index') }}/" class="footer-link"><p>{{app()->translate('Расценки')}}</p></a>
-                        <a href="{{ route('gallery.index') }}/" class="footer-link"><p>{{app()->translate('Галерея')}}</p></a>
-                        <a href="{{ route('contacts.index') }}/" class="footer-link"><p>{{app()->translate('Контакты')}}</p></a>
+                        <a href="{{ route('main.index') }}/" class="footer-link"><p>{{__('Главная')}}</p></a>
+                        <a href="{{ route('uslugi.index') }}/" class="footer-link"><p>{{__('Услуги')}}</p></a>
+                        <a href="{{ route('price.index') }}/" class="footer-link"><p>{{__('Расценки')}}</p></a>
+                        <a href="{{ route('gallery.index') }}/" class="footer-link"><p>{{__('Галерея')}}</p></a>
+                        <a href="{{ route('contacts.index') }}/" class="footer-link"><p>{{__('Контакты')}}</p></a>
                     </div>
                 </div>
                 <div class="footer-contact-info">

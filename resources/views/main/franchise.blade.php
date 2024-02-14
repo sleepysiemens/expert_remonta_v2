@@ -5,11 +5,11 @@
     @endsection
 
 @section('seo-title')
-    {{app()->db_translate($seo->seo_ru, $seo->seo_kz)}}
+    {{db_translate($seo->seo_ru, $seo->seo_kz)}}
 @endsection
 
 @section('meta-description')
-{{app()->db_translate($seo->meta_ru, $seo->meta_kz)}}
+{{db_translate($seo->meta_ru, $seo->meta_kz)}}
 @endsection
 
   @push('franchise')
@@ -386,8 +386,10 @@
                   {{--<option>Город</option>--}}
                   @foreach($cities as $city)
                   <option value="{{$city->city}}" 
-                    @selected($usr_city === $city->city && !in_array($city->city, ['Астана', 'Алматы'])) 
-                    @disabled(in_array($city->city, ['Астана', 'Алматы']))
+                    {{--@selected($usr_city === $city->city && !in_array($city->city, ['Астана', 'Алматы'])) 
+                    @disabled(in_array($city->city, ['Астана', 'Алматы']))--}}
+                    @selected($usr_city === $city->city && !$city->fr_busy) 
+                    @disabled($city->fr_busy)
                   >{{$city->city}}</option>
                   @endforeach
                 </select>

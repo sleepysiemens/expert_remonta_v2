@@ -5,11 +5,11 @@
 @endsection--}}
 
 @section('seo-title')
-  {{app()->db_translate($vacancy->seo_title_ru, $vacancy->seo_title_kz)}}
+  {{db_translate($vacancy->seo_title_ru, $vacancy->seo_title_kz)}}
 @endsection
 
 @section('meta-description')
-    {{app()->db_translate($vacancy->meta_desc_ru, $vacancy->meta_desc_kz)}}
+    {{db_translate($vacancy->meta_desc_ru, $vacancy->meta_desc_kz)}}
 @endsection
 
 @push('vacancies')
@@ -23,7 +23,7 @@
   <div class="vacancy_page_wrap"><a href="{{route('vacancy.index')}}">< @lang('Все вакансии')</a></div>
   <div class="vacancy_page_hero">
     <div class="vacancy_page_wrap">
-      <h1 class="vacancy_page_vacancy_title ui_kit_h2_heading">{{app()->db_translate($vacancy->name, $vacancy->name_kz)}}</h1>
+      <h1 class="vacancy_page_vacancy_title ui_kit_h2_heading">{{db_translate($vacancy->name, $vacancy->name_kz)}}</h1>
       <div class="vacancy_page_vacancy_salary ui_kit_h2_heading">@if($vacancy->salary_from){{$vacancy->salary_from}}-{{$vacancy->salary_to}} ₸@else @lang('зп: по результатам собеседования')@endif </div>
       <p class="vacancy_page_info">@lang('Город'): {{$vacancy->city->city}}</p>
       <p class="vacancy_page_info">@lang('Требуемый опыт работы'): @lang($vacancy->experience)</p>
@@ -38,11 +38,11 @@
 <div class="vacancy_page_content"> 
   <div class="vacancy_page_wrap">
     <h2 class="vacancy_page_subtitle ui_kit_h2_heading">@lang('Что нужно делать'):</h2>
-    {!!app()->db_translate($vacancy->overview, $vacancy->overview_kz)!!}
+    {!!db_translate($vacancy->overview, $vacancy->overview_kz)!!}
     <h2 class="vacancy_page_subtitle ui_kit_h2_heading">@lang('Мы предлагаем'):</h2>
-    {!!app()->db_translate($vacancy->offers, $vacancy->offers_kz)!!}
+    {!!db_translate($vacancy->offers, $vacancy->offers_kz)!!}
     <h2 class="vacancy_page_subtitle ui_kit_h2_heading">@lang('Требования'):</h2>
-    {!!app()->db_translate($vacancy->requirements, $vacancy->requirements_kz)!!}
+    {!!db_translate($vacancy->requirements, $vacancy->requirements_kz)!!}
 
     <div class="vacancies_page_inline_flex">
     <button class="ui_kit_button vacancies_page_button show_form">@lang('Откликнуться')</button>

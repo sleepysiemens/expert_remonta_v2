@@ -45,6 +45,7 @@ class UslugiController extends Controller
         $service= Service::query()->where(['url'=>$service])->first();
         //dd($services[0]->id);
         //$categories= Category::query()->join('services', 'services.id', '=', 'categories.service_id')->where(['services.url'=>$service])->select('categories.*','services.url AS service_url')->get();
+        if(!$service) abort(404);
         $categories = Category::active()->where(['service_id' => $service->id])->with('service')->get();
         $reviews=Review::all();
         //$seos=Seo::query()->where('page','=','uslugi/'.$service->url)->get();

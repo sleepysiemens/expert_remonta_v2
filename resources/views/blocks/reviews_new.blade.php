@@ -1,5 +1,5 @@
 <section class="reviews">
-  <div class="section-header">{{app()->translate('Отзывы')}}</div>
+  <div class="section-header">{{__('Отзывы')}}</div>
 
   <div class="review-wrapper">
       <div class="reviews-div">
@@ -22,14 +22,14 @@
                           @endfor
                       </div>
 
-                              <p class="review_user_name">{{app()->db_translate($review->username_ru,$review->username_kz)}}</p>
+                              <p class="review_user_name">{{db_translate($review->username_ru,$review->username_kz)}}</p>
                               {{--<p class="review_user_city">Алматы</p>--}}
                           
                       </div>
                   </div>
                   {{--<p>{{mb_substr($review->text_ru, 0, 30)}}</p>--}}
-                  <p>{{app()->db_translate(mb_substr($review->text_ru, 0, 100),mb_substr($review->text_kz, 0, 100))}} ...</p>
-                  {{--<p>{{mb_substr(app()->db_translate($review->text_ru,$review->text_kz), 0, 30)}}</p>--}}
+                  <p>{{db_translate(mb_substr($review->text_ru, 0, 100),mb_substr($review->text_kz, 0, 100))}} ...</p>
+                  {{--<p>{{mb_substr(db_translate($review->text_ru,$review->text_kz), 0, 30)}}</p>--}}
                   {{--<p style="margin-top: 20px;"> {{$review->local_date;}}</p>--}}
               </div>
           </a>

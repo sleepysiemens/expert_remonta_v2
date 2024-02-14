@@ -8,8 +8,8 @@
 
         <span class="why-banner hidden">
             <span class="why-banner-number">{{$why_cnt}}</span>
-            <h4>{{app()->db_translate($card->title_ru, $card->title_kz)}}</h4>
-            <p>{{app()->db_translate($card->subtitle_ru, $card->subtitle_kz)}}</p>
+            <h4>{{db_translate($card->title_ru, $card->title_kz)}}</h4>
+            <p>{{db_translate($card->subtitle_ru, $card->subtitle_kz)}}</p>
         </span>
             @php
                 $why_cnt++;

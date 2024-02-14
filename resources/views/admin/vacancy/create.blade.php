@@ -84,10 +84,12 @@
         </div>
         <div class="form-group">
           <label for="mtru">Meta desc ru</label>
+          <small>* Не более 255 символов, в идеале 140-160 символов</small>
           <input type="text" class="form-control" placeholder="название" name="meta_desc_ru">
         </div>
         <div class="form-group">
           <label for="mtkz">Meta desc kz</label>
+          <small>* Не более 255 символов, в идеале 140-160 символов</small>
           <input type="text" class="form-control" placeholder="название" name="meta_desc_kz">
       </div>
 

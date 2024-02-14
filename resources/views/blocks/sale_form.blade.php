@@ -19,9 +19,9 @@
             <div class="timer"><p id="action2{{$sale->id}}"></p></div>
         </div>
 
-        <h3>{{app()->db_translate($sale->title_ru,$sale->title_kz)}}</h3>
+        <h3>{{db_translate($sale->title_ru,$sale->title_kz)}}</h3>
         <p>
-            {{app()->db_translate($sale->description_ru,$sale->description_kz)}}
+            {{db_translate($sale->description_ru,$sale->description_kz)}}
         </p>
         <form class="form-sale" method="post" action="{{route('form.store')}}">
             @csrf
@@ -31,7 +31,7 @@
             <input type="hidden" id="sale_id" value="{{$sale->id}}" name="sale_id">
             <input type="hidden" id="cid" value="" name="cid">
             <input type="hidden" id="ycid" value="" name="ycid">
-            <button type="submit" class="hidden gradient_button"><span class="flare"></span><p>{{app()->translate('Участвовать')}}</p></button>
+            <button type="submit" class="hidden gradient_button"><span class="flare"></span><p>{{__('Участвовать')}}</p></button>
         </form>
     </div>
 </div>

@@ -1,7 +1,7 @@
 
 <section class="sales">
     <h1 class="section-header hidden" style="margin-bottom:40px">
-        {{app()->translate('Специальные предложения')}}
+        {{__('Специальные предложения')}}
     </h1>
     <div class="sales-wrapper">
         <div class="sales-div">
@@ -33,7 +33,7 @@
             <a class="sale_item scroll-hidden" id="sale-link-{{$i}}">
                 <div class="sale_left">
                 <div class="sale_percent">-{{$sale->percent}}%</div>
-                <p>{{app()->db_translate($sale->title_ru,$sale->title_kz)}}</p>
+                <p>{{db_translate($sale->title_ru,$sale->title_kz)}}</p>
                 <button class="ui_kit_button">@lang('Подробнее')</button>
                 </div>
                 <div class="sale_right">

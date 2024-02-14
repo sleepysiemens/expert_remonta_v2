@@ -7,6 +7,7 @@
 @section('content')
     @include('blocks.welcome-contacts')
     @include('blocks.about_company')
+    {{--{!!$block->code!!}--}}
     @include('blocks.reviews_new')
 @endsection
 
@@ -15,9 +16,9 @@
 @endsection
 
 @section('meta-description')
-  {{app()->db_translate($seo->meta_ru, $seo->meta_kz)}}
+  {{db_translate($seo->meta_ru, $seo->meta_kz)}}
 @endsection
 
 @section('seo-title')
-  {{app()->db_translate($seo->seo_ru, $seo->seo_kz)}}
+  {{db_translate($seo->seo_ru, $seo->seo_kz)}}
 @endsection

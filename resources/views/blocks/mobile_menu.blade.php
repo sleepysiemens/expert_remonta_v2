@@ -14,28 +14,28 @@
         </p>
     </button>
 </form>
-  {{--<a href="{{ route('main.index') }}/" class="nav-link"><p>{{app()->translate('Главная')}}</p></a>
-  <a href="{{ route('uslugi.index') }}/" class="nav-link"><p>{{app()->translate('Услуги')}}</p></a>
-  <a href="{{ route('price.index') }}/" class="nav-link"><p>{{app()->translate('Расценки')}}</p></a>
-  <a href="{{ route('gallery.index') }}/" class="nav-link"><p>{{app()->translate('Галерея')}}</p></a>
-  <a href="{{ route('reviews.index') }}/" class="nav-link"><p>{{app()->translate('Отзывы')}}</p></a>
-  <a href="{{ route('contacts.index') }}/" class="nav-link"><p>{{app()->translate('Контакты')}}</p></a>--}}
+  {{--<a href="{{ route('main.index') }}/" class="nav-link"><p>{{__('Главная')}}</p></a>
+  <a href="{{ route('uslugi.index') }}/" class="nav-link"><p>{{__('Услуги')}}</p></a>
+  <a href="{{ route('price.index') }}/" class="nav-link"><p>{{__('Расценки')}}</p></a>
+  <a href="{{ route('gallery.index') }}/" class="nav-link"><p>{{__('Галерея')}}</p></a>
+  <a href="{{ route('reviews.index') }}/" class="nav-link"><p>{{__('Отзывы')}}</p></a>
+  <a href="{{ route('contacts.index') }}/" class="nav-link"><p>{{__('Контакты')}}</p></a>--}}
   <div class="header_menu_item">
-    <a href="/" @class(['nav-link', 'nav-link-selected' => '/' === $uri])>{{app()->translate('Главная')}}</a>
+    <a href="/" @class(['nav-link', 'nav-link-selected' => '/' === $uri])>{{__('Главная')}}</a>
   </div>
   @foreach($menu as $m)
       <div class="header_menu_item {{count($m->childs) > 0 ? 'has_childs' : ''}} {{$m->uri === $uri ? 'active' : ''}}">
-      <a href="/{{$m->url}}" @class(['nav-link', 'nav-link-selected' => $m->uri === $uri,])>{{app()->translate($m->title)}}</a>
+      <a href="/{{$m->url}}" @class(['nav-link', 'nav-link-selected' => $m->uri === $uri,])>{{__($m->title)}}</a>
         @if(count($m->childs) > 0)
         <ul class="header_submenu">
           @foreach($m->childs as $child)
             <li @class(['has_childs' => count($child->childs), 'active' => $child->uri === $uri])>
-              <a href="/{{$child->url}}" class="nav-link {{$child->uri === $uri ? 'nav-link-selected' : ''}}">{{app()->translate($child->title)}}</a>
+              <a href="/{{$child->url}}" class="nav-link {{$child->uri === $uri ? 'nav-link-selected' : ''}}">{{__($child->title)}}</a>
               @if(count($child->childs) > 0)
                 <ul class="header_deepmenu">
                   @foreach($child->childs as $child)
                   <li>
-                    <a href="/{{$child->url}}" class="nav-link">{{app()->translate($child->title)}}</a>
+                    <a href="/{{$child->url}}" class="nav-link">{{__($child->title)}}</a>
                   </li>
                   @endforeach
                 </ul>

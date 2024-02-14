@@ -40,7 +40,7 @@
     <div id="nanogallery3">
       @foreach($galleries as $gallery)
 
-      <img alt="{{app()->db_translate($gallery->title_ru, $gallery->title_kz)}}" src="/{{$gallery->src}}">
+      <img alt="{{db_translate($gallery->title_ru, $gallery->title_kz)}}" src="/{{$gallery->src}}">
 
       @endforeach
     </div>

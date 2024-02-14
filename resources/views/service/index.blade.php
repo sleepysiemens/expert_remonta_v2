@@ -20,9 +20,9 @@ nav-link-selected
 
 
 @section('meta-description')
-        {{app()->db_translate($service->meta_desc_ru, $service->meta_desc_kz)}}
+        {{db_translate($service->meta_desc_ru, $service->meta_desc_kz)}}
 @endsection
 
 @section('seo-title')
-        {{app()->db_translate($service->seo_title_ru, $service->seo_title_kz)}}
+        {{db_translate($service->seo_title_ru, $service->seo_title_kz)}}
 @endsection

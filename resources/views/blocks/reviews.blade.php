@@ -1,5 +1,5 @@
 <section class="reviews">
-    <div class="section-header">{{app()->translate('Отзывы')}}</div>
+    <div class="section-header">{{__('Отзывы')}}</div>
     <button class="right-arrow" id="scroll-right">
         <i class="fas fa-arrow-right"></i>
     </button>
@@ -19,7 +19,7 @@
 
                         <div class="review-user-info-subdiv">
                             <div style="display: flex">
-                                <h3>{{app()->db_translate($review->username_ru,$review->username_kz)}}</h3>
+                                <h3>{{db_translate($review->username_ru,$review->username_kz)}}</h3>
                                 <p style="margin: 0; margin-left: 10px"> @if($review->review_date!=null) {{date("d.m.Y",strtotime($review->review_date))}} @endif</p>
                             </div>
                             <div class="review-stars">
@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <p>
-                        {{app()->db_translate($review->text_ru,$review->text_kz)}}
+                        {{db_translate($review->text_ru,$review->text_kz)}}
                     </p>
                 </div>
             </a>

@@ -46,6 +46,7 @@ use App\Mail\DemoEmail;
     Route::get('/vacancy/{vacancy}', 'VacancyController@show')->name('vacancy.show');
     Route::get('/vacancies/category/{vacancyCategory}', 'VacancyController@showCategory')->name('vacancy.category');
     Route::get('/geo', function () {  
+        //dd(\App\Models\City::all());
         //dd(\App\Models\FormType::all());
         // оптимизация
         //Artisan::call('config:cache');
@@ -79,6 +80,26 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin/', 'middleware'=>'admin
       Route::get('/reset', 'SettingsController@resetCache')->name('admin.settings.cache.reset');
     });
 
+Route::group(['prefix' => 'cities', 'middleware' => 'redactor'], function()
+{
+    Route::get('/', 'CitiesController@index')->name('admin.city.index');
+    //Route::get('/create', 'CitiesController@create')->name('admin.city.create');
+    //Route::post('', 'CitiesController@store')->name('admin.city.store');
+    Route::get('/{city}/edit', 'CitiesController@edit')->name('admin.city.edit');
+    Route::patch('/{city}', 'CitiesController@update')->name('admin.city.update');
+    Route::delete('/{city}', 'CitiesController@destroy')->name('admin.city.destroy');
+});
+
+Route::group(['prefix' => 'blocks', 'middleware' => 'redactor'], function()
+{
+    Route::get('/', 'BlocksController@index')->name('admin.blocks.index');
+    Route::get('/create', 'BlocksController@create')->name('admin.blocks.create');
+    Route::post('', 'BlocksController@store')->name('admin.blocks.store');
+    Route::get('/{block}/edit', 'BlocksController@edit')->name('admin.blocks.edit');
+    Route::patch('/{block}', 'BlocksController@update')->name('admin.blocks.update');
+    Route::delete('/{block}', 'BlocksController@destroy')->name('admin.blocks.destroy');
+});
+
   Route::group(['namespace' => 'Vacancy', 'prefix' => 'vacancy', 'name' => 'admin.vacancy.', 'middleware' => 'redactor'], function()
     {
         Route::get('/', 'IndexController@index')->name('admin.vacancy.index');
@@ -86,7 +107,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin/', 'middleware'=>'admin
         Route::post('/resumes/{app}', 'IndexController@getResume')->name('admin.vacancy.getResume');
         Route::get('/create', 'IndexController@create')->name('admin.vacancy.create');
         Route::post('', 'IndexController@store')->name('admin.vacancy.store');
-        Route::get('/{vacancy}', 'IndexController@show')->name('admin.vacancy.show');
+        //Route::get('/{vacancy}', 'IndexController@show')->name('admin.vacancy.show');
         Route::get('/{vacancy}/edit', 'IndexController@edit')->name('admin.vacancy.edit');
         Route::patch('/{vacancy}', 'IndexController@update')->name('admin.vacancy.update');
         Route::delete('/{vacancy}', 'IndexController@destroy')->name('admin.vacancy.destroy');

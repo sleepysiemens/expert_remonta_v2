@@ -1,5 +1,5 @@
 <section class="faq">
-    <h1 class="section-header">{{app()->translate('Частые вопросы')}}</h1>
+    <h1 class="section-header">{{__('Частые вопросы')}}</h1>
     <br>
     <div class="faq-div hidden">
 
@@ -8,12 +8,12 @@
         <div class="question" id="ans_{{$question->id}}">
             <a class="question-header" id="q_{{$question->id}}">
                 <p>
-                    {{app()->db_translate($question->question_ru, $question->question_kz)}}
+                    {{db_translate($question->question_ru, $question->question_kz)}}
                 </p>
                 <i class="fas fa-chevron-down"></i>
             </a>
             <p class="answer">
-                {{app()->db_translate($question->answer_ru, $question->answer_kz)}}
+                {{db_translate($question->answer_ru, $question->answer_kz)}}
             </p>
         </div>
 

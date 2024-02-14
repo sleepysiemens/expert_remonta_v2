@@ -1,5 +1,5 @@
 <section class="services">
-    <h1 class="section-header hidden">{{app()->translate('Популярные услуги')}}</h1>
+    <h1 class="section-header hidden">{{__('Популярные услуги')}}</h1>
 
     <div class="services-div">
         @php         dd(event('postHasViewed', $post))
@@ -11,8 +11,8 @@
                 <div class="popular-element-container">
                     <img class="popular-element-cover" src="/img/blog/{{$popular_service->src}}">
                     <div class="popular-element-text">
-                        <h4>{{app()->db_translate($popular_service->title_ru,$popular_service->title_kz)}}</h4>
-                        <p>{{app()->db_translate($popular_service->description_ru,$popular_service->description_kz)}}</p>
+                        <h4>{{db_translate($popular_service->title_ru,$popular_service->title_kz)}}</h4>
+                        <p>{{db_translate($popular_service->description_ru,$popular_service->description_kz)}}</p>
                     </div>
                 </div>
             </a>

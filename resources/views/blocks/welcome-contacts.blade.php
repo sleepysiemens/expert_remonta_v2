@@ -5,8 +5,8 @@
             <div class="welcome-content">
                 <div class="welcome-header">
                     @foreach ($Headers as $Header)
-                        <h1>{{app()->db_translate($Header->title_ru,$Header->title_kz)}}</h1>
-                        <h3>{{app()->db_translate($Header->subtitle_ru,$Header->subtitle_kz)}}</h3>
+                        <h1>{{db_translate($Header->title_ru,$Header->title_kz)}}</h1>
+                        <h3>{{db_translate($Header->subtitle_ru,$Header->subtitle_kz)}}</h3>
                     @endforeach
                 </div>
                <div class="contact-div">

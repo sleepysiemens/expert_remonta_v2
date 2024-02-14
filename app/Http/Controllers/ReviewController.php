@@ -8,6 +8,7 @@ use App\Models\Review;
 use App\Models\Contact;
 use App\Models\Seo;
 use App\Models\NewReview;
+use App\Models\Block;
 use Stevebauman\Location\Facades\Location;
 
 class ReviewController extends Controller
@@ -19,7 +20,9 @@ class ReviewController extends Controller
 
         $page='reviews';
 
-        return view('reviews.index', compact(['reviews', 'page', 'seo']));
+        $block = Block::where(['code_name' => $page])->first();
+
+        return view('reviews.index', compact(['reviews', 'page', 'seo', 'block']));
     }
 
     public function add_review()

@@ -72,6 +72,15 @@
                     </p>
                 </a>
 
+                @if(auth()->user()->role == 'admin')
+                <a href="{{ route('admin.blocks.index') }}" class="nav-link @yield('blocks')">
+                  <i class="nav-icon fas fa-block"></i>
+                  <p>
+                      Блоки
+                  </p>
+              </a>
+                @endif
+
             </li>
         </ul>
         <ul class="nav nav-treeview" style="border-bottom: 1px solid rgba(255,255,255, .2)">
@@ -233,9 +242,17 @@
         <ul class="nav nav-treeview" style="border-bottom: 1px solid rgba(255,255,255, .2)">
 
           <li class="nav-header">Другое</li>
+          <li class="nav-item">
+            <a href="{{ route('admin.city.index') }}" class="nav-link @yield('city')">
+                <i class="nav-icon fas fa-city"></i>
+                <p>
+                    Города
+                </p>
+            </a>
+        </li>
             <li class="nav-item">
                 <a href="{{ route('admin.counter.index') }}" class="nav-link @yield('counters')">
-                    <i class="nav-icon fas fa-counter"></i>
+                    <i class="nav-icon fas fa-chart-bar"></i>
                     <p>
                         Счетчики
                     </p>
@@ -244,7 +261,7 @@
 
             <li class="nav-item">
               <a href="{{ route('admin.formtype.index') }}" class="nav-link @yield('forms')">
-                  <i class="nav-icon fas fa-form"></i>
+                  <i class="nav-icon fas fa-envelope"></i>
                   <p>
                       Формы
                   </p>
