@@ -64,6 +64,13 @@
           <i class="nav-icon fas fa-database"></i> Очистить кэш
         </a>
       </li>
+      @if(auth()->id() === 1)
+      <li class="nav-item">
+        <a href="{{ route('admin.settings.login') }}" class="nav-link">
+          <i class="nav-icon fas fa-door-open"></i> Страница входа
+        </a>
+      </li>
+      @endif
       @endif
     </ul>
 
