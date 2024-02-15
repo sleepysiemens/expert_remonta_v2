@@ -1,360 +1,525 @@
 <urlset xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd' xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>	
         <url>
-            <loc>http://astana.expertremonta.kz</loc>
-            <lastmod>2024-02-07T00:43:25+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz</loc>
+            <lastmod>2024-02-07T00:43:25+06:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>1</priority>
 	    </url>
         <url>
-            <loc>http://astana.expertremonta.kz/uslugi</loc>
+            <loc>https://astana.expertremonta.kz/uslugi</loc>
             <lastmod>2024-02-05T09:42:17+00:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.8</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/remont-kvartir</loc>
-            <lastmod>2024-01-31T08:30:04+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/remont-kvartir</loc>
+            <lastmod>2024-01-31T08:30:04+06:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.8</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/natyazhnye-potolki</loc>
-            <lastmod>2024-02-03T08:50:01+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/natyazhnye-potolki</loc>
+            <lastmod>2024-02-03T08:50:01+06:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.8</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/santehnika</loc>
-            <lastmod>2024-01-31T08:31:56+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/santehnika</loc>
+            <lastmod>2024-01-31T08:31:56+06:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.8</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/elektrika</loc>
-            <lastmod>2024-01-31T08:32:37+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/elektrika</loc>
+            <lastmod>2024-01-31T08:32:37+06:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.8</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/dizajn-interera</loc>
-            <lastmod>2024-01-31T08:33:15+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/dizajn-interera</loc>
+            <lastmod>2024-01-31T08:33:15+06:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.8</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/remont-kvartir/shumoizolyatsiya-kvartir</loc>
-            <lastmod>2024-01-25T23:29:44+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/remont-kvartir/shumoizolyatsiya-kvartir</loc>
+            <lastmod>2024-02-08T12:34:21+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/remont-kvartir/remont-pod-klyuch</loc>
-            <lastmod>2024-01-28T23:11:09+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/remont-kvartir/remont-pod-klyuch</loc>
+            <lastmod>2024-01-28T23:11:09+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/remont-kvartir/kachestvennyj-remont-kak</loc>
-            <lastmod>2024-01-26T03:11:45+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/remont-kvartir/kachestvennyj-remont-kak</loc>
+            <lastmod>2024-01-26T03:11:45+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/remont-kvartir/kapitalnyj-remont</loc>
-            <lastmod>2024-01-26T03:29:20+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/remont-kvartir/kapitalnyj-remont</loc>
+            <lastmod>2024-01-26T03:29:20+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/remont-kvartir/evroremont-v-kvartire-klientov</loc>
-            <lastmod>2024-01-26T03:43:11+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/remont-kvartir/evroremont-v-kvartire-klientov</loc>
+            <lastmod>2024-01-26T03:43:11+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/remont-kvartir/kosmeticheskij-remont-ch-1</loc>
-            <lastmod>2024-01-26T10:41:09+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/remont-kvartir/kosmeticheskij-remont-ch-1</loc>
+            <lastmod>2024-01-26T10:41:09+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/remont-kvartir/remont-polov</loc>
-            <lastmod>2024-01-26T04:09:04+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/remont-kvartir/remont-polov</loc>
+            <lastmod>2024-01-26T04:09:04+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/remont-kvartir/otdelochnye-raboty</loc>
-            <lastmod>2024-01-27T06:03:54+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/remont-kvartir/otdelochnye-raboty</loc>
+            <lastmod>2024-01-27T06:03:54+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/remont-kvartir/remont-vannoj-ch-1</loc>
-            <lastmod>2024-01-27T06:16:12+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/remont-kvartir/remont-vannoj-ch-1</loc>
+            <lastmod>2024-01-27T06:16:12+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/remont-kvartir/uteplenie-i-otdelka-lodzhij</loc>
-            <lastmod>2024-01-27T06:26:35+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/remont-kvartir/uteplenie-i-otdelka-lodzhij</loc>
+            <lastmod>2024-01-27T06:26:35+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/remont-kvartir/ukladka-kafelnoj-plitki</loc>
-            <lastmod>2024-01-27T06:48:23+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/remont-kvartir/ukladka-kafelnoj-plitki</loc>
+            <lastmod>2024-01-27T06:48:23+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/remont-kvartir/plastikovaya-vagonka-v-vannoj</loc>
-            <lastmod>2024-01-27T06:57:04+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/remont-kvartir/plastikovaya-vagonka-v-vannoj</loc>
+            <lastmod>2024-01-27T06:57:04+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/remont-kvartir/remont-kuhni</loc>
-            <lastmod>2024-01-27T07:13:07+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/remont-kvartir/remont-kuhni</loc>
+            <lastmod>2024-01-27T07:13:07+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/remont-kvartir/ustanovka-dverej-tsena</loc>
-            <lastmod>2024-01-27T07:24:10+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/remont-kvartir/ustanovka-dverej-tsena</loc>
+            <lastmod>2024-01-27T07:24:10+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/natyazhnye-potolki/natyazhnoj-potolok</loc>
-            <lastmod>2024-02-03T08:53:18+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/natyazhnye-potolki/natyazhnoj-potolok</loc>
+            <lastmod>2024-02-03T08:53:18+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/natyazhnye-potolki/natyazhnyie-potolki</loc>
-            <lastmod>2024-02-03T08:57:04+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/natyazhnye-potolki/natyazhnyie-potolki</loc>
+            <lastmod>2024-02-03T08:57:04+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/natyazhnye-potolki/natyazhnye-tkanevye-potolki</loc>
-            <lastmod>2024-02-03T08:59:31+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/natyazhnye-potolki/natyazhnye-tkanevye-potolki</loc>
+            <lastmod>2024-02-03T08:59:31+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/natyazhnye-potolki/plenochnye-natyazhnye-potolki</loc>
-            <lastmod>2024-01-27T09:12:13+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/natyazhnye-potolki/plenochnye-natyazhnye-potolki</loc>
+            <lastmod>2024-01-27T09:12:13+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/natyazhnye-potolki/dvuhurovnevye-natyazhnye-potolki</loc>
-            <lastmod>2024-01-27T09:19:47+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/natyazhnye-potolki/dvuhurovnevye-natyazhnye-potolki</loc>
+            <lastmod>2024-01-27T09:19:47+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/natyazhnye-potolki/natyazhnoj-potolok-zvezdnoe-nebo</loc>
-            <lastmod>2024-02-03T09:05:13+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/natyazhnye-potolki/natyazhnoj-potolok-zvezdnoe-nebo</loc>
+            <lastmod>2024-02-03T09:05:13+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/natyazhnye-potolki/1117</loc>
-            <lastmod>2024-02-03T09:03:57+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/natyazhnye-potolki/1117</loc>
+            <lastmod>2024-02-03T09:03:57+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/natyazhnye-potolki/aerografiya-na-potolke</loc>
-            <lastmod>2024-02-03T09:01:45+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/natyazhnye-potolki/aerografiya-na-potolke</loc>
+            <lastmod>2024-02-03T09:01:45+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/natyazhnye-potolki/proizvodstvo-natyazhnyh-potolkov</loc>
-            <lastmod>2024-02-03T09:01:03+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/natyazhnye-potolki/proizvodstvo-natyazhnyh-potolkov</loc>
+            <lastmod>2024-02-03T09:01:03+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/santehnika/sistema-otopleniya</loc>
-            <lastmod>2024-01-27T10:40:57+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/santehnika/sistema-otopleniya</loc>
+            <lastmod>2024-01-27T10:40:57+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/santehnika/montazh-goryachego-i-holodnogo-vodosnabzheniya</loc>
-            <lastmod>2024-01-27T10:51:01+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/santehnika/montazh-goryachego-i-holodnogo-vodosnabzheniya</loc>
+            <lastmod>2024-01-27T10:51:01+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/santehnika/santehnika-dlya-kuhni</loc>
-            <lastmod>2024-01-27T10:53:46+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/santehnika/santehnika-dlya-kuhni</loc>
+            <lastmod>2024-01-27T10:53:46+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/santehnika/ustanovka-schetchikov</loc>
-            <lastmod>2024-01-27T11:02:15+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/santehnika/ustanovka-schetchikov</loc>
+            <lastmod>2024-01-27T11:02:15+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/santehnika/vyzov-santehnika</loc>
-            <lastmod>2024-01-27T11:05:33+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/santehnika/vyzov-santehnika</loc>
+            <lastmod>2024-01-27T11:05:33+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/santehnika/teplyj-vodyanoj-pol</loc>
-            <lastmod>2024-01-27T11:16:32+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/santehnika/teplyj-vodyanoj-pol</loc>
+            <lastmod>2024-01-27T11:16:32+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/elektrika/uslugi-elektrika</loc>
-            <lastmod>2024-01-27T11:46:48+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/elektrika/uslugi-elektrika</loc>
+            <lastmod>2024-01-27T11:46:48+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/elektrika/elektricheskij-teplyj-pol</loc>
-            <lastmod>2024-01-27T11:58:53+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/elektrika/elektricheskij-teplyj-pol</loc>
+            <lastmod>2024-01-27T11:58:53+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/dizajn-interera/izgotovlenie-korpusnoj-mebeli</loc>
-            <lastmod>2024-01-20T15:18:34+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/dizajn-interera/dizajn-pomeshhenij</loc>
+            <lastmod>2024-02-08T23:16:09+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/dizajn-interera/kuhni-na-zakaz</loc>
-            <lastmod>2024-01-20T15:18:34+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/dizajn-interera/dizajn-proekt</loc>
+            <lastmod>2024-02-08T23:17:18+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/dizajn-interera/shkaf-kupe-na-zakaz</loc>
-            <lastmod>2024-01-20T15:18:34+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/dizajn-interera/dizajn-v-stile-ampir</loc>
+            <lastmod>2024-02-08T23:18:38+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/dizajn-interera/detskaya-komnata-na-zakaz</loc>
-            <lastmod>2024-01-20T15:18:34+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/dizajn-interera/anglijskij-stil-v-interere</loc>
+            <lastmod>2024-02-08T23:19:31+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/dizajn-interera/korpusnaya-mebel-dlya-prihozhej</loc>
-            <lastmod>2024-01-20T15:18:34+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/dizajn-interera/interer-doma-v-stile-provans</loc>
+            <lastmod>2024-02-08T23:20:18+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/dizajn-interera/umnaya-kuhnya-dlya-doma</loc>
-            <lastmod>2024-01-20T15:18:34+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/dizajn-interera/stil-haj-tek-v-interere</loc>
+            <lastmod>2024-02-08T23:21:05+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/uslugi/remont-kvartir/Отделка и утепление лоджии</loc>
-            <lastmod>2024-01-27T07:30:57+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/dizajn-interera/romanskij-stil-v-interere</loc>
+            <lastmod>2024-02-08T23:21:54+06:00</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/vacancy/otdelochnik-universal-0etdyg</loc>
-            <lastmod>2024-02-05T00:15:12+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/uslugi/dizajn-interera/rokokko-v-interere</loc>
+            <lastmod>2024-02-08T23:22:40+06:00</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/uslugi/remont-kvartir/stil-romantizm-v-interere</loc>
+            <lastmod>2024-02-08T23:23:57+06:00</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/uslugi/dizajn-interera/dizajn-v-stile-renessans</loc>
+            <lastmod>2024-02-08T23:25:05+06:00</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/uslugi/dizajn-interera/stil-v-interere-minimalizm</loc>
+            <lastmod>2024-02-08T23:30:29+06:00</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/uslugi/remont-kvartir/stil-konstruktivizm</loc>
+            <lastmod>2024-02-08T23:31:19+06:00</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/uslugi/dizajn-interera/dizajn-v-stile-loft</loc>
+            <lastmod>2024-02-08T23:31:50+06:00</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/uslugi/dizajn-interera/klassicheskij-stil-v-interere</loc>
+            <lastmod>2024-02-08T23:32:29+06:00</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/uslugi/remont-kvartir/dizajn-v-stile-kitch</loc>
+            <lastmod>2024-02-08T23:33:06+06:00</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/uslugi/dizajn-interera/stil-dizajna-gotika</loc>
+            <lastmod>2024-02-08T23:33:38+06:00</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/uslugi/dizajn-interera/stil-v-dizajne-vintazh</loc>
+            <lastmod>2024-02-08T23:34:19+06:00</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/uslugi/dizajn-interera/antichnyj-stil-dizajna</loc>
+            <lastmod>2024-02-08T23:34:54+06:00</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/uslugi/dizajn-interera/stil-ar-deko</loc>
+            <lastmod>2024-02-08T23:35:33+06:00</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/uslugi/dizajn-interera/stil-ar-nuvo</loc>
+            <lastmod>2024-02-08T23:36:04+06:00</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/uslugi/dizajn-interera/stil-barokko</loc>
+            <lastmod>2024-02-08T23:36:42+06:00</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/uslugi/dizajn-interera/kantri-stil</loc>
+            <lastmod>2024-02-08T23:37:20+06:00</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/uslugi/dizajn-interera/tehno-stil-v-interere</loc>
+            <lastmod>2024-02-08T23:37:58+06:00</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/uslugi/dizajn-interera/stil-fyuzhn</loc>
+            <lastmod>2024-02-08T23:38:35+06:00</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/uslugi/dizajn-interera/eklektika-stil</loc>
+            <lastmod>2024-02-08T23:39:11+06:00</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/uslugi/dizajn-interera/etnicheskij-stil-v-interere</loc>
+            <lastmod>2024-02-08T23:39:43+06:00</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/uslugi/dizajn-interera/yaponskij-stil-interera</loc>
+            <lastmod>2024-02-08T23:40:17+06:00</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/uslugi/remont-kvartir/Отделка и утепление лоджии</loc>
+            <lastmod>2024-01-27T07:30:57+06:00</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/vacancy/otdelochnik-universal-0etdyg</loc>
+            <lastmod>2024-02-05T00:15:12+06:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/vacancy/plitochnik-m6mqfe</loc>
-            <lastmod>2024-02-05T00:28:30+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/vacancy/plitochnik-m6mqfe</loc>
+            <lastmod>2024-02-05T00:28:30+06:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/vacancy/elektrik-orqsws</loc>
-            <lastmod>2024-02-05T00:25:33+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/vacancy/elektrik-orqsws</loc>
+            <lastmod>2024-02-05T00:25:33+06:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/vacancy/santehnik-acq0bo</loc>
-            <lastmod>2024-02-05T00:35:38+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/vacancy/santehnik-acq0bo</loc>
+            <lastmod>2024-02-05T00:35:38+06:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/vacancy/malyar-xvbz4o</loc>
-            <lastmod>2024-02-05T00:47:27+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/vacancy/malyar-xvbz4o</loc>
+            <lastmod>2024-02-05T00:47:27+06:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/vacancy/zamershtik-konsulytant-bdp4go</loc>
-            <lastmod>2024-02-05T00:52:08+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/vacancy/zamershtik-konsulytant-bdp4go</loc>
+            <lastmod>2024-02-05T00:52:08+06:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/vacancy/menedzher-proekta---kontroler-otk-gmzljb</loc>
-            <lastmod>2024-02-05T01:00:40+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/vacancy/menedzher-proekta---kontroler-otk-gmzljb</loc>
+            <lastmod>2024-02-05T01:00:40+06:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/vacancy/dizayner-interyera-ale4th</loc>
-            <lastmod>2024-02-05T01:07:41+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/vacancy/dizayner-interyera-ale4th</loc>
+            <lastmod>2024-02-05T01:07:41+06:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/vacancy/operator-koll-tsentra-v-otdele-hr-hkjkpj</loc>
-            <lastmod>2024-02-05T01:12:34+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/vacancy/operator-koll-tsentra-v-otdele-hr-hkjkpj</loc>
+            <lastmod>2024-02-05T01:12:34+06:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/vacancy/operator-koll-tsentra-v-otdele-prodazh-6rxjin</loc>
-            <lastmod>2024-01-28T03:58:26+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/vacancy/operator-koll-tsentra-v-otdele-prodazh-6rxjin</loc>
+            <lastmod>2024-01-28T03:58:26+06:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/vacancy/kontroler-otk-(otdel-tehnicheskogo-kontrolya)-0huteu</loc>
-            <lastmod>2024-01-27T14:15:00+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/vacancy/kontroler-otk-(otdel-tehnicheskogo-kontrolya)-0huteu</loc>
+            <lastmod>2024-01-27T14:15:00+06:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/vacancies/category/departament-proizvodstva-rabot</loc>
-            <lastmod>2024-01-28T03:20:17+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/vacancy/ukladchik-laminata-yw5jev</loc>
+            <lastmod>2024-02-14T10:54:49+06:00</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/vacancy/santehnik-67hbju</loc>
+            <lastmod>2024-02-14T10:53:25+06:00</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/vacancy/otdelochnik-universal-of9ala</loc>
+            <lastmod>2024-02-14T16:01:00+06:00</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/vacancy/malyar-av662n</loc>
+            <lastmod>2024-02-14T16:09:15+06:00</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/vacancy/shtukatur-eto5uu</loc>
+            <lastmod>2024-02-14T16:13:39+06:00</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/vacancy/gipsokartonshtik-montazhnik-jwblh7</loc>
+            <lastmod>2024-02-14T16:18:24+06:00</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/vacancy/kamenyshtik-lywszl</loc>
+            <lastmod>2024-02-14T16:23:04+06:00</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/vacancy/montazhnik-natyazhnih-potolkov-xtunm5</loc>
+            <lastmod>2024-02-14T16:26:30+06:00</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/vacancy/plitochnik-pqedim</loc>
+            <lastmod>2024-02-14T16:29:56+06:00</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/vacancy/master-po-naneseniyu-dekorativnih-shtukaturok-crjzcn</loc>
+            <lastmod>2024-02-14T16:34:10+06:00</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/vacancy/elektrik-kjxmkx</loc>
+            <lastmod>2024-02-14T16:42:45+06:00</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/vacancy/montazhnik-dverey-6ie18g</loc>
+            <lastmod>2024-02-14T16:55:15+06:00</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.6</priority>
+	    </url><url>
+            <loc>https://astana.expertremonta.kz/vacancies/category/departament-proizvodstva-rabot</loc>
+            <lastmod>2024-01-28T03:20:17+06:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.4</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/vacancies/category/departament-upravleniya-personalom-(hr)</loc>
-            <lastmod>2024-01-28T03:21:17+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/vacancies/category/departament-upravleniya-personalom-(hr)</loc>
+            <lastmod>2024-01-28T03:21:17+06:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.4</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/vacancies/category/departament-proverki-rabot</loc>
-            <lastmod>2024-01-28T03:22:11+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/vacancies/category/departament-proverki-rabot</loc>
+            <lastmod>2024-01-28T03:22:11+06:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.4</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/vacancies/category/departament-zakupok-i-snabženiya</loc>
-            <lastmod>2024-01-28T03:23:21+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/vacancies/category/departament-zakupok-i-snabženiya</loc>
+            <lastmod>2024-01-28T03:23:21+06:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.4</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/vacancies/category/departament-prodaž</loc>
-            <lastmod>2024-01-28T03:26:09+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/vacancies/category/departament-prodaž</loc>
+            <lastmod>2024-01-28T03:26:09+06:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.4</priority>
 	    </url><url>
-            <loc>http://astana.expertremonta.kz/vacancies/category/departament-dizayn-proektov</loc>
-            <lastmod>2024-01-28T03:44:59+00:00</lastmod>
+            <loc>https://astana.expertremonta.kz/vacancies/category/departament-dizayn-proektov</loc>
+            <lastmod>2024-01-28T03:44:59+06:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.4</priority>
 	    </url><url>
-        <loc>http://astana.expertremonta.kz/price</loc>
+        <loc>https://astana.expertremonta.kz/price</loc>
         <lastmod>2024-02-05T09:42:17+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
         </url>
         <url>
-        <loc>http://astana.expertremonta.kz/gallery</loc>
+        <loc>https://astana.expertremonta.kz/gallery</loc>
         <lastmod>2024-02-05T09:42:17+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         </url>
         <url>
-        <loc>http://astana.expertremonta.kz/reviews</loc>
+        <loc>https://astana.expertremonta.kz/reviews</loc>
         <lastmod>2024-02-05T09:42:17+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         </url>
         <url>
-        <loc>http://astana.expertremonta.kz/contact</loc>
+        <loc>https://astana.expertremonta.kz/contact</loc>
         <lastmod>2024-02-05T09:42:17+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         </url>
         <url>
-        <loc>http://astana.expertremonta.kz/franchise</loc>
+        <loc>https://astana.expertremonta.kz/franchise</loc>
         <lastmod>2024-02-05T09:42:17+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         </url>
         <url>
-        <loc>http://astana.expertremonta.kz/vacancies-office</loc>
+        <loc>https://astana.expertremonta.kz/vacancies-office</loc>
         <lastmod>2024-02-05T09:42:17+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         </url>
         <url>
-        <loc>http://astana.expertremonta.kz/vacancies-landing</loc>
+        <loc>https://astana.expertremonta.kz/vacancies-landing</loc>
         <lastmod>2024-02-05T09:42:17+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         </url>
         <url>
-        <loc>http://astana.expertremonta.kz/vacancies</loc>
-        <lastmod>2024-02-05T01:12:34+00:00</lastmod>
+        <loc>https://astana.expertremonta.kz/vacancies</loc>
+        <lastmod>2024-02-14T16:55:15+06:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         </url>

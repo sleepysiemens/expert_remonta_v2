@@ -45,6 +45,8 @@ use App\Mail\DemoEmail;
     Route::get('/vacancy/{vacancy}', 'VacancyController@show')->name('vacancy.show');
     Route::get('/vacancies/category/{vacancyCategory}', 'VacancyController@showCategory')->name('vacancy.category');
     Route::get('/geo', function () {  
+        //dd(DB::table('jobs')->get());
+        //Mail::to('mixa430899@gmail.com')->queue(new DemoEmail());
         //dump(env('APP_CITY'));
         //dd(config('app.city'));
         //dd(\App\Models\City::all());

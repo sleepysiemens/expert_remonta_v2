@@ -174,7 +174,8 @@ class MainController extends Controller
         //dd($emails);
 
         foreach($emails as $email) {
-          Mail::to($email)->send(new FormEmail($objDemo));
+          //Mail::to($email)->send(new FormEmail($objDemo));
+          Mail::to($email)->queue(new FormEmail($objDemo));
         }
         //$tg->sendMessage(1, (string)view('tg.form'));
 
@@ -182,7 +183,8 @@ class MainController extends Controller
         $path = parse_url($_SERVER['HTTP_REFERER'])['path'];
         //$path = '/';
         //if($req->sourse !== 'main/sale/') $path = $req->sourse;
-        return redirect($path)->with('msg', 'Ваша заявка успешно отправлена');
+        return redirect("$path?from=form");
+          //->with('msg', 'Ваша заявка успешно отправлена');
     }
 
     public function locale()

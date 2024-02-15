@@ -184,6 +184,13 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", e => {
+    let url = new URL(window.location.href);
+    if(url.search.match('from=form')) {
+        document.querySelector('body').insertAdjacentHTML('beforeend', `
+        <div class="success_msg">Ваша заявка успешно отправлена</div>
+        `)
+    }
+
     let success_msg = document.querySelector('.success_msg')
     if(!success_msg) return
     success_msg.classList.add('active');

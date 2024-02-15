@@ -32,7 +32,7 @@ class GenSitemap extends Command
         $path = public_path() . '/sitemap.xml';
         //dd($path);
         $domain = 'astana.';
-        $scheme = 'http';
+        $scheme = 'https';
         if(config('app.city') === 'Алматы') $domain = '';
         $domain .= 'expertremonta.kz';
 
@@ -154,7 +154,8 @@ class GenSitemap extends Command
         file_put_contents($path, $sitemapContent);
 
         // лог делать в другой файл, для крон действий
-        Log::debug('Sitemap are successfully generated');
+        //Log::debug('Sitemap are successfully generated');
+        Log::channel('cron')->debug('Sitemap are successfully generated');
         
         
     }
