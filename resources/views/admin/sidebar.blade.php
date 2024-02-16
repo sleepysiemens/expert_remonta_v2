@@ -16,6 +16,7 @@
                       </p>
                     </a>
                     <ul class="nav nav-treeview" style="display: none; @yield('dropdown')">
+                        @if(config('app.city') === 'Алматы')
                           <li class="nav-item">
                             <a href="{{ route('admin.main.header.index',) }}" class="nav-link @yield('header')">
                               <i class="fas fa-i-cursor nav-icon"></i>
@@ -28,6 +29,7 @@
                               <p>Welcome • карточки</p>
                             </a>
                           </li>
+                          @endif
                           <li class="nav-item">
                             <a href="{{ route('admin.main.about.index') }}" class="nav-link @yield('about')">
                               <i class="fas fa-user-check nav-icon"></i>
