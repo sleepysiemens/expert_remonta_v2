@@ -45,17 +45,6 @@ use App\Mail\DemoEmail;
     Route::get('/vacancy/{vacancy}', 'VacancyController@show')->name('vacancy.show');
     Route::get('/vacancies/category/{vacancyCategory}', 'VacancyController@showCategory')->name('vacancy.category');
     Route::get('/geo', function () {  
-        //dd(DB::table('seos')->get());
-        /*foreach(DB::table('seos') as $seo) {
-            $new = new Seo();
-            $new->created_at = $seo->created_at;
-            $new->updated_at = $seo->updated_at;
-            $new->page = $seo->page;
-            $new->seo_ru = $seo->seo_ru;
-            $new->seo_kz = $seo->seo_kz;
-            $new->meta_ru = $seo->meta_ru;
-            $new->meta_kz = $seo->meta_kz;
-        }*/
         //Mail::to('mixa430899@gmail.com')->queue(new DemoEmail());
         //dump(env('APP_CITY'));
         //dd(config('app.city'));
