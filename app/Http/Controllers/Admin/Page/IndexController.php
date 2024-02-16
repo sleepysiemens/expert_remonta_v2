@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Http;
 
 use App\Models\Review;
 use App\Models\question;
@@ -172,6 +173,15 @@ class IndexController extends Controller
           }
         }
       });
+
+      // тут можно отправлять запрос в IndexNow Yandex, скорее через события потом
+      /*$response = Http::get('https://yandex.com/indexnow', [
+        'url' => route('category.index', [
+          'service' => $category->service->url,
+          'category' => $category->url
+        ]),
+        'key' => config('app.yandex_indexnow_key'),
+      ]);*/
 
         return redirect()->route('admin.page.show', $category->id);
     }

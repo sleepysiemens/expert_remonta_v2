@@ -29,8 +29,12 @@
 
         <div class="form-group">
           <label for="exampleInputEmail1">Код</label>
+          @if(config('app.city') === 'Астана')
           <textarea id="summernote1" name="code" placeholder="Код...">{!!old('code')!!}</textarea>
-      </div>
+          @else
+          <textarea id="summernote1" name="code_almaty" placeholder="Код...">{!!old('code_almaty')!!}</textarea>
+          @endif
+        </div>
 
       </div>
       

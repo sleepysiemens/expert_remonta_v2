@@ -202,6 +202,7 @@
 <script src="{{asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
 <!-- Summernote -->
 <script src="{{asset('plugins/summernote/summernote-bs4.min.js')}}"></script>
+<script src="{{asset('plugins/summernote/lang/summernote-ru-RU.js')}}"></script>
 <!-- overlayScrollbars -->
 <script src="{{asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <!-- AdminLTE App -->
@@ -324,6 +325,14 @@
               ]
           }
       );
+  });
+</script>
+
+<script>
+  $(document).ready(function() {
+      $('#summernote_image').summernote({
+    lang: 'ru-RU' // default: 'en-US'
+  });
   });
 </script>
 

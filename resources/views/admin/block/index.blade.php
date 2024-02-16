@@ -36,7 +36,8 @@
 
                 <tr>
                     <td>{{$i->name}}/{{$i->code_name}}</td>
-                    <td>{{$i->code ? mb_strlen($i->code) . ' символов' : 'Нет'}}</td>
+                    {{--<td>{{$i->code ? mb_strlen(strip_tags($i->code)) . ' символов' : 'Нет'}}</td>--}}
+                    <td>...</td>
                     <td><a href="{{route('admin.blocks.edit',$i->id)}}"><i class="fas fa-pen"></i></a></td>
                     {{--<td>
                       <form method="post" action="{{route('admin.menu.destroy',$m->id)}}">

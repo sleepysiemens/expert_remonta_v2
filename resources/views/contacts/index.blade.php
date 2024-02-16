@@ -6,8 +6,10 @@
 
 @section('content')
     @include('blocks.welcome-contacts')
-    @include('blocks.about_company')
-    {{--{!!$block->code!!}--}}
+    {{--@include('blocks.about_company')--}}
+    <section class="about" style="display:block">
+    {!!$block->code!!}
+    </section>
     @include('blocks.reviews_new')
 @endsection
 

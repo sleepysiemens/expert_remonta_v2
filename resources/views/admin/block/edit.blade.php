@@ -44,8 +44,12 @@
   
           <div class="form-group">
             <label for="exampleInputEmail1">Код</label>
-            <textarea id="summernote1" name="code" placeholder="Код...">{!!$block->code!!}</textarea>
-        </div>
+            @if(config('app.city') === 'Астана')
+            <textarea id="summernote_image" name="code" placeholder="Код...">{!!$block->code!!}</textarea>
+            @else
+            <textarea id="summernote_image" name="code_almaty" placeholder="Код...">{!!$block->code_almaty!!}</textarea>
+            @endif
+          </div>
 
          
   
@@ -58,3 +62,8 @@
     </form>
   </div>
 @endsection
+
+
+{{--@push('summernoteCustom')
+
+@endPush--}}

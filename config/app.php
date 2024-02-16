@@ -210,6 +210,7 @@ return [
     'city' => env('APP_CITY'),
     'city_en' => env('APP_CITY_EN'),
     'city_opposite' => env('APP_CITY_OPPOSITE'),
-    'city_opposite_en' => env('APP_CITY_OPPOSITE_EN')
+    'city_opposite_en' => env('APP_CITY_OPPOSITE_EN'),
+    'yandex_indexnow_key' => env('YANDEX_INDEXNOW_KEY', '')
 
 ];
