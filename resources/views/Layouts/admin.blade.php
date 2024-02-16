@@ -70,6 +70,11 @@
           <i class="nav-icon fas fa-door-open"></i> Страница входа
         </a>
       </li>
+      <li class="nav-item">
+        <a href="{{$oppositeAdminUrl}}" class="nav-link">
+          <i class="nav-icon fas fa-directions"></i> Переключиться
+        </a>
+      </li>
       @endif
       @endif
     </ul>

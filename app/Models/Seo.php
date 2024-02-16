@@ -10,4 +10,8 @@ class Seo extends Model
     use HasFactory;
     protected $guarded=[];
 
+    public function getTable()  {
+        return config('app.city') === 'Астана' ? 'seos' : 'seos_almaty';
+    }
+
 }

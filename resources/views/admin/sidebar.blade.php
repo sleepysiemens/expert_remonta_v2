@@ -74,7 +74,7 @@
 
                 @if(auth()->user()->role == 'admin')
                 <a href="{{ route('admin.blocks.index') }}" class="nav-link @yield('blocks')">
-                  <i class="nav-icon fas fa-block"></i>
+                  <i class="nav-icon fas fa-code"></i>
                   <p>
                       Блоки
                   </p>
