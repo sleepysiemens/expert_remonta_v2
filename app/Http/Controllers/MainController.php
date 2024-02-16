@@ -106,6 +106,7 @@ class MainController extends Controller
       $data= $req->validate($validationRules);
       //dd($data);
       if(in_array($formTypeId, [2, 3])) {
+        //\App\Jobs\StoreFile::dispatch($req->file('resume_file'));
         $path = Storage::put('resumes', $req->file('resume_file'));
         $data['resume_file'] = $path;
       }

@@ -25,7 +25,8 @@
                         <span class="welcome-card welcome-card-{{$i++}} scroll-hidden">
                             <p>{{db_translate($card->title_ru,$card->title_kz)}}</p>
                             {{--<img src="/img/cards/{{$card->src}}">--}}
-                            <img src="{{getCommonResource("/img/cards/".$card->src)}}">
+                            <img src="{{getCommonResource("/img/cards/".$card->src)}}"
+                            alt="{{db_translate($card->title_ru,$card->title_kz)}}">
                         </span>
                     @endforeach
                 </div>

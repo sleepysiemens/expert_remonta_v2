@@ -41,7 +41,8 @@
                         src="/img/sales/x-360-{{str_replace('.png', '.jpg', $sale->src)}}"
                         srcset="/img/sales/x-360-{{str_replace('.png', '.jpg', $sale->src)}} 500w,
                         {{--/img/sales/x-768-{{str_replace('.png', '.jpg', $sale->src)}} 600w--}}
-                        ">
+                        "
+                        alt="{{db_translate($sale->title_ru,$sale->title_kz)}}">
                     <div id="action{{$sale->id}}" class="sale_timer"></div>
                 </div>
             </a>

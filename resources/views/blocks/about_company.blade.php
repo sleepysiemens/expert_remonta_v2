@@ -7,7 +7,7 @@
                 </p>
         </div>
             <div class="about-img hidden">
-                <img src=" /img/about/{{$About->src}} ">
+                <img src=" /img/about/{{$About->src}}" alt="Компания Эксперт Ремонта">
             </div>
     @endforeach
         </section>

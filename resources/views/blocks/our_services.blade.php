@@ -6,7 +6,8 @@
             @foreach ($homeServices as $service)
             <span class="service-banner scroll-hidden">
                 <a class="service-banner-link" href="{{ route('uslugi.index') }}/{{$service->url}}/">
-                    <img src=" /img/services/{{$service->src}}">
+                    <img src=" /img/services/{{$service->src}}"
+                    alt="{{db_translate($service->title_ru, $service->title_kz)}}">
                 </a>
                 <a href="{{ route('service.index', $service->url) }}" class="service-content">
                     <h4>{{db_translate($service->title_ru, $service->title_kz)}}</h4>
