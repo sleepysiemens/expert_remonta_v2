@@ -31,6 +31,11 @@ class Application extends Model
         return $this->belongsTo(Sale::class);
     }
 
+    public function page(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
+
     public function vacancy(): BelongsTo
     {
         return $this->belongsTo(Vacancy::class);

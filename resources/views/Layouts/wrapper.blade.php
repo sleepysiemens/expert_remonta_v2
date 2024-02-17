@@ -56,6 +56,10 @@
                     </button>
                 </form>
 
+                {{--<button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>--}}
+                
                 <a class="mobile-menu-btn">
                     <i class="fas fa-bars"></i>
                 </a>
@@ -76,25 +80,26 @@
         <div class="contact-links">
 
         @if(isset($googlemaps))
-        <a href="{{$googlemaps->link}}" target="_blank" class="maps" style="background:#2F8B47">
+        <a href="{{$googlemaps->link}}" target="_blank" class="maps" style="background:#2F8B47"
+            aria-label="Адрес компании Эксперт Ремонта на карте">
             <i class="fas fa-map"></i>
             {{--<i class="fas fa-map-marker-alt"></i>--}}
         </a>
         @endif
 
-            <a href="@foreach ($whatsapp as $wp){{$wp->link}}@endforeach" target="_blank" class="whatsapp">
+            <a href="@foreach ($whatsapp as $wp){{$wp->link}}@endforeach" target="_blank" class="whatsapp" aria-label="Номер для связи в WhatsApp">
                 <i class="fab fa-whatsapp"></i>
             </a>
 
-            <a href="@foreach ($telegram as $tg){{$tg->link}}@endforeach" target="_blank" class="telegram">
+            <a href="@foreach ($telegram as $tg){{$tg->link}}@endforeach" target="_blank" class="telegram" aria-label="Номер для связи в Telegram">
                 <i class="fab fa-telegram-plane"></i>
             </a>
 
-            <a href="@foreach ($instagram as $insta){{$insta->link}}@endforeach" target="_blank" class="instagram">
+            <a href="@foreach ($instagram as $insta){{$insta->link}}@endforeach" target="_blank" class="instagram" aria-label="Наш instagram">
                 <i class="fab fa-instagram"></i>
             </a>
 
-            <a href="@foreach ($phone as $ph){{$ph->link}}@endforeach" target="_blank" class="phone">
+            <a href="@foreach ($phone as $ph){{$ph->link}}@endforeach" target="_blank" class="phone" aria-label="Номер телефона компании Эксперт Ремонта">
                 <i class="fas fa-phone"></i>
             </a>
 

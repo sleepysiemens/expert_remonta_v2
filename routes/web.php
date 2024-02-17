@@ -27,7 +27,7 @@ use App\Mail\DemoEmail;
   // даже при cache.headers:public;max_age=31536000 гугл page speed показывает проблему кэширования, хз
   // https://blog.jjdiaz.dev/boost-api-performance-with-http-caching-in-laravel
   // 'cacheResponse:86400' - spatie response cache
-  Route::group(['middleware'=>['app', 'cache.headers:max_age=3600']], function() {
+  Route::group(['middleware'=>['app', 'cache.headers:max_age=3600', 'cacheResponse:86400']], function() {
     Route::get('/', 'MainController@index')->name('main.index');//->middleware('page-cache');
     Route::get('/uslugi/', 'UslugiController@index')->name('uslugi.index');
     Route::get('/price/', 'PriceController@index')->name('price.index');
@@ -48,7 +48,7 @@ use App\Mail\DemoEmail;
         //Mail::to('mixa430899@gmail.com')->queue(new DemoEmail());
         //dump(env('APP_CITY'));
         //dd(config('app.city'));
-        //dd(\App\Models\City::all());
+        //dd(\App\Models\Application::all());
       //dd(scandir(public_path() . '/img'));
       //dd(\App\Models\Application::all());             
      
@@ -399,7 +399,7 @@ Route::group(['prefix' => 'blocks', 'middleware' => 'redactor'], function()
 //FORM
 Route::post('/locale/change/', 'MainController@locale')->name('locale.change');
 
-Route::post('/form/store/', 'MainController@form')->name('form.store');
+Route::post('/form/store/', 'FormController@form')->name('form.store');
 Route::post('/city/store/', 'MainController@city')->name('city.store');
 Route::post('/review/store/', 'ReviewController@add_review')->name('review.store');
 Route::post('/resume/store/', 'VacancyController@form')->name('resume.store');

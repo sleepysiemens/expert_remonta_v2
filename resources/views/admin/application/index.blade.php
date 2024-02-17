@@ -78,6 +78,19 @@
                   @if($application->vacancy) 
                     Вакансия: <a href="{{route('vacancy.show', ['vacancy' => $application->vacancy->url])}}">{{$application->vacancy->name}}</a> <br> 
                   @endif
+                  @if($application->page) 
+                    Страница: <a href="{{route('category.index', [
+                      'service' => $application->page->service->url,
+                      'category' => $application->page->url,
+                      ])}}">{{$application->page->title_ru}}</a> <br> 
+                  @endif
+                  @if($application->url_query)
+                    URL параметры: <br>
+                    @foreach(explode('&', $application->url_query) as $queryParam)
+                      <b>{{explode('=', $queryParam)[0]}}</b>: 
+                      @if(isset(explode('=', $queryParam)[1])) {{explode('=', $queryParam)[1]}} @endif <br>
+                    @endForeach
+                  @endif
                 </td>
                 <td>
                   @if(!request()->query('archive'))

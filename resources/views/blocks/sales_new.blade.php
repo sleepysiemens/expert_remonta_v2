@@ -53,8 +53,8 @@
             @endphp
         </div>
         <div class="arrow_buttons_wrap">
-            <button class="left-arrow" id="scroll-left"></button>
-            <button class="right-arrow" id="scroll-right"></button>
+            <button class="left-arrow" id="scroll-left" aria-label="Прокрутить влево"></button>
+            <button class="right-arrow" id="scroll-right" aria-label="Прокрутить вправо"></button>
               </div>
     </div>
 </section>
