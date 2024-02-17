@@ -5,7 +5,11 @@
         <span class="flare"></span><p>{{__('Оставить отзыв')}}</p>
     </a>
     <br>
+    @if(config('app.city') === 'Астана')
     {!!$block->code!!}
+    @else
+    {!!$block->code_almaty!!}
+    @endif
     <div class="hidden" style="width: 95%; margin: auto">
         @foreach($reviews as $review)
                 <a class="review" style="width: 100%; height: auto; padding: 15px 0; margin: auto 0">

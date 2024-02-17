@@ -8,7 +8,11 @@
     @include('blocks.welcome-contacts')
     {{--@include('blocks.about_company')--}}
     <section class="about" style="display:block">
+    @if(config('app.city') === 'Астана')
     {!!$block->code!!}
+    @else
+    {!!$block->code_almaty!!}
+    @endif
     </section>
     @include('blocks.reviews_new')
 @endsection
