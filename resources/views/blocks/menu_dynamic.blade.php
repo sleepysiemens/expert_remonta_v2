@@ -33,8 +33,11 @@
       </ul>
     </div>--}}
     @foreach($menu as $m)
-      <div class="header_menu_item {{count($m->childs) > 0 ? 'has_childs' : ''}} {{$m->uri === $uri ? 'active' : ''}}">
-      <a href="/{{$m->url}}" @class(['nav-link', 'nav-link-selected' => $m->uri === $uri,])>{{db_translate($m->title, $m->title_kz)}}</a>
+      <div @class([
+        'header_menu_item', 'has_childs' => count($m->childs) > 0, 
+        'active' => $m->uri === $uri && $m->url !== '#'
+        ])>
+      <a href="/{{$m->url}}" @class(['nav-link', 'nav-link-selected' => $m->uri === $uri && $m->url !== '#',])>{{db_translate($m->title, $m->title_kz)}}</a>
         @if(count($m->childs) > 0)
         <ul class="header_submenu">
           @foreach($m->childs as $child)

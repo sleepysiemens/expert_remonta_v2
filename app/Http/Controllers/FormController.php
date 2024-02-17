@@ -64,7 +64,7 @@ class FormController extends Controller
         'sourse'=>'required'
       ];
       if(in_array($formTypeId, [2, 3])) {
-        $validationRules['resume_file'] = 'required|max:8096|mimes:pdf,doc,docx,xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+        $validationRules['resume_file'] = 'required|max:5120|mimes:pdf,doc,docx,xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document';
       }
       $data= $req->validate($validationRules);
       //dd($data);
