@@ -158,7 +158,7 @@
             <div class="footer-div">
                 <div class="footer-links">
                     <div class="footer-logo">
-                        <img src="/img/footerLogo.png">
+                        <img src="/img/footerLogo.png" alt="Компания Эксперт Ремонта">
                     </div>
                     <div class="footer-links-subdiv">
                         <a href="{{ route('main.index') }}/" class="footer-link"><p>{{__('Главная')}}</p></a>
