@@ -4,7 +4,7 @@ require_once __DIR__.'/app/Utils/files.php';
 
 // функция для получения ресурса, который разделяется между двумя поддоменами
 function getCommonResource($url) {
-  //return config('app.city') === 'Астана' ? $url : "https://astana.expertremonta.kz" . $url;
+  if(config('app.env') !== 'production') return $url;
   return config('app.city') === 'Астана' ? "https://expertremonta.kz" . $url : $url;
 }
 

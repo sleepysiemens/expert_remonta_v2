@@ -63,21 +63,21 @@ class BlocksController extends Controller
         return view('admin.block.edit', compact(['block', 'reviews', 'questions', 'services', 'categories', 'sales', 'galleries']));
     }
 
-    /*public function update(Request $req, Block $block)
+    public function update(Request $req, Block $block)
     {
         //dd($req->all());
       $block->update($req->except('files'));
 
       return redirect()->route('admin.blocks.index');
-    }*/
+    }
 
-    public function update(Request $request, Block $block)
+    /*public function update(Request $request, Block $block)
     {
         //dd($request->all());
-        /*$this->validate($request, [
+        $this->validate($request, [
              'name' => 'required',
-             'code' => 'required'
-        ]);*/
+             //'code' => 'required'
+        ]);
  
        $code = config('app.city') === 'Астана' ? $request->code : $request->code_almaty;
        $dom = new \DomDocument();
@@ -117,11 +117,24 @@ class BlocksController extends Controller
        $code = $dom->saveHTML();
        //dd($code);
        $block->name = $request->name;
-       $block->code = $code;
+       if(config('app.city') === 'Астана') $block->code = $code;
+       else $block->code_almaty = $code;
        $block->save();
  
        //dd($block);
        return redirect()->route('admin.blocks.index');
+    }*/
+
+    public function summernote(Request $req) {
+        $file = $req->file("file");
+        //$str= Str::random(8);
+        $folder = "/img/summernote/" . date('Y') . '/' . date('m');
+        $image_name= $folder . '/' . $file->hashName();
+        if (!is_dir(public_path() . $folder)) {
+            mkdir(public_path() . $folder, 0777, true);
+          }
+        $file->move(public_path() . $folder, $file->hashName());
+        return $image_name;
     }
 
     public function destroy(Block $block)

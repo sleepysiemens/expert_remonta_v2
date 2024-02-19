@@ -45,6 +45,11 @@
       </li>
       @if(auth()->user()->role == 'admin')
       <li class="nav-item">
+        <a href="{{ route('admin.application.index') }}" class="nav-link">
+          <i class="nav-icon far fa-address-book"></i> Заявки
+        </a>
+      </li>
+      <li class="nav-item">
         <a href="{{ route('admin.counter.index') }}" class="nav-link">
           <i class="nav-icon fas fa-chart-bar"></i> Счетчики
         </a>
@@ -336,8 +341,34 @@
 <script>
   $(document).ready(function() {
       $('#summernote_image').summernote({
-    lang: 'ru-RU' // default: 'en-US'
+    lang: 'ru-RU', // default: 'en-US'
+    callbacks: {
+        // editor, welEditable
+        onImageUpload: function(files) {
+            // editor, welEditable
+            sendFile(files[0]);
+        }
+    }
   });
+
+  // editor, welEditable
+  function sendFile(file) {
+    data = new FormData();
+    data.append("file", file);
+    $.ajax({
+      data: data,
+      type: "POST",
+      url: "/admin/blocks/summernote/upload",
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(url) {
+        //editor.insertImage(welEditable, url);
+        $('#summernote_image').summernote('insertImage', url);
+      }
+    });
+  }
+
   });
 </script>
 

@@ -27,7 +27,13 @@ use App\Mail\DemoEmail;
   // даже при cache.headers:public;max_age=31536000 гугл page speed показывает проблему кэширования, хз
   // https://blog.jjdiaz.dev/boost-api-performance-with-http-caching-in-laravel
   // 'cacheResponse:86400' - spatie response cache
-  Route::group(['middleware'=>['app', 'cache.headers:max_age=3600', 'cacheResponse:86400']], function() {
+  $middlewares = ['app'];
+  if(config('app.env') === 'production') {
+    $middlewares[] = 'cache.headers:max_age=3600';
+    $middlewares[] = 'cacheResponse:86400';
+  }
+
+  Route::group(['middleware'=>$middlewares], function() {
     Route::get('/', 'MainController@index')->name('main.index');//->middleware('page-cache');
     Route::get('/uslugi/', 'UslugiController@index')->name('uslugi.index');
     Route::get('/price/', 'PriceController@index')->name('price.index');
@@ -103,6 +109,7 @@ Route::group(['prefix' => 'blocks', 'middleware' => 'redactor'], function()
     Route::get('/{block}/edit', 'BlocksController@edit')->name('admin.blocks.edit');
     Route::patch('/{block}', 'BlocksController@update')->name('admin.blocks.update');
     Route::delete('/{block}', 'BlocksController@destroy')->name('admin.blocks.destroy');
+    Route::post('/summernote/upload', 'BlocksController@summernote')->name('admin.blocks.summernote');
 });
 
   Route::group(['namespace' => 'Vacancy', 'prefix' => 'vacancy', 'name' => 'admin.vacancy.', 'middleware' => 'redactor'], function()
