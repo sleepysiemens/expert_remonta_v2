@@ -11,6 +11,7 @@ use App\Models\service;
 use App\Models\category;
 use App\Models\Sale;
 use App\Models\Blog;
+use App\Models\BlogCategory;
 
 
 class EditController extends Controller
@@ -23,7 +24,8 @@ class EditController extends Controller
         $categories=Category::all();
         $sales=sale::all();
         $blogs=Blog::all();
+        $items=BlogCategory::whereNull('parent_id')->with('childs.childs')->get();
 
-        return view('admin.blog.edit', compact(['blog', 'reviews', 'questions', 'services', 'categories', 'sales']));
+        return view('admin.blog.edit', compact(['items', 'blog', 'reviews', 'questions', 'services', 'categories', 'sales']));
     }
 }

@@ -66,4 +66,5 @@
 
 @push('summernoteCustom')
 <script src="{{asset('plugins/summernote/plugin/summernote-image-attributes.js')}}"></script>
+<script src="{{asset('plugins/summernote/plugin/ru-RU.js')}}"></script>
 @endPush

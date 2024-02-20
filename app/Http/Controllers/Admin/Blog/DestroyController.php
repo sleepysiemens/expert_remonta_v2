@@ -12,6 +12,7 @@ class DestroyController extends Controller
 {
     public function index(Blog $blog)
     {
+        @unlink(public_path() . "/img/blog/" . $blog->src);
         $blog->delete();
         return redirect()->route('admin.blog.index');
     }

@@ -26,7 +26,7 @@
       <h1 class="vacancy_page_vacancy_title ui_kit_h2_heading">{{db_translate($vacancy->name, $vacancy->name_kz)}}</h1>
       <div class="vacancy_page_vacancy_salary ui_kit_h2_heading">@if($vacancy->salary_from){{$vacancy->salary_from}}-{{$vacancy->salary_to}} ₸@else @lang('зп: по результатам собеседования')@endif </div>
       <p class="vacancy_page_info">@lang('Город'): {{$vacancy->city->city}}</p>
-      <p class="vacancy_page_info">@lang('Требуемый опыт работы'): @lang($vacancy->experience)</p>
+      {{--<p class="vacancy_page_info">@lang('Требуемый опыт работы'): @lang($vacancy->experience)</p>--}}
       <p class="vacancy_page_info">@lang("$vacancy->employment_type занятость")</p>
       <div class="vacancies_page_inline_flex">
       <button class="ui_kit_button vacancies_page_button show_form">@lang('Откликнуться')</button>

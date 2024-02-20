@@ -148,12 +148,36 @@
                   </p>
               </a>--}}
 
-              <a href="{{ route('admin.blog.index') }}" class="nav-link @yield('blog')">
+              {{--<a href="{{ route('admin.blog.index') }}" class="nav-link @yield('blog')">
                 <i class="nav-icon fas fa-clipboard-check"></i>
                 <p>
                   Блог
                 </p>
-              </a>
+              </a>--}}
+
+              <li class="nav-item @yield('menu-dropdown')">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-clipboard-check"></i>
+                  <p>
+                    Блог
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview" style="display: none; @yield('dropdown')">
+                      <li class="nav-item">
+                        <a href="{{ route('admin.blog.index',) }}" class="nav-link">
+                          <i class="nav-icon far fa-address-book"></i>
+                          <p>Блог • Статьи</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="{{ route('admin.blogCategory.index',) }}" class="nav-link">
+                          <i class="nav-icon far fa-address-book"></i>
+                          <p>Блог • Категории блога</p>
+                        </a>
+                      </li>
+                </ul>
+              </li>
 
               <a href="{{ route('admin.sale.index') }}" class="nav-link @yield('sales')">
                   <i class="nav-icon fas fa-percentage"></i>

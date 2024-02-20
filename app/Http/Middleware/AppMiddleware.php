@@ -41,6 +41,9 @@ class AppMiddleware
       $cities=City::all();
       $menu=Menu::where('url', '!=', '/')->whereNull('parent_id')->with('childs.childs')->get();
       $services = \App\Models\service::with('categories')->get();
+      $blogCategories = \App\Models\BlogCategory::whereNull('parent_id')->with('childs.childs')
+      ->get();
+      View::share('blogCategories', $blogCategories);
       //dd($services);
       View::share('services', $services);
       //dd($menu);

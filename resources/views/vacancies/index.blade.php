@@ -26,7 +26,9 @@
   <div class="vacancies_page_wrap">
     <h1 class="vacancies_page_heading ui_kit_h1_heading">{{db_translate($seo->seo_ru, $seo->seo_kz)}}</h1>
     @if(isset($requestInfo['city']))
-      <p>@lang('Применен фильтр'). @lang('Город'): {{$requestInfo['city']->city}}, @lang('категория'): {{$requestInfo['category']->name}}, @lang('опыт'): {{$requestInfo['exp']}}</p>
+      <p>@lang('Применен фильтр'). @lang('Город'): {{$requestInfo['city']->city}}, 
+        @lang('категория'): {{$requestInfo['category']->name}}
+        {{--, @lang('опыт'): {{$requestInfo['exp']}}--}}</p>
     @endif
     <div class="vacancies_page_flex">
       <div class="vacancies_page_search">
@@ -48,14 +50,14 @@
               @endforeach
             </select>
           </div>
-          <div class="vacancies_page_input">
+          {{--<div class="vacancies_page_input">
             <label for="exp_select">@lang('Опыт')</label>
             <select name="exp_select" id="exp_select" class="ajax_select"> 
               @foreach(\App\Models\VacancyCategory::$experienceList as $v)
               <option value="{{$v}}">@lang($v)</option>
               @endforeach
             </select>
-          </div>
+          </div>--}}
           <button type="submit" class="ui_kit_button vacancies_page_button vacancies_page_search_button">@lang('Посмотреть')</button>
         </form>
       </div>

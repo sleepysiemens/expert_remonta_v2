@@ -41,7 +41,6 @@ use App\Mail\DemoEmail;
     Route::get('/contacts/', 'ContactsController@index')->name('contacts.index');
     Route::get('/uslugi/{service}/', 'UslugiController@service')->name('service.index');
     Route::get('/uslugi/{service}/{category}/', 'UslugiController@category')->name('category.index');
-    Route::get('/blog/{blog}', 'BlogController@index')->name('blog.index');
     Route::get('/reviews/', 'ReviewController@index')->name('reviews.index');
     Route::get('/franchise/', 'MainController@franchise')->name('main.franchise');
     Route::get('/vacancies-office/', 'MainController@vacanciesLanding')->name('main.vacanciesLanding');
@@ -50,6 +49,16 @@ use App\Mail\DemoEmail;
     Route::get('/vacancies/filter/', 'VacancyController@filter')->name('vacancy.filter')->middleware('doNotCacheResponse');
     Route::get('/vacancy/{vacancy}', 'VacancyController@show')->name('vacancy.show');
     Route::get('/vacancies/category/{vacancyCategory}', 'VacancyController@showCategory')->name('vacancy.category');
+    /*Route::get('/blog/{category:url}', 'BlogController@showCategory')->name('blog.category');
+    Route::get('/blog/{category:url}/{child:url}', 'BlogController@showSubcategory')
+    ->scopeBindings()->name('blog.subCategory');
+    Route::get('/blog/{category:url}/{child:url}/{child2:url}', 'BlogController@showDeepcategory')
+    ->scopeBindings()->name('blog.deepCategory');*/
+    Route::get('/blog/{category:url}/{child:url?}/{child2:url?}', 'BlogController@showcategory')
+    ->scopeBindings()->name('blog.category');
+    Route::get('/blog/{category:url}/{child:url}/{child2:url}/{post:url}', 'BlogController@showPost')
+    ->scopeBindings()->name('blog.post');
+    //Route::get('/blog/{blog}', 'BlogController@index')->name('blog.index');
     Route::get('/geo', function () {  
         //Mail::to('mixa430899@gmail.com')->queue(new DemoEmail());
         //dump(env('APP_CITY'));
@@ -209,6 +218,16 @@ Route::group(['prefix' => 'blocks', 'middleware' => 'redactor'], function()
         Route::delete('/destroySlider/{category_slider}', 'IndexController@destroySlider')->name('admin.page.destroySlider');
         Route::delete('/destroySliderAjax/{category_slider}', 'IndexController@destroySliderAjax')->name('admin.page.destroySliderAjax');
     });
+
+Route::group(['prefix' => 'blog_category'], function()
+{
+    Route::get('/', 'BlogCategoryController@index')->name('admin.blogCategory.index');
+    Route::get('/create', 'BlogCategoryController@create')->name('admin.blogCategory.create');
+    Route::post('', 'BlogCategoryController@store')->name('admin.blogCategory.store');
+    Route::get('/{item}/edit', 'BlogCategoryController@edit')->name('admin.blogCategory.edit');
+    Route::patch('/{item}', 'BlogCategoryController@update')->name('admin.blogCategory.update');
+    Route::delete('/{item}', 'BlogCategoryController@destroy')->name('admin.blogCategory.destroy');
+});
 
     
 

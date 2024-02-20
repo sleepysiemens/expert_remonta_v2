@@ -2,36 +2,10 @@
     <div class="header_menu_item">
       <a href="/" @class(['nav-link', 'nav-link-selected' => '/' === $uri])>{{__('Главная')}}</a>
     </div>
-    <div class="header_menu_item has_childs">
-      <a href="{{ route('uslugi.index') }}/" class="nav-link @yield('service')">{{__('Услуги')}}</a>
-      <ul class="header_submenu">
-      @foreach($services as $s)
-        <li class="has_childs">
-          <a href="{{route('service.index', ['service' => $s->url])}}" class="nav-link">{{db_translate($s->title_ru, $s->title_kz)}}</a>
-          <ul class="header_deepmenu">
-            @foreach($s->categories as $c)
-            <li>
-              <a href="{{route('category.index', ['service' => $s->url, 'category' => $c->url])}}" class="nav-link">
-                {{db_translate($c->title_ru, $c->title_kz)}}
-              </a>
-            </li>
-            @endforeach
-          </ul>
-        </li>
-      @endforeach
-      </ul>
-    </div>
-    {{--<div class="header_menu_item"><a href="{{ route('price.index') }}/" class="nav-link @yield('price')">{{__('Расценки')}}</a></div>
-    <div class="header_menu_item"><a href="{{ route('gallery.index') }}/" class="nav-link @yield('gallery')">{{__('Галерея')}}</a></div>
-    <div class="header_menu_item"><a href="{{ route('reviews.index') }}/" class="nav-link @yield('reviews')">{{__('Отзывы')}}</a></div>
-    <div class="header_menu_item"><a href="{{ route('contacts.index') }}/" class="nav-link @yield('contact')">{{__('Контакты')}}</a></div>
-    <div class="header_menu_item"><a href="{{ route('main.franchise') }}/" class="nav-link @yield('franchise')">{{__('Франшиза')}}</a></div>
-    <div class="header_menu_item has_childs"><a href="{{ route('vacancy.index') }}/" class="nav-link @yield('vacancies')">{{__('Вакансии')}}</a>
-      <ul class="header_submenu">
-        <li><a href="/vacancies-office" class="nav-link">@lang('В офис')</a></li>
-        <li><a href="/vacancies-objects" class="nav-link">@lang('На объекты')</a></li>
-      </ul>
-    </div>--}}
+    
+    @include('blocks.menu.menu_services')
+    {{--@include('blocks.menu.menu_blog')--}}
+    
     @foreach($menu as $m)
       <div @class([
         'header_menu_item', 'has_childs' => count($m->childs) > 0, 
