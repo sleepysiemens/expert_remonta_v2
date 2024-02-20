@@ -338,10 +338,25 @@
   });
 </script>
 
+@stack('summernoteCustom')
 <script>
   $(document).ready(function() {
       $('#summernote_image').summernote({
     lang: 'ru-RU', // default: 'en-US'
+    popover: {
+            image: [
+                ['custom', ['imageAttributes']],
+                //['imagesize', ['imageSize100', 'imageSize50', 'imageSize25']],
+                ['image', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
+                ['float', ['floatLeft', 'floatRight', 'floatNone']],
+                ['remove', ['removeMedia']]
+            ],
+        },
+        imageAttributes:{
+            icon:'<i class="note-icon-pencil"/>',
+            removeEmpty:false, // true = remove attributes | false = leave empty if present
+            disableUpload: true // true = don't display Upload Options | Display Upload Options
+        },
     callbacks: {
         // editor, welEditable
         onImageUpload: function(files) {

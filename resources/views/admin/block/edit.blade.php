@@ -64,6 +64,6 @@
 @endsection
 
 
-{{--@push('summernoteCustom')
-
-@endPush--}}
+@push('summernoteCustom')
+<script src="{{asset('plugins/summernote/plugin/summernote-image-attributes.js')}}"></script>
+@endPush

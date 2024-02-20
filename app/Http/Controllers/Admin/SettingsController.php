@@ -13,6 +13,7 @@ use App\Models\Sale;
 use App\Models\Gallery;
 use App\Models\Menu;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Log;
 
 use Spatie\ResponseCache\Facades\ResponseCache;
 
@@ -45,16 +46,31 @@ class SettingsController extends Controller
       // https://laravel.com/docs/10.x/deployment#optimization
       // для config cache нужно заменить все env на config видимо
       Artisan::call('config:cache');
+      Log::channel('artisan')->debug(Artisan::output());
       Artisan::call('event:cache');
+      Log::channel('artisan')->debug(Artisan::output());
       Artisan::call('route:cache');
+      Log::channel('artisan')->debug(Artisan::output());
       Artisan::call('view:cache');
+      Log::channel('artisan')->debug(Artisan::output());
+      return redirect()->route('admin.settings.index')->with('msg', 'Внутренний кэш Laravel создан');
     }
     public function uncacheAll() {
       // сброс кэша всей внутрянки лары
+      //Log::channel('artisan')->debug(Artisan::call('config:clear'));
+      //Log::channel('artisan')->debug(Artisan::call('event:clear'));
+      //Log::channel('artisan')->debug(Artisan::call('route:clear'));
+      //Log::channel('artisan')->debug(Artisan::call('view:clear'));
       Artisan::call('config:clear');
+      Log::channel('artisan')->debug(Artisan::output());
       Artisan::call('event:clear');
+      Log::channel('artisan')->debug(Artisan::output());
       Artisan::call('route:clear');
+      Log::channel('artisan')->debug(Artisan::output());
       Artisan::call('view:clear');
+      Log::channel('artisan')->debug(Artisan::output());
+
+      return redirect()->route('admin.settings.index')->with('msg', 'Внутренний кэш Laravel удален');
     }
 
     public function login() {
