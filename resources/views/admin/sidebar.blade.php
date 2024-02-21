@@ -179,6 +179,7 @@
                 </ul>
               </li>
 
+              <li class="nav-item">
               <a href="{{ route('admin.sale.index') }}" class="nav-link @yield('sales')">
                   <i class="nav-icon fas fa-percentage"></i>
                   <p>
@@ -186,6 +187,7 @@
                       <span class="badge badge-info right">{{$sales->count()}}</span>
                   </p>
               </a>
+              </li>
 
               @if(auth()->user()->role == 'admin')
 

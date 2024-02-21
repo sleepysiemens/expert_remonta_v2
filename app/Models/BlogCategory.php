@@ -13,6 +13,10 @@ class BlogCategory extends Model
     use HasFactory;
     protected $guarded=[];
 
+    public function getTable()  {
+        return config('app.city') === 'Астана' ? 'blog_categories_astana' : 'blog_categories';
+      }
+
     public function childs(): HasMany{
         return $this->hasMany(BlogCategory::class, 'parent_id', 'id');
     }

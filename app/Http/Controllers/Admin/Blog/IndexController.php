@@ -21,7 +21,7 @@ class IndexController extends Controller
         $services=Service::all();
         $categories=Category::all();
         $sales=sale::all();
-        $items=Blog::with('category')->get();
+        $items=Blog::with('category')->filtered()->get();
 
         return view('admin.blog.index', compact(['items', 'reviews', 'questions', 'services', 'categories', 'sales']));
     }

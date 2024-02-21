@@ -24,7 +24,7 @@
       <table class="table table-striped">
         <thead>
             <tr>
-              {{--<th>Id</th>--}}
+              <th>Id</th>
               <th>Название ru/kz</th>
               <th>URL</th>
               <th>Родительский пункт</th>
@@ -37,6 +37,7 @@
             @foreach ($items as $i)
 
                 <tr>
+                  <td>{{$i->id}}</td>
                     <td>{{$i->name}} @if($i->name_kz)/{{$i->name_kz}}@endif</td>
                     <td>{{$i->url}}</td>
                     <td>

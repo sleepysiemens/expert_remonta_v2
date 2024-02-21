@@ -1,5 +1,8 @@
-<meta name="description" content="@yield('meta-description')">
 <title>@yield('seo-title')</title>
+<meta name="description" content="@yield('meta-description')">
+
+@yield('seo-data')
+
 
 {{--
 <!-- Google Tag Manager --> 

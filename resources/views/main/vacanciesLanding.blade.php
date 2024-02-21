@@ -6,6 +6,10 @@
 
 @section('meta-description') {{db_translate($seo->meta_ru, $seo->meta_kz)}} @endsection
 
+@if($seo->canonical)
+@section('seo-data') <link rel="canonical" href="{{$seo->canonical}}">@endsection
+@endif
+
 @push('customStyles')
 <link rel="stylesheet" href="{{ asset('/css/ui_kit.css') }}">
 <link rel="stylesheet" href="{{ asset('/css/vacancies_landing.css') }}">

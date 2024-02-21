@@ -61,6 +61,7 @@
                 {{--<td>{!! $category->description_kz !!}</td>--}}
                 <td><img src="{{asset('img/blog/'.$category->src)}}" style="height: 150px; width: 150px; object-fit: contain"></td>
                 <td>
+                  Короткое название: {{$category->short_title_ru}} <br>
                   Категория: {{$category->category->name}} <br>
                   Title RU: {{$category->seo_title_ru}} <br>
                   Title KZ: {{$category->seo_title_kz}} <br>
@@ -79,6 +80,11 @@
                 <td><a href="{{route('admin.blog.edit',$category->id)}}"><i class="fas fa-pen"></i></a></td>
                 {{--<td><a href="{{route('admin.blog.show',$category->id)}}"><i class="fas fa-arrow-right"></i></a></td>--}}
             </tr>
+            @if($category->wishes)
+            <tr>
+              <td colspan="6">Обратная связь от админа по статье {{$category->title_ru}}: {{$category->wishes}}</td>
+            </tr>
+            @endif
 
               @endforeach
 

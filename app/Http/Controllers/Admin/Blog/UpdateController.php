@@ -31,4 +31,10 @@ class UpdateController extends Controller
 
       return redirect()->route('admin.blog.show', $blog->id);
     }
+
+    public function sendWish(Request $req, Blog $blog) {
+      //dd($blog);
+      $blog->update($req->all());
+      return redirect(parse_url($_SERVER['HTTP_REFERER'])['path']);
+    }
 }

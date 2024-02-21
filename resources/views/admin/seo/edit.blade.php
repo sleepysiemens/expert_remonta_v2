@@ -50,6 +50,11 @@
                 <label for="exampleInputEmail1">META-описание, kz</label>
                 <input type="text" class="form-control" placeholder="Meta" name="meta_kz" value="{{$seo->meta_kz}}">
             </div>
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Канонический адрес, (canonical)</label>
+              <input type="text" class="form-control" placeholder="url" name="canonical" value="{{$seo->canonical}}">
+          </div>
         </div>
       <!-- /.card-body -->
 

@@ -7,13 +7,13 @@
         <ul class="header_deepmenu">
           @foreach($c->childs as $child)
           <li @class(['has_childs' => count($child->childs) > 0])>
-            <a href="{{route('blog.category', ['category' => $c->url, 'child' => $child->url])}}" class="nav-link">
+            <a href="{{route('blog.subCategory', ['category' => $c->url, 'child' => $child->url])}}" class="nav-link">
               {{db_translate($child->name, $child->name_kz)}}
             </a>
             <ul class="header_deepmenu">
             @foreach($child->childs as $deepChild)
             <li>
-                <a href="{{route('blog.category', ['category' => $c->url, 'child' => $child->url, 'child2' => $deepChild->url])}}" class="nav-link">
+                <a href="{{route('blog.deepCategory', ['category' => $c->url, 'child' => $child->url, 'child2' => $deepChild->url])}}" class="nav-link">
                   {{db_translate($deepChild->name, $deepChild->name_kz)}}
                 </a>
             </li>

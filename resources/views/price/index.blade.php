@@ -10,13 +10,13 @@ nav-link-selected
 @endsection
 
 @section('meta-description')
-    @foreach ($seos as $seo)
         {{db_translate($seo->meta_ru, $seo->meta_kz)}}
-    @endforeach
 @endsection
 
 @section('seo-title')
-    @foreach ($seos as $seo)
         {{db_translate($seo->seo_ru, $seo->seo_kz)}}
-    @endforeach
 @endsection
+
+@if($seo->canonical)
+@section('seo-data') <link rel="canonical" href="{{$seo->canonical}}">@endsection
+@endif

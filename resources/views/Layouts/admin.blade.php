@@ -236,13 +236,16 @@
     {
        toolbar: [
     // [groupName, [list of button]]
-    ['style', ['bold', 'italic', 'underline', 'clear']],
+    //['style', ['style']],
+    ['style', ['bold', 'italic', 'underline', 'clear', 'style']],
     ['font', ['strikethrough', 'superscript', 'subscript']],
     ['fontsize', ['fontsize']],
     ['color', ['color']],
     ['para', ['ul', 'ol', 'paragraph']],
     ['height', ['height']]
-  ]
+  ],
+  lang: 'ru-RU',
+  followingToolbar: true
     }
   );
 });
@@ -254,13 +257,15 @@
             {
                 toolbar: [
                     // [groupName, [list of button]]
-                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['style', ['bold', 'italic', 'underline', 'clear', 'style']],
                     ['font', ['strikethrough', 'superscript', 'subscript']],
                     ['fontsize', ['fontsize']],
                     ['color', ['color']],
                     ['para', ['ul', 'ol', 'paragraph']],
                     ['height', ['height']]
-                ]
+                ],
+                lang: 'ru-RU',
+                followingToolbar: true
             }
         );
     });
@@ -278,7 +283,8 @@
                   ['color', ['color']],
                   ['para', ['ul', 'ol', 'paragraph']],
                   ['height', ['height']]
-              ]
+              ],
+              lang: 'ru-RU',
           }
       );
   });
@@ -296,7 +302,8 @@
                   ['color', ['color']],
                   ['para', ['ul', 'ol', 'paragraph']],
                   ['height', ['height']]
-              ]
+              ],
+              lang: 'ru-RU',
           }
       );
   });
@@ -314,7 +321,8 @@
                   ['color', ['color']],
                   ['para', ['ul', 'ol', 'paragraph']],
                   ['height', ['height']]
-              ]
+              ],
+              lang: 'ru-RU',
           }
       );
   });
@@ -332,7 +340,8 @@
                   ['color', ['color']],
                   ['para', ['ul', 'ol', 'paragraph']],
                   ['height', ['height']]
-              ]
+              ],
+              lang: 'ru-RU',
           }
       );
   });
@@ -343,6 +352,7 @@
   $(document).ready(function() {
       $('#summernote_image').summernote({
     lang: 'ru-RU', // default: 'en-US'
+    followingToolbar: true,
     popover: {
             image: [
                 ['custom', ['imageAttributes']],

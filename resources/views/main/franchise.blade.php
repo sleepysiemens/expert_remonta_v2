@@ -12,6 +12,10 @@
 {{db_translate($seo->meta_ru, $seo->meta_kz)}}
 @endsection
 
+@if($seo->canonical)
+@section('seo-data') <link rel="canonical" href="{{$seo->canonical}}">@endsection
+@endif
+
   @push('franchise')
     <link rel="stylesheet" href="{{ asset('/css/franchise.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/media.css') }}">

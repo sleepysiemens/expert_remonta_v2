@@ -74,20 +74,10 @@
                     @foreach ($category->posts as $post)
             
                     <div class="service-banner">
-                        <a class="service-banner-link" href="{{ route('blog.post', [
-                            $post->category->parent->parent->url, 
-                            $post->category->parent->url,
-                            $post->category->url,
-                            $post->url
-                            ]) }}">
+                        <a class="service-banner-link" href="{{ route('blog.post', $post->genRouteParams()) }}">
                             <img src=" /img/blog/{{$post->src}}">
                         </a>
-                        <a href="{{ route('blog.post', [
-                            $post->category->parent->parent->url, 
-                            $post->category->parent->url,
-                            $post->category->url,
-                            $post->url
-                            ]) }}" class="category-content">
+                        <a href="{{ route('blog.post', $post->genRouteParams()) }}" class="category-content">
                             <h4>{{db_translate($post->title_ru, $post->title_kz)}}</h4>
                         </a>
                     </div>

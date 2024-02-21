@@ -54,10 +54,13 @@ use App\Mail\DemoEmail;
     ->scopeBindings()->name('blog.subCategory');
     Route::get('/blog/{category:url}/{child:url}/{child2:url}', 'BlogController@showDeepcategory')
     ->scopeBindings()->name('blog.deepCategory');*/
+    Route::get('/blog', 'BlogController@index')->name('blog.index');
+    Route::get('/blog/{category:url}/{child:url}/{post:url}', 'BlogController@showPost')
+    ->scopeBindings()->name('blog.post');
     Route::get('/blog/{category:url}/{child:url?}/{child2:url?}', 'BlogController@showcategory')
     ->scopeBindings()->name('blog.category');
-    Route::get('/blog/{category:url}/{child:url}/{child2:url}/{post:url}', 'BlogController@showPost')
-    ->scopeBindings()->name('blog.post');
+    /*Route::get('/blog/{category:url}/{child:url}/{child2:url}/{post:url}', 'BlogController@showPost')
+    ->scopeBindings()->name('blog.post');*/
     //Route::get('/blog/{blog}', 'BlogController@index')->name('blog.index');
     Route::get('/geo', function () {  
         //Mail::to('mixa430899@gmail.com')->queue(new DemoEmail());
@@ -416,6 +419,7 @@ Route::group(['prefix' => 'blog_category'], function()
             Route::get('/{blog}', 'ShowController@index')->name('admin.blog.show');
             Route::get('/{blog}/edit', 'EditController@index')->name('admin.blog.edit');
             Route::patch('/{blog}', 'UpdateController@index')->name('admin.blog.update');
+            Route::patch('/wish/{blog}', 'UpdateController@sendWish')->name('admin.blog.wish');
             Route::delete('/{blog}', 'DestroyController@index')->name('admin.blog.destroy');
         });
 

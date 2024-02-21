@@ -24,6 +24,17 @@
               <label for="exampleInputEmail1">Название, kz</label>
               <input type="text" class="form-control" placeholder="Название" name="title_kz" value="{{old('title_kz')}}">
           </div>
+          <div style="display:flex;gap:25px;align-items:center">
+            <p class="hint">Для вывода в хлебных <br> крошках и сайдбаре</p>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Короткое название, ru</label>
+            <input type="text" class="form-control" placeholder="Название" name="short_title_ru" value="{{old('short_title_ru')}}">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Короткое Название, kz</label>
+            <input type="text" class="form-control" placeholder="Название" name="short_title_kz" value="{{old('short_title_kz')}}">
+          </div>
+          </div>
         <div class="form-group">
           <label for="exampleInputEmail1">Ссылка</label>
           <input type="text" class="form-control" placeholder="Ссылка" name="url" value="{{old('url')}}" required>

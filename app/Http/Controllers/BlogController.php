@@ -17,16 +17,13 @@ use Stevebauman\Location\Facades\Location;
 
 class BlogController extends Controller
 {
-    public function index(Blog $blog)
+    public function index()
     {
-        $Abouts=About::all();
-        $WhyCards=WhyCard::all();
-        $reviews=Review::all();
+        $blogs = BlogCategory::whereNull('parent_id')->get();
+        //$seos=Seo::query()->where('page','=','blog')->get();
+        $page='blog';
 
-        $seos=Seo::query()->where('page','=','contacts')->get();
-        $page='contacts';
-
-        return view('blog.index', compact(['blog','reviews', 'Abouts', 'WhyCards', 'page', 'seos']));
+        return view('blog.index', compact(['blogs', 'page']));
     }
 
     public function showCategory(BlogCategory $category, BlogCategory $child = null, BlogCategory $child2 = null) {
@@ -46,11 +43,37 @@ class BlogController extends Controller
         return view('blog.category', compact('parentCategory', 'childCategory', 'category', 'child', 'child2', 'page'));
     }
 
-    public function showPost(BlogCategory $category, 
+    /*public function showPost(BlogCategory $category, 
         BlogCategory $child, 
         BlogCategory $child2, 
         Blog $post) {
             dd($post);
+    }*/
+
+    public function showPost(BlogCategory $category, 
+        BlogCategory $child,  
+        Blog $post) {
+            //dd(auth()->id());
+            //dd($post);
+            if(!auth()->id() && !$post->active) abort(404);
+            //dd(BlogCategory::has('parent')->doesntHave('parent.parent')->pluck('id'));
+            $page = 'blogpost';
+            $posts = Blog::whereHas('category', function($q) use ($child, $post){
+                $q->where('id', '=', $child->id);
+            })//->where('id', '!=', $post->id)
+            ->active()
+            ->select('id', 'url', 'short_title_ru', 'short_title_kz')
+            ->get();
+            //dd($posts);
+            $postIndex = $posts->search(function($p) use($post) {
+                return $p->id === $post->id;
+            });
+            $prevPost = $postIndex-1 > -1 ? $posts[$postIndex-1] : null;
+            $nextPost = $postIndex < count($posts) - 1 ? $posts[$postIndex+1] : null;
+            //dd($posts);
+            return view('blog.post', compact(
+                'category', 'child', 'post', 'page', 'posts', 'prevPost', 'nextPost'
+            ));
     }
 
     /*public function showCategory(BlogCategory $category) {

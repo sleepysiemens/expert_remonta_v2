@@ -17,10 +17,10 @@ class PriceController extends Controller
     public function index()
     {
         $prices=Price::query()->orderBy('category')->get();
-        $seos=Seo::query()->where('page','=','price')->get();
+        $seo=Seo::query()->where('page','=','price')->first();
 
         $page='price';
 
-        return view('price.index', compact(['prices', 'page', 'seos']));
+        return view('price.index', compact(['prices', 'page', 'seo']));
     }
 }
