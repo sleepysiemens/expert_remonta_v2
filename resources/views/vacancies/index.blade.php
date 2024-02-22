@@ -86,7 +86,7 @@
       const choices = new Choices(element, options);
 
       const select2 = new Choices('#category_select', options);
-      const select3 = new Choices('#exp_select', options);
+      //const select3 = new Choices('#exp_select', options);
 
       let ajaxSelects = document.querySelectorAll('.ajax_select')
       ajaxSelects.forEach((select, idx) => {
