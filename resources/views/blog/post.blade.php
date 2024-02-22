@@ -15,6 +15,11 @@ nav-link-selected
             {{--@include('blocks.welcome')--}}
             <div id="blog">
                 <div class="blog_title">Блог</div>
+                @if(!$post->active)
+                    <p>Это архивная страница. Вы видите её, потому что залогинены в админку.
+                        Гости не видят этой страницы.
+                    </p>
+                @endif
                 <div class="blog_flex">
                     <div class="blog_category">
                         <button id="categories_btn">Категории</button>
