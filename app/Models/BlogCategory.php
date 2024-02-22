@@ -28,7 +28,10 @@ class BlogCategory extends Model
     }
 
     public function posts(): HasMany{
-        return $this->hasMany(Blog::class, 'category_id', 'id')->active();
+        //return $this->hasMany(Blog::class, 'category_id', 'id')->active();
+        return auth()->id() 
+        ? $this->hasMany(Blog::class, 'category_id', 'id')
+        : $this->hasMany(Blog::class, 'category_id', 'id')->active();
     }
 
     public function parent(): BelongsTo
