@@ -78,6 +78,13 @@
                   </form>
                 </td>
                 <td><a href="{{route('admin.blog.edit',$category->id)}}"><i class="fas fa-pen"></i></a></td>
+                <td>  
+                  @if(!isset($category->category->parent->parent))
+                  <a href="{{route('blog.post',$category->genRouteParams())}}"><i class="fas fa-eye"></i></a>
+                  @else
+                  <a href="{{route('blog.postDeep',$category->genRouteParams())}}"><i class="fas fa-eye"></i></a>
+                  @endif
+                </td>
                 {{--<td><a href="{{route('admin.blog.show',$category->id)}}"><i class="fas fa-arrow-right"></i></a></td>--}}
             </tr>
             @if($category->wishes)

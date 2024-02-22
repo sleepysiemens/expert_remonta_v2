@@ -28,7 +28,8 @@
         </div>
         <div class="form-group">
           <label for="exampleInputEmail1">URL</label>
-          <input type="text" class="form-control" placeholder="URL" name="url" required>
+          <small>* если не заполнить, сгенерируется автоматически из названия</small>
+          <input type="text" class="form-control" placeholder="URL" name="url">
         </div>
         <div class="form-group">
           <label for="exampleInputEmail1">Обложка</label>
@@ -52,7 +53,7 @@
           <legend>SEO инфа</legend>
           <div class="form-group">
             <label for="exampleInputEmail1">SEO-заголовок, ru</label>
-            <input type="text" class="form-control" placeholder="SEO title" name="seo_title_ru" value="{{old('seo_title_ru')}}" required>
+            <input type="text" class="form-control" placeholder="SEO title" name="seo_title_ru" value="{{old('seo_title_ru')}}">
           </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">SEO-заголовок, kz</label>

@@ -46,6 +46,7 @@ class BlogCategoryController extends Controller
 
     public function store(Request $req)
     {
+        if(!$req->url) $req->merge(['url' => translit(mb_strtolower($req->name))]);
         $data=$req->all();
         if($req->hasFile('thumb')) {
             $file = request()->file('thumb');

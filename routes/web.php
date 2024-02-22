@@ -55,10 +55,13 @@ use App\Mail\DemoEmail;
     Route::get('/blog/{category:url}/{child:url}/{child2:url}', 'BlogController@showDeepcategory')
     ->scopeBindings()->name('blog.deepCategory');*/
     Route::get('/blog', 'BlogController@index')->name('blog.index');
+    Route::get('/blog/category/{category:url}/{child:url?}/{child2:url?}', 'BlogController@showcategory')
+    ->scopeBindings()->name('blog.category');
     Route::get('/blog/{category:url}/{child:url}/{post:url}', 'BlogController@showPost')
     ->scopeBindings()->name('blog.post');
-    Route::get('/blog/{category:url}/{child:url?}/{child2:url?}', 'BlogController@showcategory')
-    ->scopeBindings()->name('blog.category');
+    Route::get('/blog/{category:url}/{child:url}/{child2:url}/{post:url}', 'BlogController@showDeepPost')
+    ->scopeBindings()->name('blog.postDeep');
+    
     /*Route::get('/blog/{category:url}/{child:url}/{child2:url}/{post:url}', 'BlogController@showPost')
     ->scopeBindings()->name('blog.post');*/
     //Route::get('/blog/{blog}', 'BlogController@index')->name('blog.index');

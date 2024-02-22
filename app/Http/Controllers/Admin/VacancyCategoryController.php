@@ -46,7 +46,7 @@ class VacancyCategoryController extends Controller
 
     public function store(Request $req)
     {
-      if(!$req->url) $req->merge(['url' => strtolower(translit($req->name))]);
+      if(!$req->url) $req->merge(['url' => mb_strtolower(translit($req->name))]);
       //dd($req->all());
       //dd(translit($req->url));
         VacancyCategory::create($req->all());
@@ -68,7 +68,7 @@ class VacancyCategoryController extends Controller
 
     public function update(Request $req, VacancyCategory $vc)
     {
-      if(!$req->url) $req->merge(['url' => strtolower(translit($req->name))]);
+      if(!$req->url) $req->merge(['url' => mb_strtolower(translit($req->name))]);
       $vc->update($req->all());
 
       return redirect()->route('admin.vc.index');

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @include('blocks.seo')
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/add.css') }}">
     @stack('franchise')
     @stack('customStyles')
     @stack('vacancies')
@@ -154,7 +155,7 @@
 <div class="parallax">
 
     <div class="container parallax-layer parallax__layer--base">
-<div class="main-content-container">
+<div class="main-content-container @yield('wrapClass')">
     @yield('content')
 </div>
 

@@ -18,7 +18,8 @@ class StoreController extends Controller
       $req->validate([
         'src' => 'mimes:jpg,png,jpeg',
       ]);
-      $data = $req->all();
+      //$data = $req->all();
+      $data= $req->except('search_terms');
 
         $file = $req->file('src');
         $name= Str::random(8) . "_" . $file->hashName();

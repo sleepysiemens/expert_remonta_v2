@@ -9,6 +9,8 @@ nav-link-selected
             {{$blog->title}} – Эксперт Ремонта
         @endsection--}}
 
+        @section('wrapClass')blog @endSection
+
         @section('content')
             {{--@include('blocks.welcome')--}}
             <div id="blog">
@@ -19,14 +21,26 @@ nav-link-selected
                         <div class="blog_subtitle">Категории</div>
                         <ul class="top_list">
                             @foreach($blogCategories as $cat)
-                                <li @class(['top_level', 'active' => $cat->id === $category->id])>
+                                <li @class(['top_level', 'openable', 'active' => $cat->id === $category->id])>
                                     {{db_translate($cat->name, $cat->name_kz)}}
                                     <ul @class(['hide' => $cat->id !== $category->id])>
                                         @foreach($cat->childs as $c)
-                                            <li @class(['active' => $c->id === $child->id])
+                                            <li @class(['active' => $c->id === $child->id && !isset($child2),
+                                            'openable' => count($c->childs) > 0])
                                             >
                                             <a href="{{route('blog.category', [$cat->url, $c->url])}}">
                                             {{db_translate($c->name, $c->name_kz)}}</a>
+                                            @if(count($c->childs) > 0)
+                                            <ul {{--class="hide"--}}>
+                                            @foreach($c->childs as $deepChild)
+                                            <li @class(['active' => isset($child2) && $deepChild->id === $child2->id])
+                                                >
+                                                <a href="{{route('blog.category', [$cat->url, $c->url, $deepChild->url])}}">
+                                                {{db_translate($deepChild->name, $deepChild->name_kz)}}</a>
+                                            </li>
+                                            @endForeach
+                                            </ul>
+                                            @endif
                                         </li>
                                         @endForeach
                                     </ul>
@@ -38,6 +52,9 @@ nav-link-selected
                         <div class="blog_breadcrumbs">
                             <a href="{{route('blog.category', $category->url)}}">{{$category->name}}</a> > 
                             <a href="{{route('blog.category', [$category->url, $child->url])}}">{{$child->name}} </a> >
+                            @if(isset($child2))
+                            <a href="{{route('blog.category', [$category->url, $child->url, $child2->url])}}">{{$child2->name}} </a> >
+                            @endif
                             {{db_translate($post->short_title_ru, $post->short_title_kz)}}
                         </div>
                         <img class="blog_thumb" 
@@ -61,14 +78,26 @@ nav-link-selected
                         <div class="posts_nav">
                             
                             @if($prevPost)
+                                @if(!isset($child2))
                               <a href="{{route('blog.post', [$category->url, $child->url, $prevPost->url])}}">
                                 < {{db_translate($prevPost->short_title_ru, $prevPost->short_title_kz)}}
                                 </a>
+                                @else
+                                <a href="{{route('blog.postDeep', [$category->url, $child->url, $child2->url, $prevPost->url])}}">
+                                    < {{db_translate($prevPost->short_title_ru, $prevPost->short_title_kz)}}
+                                    </a>
+                                @endif
                             @endif
                             @if($nextPost)
+                            @if(!isset($child2))
                               <a href="{{route('blog.post', [$category->url, $child->url, $nextPost->url])}}">
                                 {{db_translate($nextPost->short_title_ru, $nextPost->short_title_kz)}} >
                                 </a>
+                                @else
+                                <a href="{{route('blog.postDeep', [$category->url, $child->url, $child2->url, $nextPost->url])}}">
+                                    {{db_translate($nextPost->short_title_ru, $nextPost->short_title_kz)}} >
+                                    </a>
+                                @endif
                             @endif
                         </div>
                         </div>
@@ -78,9 +107,15 @@ nav-link-selected
                         <ul>
                         @foreach($posts as $p)
                             <li @class(['active' => $post->url === $p->url])>
+                                @if(!isset($child2))
                                 <a href="{{route('blog.post', [$category->url, $child->url, $p->url])}}">
                                 {{db_translate($p->short_title_ru, $p->short_title_kz)}}
                                 </a>
+                                @else 
+                                <a href="{{route('blog.postDeep', [$category->url, $child->url, $child2->url, $p->url])}}">
+                                    {{db_translate($p->short_title_ru, $p->short_title_kz)}}
+                                    </a>
+                                @endif
                             </li>
                         @endForeach
                         </ul>

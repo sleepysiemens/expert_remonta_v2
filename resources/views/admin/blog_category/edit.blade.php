@@ -65,7 +65,7 @@
             <legend>SEO инфа</legend>
             <div class="form-group">
               <label for="exampleInputEmail1">SEO-заголовок, ru</label>
-              <input type="text" class="form-control" placeholder="SEO title" name="seo_title_ru" value="{{$item->seo_title_ru}}" required>
+              <input type="text" class="form-control" placeholder="SEO title" name="seo_title_ru" value="{{$item->seo_title_ru}}">
             </div>
               <div class="form-group">
                   <label for="exampleInputEmail1">SEO-заголовок, kz</label>

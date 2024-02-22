@@ -47,7 +47,7 @@
         'header_menu_item', 'has_childs' => count($m->childs) > 0, 
         'active' => $m->uri === $uri && $m->url !== '#'
         ])>
-      <a href="/{{$m->url}}" @class(['nav-link', 'nav-link-selected' => $m->uri === $uri && $m->url !== '#',])>{{db_translate($m->title, $m->title_kz)}}</a>
+      <a href="{{$m->url !== '#' ? "/$m->url" : $m->url}}" @class(['nav-link', 'nav-link-selected' => $m->uri === $uri && $m->url !== '#',])>{{db_translate($m->title, $m->title_kz)}}</a>
         @if(count($m->childs) > 0)
         <ul class="header_submenu">
           @foreach($m->childs as $child)

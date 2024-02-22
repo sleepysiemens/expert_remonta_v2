@@ -1,0 +1,15 @@
+/* доп стили */
+/* меню кз */
+html[lang="kk"] .header-div {
+    max-width: 1250px;
+}
+html[lang="kk"] .nav-links {
+    gap: 7px;
+}
+html[lang="kk"] .nav-link, .nav-link-selected {
+    padding: 5px 7px;
+}
+html[lang="kk"] .has_childs:after {
+    right: -12px;
+    transform: scale(0.6);
+}

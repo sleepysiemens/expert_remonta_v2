@@ -44,14 +44,14 @@
                     <div class="service-banner">
                         @if(!$childCategory)
                         <a class="service-banner-link" href="{{ route('blog.category', [$parentCategory->url, $child->url]) }}">
-                            <img src=" /img/blog_category/{{$child->thumb}}">
+                            <img src="/img/blog_category/{{$child->thumb}}">
                         </a>
                         <a href="{{ route('blog.category', [$parentCategory->url, $child->url]) }}" class="category-content">
                             <h4>{{db_translate($child->name, $child->name_kz)}}</h4>
                         </a>
                         @else
                         <a class="service-banner-link" href="{{ route('blog.category', [$parentCategory->url, $category->url, $child->url]) }}">
-                            <img src=" /img/blog_category/{{$child->thumb}}">
+                            <img src="/img/blog_category/{{$child->thumb}}">
                         </a>
                         <a href="{{ route('blog.category', [$parentCategory->url, $category->url, $child->url]) }}" class="category-content">
                             <h4>{{db_translate($child->name, $child->name_kz)}}</h4>
@@ -74,10 +74,13 @@
                     @foreach ($category->posts as $post)
             
                     <div class="service-banner">
-                        <a class="service-banner-link" href="{{ route('blog.post', $post->genRouteParams()) }}">
-                            <img src=" /img/blog/{{$post->src}}">
+                        @php
+                            $route = $child2 ? 'blog.postDeep' : 'blog.post'
+                        @endphp
+                        <a class="service-banner-link" href="{{ route($route, $post->genRouteParams()) }}">
+                            <img src="/img/blog/{{$post->src}}">
                         </a>
-                        <a href="{{ route('blog.post', $post->genRouteParams()) }}" class="category-content">
+                        <a href="{{ route($route, $post->genRouteParams()) }}" class="category-content">
                             <h4>{{db_translate($post->title_ru, $post->title_kz)}}</h4>
                         </a>
                     </div>

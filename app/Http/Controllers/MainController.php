@@ -98,9 +98,10 @@ class MainController extends Controller
         $page = parse_url($_SERVER['HTTP_REFERER'])['path'];
         // нужна доп логика, если на страницах статей, то лучше редирект на главную
         // если есть элемент с индексом 3 то мы на страницах статей услуг
-        $pathParts = explode('/', $page);
+        //$pathParts = explode('/', $page);
         //if(isset($pathParts[3]) && str_contains($page, 'uslugi')) $page = '/';
         if(str_contains($page, 'uslugi')) $page = '/';
+        if(str_contains($page, 'blog')) $page = '/';
 
         // проблема в том что невозможно записать куку пока ты в приложении на другом домене
         if(request()->city=='Астана') {

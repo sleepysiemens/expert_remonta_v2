@@ -3,9 +3,12 @@ document.addEventListener('DOMContentLoaded', function(e) {
       let target = e.target.classList.contains('top_level') ? e.target : e.target
       let submenu = target.querySelector('ul')
       if(!submenu) return
-      target.classList.contains('active') 
-      ? target.classList.remove('active') 
-      : target.classList.add('active') 
+      //console.log(target.classList.contains('top_level'))
+      if(target.classList.contains('top_level')) {
+        target.classList.contains('active') 
+        ? target.classList.remove('active') 
+        : target.classList.add('active')
+      }
       
       !submenu.classList.contains('hide') 
       ? submenu.classList.add('hide') 

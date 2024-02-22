@@ -76,6 +76,27 @@ class BlogController extends Controller
             ));
     }
 
+    public function showDeepPost(BlogCategory $category, 
+        BlogCategory $child,  
+        BlogCategory $child2,  
+        Blog $post) {
+            if(!auth()->id() && !$post->active) abort(404);
+            $page = 'blogpost';
+            $posts = Blog::whereHas('category', function($q) use ($child2, $post){
+                $q->where('id', '=', $child2->id);
+            })->active()
+            ->select('id', 'url', 'short_title_ru', 'short_title_kz')
+            ->get();
+            $postIndex = $posts->search(function($p) use($post) {
+                return $p->id === $post->id;
+            });
+            $prevPost = $postIndex-1 > -1 ? $posts[$postIndex-1] : null;
+            $nextPost = $postIndex < count($posts) - 1 ? $posts[$postIndex+1] : null;
+            return view('blog.post', compact(
+                'category', 'child', 'child2', 'post', 'page', 'posts', 'prevPost', 'nextPost'
+            ));
+    }
+
     /*public function showCategory(BlogCategory $category) {
         //dd($category->childs);
         $page = 'blogCategory';

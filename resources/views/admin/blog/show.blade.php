@@ -34,9 +34,12 @@
             <i class="far fa-trash-alt"></i></i> Удалить
         </button>
       </form>
-      {{--<a href="{{route('category.index', ['service' => $category->service->url, 'category' => $category->url])}}" class="btn btn-info" style="margin-left:10px">
-        <i class="fas fa-eye"></i> Посмотреть на сайте
-      </a>--}}
+      @if(!isset($blog->category->parent->parent))
+                  <a href="{{route('blog.post',$blog->genRouteParams())}}" class="btn btn-info" style="margin-left:10px"><i class="fas fa-eye"></i>Посмотреть на сайте</a>
+                  @else
+                  <a href="{{route('blog.postDeep',$blog->genRouteParams())}}" class="btn btn-info" style="margin-left:10px"><i class="fas fa-eye"></i>Посмотреть на сайте</a>
+                  @endif
+
     </div>
 </div>
 <br>

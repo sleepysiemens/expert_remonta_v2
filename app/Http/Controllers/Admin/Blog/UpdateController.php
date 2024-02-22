@@ -13,9 +13,11 @@ class UpdateController extends Controller
 {
     public function index(Request $req, Blog $blog)
     {
+      //dd($req->all());
       $req->merge(['active' => $req->active !== 'on']);
       $req->validate(['src' => 'mimes:jpg,png,jpeg']);
-      $data= $req->all();
+      //$data= $req->all();
+      $data= $req->except('search_terms');
       if(request()->hasFile('src')){
             $file = request()->file('src');
             $name= Str::random(8) . "_" . $file->hashName();

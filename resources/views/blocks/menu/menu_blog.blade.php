@@ -1,5 +1,5 @@
 <div class="header_menu_item has_childs">
-    <a href="{{ route('uslugi.index') }}/" class="nav-link @yield('service')">{{__('Блог')}}</a>
+    <a href="{{ route('blog.index') }}/" class="nav-link @yield('blog')">{{__('Блог')}}</a>
     <ul class="header_submenu">
     @foreach($blogCategories as $c)
       <li @class(['has_childs' => count($c->childs) > 0])>

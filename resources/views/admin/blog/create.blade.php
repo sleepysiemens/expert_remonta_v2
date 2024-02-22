@@ -53,9 +53,9 @@
         </div>
         <div class="form-group">
           <label for="exampleInputEmail1">Категория статьи</label>
-          <select class="form-control" name="category_id" required>
+          <select class="form-control" name="category_id" id="category_id" required>
             @foreach ($items as $i)
-            <option value="{{$i->id}}">{{$i->name}}</option>
+            <option value="{{$i->id}}" @disabled(true)>{{$i->name}}</option>
             @foreach($i->childs as $child)
               <option value="{{$child->id}}">{{"   -- $child->name"}}</option>
               @foreach($child->childs as $child)
@@ -102,4 +102,20 @@
     {{--<button type="submit" class="btn btn-primary">Добавить</button>--}}
   </div>
 @endsection
+
+@push('customScripts')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const options = {
+      itemSelectText: '',
+      shouldSort: false
+    }
+    const element = document.querySelector('#category_id');
+    const choices = new Choices(element, options);
+
+  })
+  </script>
+@endPush
 
