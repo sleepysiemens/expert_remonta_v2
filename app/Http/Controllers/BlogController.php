@@ -61,7 +61,7 @@ class BlogController extends Controller
             $posts = Blog::whereHas('category', function($q) use ($child, $post){
                 $q->where('id', '=', $child->id);
             })//->where('id', '!=', $post->id)
-            ->active()
+            //->active()
             ->select('id', 'url', 'short_title_ru', 'short_title_kz')
             ->get();
             //dd($posts);
@@ -84,7 +84,7 @@ class BlogController extends Controller
             $page = 'blogpost';
             $posts = Blog::whereHas('category', function($q) use ($child2, $post){
                 $q->where('id', '=', $child2->id);
-            })->active()
+            })//->active()
             ->select('id', 'url', 'short_title_ru', 'short_title_kz')
             ->get();
             $postIndex = $posts->search(function($p) use($post) {
