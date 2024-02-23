@@ -166,13 +166,13 @@
                 <ul class="nav nav-treeview" style="display: none; @yield('dropdown')">
                       <li class="nav-item">
                         <a href="{{ route('admin.blog.index',) }}" class="nav-link">
-                          <i class="nav-icon far fa-address-book"></i>
+                          <i class="nav-icon fas fa-clipboard-check"></i>
                           <p>Блог • Статьи</p>
                         </a>
                       </li>
                       <li class="nav-item">
                         <a href="{{ route('admin.blogCategory.index',) }}" class="nav-link">
-                          <i class="nav-icon far fa-address-book"></i>
+                          <i class="nav-icon fas fa-clipboard-check"></i>
                           <p>Блог • Категории блога</p>
                         </a>
                       </li>

@@ -5,6 +5,9 @@ namespace App\Http;
 use App\Http\Middleware\AdminPannelMiddleware;
 use App\Http\Middleware\RedactorMiddleware;
 use App\Http\Middleware\AppMiddleware;
+use App\Http\Middleware\CacheAfter;
+use App\Http\Middleware\LoadCache;
+use App\Http\Middleware\SetLocale;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -71,6 +74,9 @@ class Kernel extends HttpKernel
         'admin'=> AdminPannelMiddleware::class,
         'redactor'=> RedactorMiddleware::class,
         'app'=> AppMiddleware::class,
+        'cacheAfter'=> CacheAfter::class,
+        'loadCache'=> LoadCache::class,
+        'setLocale'=> SetLocale::class,
         'doNotCacheResponse' => \Spatie\ResponseCache\Middlewares\DoNotCacheResponse::class,
         'cacheResponse' => \Spatie\ResponseCache\Middlewares\CacheResponse::class,
         'page-cache' => \Silber\PageCache\Middleware\CacheResponse::class,

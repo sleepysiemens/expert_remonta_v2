@@ -26,12 +26,12 @@ class AppMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-      $locale = 'ru';
+      /*$locale = 'ru';
       if(isset($_COOKIE['locale']) && $_COOKIE['locale']=='kz') {
         // у laravel локаль такая - kk для казахского
         // https://laravel-lang.com/usage-list-of-locales.html#list_of_codes_with_names
         $locale = 'kk';
-      }
+      }*/
 
       $whatsapp=Contact::query()->select('link')->where('name','=','whatsapp')->get();
       $telegram=Contact::query()->select('link')->where('name','=','telegram')->get();
@@ -91,13 +91,13 @@ class AppMiddleware
 
       View::share('usr_city', $usr_city);
       View::share('location', $location);
-      View::share('locale', $locale);
+      #View::share('locale', $locale);
 
       $code=Counter::first();
       View::share('code', $code);
       
-      App::setLocale($locale);
-      Date::setLocale($locale);
+      #App::setLocale($locale);
+      #Date::setLocale($locale);
       //App::setLocale('en');
       //dd($locale);
 

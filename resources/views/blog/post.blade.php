@@ -70,11 +70,20 @@ nav-link-selected
                             {!!db_translate($post->description_ru, $post->description_kz)!!}
                         </article>
                         @if(auth()->user() && auth()->user()->role === 'admin')
+                        <div class="blog_subtitle">Была ли эта статья полезна?</div>
+                        
                         <form action="{{route('admin.blog.wish', $post->id)}}" method="POST">
                             @csrf @method('patch')
+                            {{--<input type="radio" id="radio_yes" name="grade" value="1" />
+                            <label class="radio_label" for="radio_yes">Да</label>
+                            <input type="radio" id="radio_no" name="grade" value="0" />
+                            <label class="radio_label" for="radio_no">Нет</label>
+                            <br> <br>--}}
+                            <div class="form_hide">
                             <textarea name="wishes" id="" rows="7" 
                             placeholder="Поделитесь своим мнением об этой статье">{{$post->wishes}}</textarea>
                             <button class="ui_kit_button">Отправить</button>
+                            </div>
                         </form>
                         @endif
                      
@@ -108,6 +117,10 @@ nav-link-selected
                         </div>
                     </div>
                     <div class="blog_posts">
+                        {{--<form class="search_form" action="{{route('blog.search')}}" method="GET">
+                            <input type="text" name="q" placeholder="Поиск" required>
+                            <button class="search_btn" type="submit"></button>
+                        </form>--}}
                         <div class="blog_subtitle">Статьи</div>
                         <ul>
                         @foreach($posts as $p)

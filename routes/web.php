@@ -27,10 +27,13 @@ use App\Mail\DemoEmail;
   // даже при cache.headers:public;max_age=31536000 гугл page speed показывает проблему кэширования, хз
   // https://blog.jjdiaz.dev/boost-api-performance-with-http-caching-in-laravel
   // 'cacheResponse:86400' - spatie response cache
-  $middlewares = ['app'];
+$middlewares = ['setLocale', /*'loadCache', 'app'*/];
+  if(config('app.env') === 'production') $middlewares[] = 'loadCache';
+  $middlewares[] = 'app';
+  if(config('app.env') === 'production') $middlewares[] = 'cacheAfter';
   if(config('app.env') === 'production') {
     $middlewares[] = 'cache.headers:max_age=3600';
-    $middlewares[] = 'cacheResponse:86400';
+    //$middlewares[] = 'cacheResponse:86400';
   }
 
   Route::group(['middleware'=>$middlewares], function() {
@@ -55,6 +58,7 @@ use App\Mail\DemoEmail;
     Route::get('/blog/{category:url}/{child:url}/{child2:url}', 'BlogController@showDeepcategory')
     ->scopeBindings()->name('blog.deepCategory');*/
     Route::get('/blog', 'BlogController@index')->name('blog.index');
+    Route::get('/blog/search', 'BlogController@search')->name('blog.search');
     Route::get('/blog/category/{category:url}/{child:url?}/{child2:url?}', 'BlogController@showcategory')
     ->scopeBindings()->name('blog.category');
     Route::get('/blog/{category:url}/{child:url}/{post:url}', 'BlogController@showPost')

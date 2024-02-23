@@ -26,6 +26,18 @@ class BlogController extends Controller
         return view('blog.index', compact(['blogs', 'page']));
     }
 
+    public function search(Request $req)
+    {
+        //dd($req->all());
+        $blogs = Blog::where('title_ru', 'LIKE', "%$req->q%")
+        ->orWhere('short_title_ru', 'LIKE', "%$req->q%")
+        ->get();
+        dd($blogs);
+        $page='blog';
+
+        return view('blog.index', compact(['blogs', 'page']));
+    }
+
     public function showCategory(BlogCategory $category, BlogCategory $child = null, BlogCategory $child2 = null) {
         //dd($category->childs);
         //dd($child);

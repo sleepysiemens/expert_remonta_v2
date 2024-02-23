@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Log;
 
 use Spatie\ResponseCache\Facades\ResponseCache;
+use Illuminate\Support\Facades\Cache;
 
 
 
@@ -35,6 +36,7 @@ class SettingsController extends Controller
 
     public function resetCache(Request $req)
     {
+      Cache::flush();
       ResponseCache::clear();
       $page = parse_url($_SERVER['HTTP_REFERER'])['path'];
       //return redirect()->route('admin.settings.index')->with('msg', 'Кэш сайта очищен');
