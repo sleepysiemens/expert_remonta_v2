@@ -28,7 +28,7 @@
 
   @stack('dropzone')
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-fixed @yield('body_class')">
 <div class="wrapper">
 
   <!-- Preloader -->
@@ -130,7 +130,7 @@
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
+          <div class="col-sm-12">
             @if(session('msg'))
               <div class="mt-2">
                 @if(session('msg'))
@@ -151,11 +151,11 @@
           @endif
             <h1 class="m-0">@yield('title')</h1>
           </div><!-- /.col -->
-          <div class="col-sm-6">
+          {{--<div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item active">Dashboard "Эксперт Ремонта" v.1.2</li>
             </ol>
-          </div><!-- /.col -->
+          </div>--}}<!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>

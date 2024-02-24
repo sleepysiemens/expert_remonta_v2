@@ -8,6 +8,10 @@
     active
 @endsection
 
+@section('body_class')
+  sidebar-collapse
+@endsection
+
 @section('content')
 
 <div class="row">
@@ -26,10 +30,12 @@
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form action="{{route('admin.blog.update', $blog->id)}}" method="post" enctype="multipart/form-data">
-        @csrf
-        @method('patch')
-        <div class="card-body">
+    <form action="{{route('admin.blog.update', $blog->id)}}" method="post" enctype="multipart/form-data"
+      style="display:flex;gap:25px">
+        
+        <div class="card-body" style="flex-basis:75%">
+          @csrf
+          @method('patch')
           <div class="form-group">
             <label for="exampleInputEmail1">Название, ru</label>
             <input type="text" class="form-control" placeholder="Название" name="title_ru" required value="{{$blog->title_ru}}">
@@ -63,7 +69,7 @@
                 <label for="exampleInputEmail1">Текст, kz</label>
                 <textarea id="summernote1" name="description_kz" placeholder="Текст описания...">{!!$blog->description_kz!!}</textarea>
             </div>
-          <div class="form-group">
+          {{--<div class="form-group">
 
             <label for="exampleInputEmail1">Обложка</label>
               <div style="display: flex; justify-content: start">
@@ -90,7 +96,7 @@
           <div class="form-group">
             <label for="active">Добавить в архив?</label>
             <input id="active" type="checkbox" name="active" @checked(!$blog->active)>
-        </div>
+        </div>--}}
 
           <fieldset>
             <legend>SEO инфа</legend>
@@ -120,8 +126,39 @@
           
         </div>
       <!-- /.card-body -->
-      <div class="card-footer">
-        <button type="submit" class="btn btn-primary">Изменить</button>
+      <div class="card-footer" style="flex-basis:30%">
+        <div id="card_right">
+        <div class="form-group">
+
+          <label for="exampleInputEmail1">Обложка</label>
+            <div style="">
+                <input style="width: 100%" type="file" class="form-control" id="imageFile" placeholder="Название" name="src" >
+                <br>
+                <img id="prevImage" style="height: auto; width: 100px; object-fit: contain;display:block" src="{{asset('img/blog/'.$blog->src)}}">
+            </div>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Категория статьи</label>
+          <select class="form-control" name="category_id" id="category_id" required>
+            @foreach ($items as $i)
+            <option value="{{$i->id}}" @disabled(true) @selected($blog->category_id == $i->id)>{{$i->name}}</option>
+            @foreach($i->childs as $child)
+              <option value="{{$child->id}}" @selected($blog->category_id == $child->id)>{{"   -- $child->name"}}</option>
+              @foreach($child->childs as $child)
+                <option value="{{$child->id}}" @selected($blog->category_id == $child->id)>{{"   ---- $child->name"}}</option>
+              @endforeach
+            @endforeach
+            @endforeach
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="active">Добавить в архив?</label>
+          <input id="active" type="checkbox" name="active" @checked(!$blog->active)>
+      </div>
+        <button type="submit" class="btn btn-primary" id="submit_btn">Изменить</button>
+      </div>
       </div>
     </form>
   </div>
@@ -140,6 +177,21 @@
     }
     const element = document.querySelector('#category_id');
     const choices = new Choices(element, options);
+
+    $(window).scroll(function(){
+        var ScrollTop = parseInt($(window).scrollTop());
+        //console.log(ScrollTop);
+        let el = document.getElementById('card_right');
+
+        if (ScrollTop > 250) {
+            //alert("Scroll is greater than 100");
+            el.style.position = 'sticky'
+            el.style.top = '10px'
+            el.style.right = '0px'
+        } else {
+          el.style.position = 'static'
+        }
+    });
 
   })
   </script>

@@ -15,6 +15,12 @@ class StoreController extends Controller
     {
       //dd($req->all());
       $req->merge(['active' => $req->active !== 'on']);
+      if(!$req->url && $req->short_title_ru) {
+        $req->merge(['url' => translit(mb_strtolower($req->short_title_ru))]);
+      } 
+      else if(!$req->url && $req->title_ru) {
+        $req->merge(['url' => translit(mb_strtolower($req->title_ru))]);
+      }
       $req->validate([
         'src' => 'mimes:jpg,png,jpeg',
       ]);

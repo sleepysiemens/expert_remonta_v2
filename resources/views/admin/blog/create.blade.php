@@ -37,7 +37,8 @@
           </div>
         <div class="form-group">
           <label for="exampleInputEmail1">Ссылка</label>
-          <input type="text" class="form-control" placeholder="Ссылка" name="url" value="{{old('url')}}" required>
+          <small>* если не заполнить, сгенерируется автоматически из короткого названия</small>
+          <input type="text" class="form-control" placeholder="Ссылка" name="url" value="{{old('url')}}">
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Текст, ru</label>
