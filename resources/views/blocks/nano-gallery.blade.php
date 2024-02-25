@@ -33,11 +33,11 @@
         });
     </script>
 
-    <div id="nanogallery3">
+    <div id="nanogallery3" style="display:none">
       @foreach($galleries as $gallery)
 
       <img alt="{{db_translate($gallery->title_ru, $gallery->title_kz)}}" 
-      src="{{getCommonResource('/img/gallery/'.$gallery->src)}}" width="300">
+      src="{{getCommonResource('/img/gallery/'.$gallery->src)}}">
 
       @endforeach
     </div>
