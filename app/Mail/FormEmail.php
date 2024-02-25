@@ -32,7 +32,7 @@ class FormEmail extends Mailable
     {
         return new Envelope(
             //from: new Address('jeffrey@example.com', 'Jeffrey Way'),
-            subject: 'ExpertRemonta ' . config('app.city') . ' - ' . $this->props->title,
+            subject: 'ExpertRemonta ' /*. config('app.city')*/ . ' - ' . $this->props->title,
         );
     }
 
