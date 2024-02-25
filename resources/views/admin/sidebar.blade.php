@@ -59,13 +59,14 @@
                       Расценки
                   </p>
               </a>
-
+                @if(config('app.city')=== 'Алматы')
                 <a href="{{ route('admin.gallery.index') }}" class="nav-link @yield('gallery')">
                     <i class="nav-icon fas fa-images"></i>
                     <p>
                         Галерея
                     </p>
                 </a>
+                @endif
 
                 <a href="{{ route('admin.contact.index') }}" class="nav-link @yield('contact')">
                     <i class="nav-icon fas fa-phone"></i>

@@ -27,4 +27,12 @@ class StoreController extends Controller
 
         return redirect()->route('admin.user.index')->with('msg', "Пароль созданного пользователя: $password Сохраните пароль!");
     }
+
+    public function regenPass(Request $req, User $user) {
+        //dd($user);
+        $password = Str::random(10);
+        $user->password = Hash::make($password);
+        $user->update();
+        return redirect()->route('admin.user.index')->with('msg', "Новый пароль пользователя $user->name: $password Сохраните пароль!");
+    }
 }

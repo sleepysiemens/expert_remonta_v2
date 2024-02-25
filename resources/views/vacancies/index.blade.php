@@ -38,7 +38,7 @@
             <label for="city_select">@lang('Город')</label>
             <select name="city_select" id="city_select" class="ajax_select"> 
               @foreach($cities as $city)
-              <option @selected($city->city === $usr_city) value="{{$city->id}}">{{$city->city}} </option>
+              <option @selected(request()->city_select == $city->id || $city->city === $usr_city) value="{{$city->id}}">{{$city->city}} </option>
               @endforeach
             </select>
           </div>
@@ -93,13 +93,13 @@
         ajaxSelects[idx].addEventListener('change', function(e) {
           let citySelect = document.querySelector('#city_select').value
           let categorySelect = document.querySelector('#category_select').value
-          let expSelect = document.querySelector('#exp_select').value
+          //let expSelect = document.querySelector('#exp_select').value
           //console.log(citySelect, categorySelect, expSelect)
-          getFilteredItemsCount(citySelect, categorySelect, expSelect)
+          getFilteredItemsCount(citySelect, categorySelect)
         })
       })
 
-      function getFilteredItemsCount(cityId, categoryId, exp) {
+      function getFilteredItemsCount(cityId, categoryId, exp = null) {
 
         fetch('/vacancies/filter?' + new URLSearchParams({
             city_id: cityId,

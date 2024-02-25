@@ -28,11 +28,7 @@
               itemsBaseURL:     '/img/gallery',
               
               // ### gallery content ### 
-              items: srcs/*[
-                  { src: 'berlin1.jpg', srct: 'berlin1_t.jpg', title: 'Berlin 1' },
-                  { src: 'berlin2.jpg', srct: 'berlin2_t.jpg', title: 'Berlin 2' },
-                  { src: 'berlin3.jpg', srct: 'berlin3_t.jpg', title: 'Berlin 3' }
-                ]*/
+              items: srcs
             });
         });
     </script>
@@ -40,7 +36,8 @@
     <div id="nanogallery3">
       @foreach($galleries as $gallery)
 
-      <img alt="{{db_translate($gallery->title_ru, $gallery->title_kz)}}" src="/{{$gallery->src}}">
+      <img alt="{{db_translate($gallery->title_ru, $gallery->title_kz)}}" 
+      src="{{getCommonResource('/'.$gallery->src)}}">
 
       @endforeach
     </div>

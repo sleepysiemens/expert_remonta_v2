@@ -218,7 +218,11 @@
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.js')}}"></script>
 
-@unless(isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REFERER'], '/admin/user/create'))
+@unless(
+  isset($_SERVER['HTTP_REFERER']) 
+  && (str_contains($_SERVER['HTTP_REFERER'], '/admin/user/create')
+  || str_contains($_SERVER['HTTP_REFERER'], '/admin/user'))
+  )
 <script>
   document.addEventListener("DOMContentLoaded", e => {
     let success_msg = document.querySelector('.success_msg')

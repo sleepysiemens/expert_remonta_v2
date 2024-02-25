@@ -24,7 +24,6 @@ class IndexController extends Controller
         $sales=sale::all();
         $users=User::all();
 
-
         return view('admin.user.index', compact(['users','reviews', 'questions', 'services', 'categories', 'sales']));
     }
 }

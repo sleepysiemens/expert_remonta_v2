@@ -42,11 +42,15 @@ class FormController extends Controller
       //dd($formTypeId);
 
         $userIP=$_SERVER['REMOTE_ADDR'];
-        $location=Location::get($userIP);
+        $location = false;
+        if(config('app.env' === 'production')) $location=Location::get($userIP);
 
       if(!$req->city) {
-        if($location==false)
-            $city='not set';
+        if($location==false) {
+            //$city='not set';
+            $city = config('app.city');
+            $req->merge(['city' => config('app.city')]);
+        }
         else {
           $city=$location->cityName;
           if(in_array($city, ['Astana', 'Almaty'])) $req->merge(['city' => $city]);
@@ -104,12 +108,14 @@ class FormController extends Controller
             $vacancy = \App\Models\Vacancy::where(['id' => $vacancyId])->first();
             $objDemo->title = 'Новая заявка на вакансию ' . $vacancy->title_ru;
             $data['vacancy_id'] = $vacancy->id;
+            $data['city'] = $vacancy->city->city;
           }
           else {
             $pageUrl = explode('/', $path)[2];
             $vacancy = \App\Models\Vacancy::where(['url' => $pageUrl])->first();
             $objDemo->title = 'Новая заявка на вакансию ' . $vacancy->title_ru;
             $data['vacancy_id'] = $vacancy->id;
+            $data['city'] = $vacancy->city->city;
           }
           $objDemo->vacancy = $vacancy;
         }
@@ -123,6 +129,7 @@ class FormController extends Controller
         }
 
         if(isset($url['query'])) $data['url_query'] = $url['query'];
+        //dd($data);
         $application = Application::create($data);
 
         $objDemo->date = $application->date;

@@ -15,7 +15,7 @@ class StoreController extends Controller
       //dd(filesize(dirname(__FILE__) . "/../../../../../public/img/bg.png"));
       //dd($req->all());
         //dd(\App\Models\CategoryImage::first());
-        $data = $req->validate(['src'=>'required']);
+        $data = $req->validate(['src'=>'required|mimes:jpg,png,jpeg']);
         
 
         $file = $req->file('src');

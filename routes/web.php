@@ -70,7 +70,7 @@ $middlewares = ['setLocale', /*'loadCache', 'app'*/];
     ->scopeBindings()->name('blog.post');*/
     //Route::get('/blog/{blog}', 'BlogController@index')->name('blog.index');
     Route::get('/geo', function () {  
-        //Mail::to('mixa430899@gmail.com')->queue(new DemoEmail());
+        //Mail::to('test@gmail.com')->queue(new DemoEmail());
         //dump(env('APP_CITY'));
         //dd(config('app.city'));
         //dd(\App\Models\Application::all());
@@ -331,6 +331,7 @@ Route::group(['prefix' => 'blog_category'], function()
         Route::get('/{user}/edit', 'EditController@index')->name('admin.user.edit');
         Route::patch('/{user}', 'UpdateController@index')->name('admin.user.update');
         Route::delete('/{user}', 'DestroyController@index')->name('admin.user.destroy');
+        Route::patch('/regenpass/{user}', 'StoreController@regenPass')->name('admin.user.regen');
     });
 
 

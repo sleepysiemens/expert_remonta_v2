@@ -23,7 +23,9 @@ class IndexController extends Controller
         $categories=Category::all();
         $sales=sale::all();
         $applications=application::with('sale')->with('vacancy')->with('page.service')
-        ->filtered()->latest()->get();
+        ->filtered()
+        ->latest()->get();
+        //dd($applications);
         //dd($applications[2]->vacancy);
 
         //dd(request()->getHttpHost());

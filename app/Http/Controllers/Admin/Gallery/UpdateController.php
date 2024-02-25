@@ -12,7 +12,7 @@ class UpdateController extends Controller
 {
     public function index(Gallery $gallery)
     {
-        $data=request()->validate(['title'=>'required|string', 'src'=>'required']);
+        $data=request()->validate(['title'=>'required|string', 'src'=>'required|mimes:jpg,png,jpeg']);
         $sql_data=['title'=>request()->title, 'src'=>(request()->title).'-image.img'];
 
         $file = request()->file('src');

@@ -42,15 +42,28 @@
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->role}}</td>
+                    @if(auth()->id() === 1)
                     <td>
                       <form method="post" action="{{route('admin.user.destroy',$user->id)}}">
                         @csrf
                         @method('delete')
-                        <button style="border: none; background-color: transparent; color: rgb(196, 3, 3)"><i class="far fa-trash-alt"></i></button>
+                        <button style="border: none; background-color: transparent; color: rgb(196, 3, 3)" onclick="(function() {
+                          if(!confirm(`Действительно удалить пользователя? Если он залогинен, он потеряет доступ к админке.`)) event.preventDefault();
+                        })();"><i class="far fa-trash-alt"></i></button>
                       </form>
                     </td>
                     <td><a href="{{route('admin.user.edit',$user->id)}}"><i class="fas fa-pen"></i></a></td>
-                    <td><a href="{{route('admin.user.show',$user->id)}}"><i class="fas fa-arrow-right"></i></a></td>
+                    <td>
+                      <form method="post" action="{{route('admin.user.regen',$user->id)}}">
+                        @csrf
+                        @method('patch')
+                        <button style="border: none; background-color: transparent; color: #333" onclick="(function() {
+                          if(!confirm(`Действительно сгенерировать новый пароль?`)) event.preventDefault();
+                        })();"><i class="fas fa-unlock"></i></button>
+                      </form>
+                    </td>
+                    @endif
+                    {{--<td><a href="{{route('admin.user.show',$user->id)}}"><i class="fas fa-arrow-right"></i></a></td>--}}
                 </tr>
         
             @endforeach

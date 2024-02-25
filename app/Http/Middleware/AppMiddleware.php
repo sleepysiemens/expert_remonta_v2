@@ -73,7 +73,8 @@ class AppMiddleware
       View::share('uri', substr($uri, 1));
 
       $userIP=$_SERVER['REMOTE_ADDR'];
-      $location=Location::get($userIP);
+      $location = false;
+      if(config('app.env' === 'production')) $location=Location::get($userIP);
       //$cityCookie = $req->cookie('city');
       $cityCookie = Cookie::get('city');
       //dd($cityCookie);
