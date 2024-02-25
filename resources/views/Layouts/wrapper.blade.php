@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @include('blocks.seo')
-    <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/add.css') }}">
+    {{--<link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/add.css') }}">--}}
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/add.css">
     @stack('franchise')
     @stack('customStyles')
     @stack('vacancies')

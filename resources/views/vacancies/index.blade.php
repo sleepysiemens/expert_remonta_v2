@@ -14,8 +14,10 @@
 
 @push('vacancies')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
-<link rel="stylesheet" href="{{ asset('/css/ui_kit.css') }}">
-<link rel="stylesheet" href="{{ asset('/css/vacancies.css') }}">
+{{--<link rel="stylesheet" href="{{ asset('/css/ui_kit.css') }}">
+<link rel="stylesheet" href="{{ asset('/css/vacancies.css') }}">--}}
+<link rel="stylesheet" href="/css/ui_kit.css">
+<link rel="stylesheet" href="/css/vacancies.css">
 <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 @endpush
 
