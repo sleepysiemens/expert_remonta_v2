@@ -25,7 +25,7 @@
               // ### gallery settings ### 
               thumbnailHeight:  300,
               thumbnailWidth:   300,
-              itemsBaseURL:     '/img/gallery',
+              //itemsBaseURL:     '/img/gallery',
               
               // ### gallery content ### 
               items: srcs
@@ -37,7 +37,7 @@
       @foreach($galleries as $gallery)
 
       <img alt="{{db_translate($gallery->title_ru, $gallery->title_kz)}}" 
-      src="{{getCommonResource('/'.$gallery->src)}}">
+      src="{{getCommonResource('/img/gallery/'.$gallery->src)}}" width="300">
 
       @endforeach
     </div>
