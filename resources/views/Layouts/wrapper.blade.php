@@ -48,7 +48,7 @@
                     <p>{{$tel}}</p>
                     <p></p>
                 </a>
-                <form method="post" action="{{asset(route('locale.change'))}}" class="locale-pc" style="display: flex; margin-left: 20px">
+                <form method="post" action="{{route('locale.change')}}" class="locale-pc" style="display: flex; margin-left: 20px">
                     {{--@csrf--}}
                     <input type="hidden" name="page" value="{{$page}}">
                     <button class="lang_change">
