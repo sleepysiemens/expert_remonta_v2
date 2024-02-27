@@ -94,9 +94,12 @@ class FormController extends Controller
         if($formTypeId == 1) {
           $objDemo->title = 'Новая заявка на услугу';
           $pageUrl = explode('/', $path)[3];
+          $pageUrl = urldecode($pageUrl);
           $category = Category::where(['url' => $pageUrl])->first();
-          $data['page_id'] = $category->id;
-          $objDemo->service = $category->title_ru;
+          if($category) {
+            $data['page_id'] = $category->id;
+            $objDemo->service = $category->title_ru;
+          }
         }
         else if($formTypeId == 2) $objDemo->title = 'Новая заявка на вакансии в офис';
         else if($formTypeId == 3) $objDemo->title = 'Новая заявка на вакансии на объекты';
