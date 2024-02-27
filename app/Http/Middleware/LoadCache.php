@@ -27,6 +27,9 @@ class LoadCache
         if(preg_match('/[0-9]/', $_SERVER['HTTP_HOST'])) return $next($req);
         // не грузим и для www
         if(str_contains($_SERVER['HTTP_HOST'], 'www')) return $next($req);
+        $host = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['HTTP_HOST'];
+        // не кэшируем если хост не совпадает с урлом приложения
+        if($host !== config('app.url')) return $next($req);
 
         //dd($cacheKey);
         $html = Cache::get($cacheKey);

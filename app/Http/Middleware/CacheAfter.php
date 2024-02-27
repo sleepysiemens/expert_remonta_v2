@@ -20,13 +20,16 @@ class CacheAfter
         $cacheKey = ($_SERVER['REQUEST_URI']) . ':' . App::getLocale();
         // кэшируем все GET запросы с кодом 200, которые не в кэше и без GET-параметров
         // и не кэшируем запросы напрямую по IP, а также с www
+        $host = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['HTTP_HOST'];
         if(
             $req->getMethod() === 'GET' 
             && $res->getStatusCode() === 200 
             && !Cache::has($cacheKey)
             && !str_contains($cacheKey, '?')
-            && !preg_match('/[0-9]/', $_SERVER['HTTP_HOST'])
-            && !str_contains($_SERVER['HTTP_HOST'], 'www')
+            //&& !preg_match('/[0-9]/', $_SERVER['HTTP_HOST'])
+            //&& !str_contains($_SERVER['HTTP_HOST'], 'www')
+            // кэшируем только при совпадении схемы и хоста с урлом приложения
+            && $host === config('app.url')
         ) {
             $html = $res->getContent();
             //dd($cacheKey);
