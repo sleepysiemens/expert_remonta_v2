@@ -24,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // приводит к ошибке array key $_SERVER['HTTP_HOST']) not defined
         /*if ($this->app->environment('production') 
             && !preg_match('/[0-9]/', $_SERVER['HTTP_HOST'])
         ) {
