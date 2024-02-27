@@ -32,4 +32,10 @@ document.addEventListener('DOMContentLoaded', function(e) {
       : list.classList.add('active')
     })
 
+
+    $('#grade_form input[type="radio"]').click(function() {
+      //console.log(123)
+      $('.form_hide').slideDown(300)
+    })
+
 })

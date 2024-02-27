@@ -8,7 +8,7 @@
     {{--<link rel="stylesheet" href="{{ asset('/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/add.css') }}">--}}
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="css/add.css">
+    <link rel="stylesheet" href="/css/add.css">
     @stack('franchise')
     @stack('customStyles')
     @stack('vacancies')

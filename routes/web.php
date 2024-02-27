@@ -70,12 +70,13 @@ $middlewares = ['setLocale', /*'loadCache', 'app'*/];
     ->scopeBindings()->name('blog.post');*/
     //Route::get('/blog/{blog}', 'BlogController@index')->name('blog.index');
     Route::get('/geo', function () {  
+        //dd(DB::table('jobs')->get());
         //Mail::to('test@gmail.com')->queue(new DemoEmail());
         //dump(env('APP_CITY'));
         //dd(config('app.city'));
         //dd(\App\Models\Application::all());
       //dd(scandir(public_path() . '/img'));
-      //dd(\App\Models\Application::all());             
+      //dd(Application::all());             
      
       //$location = Location::get($_SERVER['REMOTE_ADDR']);
       //return "Данные модуля местоположения <br> Ваша страна: $location->countryName <br> Ваш город: $location->cityName";
@@ -87,6 +88,20 @@ $middlewares = ['setLocale', /*'loadCache', 'app'*/];
       return json_encode(csrf_token());
     });*/
   });
+
+
+//FORM
+Route::post('/locale/change/', 'MainController@locale')->name('locale.change');
+
+Route::post('/form/store/', 'FormController@form')->name('form.store')
+->middleware('throttle:resumes');
+Route::post('/city/store/', 'MainController@city')->name('city.store');
+Route::post('/review/store/', 'ReviewController@add_review')->name('review.store');
+//Route::post('/resume/store/', 'VacancyController@form')->name('resume.store');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 //ADMIN
@@ -433,16 +448,4 @@ Route::group(['prefix' => 'blog_category'], function()
 
 });// /ADMIN
 
-
-//FORM
-Route::post('/locale/change/', 'MainController@locale')->name('locale.change');
-
-Route::post('/form/store/', 'FormController@form')->name('form.store');
-Route::post('/city/store/', 'MainController@city')->name('city.store');
-Route::post('/review/store/', 'ReviewController@add_review')->name('review.store');
-Route::post('/resume/store/', 'VacancyController@form')->name('resume.store');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

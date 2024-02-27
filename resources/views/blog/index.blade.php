@@ -4,45 +4,33 @@
 nav-link-selected
 @endsection
 
-
-        @section('page_title')
-            Блог
-        @endsection
+        @section('wrapClass')blog @endSection
 
         @section('content')
-            
-        <section class="services-page">
-            <h2 class="section-header">{{__('Блог. Категории')}}</h1>
-            <br>
-            <div class="services-div categories-div">
-        
-                @foreach ($blogs as $cat)
-        
-                <div class="service-banner">
-                    <a class="service-banner-link" href="{{ route('blog.category', [$cat->url]) }}">
-                        <img src="/img/blog_category/{{$cat->thumb}}">
-                    </a>
-                    <a href="{{ route('blog.category', [$cat->url]) }}" class="category-content">
-                        <h4>{{db_translate($cat->name, $cat->name_kz)}}</h4>
-                    </a>
-                </div>
-        
-                @endforeach
-        
+            <div id="blog">
+                <div class="blog_title">Блог</div>
+                @if(isset($q))
+                    <p>Результаты поиска по запросу {{$q}}</p>
+                    @if(count($posts) === 0)
+                    <p>Ничего не найдено, попробуйте другой поисковый запрос</p>
+                    <x-blog-search-form />
+                    @endif
+                @endif
+                <div class="blog_flex">
+                    <x-blog-categories :blogCategories="$blogCategories"/>
+                    <x-blog-posts :posts="$posts"/>
+                    <x-blog-right :posts="$posts"/>
             </div>
-        </section>
+            {{--</div>--}}
 
     @endsection
 
-{{--@section('meta-description')
-    @foreach ($seos as $seo)
-        {{db_translate($seo->meta_ru, $seo->meta_kz)}}
-    @endforeach
-@endsection
+@if($seo)
+@section('seo-title'){{db_translate($seo->seo_ru, $seo->seo_kz)}}@endsection
+@section('meta-description'){{db_translate($seo->meta_ru, $seo->meta_kz)}}@endsection
+@endif
 
-@section('seo-title')
-    @foreach ($seos as $seo)
-        {{db_translate($seo->seo_ru, $seo->seo_kz)}}
-    @endforeach
-@endsection--}}
+@push('customScripts')
+    <script defer src="/js/blog.js"></script>
+@endPush
 

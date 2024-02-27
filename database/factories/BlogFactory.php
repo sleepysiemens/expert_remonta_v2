@@ -36,7 +36,7 @@ class BlogFactory extends Factory
             //'email' => fake()->unique()->safeEmail(),
             //'email_verified_at' => now(),
             'url' => Str::random(10),
-            'src' => '4GdnGX1v_IZcP5x5No7Ql2sUOxm8wiCSyWCmmqi8E4ggOSXSI.jpg',
+            'src' => 'iMIcFRfh_uq1odWIkHj6a3pYZOUy4Hz18xok6R9gLXewTwmhz.jpg',
             'description_ru' => fake()->paragraph(),
             //'description_ru' => '123',
             //'category_id' => $this->categories_ids[mt_rand(0, count($this->categories_ids) - 1)]

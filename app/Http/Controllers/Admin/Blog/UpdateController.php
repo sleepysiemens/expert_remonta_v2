@@ -36,6 +36,7 @@ class UpdateController extends Controller
 
     public function sendWish(Request $req, Blog $blog) {
       //dd($blog);
+      //dd($req->all());
       $blog->update($req->all());
       return redirect(parse_url($_SERVER['HTTP_REFERER'])['path']);
     }

@@ -89,7 +89,9 @@
             </tr>
             @if($category->wishes)
             <tr>
-              <td colspan="6">Обратная связь от админа по статье {{$category->title_ru}}: {{$category->wishes}}</td>
+              <td colspan="6">Обратная связь от админа по статье {{$category->title_ru}}: <br>
+                Статья понравилась: {{$category->grade ? 'Да' : 'Нет'}} <br>
+                Фидбэк: {{$category->wishes}}</td>
             </tr>
             @endif
 

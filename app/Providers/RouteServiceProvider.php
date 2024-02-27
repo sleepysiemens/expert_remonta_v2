@@ -32,6 +32,12 @@ class RouteServiceProvider extends ServiceProvider
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
 
+        RateLimiter::for('resumes', function (Request $request) {
+            return $request->resume_file
+              ? Limit::perMinute(1)->by($request->ip())
+              : Limit::none();
+        });
+
         $this->routes(function () {
             Route::middleware('api')
                 ->namespace($this->namespace)  // добавьте эту строку

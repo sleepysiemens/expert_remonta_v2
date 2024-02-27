@@ -24,12 +24,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if ($this->app->environment('production') 
+        /*if ($this->app->environment('production') 
             && !preg_match('/[0-9]/', $_SERVER['HTTP_HOST'])
         ) {
             $this->app['request']->server->set('HTTPS','on');
             //URL::forceSchema('https');
-        }
+        }*/
         /*Http::macro('tgBot', function () {
             return Http::baseUrl("https://api.telegram.org/bot" . env('BOT_TOKEN'))->withHeaders([
               'Content-Type' => 'application/json',

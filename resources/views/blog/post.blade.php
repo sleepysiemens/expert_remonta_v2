@@ -5,14 +5,9 @@ nav-link-selected
 @endsection
 
 
-        {{--@section('page_title')
-            {{$blog->title}} – Эксперт Ремонта
-        @endsection--}}
-
         @section('wrapClass')blog @endSection
 
         @section('content')
-            {{--@include('blocks.welcome')--}}
             <div id="blog">
                 <div class="blog_title">Блог</div>
                 @if(!$post->active)
@@ -21,38 +16,12 @@ nav-link-selected
                     </p>
                 @endif
                 <div class="blog_flex">
-                    <div class="blog_category">
-                        <button id="categories_btn">Категории</button>
-                        <div class="blog_subtitle">Категории</div>
-                        <ul class="top_list">
-                            @foreach($blogCategories as $cat)
-                                <li @class(['top_level', 'openable', 'active' => $cat->id === $category->id])>
-                                    {{db_translate($cat->name, $cat->name_kz)}}
-                                    <ul @class(['hide' => $cat->id !== $category->id])>
-                                        @foreach($cat->childs as $c)
-                                            <li @class(['active' => $c->id === $child->id && !isset($child2),
-                                            'openable' => count($c->childs) > 0])
-                                            >
-                                            <a href="{{route('blog.category', [$cat->url, $c->url])}}">
-                                            {{db_translate($c->name, $c->name_kz)}}</a>
-                                            @if(count($c->childs) > 0)
-                                            <ul {{--class="hide"--}}>
-                                            @foreach($c->childs as $deepChild)
-                                            <li @class(['active' => isset($child2) && $deepChild->id === $child2->id])
-                                                >
-                                                <a href="{{route('blog.category', [$cat->url, $c->url, $deepChild->url])}}">
-                                                {{db_translate($deepChild->name, $deepChild->name_kz)}}</a>
-                                            </li>
-                                            @endForeach
-                                            </ul>
-                                            @endif
-                                        </li>
-                                        @endForeach
-                                    </ul>
-                                </li>
-                            @endForeach
-                        </ul>
-                    </div>
+                    <x-blog-categories 
+                    :blogCategories="$blogCategories" 
+                    :category="$category"
+                    :child="$child"
+                    :child2="isset($child2) ? $child2 : null"
+                />
                     <div class="blog_content">
                         <div class="blog_breadcrumbs">
                             <a href="{{route('blog.category', $category->url)}}">{{$category->name}}</a> > 
@@ -72,13 +41,16 @@ nav-link-selected
                         @if(auth()->user() && auth()->user()->role === 'admin')
                         <div class="blog_subtitle">Была ли эта статья полезна?</div>
                         
-                        <form action="{{route('admin.blog.wish', $post->id)}}" method="POST">
+                        <form action="{{route('admin.blog.wish', $post->id)}}" method="POST"
+                            id="grade_form">
                             @csrf @method('patch')
-                            {{--<input type="radio" id="radio_yes" name="grade" value="1" />
+                            <input type="radio" id="radio_yes" name="grade" value="1" 
+                            @checked($post->grade) />
                             <label class="radio_label" for="radio_yes">Да</label>
-                            <input type="radio" id="radio_no" name="grade" value="0" />
+                            <input type="radio" id="radio_no" name="grade" value="0"
+                            @checked(!$post->grade) />
                             <label class="radio_label" for="radio_no">Нет</label>
-                            <br> <br>--}}
+                            <br> <br>
                             <div class="form_hide">
                             <textarea name="wishes" id="" rows="7" 
                             placeholder="Поделитесь своим мнением об этой статье">{{$post->wishes}}</textarea>
@@ -116,31 +88,9 @@ nav-link-selected
                         </div>
                         </div>
                     </div>
-                    <div class="blog_posts">
-                        {{--<form class="search_form" action="{{route('blog.search')}}" method="GET">
-                            <input type="text" name="q" placeholder="Поиск" required>
-                            <button class="search_btn" type="submit"></button>
-                        </form>--}}
-                        <div class="blog_subtitle">Статьи</div>
-                        <ul>
-                        @foreach($posts as $p)
-                            <li @class(['active' => $post->url === $p->url])>
-                                @if(!isset($child2))
-                                <a href="{{route('blog.post', [$category->url, $child->url, $p->url])}}">
-                                {{db_translate($p->short_title_ru, $p->short_title_kz)}}
-                                </a>
-                                @else 
-                                <a href="{{route('blog.postDeep', [$category->url, $child->url, $child2->url, $p->url])}}">
-                                    {{db_translate($p->short_title_ru, $p->short_title_kz)}}
-                                    </a>
-                                @endif
-                            </li>
-                        @endForeach
-                        </ul>
-                        
-                    </div>
+                    <x-blog-right :posts="$posts" :post="$post" />
                 </div>
-            </div>
+            
 
     @endsection
 

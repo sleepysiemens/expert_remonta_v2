@@ -12,6 +12,8 @@ class Blog extends Model
     use HasFactory;
     protected $guarded=[];
 
+    protected $appends = ['short'];
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(BlogCategory::class);
@@ -55,6 +57,26 @@ class Blog extends Model
         $params[]= $this->category->url;
         $params[]= $this->url;
         return $params;
+    }
+
+    public function genCategoryRouteParams($full = false) {
+      $params = [];
+      if(isset($this->category->parent->parent->url)) {
+          $params[]= $this->category->parent->parent->url;
+      }
+      if(isset($this->category->parent->url)) {
+          $params[]= $this->category->parent->url;
+      }
+      if($full) $params[]= $this->category->url;
+      return $params;
+  }
+
+    public function getShortAttribute() {
+      $val = db_translate_return($this->description_ru, $this->description_kz);
+      $val = strip_tags($val);
+      $val = mb_substr($val, 0, 150);
+      //dd($val);
+      return $val . " ...";
     }
 
 }

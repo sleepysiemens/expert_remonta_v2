@@ -14,6 +14,18 @@ function db_translate($var_ru, $var_kz) {
             echo($var_ru);
 }
 
+function db_translate_return($var_ru, $var_kz) {
+    if(isset($_COOKIE['locale']) AND $_COOKIE['locale']=='kz')
+    {
+        if($var_kz!=NULL)
+            return($var_kz);
+        else
+        return($var_ru);
+    }
+    else
+    return($var_ru);
+}
+
 /*function translate($var)
     {
         if(isset($_COOKIE['locale']) AND $_COOKIE['locale']=='kz')

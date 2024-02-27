@@ -88,6 +88,11 @@ class IndexController extends Controller
       //dd($req->all());
       //dd($req->file("file")[1]);
       $req->merge(['active' => $req->active !== 'on']);
+      if(!$req->url) {
+        $req->merge(['url' => translit(mb_strtolower($req->title_ru))]);
+      }
+      else $req->merge(['url' => str_replace(' ', '-', strtolower($req->url))]);
+      
       $req->validate([
         'src' => 'mimes:jpg,bmp,png,gif,jpeg,avif,jfif',
         'slides.*' => 'mimes:jpg,bmp,png,gif,jpeg,avif,jfif',

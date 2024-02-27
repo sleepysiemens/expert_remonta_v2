@@ -22,17 +22,17 @@
             <tr>
               <th>Id</th>
               <th>Город</th>
-              <th>Категория</th>
+              {{--<th>Категория</th>--}}
               <th>Название, ru/kz</th>
               {{--<th>Название КЗ</th>--}}
+              <th>Инфо</th>
               <th>SEO инфа</th>
               {{--<th>URL</th>--}}
               {{--<th>Название, kz</th>--}}
-              <th>Инфо</th>
               {{--<th>ЗП</th>
               <th>Опыт</th>
               <th>Занятость</th>--}}
-              <th>Телефон</th>
+              {{--<th>Телефон</th>--}}
               <th></th>
             </tr>
         </thead>
@@ -42,8 +42,15 @@
               <tr>
                 <td>{{$v->id}}</td>
                 <td>{{$v->city->city}}</td>
-                <td>{{isset($v->category->name) ? $v->category->name : 'Не определено'}}</td>
+                {{--<td>{{isset($v->category->name) ? $v->category->name : 'Не определено'}}</td>--}}
                 <td>{{$v->name}}/{{$v->name_kz}}</td>
+                <td>
+                  Категория: {{isset($v->category->name) ? $v->category->name : 'Не определено'}}
+                  Телефон: {{$v->phone}}
+                  ЗП: {{$v->salary_from}}-{{$v->salary_to}} <br>
+                  Опыт: {{$v->experience}} <br>
+                  Занятость: {{$v->employment_type}}
+                </td>
                     <td>
                       URL: {{$v->url}} <br>
                       Title RU: {{$v->seo_title_ru}} <br>
@@ -52,15 +59,10 @@
                       Мета описание KZ: {{$v->meta_desc_kz}}
                     </td>
                     {{--<td>{{$v->url}}</td>--}}
-                    <td>
-                      ЗП: {{$v->salary_from}}-{{$v->salary_to}} <br>
-                      Опыт: {{$v->experience}} <br>
-                      Занятость: {{$v->employment_type}}
-                    </td>
                 {{--<td>{{$v->salary_from}}-{{$v->salary_to}}</td>
                 <td>{{$v->experience}}</td>
                 <td>{{$v->employment_type}}</td>--}}
-                <td>{{$v->phone}}</td>
+                {{--<td>{{$v->phone}}</td>--}}
                 <td>
                   <form method="post" action="{{route('admin.vacancy.destroy',$v->id)}}">
                     @csrf

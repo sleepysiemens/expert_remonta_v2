@@ -19,23 +19,32 @@ class BlogController extends Controller
 {
     public function index()
     {
-        $blogs = BlogCategory::whereNull('parent_id')->get();
+        //$blogs = BlogCategory::whereNull('parent_id')->get();
         //$seos=Seo::query()->where('page','=','blog')->get();
         $page='blog';
+        // получим последние 10 опубликованных постов
+        $posts = Blog::active()->latest()->with('category.parent.parent')->paginate(10);
+        //dd($posts[0]->short);
+        $seo = Seo::where(['page' => $page])->first();
 
-        return view('blog.index', compact(['blogs', 'page']));
+        //return view('blog.index', compact(['blogs', 'page']));
+        return view('blog.index', compact(['posts', 'page', 'seo']));
     }
 
     public function search(Request $req)
     {
         //dd($req->all());
-        $blogs = Blog::where('title_ru', 'LIKE', "%$req->q%")
+        $posts = Blog::where('title_ru', 'LIKE', "%$req->q%")
         ->orWhere('short_title_ru', 'LIKE', "%$req->q%")
-        ->get();
-        dd($blogs);
+        ->active()
+        ->with('category.parent.parent')
+        ->paginate(10);
+        //dd(count($posts));
         $page='blog';
+        $seo = Seo::where(['page' => $page])->first();
+        $q = $req->q;
 
-        return view('blog.index', compact(['blogs', 'page']));
+        return view('blog.index', compact(['posts', 'page', 'seo', 'q']));
     }
 
     public function showCategory(BlogCategory $category, BlogCategory $child = null, BlogCategory $child2 = null) {
@@ -52,15 +61,28 @@ class BlogController extends Controller
             $childCategory = $child2;
         }
         $page = 'blogCategory';
-        return view('blog.category', compact('parentCategory', 'childCategory', 'category', 'child', 'child2', 'page'));
-    }
+        // короче тут надо собрать id вложенных категорий
+        $catsIds = [];
+        if(!$child && !$child2) {
+            $prCategory = BlogCategory::where(['id' => $parentCategory->id])->with('childs.childs')
+            ->first();
+            foreach($prCategory->childs as $ch) {
+                $catsIds[] = $ch->id;
+                foreach($ch->childs as $c) $catsIds[] = $c->id;
+            }
+        } elseif($child && !$child2) {
+            $catsIds[] = $child->id;
+            foreach($child->childs as $c) $catsIds[] = $c->id;
+        } elseif($child2) {
+            $catsIds[] = $child2->id;
+        }
 
-    /*public function showPost(BlogCategory $category, 
-        BlogCategory $child, 
-        BlogCategory $child2, 
-        Blog $post) {
-            dd($post);
-    }*/
+        $posts = Blog::active()->latest()->whereIn('category_id', $catsIds)
+        ->with('category.parent.parent')->paginate(10);
+        //dd($posts);
+        //dd($child);
+        return view('blog.category', compact('parentCategory', 'childCategory', 'category', 'child', 'child2', 'page', 'posts'));
+    }
 
     public function showPost(BlogCategory $category, 
         BlogCategory $child,  
@@ -74,7 +96,8 @@ class BlogController extends Controller
                 $q->where('id', '=', $child->id);
             })//->where('id', '!=', $post->id)
             //->active()
-            ->select('id', 'url', 'short_title_ru', 'short_title_kz')
+            ->select('id', 'url', 'short_title_ru', 'short_title_kz', 'category_id')
+            ->with('category.parent.parent')
             ->get();
             //dd($posts);
             $postIndex = $posts->search(function($p) use($post) {
@@ -98,6 +121,7 @@ class BlogController extends Controller
                 $q->where('id', '=', $child2->id);
             })//->active()
             ->select('id', 'url', 'short_title_ru', 'short_title_kz')
+            //->with('category.parent.parent')
             ->get();
             $postIndex = $posts->search(function($p) use($post) {
                 return $p->id === $post->id;

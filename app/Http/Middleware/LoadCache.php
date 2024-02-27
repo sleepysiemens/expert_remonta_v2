@@ -25,6 +25,8 @@ class LoadCache
         if(!Cache::has($cacheKey)) return $next($req);
         // и если обращение напрямую по айпишнику, не грузим кэш
         if(preg_match('/[0-9]/', $_SERVER['HTTP_HOST'])) return $next($req);
+        // не грузим и для www
+        if(str_contains($_SERVER['HTTP_HOST'], 'www')) return $next($req);
 
         //dd($cacheKey);
         $html = Cache::get($cacheKey);

@@ -73,7 +73,6 @@ class FormController extends Controller
       $data= $req->validate($validationRules);
       //dd($data);
       if(in_array($formTypeId, [2, 3])) {
-        //\App\Jobs\StoreFile::dispatch($req->file('resume_file'));
         $path = Storage::put('resumes', $req->file('resume_file'));
         $data['resume_file'] = $path;
       }
@@ -89,7 +88,7 @@ class FormController extends Controller
         //  отправка почты, тут
         $objDemo = new \stdClass();
         $objDemo->form_type_id = $formTypeId;
-        $objDemo->req_data = $req->except('_token');
+        $objDemo->req_data = $req->except(['_token', 'resume_file']);
         //dd($objDemo);
         if($formTypeId == 1) {
           $objDemo->title = 'Новая заявка на услугу';
@@ -134,10 +133,14 @@ class FormController extends Controller
         if(isset($url['query'])) $data['url_query'] = $url['query'];
         //dd($data);
         $application = Application::create($data);
+        // serialization of uploaded file instance not allowed
+        /*if(in_array($formTypeId, [2, 3])) {
+          \App\Jobs\StoreFile::dispatch($req->file('resume_file'), $application);
+        }*/
 
         $objDemo->date = $application->date;
         if(in_array($formTypeId, [2, 3])) {
-          $objDemo->file = Storage::url('resumes', $application->resume_file);
+          //$objDemo->file = Storage::url('resumes', $application->resume_file);
         }
         $urlParts = parse_url($_SERVER['HTTP_REFERER']);
         //dd($urlParts);
