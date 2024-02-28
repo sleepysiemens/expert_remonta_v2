@@ -46,7 +46,8 @@ class Blog extends Model
       else $query->where(['active' => true]);
     }
 
-    public function genRouteParams() {
+    // сгенерировать параметры только в виде строки, для сайтмапа, это параметр string
+    public function genRouteParams($string = false) {
         $params = [];
         if(isset($this->category->parent->parent->url)) {
             $params[]= $this->category->parent->parent->url;
@@ -56,7 +57,7 @@ class Blog extends Model
         }
         $params[]= $this->category->url;
         $params[]= $this->url;
-        return $params;
+        return !$string ? $params : implode('/', $params);
     }
 
     public function genCategoryRouteParams($full = false) {

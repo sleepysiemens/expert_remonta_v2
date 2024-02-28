@@ -48,7 +48,7 @@ nav-link-selected
                             @checked($post->grade) />
                             <label class="radio_label" for="radio_yes">Да</label>
                             <input type="radio" id="radio_no" name="grade" value="0"
-                            @checked(!$post->grade) />
+                            @checked($post->grade === 0) />
                             <label class="radio_label" for="radio_no">Нет</label>
                             <br> <br>
                             <div class="form_hide">

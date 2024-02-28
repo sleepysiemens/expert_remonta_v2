@@ -120,8 +120,8 @@ class BlogController extends Controller
             $posts = Blog::whereHas('category', function($q) use ($child2, $post){
                 $q->where('id', '=', $child2->id);
             })//->active()
-            ->select('id', 'url', 'short_title_ru', 'short_title_kz')
-            //->with('category.parent.parent')
+            ->select('id', 'url', 'short_title_ru', 'short_title_kz', 'category_id')
+            ->with('category.parent.parent')
             ->get();
             $postIndex = $posts->search(function($p) use($post) {
                 return $p->id === $post->id;

@@ -26,7 +26,7 @@
         <form class="form-sale" method="post" action="{{route('form.store')}}">
             @csrf
             <input class="hidden" type="text" name="name" placeholder="Имя" required>
-            <input class="hidden" type="phone" name="phone" placeholder="Телефон" required>
+            <input class="hidden tel" type="phone" name="phone" placeholder="Телефон" required>
             <input type="hidden" name="sourse" value="{{$page}}/sale/{{$sale->title}}">
             <input type="hidden" id="sale_id" value="{{$sale->id}}" name="sale_id">
             <input type="hidden" id="cid" value="" name="cid">
@@ -111,3 +111,7 @@ actions.forEach(function(action) {
 });
 
 </script>
+
+@push('customScripts')
+ <script src="/js/tel.js"></script>
+@endPush

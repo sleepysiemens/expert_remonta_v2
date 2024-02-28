@@ -35,12 +35,15 @@ class GenSitemap extends Command
         $scheme = 'https';
         if(config('app.city') === 'Алматы') $domain = '';
         $domain .= 'expertremonta.kz';
+        $baseUrl = "$scheme://$domain";
 
         //SitemapGenerator::create("http://$domain")->writeToFile($path);
 
         $lastSaleMod = date('c', strtotime(\App\Models\Sale::max('updated_at')));
         $lastReviewMod = date('c', strtotime(\App\Models\Review::max('updated_at')));
         $lastVacancyMod = date('c', strtotime(\App\Models\Vacancy::max('updated_at')));
+        $lastBlogMod = date('c', strtotime(\App\Models\Blog::max('updated_at')));
+
         //dd($lastReviewMod);
 
         $sitemapContent = "<urlset xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd' xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>	
@@ -49,6 +52,12 @@ class GenSitemap extends Command
             <lastmod>$lastSaleMod</lastmod>
             <changefreq>monthly</changefreq>
             <priority>1</priority>
+	    </url>
+        <url>
+            <loc>$scheme://$domain</loc>
+            <lastmod>$lastBlogMod</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.8</priority>
 	    </url>
         <url>
             <loc>$scheme://$domain/uslugi</loc>
@@ -97,6 +106,46 @@ class GenSitemap extends Command
             <changefreq>monthly</changefreq>
             <priority>0.4</priority>
 	    </url>";
+        }
+
+        // категории блога верхние, с вложенными
+        foreach(\App\Models\BlogCategory::whereNull('parent_id')->with('childs.childs')->get() as $i) {
+            $date = date('c', strtotime($i->updated_at));
+            $sitemapContent .= "<url>
+            <loc>$baseUrl/blog/category/$i->url</loc>
+            <lastmod>$date</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.4</priority>
+	    </url>";
+            foreach($i->childs as $child) {
+                $date = date('c', strtotime($child->updated_at));
+                $sitemapContent .= "<url>
+                    <loc>$baseUrl/blog/category/$i->url/$child->url</loc>
+                    <lastmod>$date</lastmod>
+                    <changefreq>monthly</changefreq>
+                    <priority>0.4</priority>
+                </url>";
+                foreach($child->childs as $deepChild) {
+                    $date = date('c', strtotime($deepChild->updated_at));
+                    $sitemapContent .= "<url>
+                        <loc>$baseUrl/blog/category/$i->url/$child->url/$deepChild->url</loc>
+                        <lastmod>$date</lastmod>
+                        <changefreq>monthly</changefreq>
+                        <priority>0.4</priority>
+                    </url>";
+                }
+            }
+        }
+        // сами посты, опубликованные
+        foreach(\App\Models\Blog::active()->latest()->with('category.parent.parent')->get() as $post) {
+            $date = date('c', strtotime($post->updated_at));
+            $routeParams = $post->genRouteParams(true);
+            $sitemapContent .= "<url>
+                        <loc>$baseUrl/blog/$routeParams</loc>
+                        <lastmod>$date</lastmod>
+                        <changefreq>monthly</changefreq>
+                        <priority>0.4</priority>
+            </url>";
         }
 
         $sitemapContent .= "<url>

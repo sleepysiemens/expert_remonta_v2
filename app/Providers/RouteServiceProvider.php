@@ -32,9 +32,11 @@ class RouteServiceProvider extends ServiceProvider
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
 
+        // 5 заливок резюме файлов с одного IP в день
         RateLimiter::for('resumes', function (Request $request) {
             return $request->resume_file
-              ? Limit::perMinute(1)->by($request->ip())
+              //? Limit::perMinute(1)->by($request->ip())
+              ? Limit::perDay(5)->by($request->ip())
               : Limit::none();
         });
 

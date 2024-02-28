@@ -3701,7 +3701,7 @@ linear-gradient(0deg, #CEE19A, #CEE19A);
     url(../landing_files/ellipse_bg_4.png) no-repeat right 50%;
   }
   #blog {
-    max-width: 1180px;
+    max-width: 1240px;
     margin: 40px auto;
     color: #404040!important;
     padding: 0 20px;
@@ -3725,8 +3725,9 @@ linear-gradient(0deg, #CEE19A, #CEE19A);
   }
   .blog_flex {
     display: flex;
-    gap: 30px;
+    gap: 50px;
     margin-top: 40px;
+    justify-content: space-between;
   }
   .blog_breadcrumbs {
     font-size: 14px;
@@ -3827,6 +3828,7 @@ linear-gradient(0deg, #CEE19A, #CEE19A);
     /*background: #CEE19A;*/
     border: 1px solid #CEE19A;
     border-radius: 6px;
+    display: inline-block;
     /*display: block;*/
     padding: 4px;
   }
@@ -3841,7 +3843,7 @@ linear-gradient(0deg, #CEE19A, #CEE19A);
   .search_form {
     margin-bottom: 30px;
     position: relative;
-    width: 204px;
+    max-width: 204px;
   }
   .search_form input {
     color: #BFBFBF;

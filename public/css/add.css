@@ -13,3 +13,34 @@ html[lang="kk"] .has_childs:after {
     right: -12px;
     transform: scale(0.6);
 }
+html[lang="kk"] .header_submenu li.has_childs:after {
+    transform: scale(0.6) rotate(270deg);
+    top: 5px;
+    right: -10px;
+}
+html[lang="kk"] .header_deepmenu {
+    left: 170px;
+}
+html[lang="kk"] .header-div {
+    padding: 0 10px;
+}
+
+@media only screen and (max-width: 1200px) { 
+    html[lang="kk"] .header-contact-info, .header-contact-info {
+        margin-left: 25px;
+    }
+    html[lang="kk"] .nav-link, .nav-link-selected, .nav-link, .nav-link-selected {
+        font-size: 15px;
+    }
+}
+@media only screen and (max-width: 1130px) {
+    html[lang="kk"] .nav-link, html[lang="kk"] .nav-link-selected {
+        font-size: 13px;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .nav-links {
+        gap: 7px;
+    }
+}

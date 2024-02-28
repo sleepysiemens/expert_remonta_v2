@@ -7,7 +7,8 @@
         <input class="ui_kit_input" name="name" type="text" required placeholder="@lang('ФИО')"/>
       </div>
       <div class="vc_page_input">
-        <input class="ui_kit_input" name="phone" type="text" required placeholder="+7-XXX-XXX-XX-XX"/>
+        {{-- placeholder="+7-XXX-XXX-XX-XX" --}}
+        <input class="ui_kit_input tel" name="phone" type="text" required placeholder="+7 (XXX) XXX XX XX"/>
       </div>
       <div class="vc_page_input">
         <input class="ui_kit_input" name="email" type="email" placeholder="Email"/>
@@ -21,3 +22,7 @@
     </form>
   </div>
 </div>
+
+@push('customScripts')
+ <script src="/js/tel.js"></script>
+@endPush

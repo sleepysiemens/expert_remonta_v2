@@ -5,7 +5,7 @@
     
     @include('blocks.menu.menu_services')
     @if(count($blogCategories) > 0)
-    {{--@include('blocks.menu.menu_blog')--}}
+    @include('blocks.menu.menu_blog')
     @endif
     
     @foreach($menu as $m)

@@ -59,6 +59,8 @@ class FormController extends Controller
       }
 
       $req->merge(['sourse' => $path]);
+      // удаляем из телефона пробелы и скобки
+      $req->merge(['phone' => preg_replace('/ |\(|\)/', '', $req->phone)]);
 
       $validationRules = [
         'name'=>'required|string', 
