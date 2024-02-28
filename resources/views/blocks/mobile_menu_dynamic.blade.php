@@ -79,12 +79,23 @@
     })
     let submenus = document.querySelectorAll('ul.header_submenu')
     submenus.forEach(submenu => {
-      let submenusItemsWithChilds = submenu.querySelectorAll('li.has_childs')
+      //let submenusItemsWithChilds = submenu.querySelectorAll('li.has_childs')
+      let submenusItemsWithChilds = submenu.querySelectorAll('li.has_childs.sub')
       submenusItemsWithChilds.forEach(item => {
         item.addEventListener('click', function(e) {
-          !item.querySelector('.header_deepmenu').classList.contains('active') 
-          ? item.querySelector('.header_deepmenu').classList.add('active')
-          : item.querySelector('.header_deepmenu').classList.remove('active')
+          //console.log(e.target)
+          // если клик по вложенному пункту, раскрываем ток его
+          if(e.target.classList.contains('deep')) {
+            let deepMenu = e.target.querySelector('.header_deepmenu')
+            !deepMenu.classList.contains('active') 
+            ? deepMenu.classList.add('active')
+            : deepMenu.classList.remove('active')
+            return
+          }
+          let deepMenu = item.querySelector('.header_deepmenu')
+          !deepMenu.classList.contains('active') 
+          ? deepMenu.classList.add('active')
+          : deepMenu.classList.remove('active')
         })
       })
     })
