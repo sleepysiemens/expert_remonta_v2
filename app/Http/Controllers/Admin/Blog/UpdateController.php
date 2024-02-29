@@ -40,4 +40,9 @@ class UpdateController extends Controller
       $blog->update($req->all());
       return redirect(parse_url($_SERVER['HTTP_REFERER'])['path']);
     }
+    public function sendLike(Request $req, Blog $blog) {
+      $blog->grade = 1;
+      $blog->update();
+      return 'ok';
+    }
 }

@@ -45,7 +45,7 @@ nav-link-selected
                             id="grade_form">
                             @csrf @method('patch')
                             <input type="radio" id="radio_yes" name="grade" value="1" 
-                            @checked($post->grade) />
+                            data-id="{{$post->id}}" @checked($post->grade) />
                             <label class="radio_label" for="radio_yes">Да</label>
                             <input type="radio" id="radio_no" name="grade" value="0"
                             @checked($post->grade === 0) />
@@ -100,5 +100,33 @@ nav-link-selected
 
 @push('customScripts')
     <script defer src="/js/blog.js"></script>
+    @if(auth()->user() && auth()->user()->role === 'admin')
+        <script>
+            document.addEventListener('DOMContentLoaded', function(e) {
+                $('#grade_form input[type="radio"]').click(function() {
+                //console.log(123)
+                $('.form_hide').slideDown(300)
+                })
+
+                $('#radio_yes').click(function(e) {
+                let id = e.target.dataset.id
+                let token = `{{csrf_token()}}`
+
+                const headers = new Headers({
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': `${token}`
+                });
+                fetch(`/admin/blog/like/${id}`, {
+                    method: 'PATCH',
+                    headers,
+                    body: JSON.stringify({grade: 1})
+                }).then(response => {
+                    //response.json()
+                    //console.log('updated')
+                })
+                })
+                        })
+        </script>
+    @endif
 @endPush
 

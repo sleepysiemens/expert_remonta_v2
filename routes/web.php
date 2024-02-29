@@ -443,6 +443,7 @@ Route::group(['prefix' => 'blog_category'], function()
             Route::get('/{blog}/edit', 'EditController@index')->name('admin.blog.edit');
             Route::patch('/{blog}', 'UpdateController@index')->name('admin.blog.update');
             Route::patch('/wish/{blog}', 'UpdateController@sendWish')->name('admin.blog.wish');
+            Route::patch('/like/{blog}', 'UpdateController@sendLike')->name('admin.blog.like');
             Route::delete('/{blog}', 'DestroyController@index')->name('admin.blog.destroy');
         });
 

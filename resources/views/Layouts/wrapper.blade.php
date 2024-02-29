@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="{{ asset('/css/add.css') }}">--}}
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/add.css">
+    {{--@include('blocks.headScript')--}}
+    
+    <noscript>
+       <style>body{opacity: 1;}</style>
+    </noscript>
     @stack('franchise')
     @stack('customStyles')
     @stack('vacancies')
@@ -21,6 +26,7 @@
     {!!$code->head_code!!}
 </head>
 <body>
+    {{--@include('blocks.loader')--}}
 
     <script src="https://kit.fontawesome.com/0a007e12dc.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

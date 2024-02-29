@@ -4,9 +4,6 @@
     </div>
     
     @include('blocks.menu.menu_services')
-    @if(count($blogCategories) > 0)
-    @include('blocks.menu.menu_blog')
-    @endif
     
     @foreach($menu as $m)
       <div @class([
@@ -25,6 +22,10 @@
       @endif
       </div> 
     @endforeach
+
+    @if(count($blogCategories) > 0)
+    @include('blocks.menu.menu_blog')
+    @endif
     
 </div>
 
