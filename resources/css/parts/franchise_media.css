@@ -1,0 +1,230 @@
+@media (max-width: 1100px) {
+    .fr_page_welcome {
+      background-size: contain;
+    }
+    .fr_page_heading {
+      font-size: 26px;
+    }
+    .spoiler-title {
+      font-size: 20px;
+    }
+    .fr_page_steps .fr_page_wrap {
+      background-position: 0px 190px;
+    }
+    .fr_page_steps ol.fr_page_r {
+      margin-top: -10px;
+    }
+  }
+  
+  @media (max-width: 900px) {
+    .fr_page_welcome_wrap h1 {
+      font-size: 32px;
+      max-width: 460px;
+    }
+  }
+  
+  @media (max-width: 650px) {
+    .fr_page_steps .fr_page_wrap {
+      background-position: -100px 190px;
+    }
+  }
+  
+  @media (max-width: 590px) {
+    .fr_page_welcome_wrap h1 {
+      font-size: 26px;
+      /*max-width: 276px;*/
+      max-width: 296px;
+    }
+  }
+  
+  @media (max-width: 440px) {
+    .fr_page_welcome_wrap h1 {
+      font-size: 21px;
+      max-width: 260px;
+    }
+    .fr_page_welcome_wrap a {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  }
+  @media (max-width: 375px) { 
+    .fr_page_welcome {
+      background-position-x: 35px;
+    }
+  }
+  
+  @media (max-width: 820px) {
+    .fr_page_get .fr_page_sections {
+      display: block;
+    }
+    .fr_page_get .fr_page_sections div {
+      text-align: center;
+    }
+    .fr_page_adv2 .fr_page_list_card {
+      width: 30%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .fr_page_get .fr_page_sections img {
+      max-width: 100%;
+      margin: 0 auto;
+      display: block;
+    }
+    .fr_page_fr li {
+      width: 45%;
+      justify-content: space-around;
+    }
+    .fr_page_calc .fr_page_flex {
+      display: block;
+    }
+    .fr_page_calc .fr_page_calc_inner {
+      width: 100%;
+    }
+    .fr_page_calc .fr_page_form {
+      width: 80%;
+      margin: 25px auto;
+    }
+  }
+  
+  @media (max-width: 670px) {
+    .fr_page_adv2 .fr_page_list_card {
+      width: 45%;
+    }
+  }
+  
+  @media (max-width: 634px) {
+    .fr_page_get ol > li {
+      text-align: left;
+    }
+    .fr_page_soft .fr_page_list {
+      flex-wrap: wrap;
+    }
+    .fr_page_soft .fr_page_list-card {
+      width: 100%;
+    }
+    .fr_page_soft .fr_page_icon {
+      position: absolute;
+      top: 59px;
+      left: calc(50% - 195px / 2);
+    }
+    .fr_page_soft .fr_page_line {
+      display: none;
+    }
+    .fr_page_soft .fr_page_heading {
+      margin-bottom: 200px;
+    }
+    .fr_page_soft .fr_page_icon:before {
+      display: none;
+    }
+    .fr_page_soft .fr_page_list-card:after {
+      bottom: unset;
+      top: -10px;
+      z-index: 9
+    }
+    .fr_page_soft .fr_page_list.s {
+      margin-top: 20px;
+    }
+    .fr_page_soft .fr_page_list-card.s:before {
+      top: unset;
+    }
+    .fr_page_soft .fr_page_list-card.s:nth-of-type(3):before {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 570px) {
+    .fr_page_steps .fr_page_wrap {
+      background: none;
+    }
+    .fr_page_steps .fr_page_heading {
+      margin-bottom: 20px;
+    }
+    .fr_page_steps ol {
+      flex-wrap: wrap;
+      margin: 0px auto;
+    }
+    .fr_page_steps ol li {
+      width: 100%;
+      flex-direction: row;
+      margin-bottom: 25px;
+    }
+    .fr_page_steps ol.m {
+      margin-top: 0;
+    }
+    .fr_page_steps .fr_page_counter {
+      position: relative;
+    }
+    .fr_page_steps .fr_page_counter:after {
+      position: absolute;
+      content: "";
+      width: 1px;
+      height: 25px;
+      background: #9DC436;
+      bottom: -25px;
+      left: 20px;
+    }
+    .fr_page_steps ol.m li:last-of-type .fr_page_counter:after {
+      display: none;
+    }
+    .fr_page_welcome {
+      padding-bottom: 0;
+    }
+    .fr_page_welcome_flex {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+    .fr_page_welcome_wrap a {
+      max-width: 286px;
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .fr_page_fr li {
+      width: 100%;
+    }
+    .fr_page_adv ol {
+      padding-left: 50px;
+    }
+  }
+  
+  @media (max-width: 420px) {
+    .fr_page_adv2 .fr_page_list_card {
+      width: 100%;
+      height: 250px;
+    }
+    .fr_page_adv2 .fr_page_heading {
+      font-size: 32px;
+    }
+    .fr_page_steps li span:nth-of-type(2) {
+      text-align: left;
+    }
+    .fr_page_steps ol {
+      padding-left: 0;
+    }
+  }
+  
+  @media (max-width: 390px) {
+    .fr_page_calc table td {
+      padding: 15px 10px;
+    }
+  }
+  
+  @media (min-width: 1921px) {
+    .fr_page_welcome {
+      /*background-size: 1920px 849px;*/
+      /*background-size: contain;*/
+      background-size: 100% 90%;
+    }
+  }
+  
+  @media (max-width: 593px) {
+    .fr_page_kk .fr_page_soft .fr_page_icon {
+      top: 70px;
+    }
+  }
+  @media (max-width: 407px) {
+    .fr_page_kk .fr_page_soft .fr_page_icon {
+      top: 105px;
+    }
+  }

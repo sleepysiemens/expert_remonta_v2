@@ -19,8 +19,7 @@
   @push('franchise')
     {{--<link rel="stylesheet" href="{{ asset('/css/franchise.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/media.css') }}">--}}
-    <link rel="stylesheet" href="/css/franchise.css">
-    <link rel="stylesheet" href="/css/media.css">
+    @vite('resources/css/franchise.css')
   @endpush
 
   @section('content')

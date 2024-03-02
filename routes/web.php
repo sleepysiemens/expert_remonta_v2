@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 use App\Mail\DemoEmail;
 
 /*
@@ -52,11 +53,7 @@ $middlewares = ['setLocale', /*'loadCache', 'app'*/];
     Route::get('/vacancies/filter/', 'VacancyController@filter')->name('vacancy.filter')->middleware('doNotCacheResponse');
     Route::get('/vacancy/{vacancy}', 'VacancyController@show')->name('vacancy.show');
     Route::get('/vacancies/category/{vacancyCategory}', 'VacancyController@showCategory')->name('vacancy.category');
-    /*Route::get('/blog/{category:url}', 'BlogController@showCategory')->name('blog.category');
-    Route::get('/blog/{category:url}/{child:url}', 'BlogController@showSubcategory')
-    ->scopeBindings()->name('blog.subCategory');
-    Route::get('/blog/{category:url}/{child:url}/{child2:url}', 'BlogController@showDeepcategory')
-    ->scopeBindings()->name('blog.deepCategory');*/
+
     Route::get('/blog', 'BlogController@index')->name('blog.index');
     Route::get('/blog/search', 'BlogController@search')->name('blog.search');
     Route::get('/blog/category/{category:url}/{child:url?}/{child2:url?}', 'BlogController@showcategory')
@@ -70,6 +67,9 @@ $middlewares = ['setLocale', /*'loadCache', 'app'*/];
     ->scopeBindings()->name('blog.post');*/
     //Route::get('/blog/{blog}', 'BlogController@index')->name('blog.index');
     Route::get('/geo', function () {  
+        
+        //$googleDrive = new GoogleDrive();
+        //dd($googleDrive->searchFiles());
         //dd(DB::table('jobs')->get());
         //Mail::to('test@gmail.com')->queue(new DemoEmail());
         //dump(env('APP_CITY'));

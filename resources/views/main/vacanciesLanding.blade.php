@@ -14,9 +14,7 @@
 {{--<link rel="stylesheet" href="{{ asset('/css/ui_kit.css') }}">
 <link rel="stylesheet" href="{{ asset('/css/vacancies_landing.css') }}">
 <link rel="stylesheet" href="{{ asset('/css/vacancies_landing_media.css') }}">--}}
-<link rel="stylesheet" href="/css/ui_kit.css">
-<link rel="stylesheet" href="/css/vacancies_landing.css">
-<link rel="stylesheet" href="/css/vacancies_landing_media.css">
+@vite('resources/css/vacancies_landing.css')
 @endpush
 
 @section('content')

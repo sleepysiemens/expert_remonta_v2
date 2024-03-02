@@ -1,0 +1,79 @@
+.vacancy_page_content {
+    background: url(/vacancies_files/ellipse_bg_4.png) no-repeat right 80%, url(/vacancies_files/ellipse_bg_3.png) no-repeat left 5%;
+  }
+  .vacancy_page_wrap {
+    max-width: 1200px;
+    padding: 0 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin: 0 auto;
+  }
+  .vacancy_page_hero {
+    background: #FAFAFA;
+  }
+  .vacancy_page_vacancy_title, .vacancy_page_vacancy_salary {
+    margin-bottom: 10px;
+  }
+  .vacancy_page_vacancy_salary {
+    margin-bottom: 40px;
+  }
+  .vacancy_page_info {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 26px;
+    margin-bottom: 15px;
+  }
+  .vacancies_page_button {
+    margin-right: 35px;
+  }
+  .vacancy_page_content ul {
+    margin-bottom: 80px;
+  }
+  .vacancy_page_content ul li {
+    font-size: 20px;
+    line-height: 26px;
+    margin-bottom: 35px;
+    position: relative;
+    padding-left: 25px;
+  }
+  .vacancy_page_content ul li:before {
+    content: "";
+    background: #9DC436;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    top: 7px;
+    left: 0;
+    position: absolute;
+  }
+  .vacancy_page_content ul:nth-of-type(2) li:before {
+    background: #F2C20E;
+  }
+  .vacancies_page_inline_flex {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  
+  @media (max-width: 1280px) {
+    .vacancy_page_hero .vacancy_page_wrap {
+      max-width: 800px;
+    }
+  }
+  
+  @media (max-width: 550px) {
+    .vacancies_page_button {
+      font-size: 16px;
+      line-height: 20px;
+      margin-right: 5px;
+      margin-top: 15px;
+    }
+    .vacancy_page_content {
+      background: none;
+    }
+    .vacancy_page_content ul li {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 20px;
+    }
+  }

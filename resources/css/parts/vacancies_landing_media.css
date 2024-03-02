@@ -1,0 +1,254 @@
+@media (max-width: 1260px) {
+    .vc_page_welcome_wrap {
+      background: url(/landing_files/welcome.png) no-repeat 95% 50%;
+    }
+    .vc_page_welcome2 .vc_page_welcome_wrap {
+      background: url(/landing_files/welcome2.png) no-repeat 95% 50%;
+    }
+  }
+  @media (max-width: 1120px) {
+    .vc_page_value .vc_page_card:first-of-type {
+      width: 90%;
+    }
+    .vc_page_value .vc_page_flex {
+      justify-content: center;
+    }
+  }
+  @media (max-width: 1110px) {
+    .vc_page_welcome_wrap, .vc_page_welcome2 .vc_page_welcome_wrap {
+      background-size: 350px 350px;
+    }
+    .vc_page_corp .vc_page_wrap {
+      flex-direction: column;
+      align-items: center;
+      background-position: 50% bottom;
+      padding-bottom: 375px;
+    }
+    .vc_page_corp {
+      padding-bottom: 0;
+    }
+    .vc_page_corp .vc_page_wrap .vc_page_heading, .vc_page_corp .vc_page_wrap ol {
+      width: 100%;
+      text-align: center;
+    }
+    .vc_page_corp ol > li:before {
+      left: calc(100vw / 7);
+    }
+    .vc_page_join_block {
+      margin: 0 auto;
+    }
+    .vc_page_join .vc_page_wrap,  .vc_page_join.vc_page_join_master .vc_page_wrap{
+      padding-bottom: 500px;
+      background-position: 50% bottom;
+    }
+    .vc_page_join {
+      padding-bottom: 50px;
+    }
+  }
+  @media (max-width: 900px) {
+    .vc_page_welcome_wrap, .vc_page_welcome2 .vc_page_welcome_wrap {
+      background-size: 250px 250px;
+    }
+    .vc_page_corp ol > li:before {
+      left: calc(100vw / 15);
+    }
+    .vc_page_pripciples .vc_page_flex {
+      flex-wrap: wrap;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .vc_page_welcome_wrap {
+      background: url(/landing_files/welcome.png) no-repeat 50% 100px;
+      background-size: calc(100vw * 0.7);
+    }
+    .vc_page_welcome2 .vc_page_welcome_wrap {
+      background: url(/landing_files/welcome2.png) no-repeat 50% 100px;
+      background-size: calc(100vw * 0.7);
+    }
+    .vc_page_welcome .vc_page_heading {
+      padding-bottom: calc(100vw * 0.7);
+    }
+    .vc_page_cult {
+      border-radius: 60px 60px 0 0;
+    }
+    .vc_page_propose {
+      border-radius: 0 0 60px 60px;
+    }
+    .vc_page_corp, .vc_page_join, .vc_page_skills {
+      background: none;
+    }
+    .vc_page_corp .vc_page_wrap .vc_page_heading, .vc_page_corp .vc_page_wrap ol {
+      text-align: left;
+    }
+    .vc_page_corp .vc_page_wrap ol {
+      max-width: 400px;
+      padding-left: 60px;
+      box-sizing: border-box;
+    }
+    .vc_page_corp ol > li:before {
+      left: -60px;
+    }
+    .vc_page_pripciples .vc_page_flex_card {
+      padding: 36px 40px 15px 40px;
+    }
+    .vc_page_value {
+      border-radius: 60px;
+    }
+    .vc_page_flex_card_title {
+      font-size: 20px;
+    }
+  }
+  
+  @media (max-width: 680px) {
+    .vc_page_heading {
+      font-size: 26px;
+    }
+    .vc_page_subheading {
+      font-size: 20px;
+    }
+  }
+  
+  @media (max-width: 645px) {
+    .vc_page_contact .vc_page_wrap {
+      flex-direction: column;
+      gap: 30px;
+    }
+  }
+  
+  @media (max-width: 635px) {
+    .vc_page_values2 .vc_page_wrap {
+      justify-content: center;
+    }
+    .vc_page_values2 .vc_page_heading {
+      width: 100%;
+    }
+    .vc_page_values2 .vc_page_value_item {
+      width: 100%;
+      margin-bottom: 25px;
+    }
+  }
+  
+  @media (max-width: 580px) {
+  .vc_page_list_subtitle {
+    word-wrap: break-word;
+  }
+  .vc_page_value .vc_page_card:first-of-type {
+    background: #fff url(/landing_files/logo.png) no-repeat 10% 150px;
+  }
+  .vc_page_value .vc_page_card:first-of-type a {
+    margin-top: 180px;
+  }
+  }
+  
+  @media (max-width: 545px) {
+    .vc_page_card {
+      width: 280px;
+    }
+    .vc_page_join .vc_page_wrap, .vc_page_join.vc_page_join_master .vc_page_wrap {
+      background-size: 80%;
+      padding-bottom: calc(100vw * 0.9);
+    }
+    .vc_page_skill {
+      text-align: center;
+    }
+  }
+  
+  @media (max-width: 450px) {
+    .vc_page_corp .vc_page_wrap {
+      background-size: 90%;
+      padding-bottom: calc(100vw * 0.75);
+    }
+  }
+  @media (max-width: 440px) {
+    .vc_page_welcome_wrap {
+      background: url(/landing_files/welcome.png) no-repeat 50% 110px;
+      background-size: calc(100vw * 0.7);
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .vc_page_value .vc_page_card:first-of-type {
+      background: #fff url(/landing_files/logo.png) no-repeat 10% 190px;
+    }
+    .vc_page_value .vc_page_card:first-of-type a {
+      margin-top: 180px;
+    }
+  }
+  
+  @media (max-width: 409px) {
+    .vc_page_kk .vc_page_value .vc_page_card:first-of-type {
+      background: #fff url(/landing_files/logo.png) no-repeat 10% 185px;
+    }
+  }
+  @media (max-width: 379px) {
+    .vc_page_kk .vc_page_value .vc_page_card:first-of-type {
+      background: #fff url(/landing_files/logo.png) no-repeat 10% 215px;
+    }
+  }
+  @media (max-width: 350px) {
+    .vc_page_kk .vc_page_value .vc_page_card:first-of-type {
+      background: #fff url(/landing_files/logo.png) no-repeat 10% 245px;
+    }
+  }
+  @media (max-width: 320px) {
+    .vc_page_2.vc_page_kk .vc_page_value .vc_page_card_subtitle {
+      font-size: 16px;
+      line-height: 26px;
+  }
+  .vc_page_kk .vc_page_value .vc_page_card:first-of-type {
+    background: #fff url(/landing_files/logo.png) no-repeat 10% 225px;
+  }
+  }
+  
+  @media (max-width: 395px) {
+    .vc_page_welcome2_kk .vc_page_welcome_wrap {
+      background: url(/landing_files/welcome2.png) no-repeat 50% 120px;
+      background-size: calc(100vw * 0.7);
+      padding: 0 10px;
+      padding-top: calc(100vw * 0.05);
+      padding-bottom: calc(100vw * 0.065);
+    }
+  }
+  
+  @media (max-width: 355px) {
+    .vc_page_welcome_kk .vc_page_welcome_wrap {
+      background: url(/landing_files/welcome.png) no-repeat 50% 140px;
+      background-size: calc(100vw * 0.7);
+      padding: 0 10px;
+      padding-top: calc(100vw * 0.05);
+      padding-bottom: calc(100vw * 0.065);
+    }
+    .vc_page_welcome_kk .vc_page_heading {
+      font-size: 24px;
+      padding-bottom: calc(100vw * 0.75);
+    }
+    .vc_page_welcome2 .vc_page_heading {
+      font-size: 24px;
+    }
+    .vc_page_button {
+      font-size: 16px;
+      line-height: 20px;
+      display: block;
+      text-align: center;
+    }
+  }
+  
+  @media (max-width: 435px) {
+    .vc_page_kk .vc_page_button {
+      display: block;
+      text-align: center;
+    }
+  
+  }
+  
+  @media (max-width: 335px) {
+    .vc_page_contact form {
+      max-width: 280px;
+      padding: 18px;
+      border-radius: 24px;
+    }
+    .vc_page_pripciples .vc_page_flex_card {
+      padding: 36px 20px 15px 20px;
+    }
+  }

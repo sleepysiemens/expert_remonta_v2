@@ -15,8 +15,7 @@
 @push('vacancies')
 {{--<link rel="stylesheet" href="{{ asset('/css/ui_kit.css') }}">
 <link rel="stylesheet" href="{{ asset('/css/vacancy.css') }}">--}}
-<link rel="stylesheet" href="/css/ui_kit.css">
-<link rel="stylesheet" href="/css/vacancy.css">
+@vite('resources/css/vacancy.css')
 @endpush
 
 @section('content')
