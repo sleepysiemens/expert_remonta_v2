@@ -1,0 +1,27 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-ece486d1.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/css/franchise.css": {
+    "file": "assets/franchise-41e61479.css",
+    "isEntry": true,
+    "src": "resources/css/franchise.css"
+  },
+  "resources/css/vacancies.css": {
+    "file": "assets/vacancies-3e6ba88b.css",
+    "isEntry": true,
+    "src": "resources/css/vacancies.css"
+  },
+  "resources/css/vacancies_landing.css": {
+    "file": "assets/vacancies_landing-7b9107e6.css",
+    "isEntry": true,
+    "src": "resources/css/vacancies_landing.css"
+  },
+  "resources/css/vacancy.css": {
+    "file": "assets/vacancy-a1391fe7.css",
+    "isEntry": true,
+    "src": "resources/css/vacancy.css"
+  }
+}
