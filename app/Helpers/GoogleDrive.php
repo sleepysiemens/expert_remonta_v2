@@ -36,6 +36,16 @@ class GoogleDrive {
     }
 }
 
+    public function deleteFile($fileId) {
+        try {
+            //$file = $this->driveService->files->delete(array('fileId' => $fileId));
+            $file = $this->driveService->files->delete($fileId);
+            //return $file->id;
+        } catch (Exception $e) {
+            echo "Error Message: " . $e;
+        }
+    }
+
     public function searchFiles() {
     try {
         $files = [];
@@ -49,6 +59,31 @@ class GoogleDrive {
             ]);
             foreach ($response->files as $file) {
                 printf("Found file: %s (%s)\n", $file->name, $file->id);
+            }
+            array_push($files, $response->files);
+
+            $pageToken = $response->pageToken;
+        } while ($pageToken != null);
+        return $files;
+    } catch(Exception $e) {
+       echo "Error Message: ".$e;
+    }
+}
+
+public function searchForFiles() {
+    try {
+        $files = [];
+        $pageToken = null;
+        do {
+            $folderId = config('app.google_upload_folder_id');
+            $response = $this->driveService->files->listFiles([
+                'q' => "mimeType='application/zip' and '$folderId' in parents",
+                'spaces' => 'drive',
+                'pageToken' => $pageToken,
+                'fields' => 'nextPageToken, files(id, name, modifiedTime)',
+            ]);
+            foreach ($response->files as $file) {
+                //printf("Found file: %s (%s)\n", $file->name, $file->id);
             }
             array_push($files, $response->files);
 

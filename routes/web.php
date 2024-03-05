@@ -67,9 +67,9 @@ $middlewares = ['setLocale', /*'loadCache', 'app'*/];
     ->scopeBindings()->name('blog.post');*/
     //Route::get('/blog/{blog}', 'BlogController@index')->name('blog.index');
     Route::get('/geo', function () {  
-        
-        //$googleDrive = new GoogleDrive();
-        //dd($googleDrive->searchFiles());
+        //\Illuminate\Support\Facades\Artisan::call('backup:run');
+        //dd(\Illuminate\Support\Facades\Artisan::output());
+
         //dd(DB::table('jobs')->get());
         //Mail::to('test@gmail.com')->queue(new DemoEmail());
         //dump(env('APP_CITY'));

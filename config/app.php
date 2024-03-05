@@ -211,6 +211,7 @@ return [
     'city_en' => env('APP_CITY_EN'),
     'city_opposite' => env('APP_CITY_OPPOSITE'),
     'city_opposite_en' => env('APP_CITY_OPPOSITE_EN'),
-    'yandex_indexnow_key' => env('YANDEX_INDEXNOW_KEY', '')
+    'yandex_indexnow_key' => env('YANDEX_INDEXNOW_KEY', ''),
+    'google_upload_folder_id' => env('GOOGLE_UPLOAD_FOLDER_ID', '1qxC1Ka9nX2XdySqxGJV09u-fmooBrXx3')
 
 ];

@@ -140,6 +140,7 @@ header
     margin: auto 0;
     display: flex;
     overflow: hidden;
+    max-width: 126px;
 }
 
 .logo p
@@ -271,7 +272,13 @@ header
 
 .welcome-header
 {
+    max-width: 475px;
+    margin: 0 auto;
     margin-bottom: 50px;
+    padding: 10px 5px;
+    background: #9DC436A6;
+    box-sizing: border-box;
+    border-radius: 6px;
 }
 
 .welcome-header h1, .welcome-header h3, .welcome-header div:nth-of-type(1), .welcome-header div:nth-of-type(2)
@@ -280,17 +287,19 @@ header
     color: #fff;
     text-shadow: 0 0 5px rgba(0,0,0,.75);
     margin: auto;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .welcome-header h1, .welcome-header div:nth-of-type(1)
 {
-    font-size: 40px;
+    font-size: 48px;
+    font-weight: 700;
 }
 
 .welcome-header h3,  .welcome-header div:nth-of-type(2)
 {
-    font-size: 18px;
+    font-size: 20px;
+    /*text-shadow: 2px 2px 5px #00000075;*/
 
 }
 
@@ -2865,9 +2874,9 @@ footer {
   max-width: 1040px;
 }
 @media screen and (max-width: 860px) {
-  .logo {
+  /*.logo {
     width: 40px;
-  }
+  }*/
 }
 @media screen and (max-width: 730px) {
   .header-subdiv {
@@ -3143,7 +3152,8 @@ footer {
 
 .header-div {
   width: auto;
-  max-width: 1200px;
+  max-width: 1250px;
+  padding: 0 5px;
 }
 .header-contact-info-div {
   display: flex;
@@ -3192,7 +3202,7 @@ footer {
 
     .header-contact-info
     {
-        margin-right: 20px;
+        margin-right: 10px;
         transition: .3s;
     }
     .header-contact-info-open
@@ -3257,8 +3267,8 @@ footer {
     .locale-pc
     {
         /*display: none !important;*/
-        margin-left: 0;
-        margin-right: 20px;
+        margin-left: 0!important;
+        margin-right: 10px;
     }
     .nav-links
     {
@@ -4122,5 +4132,11 @@ linear-gradient(0deg, #CEE19A, #CEE19A);
     }
     .blog_category .search_form {
         width: 175px;
+    }
+  }
+
+  @media screen and (max-width: 368px) {
+    .logo {
+        max-width: 88px;
     }
   }

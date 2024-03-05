@@ -31,13 +31,28 @@ class StoreBackup extends Command
         $backupFiles = Storage::files(config('app.name'));
         $mostRecentBackup = $backupFiles[count($backupFiles) - 1];
         //$mostRecentBackup = $backupFiles[0];
+        // если бэкапов больше трех, удалим лишний
+        if(count($backupFiles) > 3) {
+            $oldestBackup = $backupFiles[0];
+            Storage::delete($oldestBackup);
+        }
         $driveFileName = "backup-" . str_replace(config('app.name') . "/", '', $mostRecentBackup);
         //dd($driveFileName);
 
         $googleDrive = new GoogleDrive();
         // по хорошему нужен будет тип загрузки resumable, просто еще не разобрался с ним
         // а также смотреть сколько бэкапов уже в папке, старые удалять
-        $fileId = $googleDrive->uploadToFolder('1qxC1Ka9nX2XdySqxGJV09u-fmooBrXx3', [
+        $files = ($googleDrive->searchForFiles());
+        $files = $files[0];
+        // если больше пяти бэкапов, самый старый удаляем
+        if(count($files) >= 5) {
+            usort($files, function ($a, $b) {
+                return strtotime($a->modifiedTime) > strtotime($b->modifiedTime);
+            });
+            $oldestBackup = $files[0];
+            $googleDrive->deleteFile($oldestBackup->id);
+        }
+        $fileId = $googleDrive->uploadToFolder(config('app.google_upload_folder_id'), [
             'drive_name' => $driveFileName,
             'mime' => 'application/zip',
             'content' => file_get_contents(

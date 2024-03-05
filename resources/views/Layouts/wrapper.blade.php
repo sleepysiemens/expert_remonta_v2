@@ -42,7 +42,7 @@
 
             <div style="display: flex" class="site_logo">
                 <a class="logo" href="{{ route('main.index') }}">
-                    <img src=" /img/logo.png" alt="Компания Эксперт Ремонта">
+                    <img src="/svg/logo1.svg" alt="Компания Эксперт Ремонта">
                 </a>
             </div>
 
