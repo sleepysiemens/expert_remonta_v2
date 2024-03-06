@@ -18,25 +18,7 @@
 <div class="header_menu_item">
   <a href="/" @class(['nav-link', 'nav-link-selected' => '/' === $uri])>{{__('Главная')}}</a>
 </div>
-{{--<div class="header_menu_item has_childs">
-  <a href="{{ route('uslugi.index') }}/" class="nav-link @yield('service')">{{__('Услуги')}}</a>
-  <ul class="header_submenu">
-  @foreach($services as $s)
-    <li class="has_childs">
-      <a href="{{route('service.index', ['service' => $s->url])}}" class="nav-link">{{db_translate($s->title_ru, $s->title_kz)}}</a>
-      <ul class="header_deepmenu">
-        @foreach($s->categories as $c)
-        <li>
-          <a href="{{route('category.index', ['service' => $s->url, 'category' => $c->url])}}" class="nav-link">
-            {{db_translate($c->title_ru, $c->title_kz)}}
-          </a>
-        </li>
-        @endforeach
-      </ul>
-    </li>
-  @endforeach
-  </ul>
-</div>--}}
+
 @include('blocks.menu.menu_services')
     
 
@@ -80,8 +62,8 @@
     })
     let submenus = document.querySelectorAll('ul.header_submenu')
     submenus.forEach(submenu => {
-      //let submenusItemsWithChilds = submenu.querySelectorAll('li.has_childs')
-      let submenusItemsWithChilds = submenu.querySelectorAll('li.has_childs.sub')
+      let submenusItemsWithChilds = submenu.querySelectorAll('li.has_childs')
+      //let submenusItemsWithChilds = submenu.querySelectorAll('li.has_childs.sub')
       submenusItemsWithChilds.forEach(item => {
         item.addEventListener('click', function(e) {
           //console.log(e.target)
